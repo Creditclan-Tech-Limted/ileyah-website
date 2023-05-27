@@ -1,4 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap');
 
 @mixin forms {
   border: 0;
@@ -1138,12 +1138,12 @@ span {
 */
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   background: #fafafa;
 }
 
 p {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.7em;
@@ -1961,3 +1961,207 @@ a:focus {
 .bg-cc{
   background-color: #FB8627 !important;
 }
+
+ .rotate {
+   animation: rotate 7s linear infinite;
+ }
+
+ .animation-delay-3 {
+   animation-delay: 3s;
+ }
+
+ .animation-duration-8 {
+   animation-duration: 8s;
+ }
+
+ @-webkit-keyframes rotate {
+   from {
+     -webkit-transform: rotate(0deg);
+   }
+
+   to {
+     -webkit-transform: rotate(359deg);
+   }
+ }
+
+ @keyframes rotate {
+   from {
+     -webkit-transform: rotate(0deg);
+   }
+
+   to {
+     -webkit-transform: rotate(359deg);
+   }
+ }
+
+ .bounce {
+   animation: bounce 2s ease infinite alternate;
+ ;
+ }
+
+ @keyframes bounce {
+   0% {
+     transform: translateY(0px);
+   }
+
+   100% {
+     transform: translateY(-20px);
+   }
+ }
+
+ .slant-card {
+   transform: translate(-34px, -10px) rotate(-10deg);
+   animation: flip 5s cubic-bezier(0.8, 0, 0, 0.8) infinite;
+ }
+
+ .slant-card-two {
+   position: absolute;
+   inset: 0;
+   transform: translate(-34px, -10px) rotate(-10deg);
+   animation: fliptwo 5s cubic-bezier(0.8, 0, 0, 0.8) infinite;
+   transform-style: preserve-3d;
+   transform: rotate3d(0, 1, 0, 180deg);
+   opacity: 0;
+ }
+ .slant-card-three {
+   position: absolute;
+   inset: 0;
+   transform: translate(-34px, -10px) rotate(-10deg);
+   animation: flipthree 5s cubic-bezier(0.8, 0, 0, 0.8) infinite;
+   transform-style: preserve-3d;
+   transform: rotate3d(0, 1, 0, 180deg);
+   opacity: 0;
+ }
+ .slant-card-four {
+   position: absolute;
+   inset: 0;
+   transform: translate(-34px, -10px) rotate(-10deg);
+   animation: flipfour 5s cubic-bezier(0.8, 0, 0, 0.8) infinite;
+   transform-style: preserve-3d;
+   transform: rotate3d(0, 1, 0, 180deg);
+   opacity: 0;
+ }
+
+ @keyframes flip {
+   0% {
+     transform: rotate3d(0, 1, 0, 0deg);
+     opacity: 1;
+   }
+
+   20% {
+     opacity: 0;
+   }
+
+   25% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   50% {
+     transform: rotate3d(0, 1, 0, 360deg);
+     opacity: 0;
+   }
+
+   75% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   100% {
+     transform: rotate3d(0, 1, 0, 0deg);
+     opacity: 1;
+   }
+ }
+
+ @keyframes fliptwo {
+   0% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   25% {
+     transform: rotate3d(0, 1, 0, 0deg);
+     opacity: 1;
+   }
+
+   40% {
+     opacity: 0;
+   }
+
+   50% {
+     transform: rotate3d(0, 1, 0, 360deg);
+     opacity: 0;
+   }
+
+   75% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   100% {
+     transform: rotate3d(0, 0, 0, 0deg);
+     opacity: 0;
+   }
+ }
+
+ @keyframes flipthree {
+   0% {
+     transform: rotate3d(0, 0, 0, 0deg);
+     opacity: 0;
+   }
+
+   25% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   50% {
+     transform: rotate3d(0, 1, 0, 360deg);
+     opacity: 1;
+   }
+
+   70% {
+     opacity: 0;
+   }
+
+   75% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   100% {
+     transform: rotate3d(0, 0, 0, 0deg);
+     opacity: 0;
+   }
+ }
+
+ @keyframes flipfour {
+   0% {
+     transform: rotate3d(0, 0, 0, 180deg);
+     opacity: 0;
+   }
+
+   25% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   50% {
+     transform: rotate3d(0, 1, 0, 180deg);
+     opacity: 0;
+   }
+
+   75% {
+     transform: rotate3d(0, 1, 0, 0deg);
+     opacity: 1;
+   }
+
+   85% {
+     opacity: 0;
+   }
+
+   100% {
+     transform: rotate3d(0, 0, 0, 0deg);
+     opacity: 0;
+   }
+ }
