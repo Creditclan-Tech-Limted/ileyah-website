@@ -19,7 +19,7 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        nunito: "Nunito Sans', sans-serif",
+        nunito: "Nunito Sans, sans-serif",
         fontAwesome: "Font Awesome 6 Free",
       },
     },
