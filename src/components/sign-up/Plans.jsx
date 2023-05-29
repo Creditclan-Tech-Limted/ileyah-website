@@ -91,7 +91,7 @@ function Plans({ onBack, onNext }) {
                 <div className="swiper-container">
                   <div className="swiper-wrapper">
                     {plans.slice(0, 1)?.map((plan, i) => (
-                      <SwiperSlide>
+                      <SwiperSlide key={i}>
                         <div
                         style={{minHeight: "250px"}}
                           data-wow-delay="0.1s"

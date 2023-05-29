@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect, useRef } from "react";
 
-const CcEligibilityWidget = window.CcEligibilityWidget;
 
 const LaunchEligibilityWidget = ({
   children,
@@ -12,8 +11,9 @@ const LaunchEligibilityWidget = ({
   className,
 }) => {
   const widget = useRef();
-
+  
   useEffect(() => {
+    const CcEligibilityWidget = window.CcEligibilityWidget;
     widget.current = CcEligibilityWidget.init({
       data: {
         plans: [JSON.parse(request.plan)],
