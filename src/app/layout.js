@@ -16,8 +16,7 @@ export default function RootLayout({ children }) {
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossOrigin="anonymous" referrerPolicy="no-referrer" />
       <body className={inter.className}>{children}</body>
-      <script src="https://eligibility.clan.africa/assets/scripts/client.js"></script>
-      <link rel="icon" href="/favicon-16x16.png" />
+      {/* <script src="https://eligibility.clan.africa/assets/scripts/client.js"></script> */}
     </html>
   )
 }
