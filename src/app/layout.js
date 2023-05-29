@@ -1,6 +1,7 @@
 import './globals.css'
 import './global-styles.scss'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
       <body className={inter.className}>{children}</body>
-      {/* <script src="https://eligibility.clan.africa/assets/scripts/client.js"></script> */}
+      <Script src='https://eligibility.clan.africa/assets/scripts/client.js' />
     </html>
   )
 }

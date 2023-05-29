@@ -16,7 +16,7 @@ const UserDetails = ({ onBack, onNext }) => {
   const {
     mutateAsync: checkRentRequest,
     isLoading: ischeckRentRequestLoading,
-  } = useCheckRentRequestMutationn();
+  } = useCheckRentRequestMutation();
 
   const submit = async (values) => {
     updateData({ user: { ...values } });
