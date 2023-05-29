@@ -18,7 +18,7 @@ const Future = () => {
         </div>
         <div className="container grid grid-cols-12">
           <div className="col-start-2 col-span-10">
-            <h2 className="text-white text-center text-[3.5rem] font-[900] leading-[1.1] relative pb-10">
+            <h2 className="text-white text-center text-[3rem] md:text-[3.5rem] font-[900] leading-[1.1] relative pb-10">
               Build for the future of <br /> digital Ecommerce
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4">

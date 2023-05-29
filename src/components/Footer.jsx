@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react'
+import CountUp from 'react-countup';
 
 const Footer = () => {
   const mode = 'light';
@@ -201,6 +201,8 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <>
+    </>
     </>
   )
 }
