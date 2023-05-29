@@ -95,7 +95,7 @@ function MenuView({ onNext, handleToggle }) {
                         <h5 className="font-30 text-left text-white mt-3">
                           I have found a house
                         </h5>
-                        <p style={{lineHeight: "1.3"}} className="font-17 text-left text-white m-0">
+                        <p style={{ lineHeight: "1.3" }} className="font-17 text-left text-white m-0">
                           Let us pay for the house you have found and you can
                           move in immediately
                         </p>
@@ -118,7 +118,7 @@ function MenuView({ onNext, handleToggle }) {
                         <h5 className="font-30 text-left text-white mt-3">
                           Find me a house
                         </h5>
-                        <p style={{lineHeight: "1.3"}} className="font-17 text-left text-white m-0">
+                        <p style={{ lineHeight: "1.3" }} className="font-17 text-left text-white m-0">
                           Let us find you a house that suits your preference
                         </p>
                       </div>

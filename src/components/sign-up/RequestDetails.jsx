@@ -1,8 +1,10 @@
+'use client'
 import { useState } from "react";
 import LaunchEligibilityWidget from "./LaunchEligibilityWidget.jsx";
 import useSignupStore from "@/store/signup.js";
 import { useCheckRentRequestQuery, useGetLoanDetailsQuery } from "@/api/rent.js";
 import { capitalizeFirstLetter, formatCurrency } from "@/lib/utils.js";
+import ClientOnly from "../ClientOnly.jsx";
 
 const RequestDetails = ({ onNext }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -144,20 +146,22 @@ const RequestDetails = ({ onNext }) => {
                         )}
                         <div className="d-flex flex-column justify-content-between align-items-center mt-4">
                           {loan?.loan?.stage !== "completed" && (
-                            <LaunchEligibilityWidget
-                              onReady={() => setLoading("false")}
-                              request={request}
-                              onCancel={handleEligibilityCancelled}
-                              onCompleted={handleEligibilityCompleted}
-                              className="w-100"
-                            >
-                              <button
-                                onClick={() => setLoading("true")}
-                                className="btn btn-block btn-blue-full"
+                            <ClientOnly>
+                              <LaunchEligibilityWidget
+                                onReady={() => setLoading("false")}
+                                request={request}
+                                onCancel={handleEligibilityCancelled}
+                                onCompleted={handleEligibilityCompleted}
+                                className="w-100"
                               >
-                                Get funded
-                              </button>
-                            </LaunchEligibilityWidget>
+                                <button
+                                  onClick={() => setLoading("true")}
+                                  className="btn btn-block btn-blue-full"
+                                >
+                                  Get funded
+                                </button>
+                              </LaunchEligibilityWidget>
+                            </ClientOnly>
                           )}
                           {request.approval_step === "0" && (
                             <button

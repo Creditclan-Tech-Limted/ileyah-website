@@ -5,7 +5,6 @@ import Listings from '@/components/Listings'
 import Navbar from '@/components/Navbar'
 import Products from '@/components/Products'
 import WhyUs from '@/components/WhyUs'
-import React from 'react'
 import Hero from "@/components/Hero";
 
 const LandingPage = () => {
@@ -15,7 +14,7 @@ const LandingPage = () => {
              <Hero />
             <Products />
             <WhyUs />
-            <div className="mt">
+            <div className="">
                 <Listings />
             </div>
             <Future />
