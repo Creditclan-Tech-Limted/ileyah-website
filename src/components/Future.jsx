@@ -23,7 +23,7 @@ const Future = () => {
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4">
               <div className="text-center">
-                <h2 className="text-[2.5rem] font-[900] text-blue-300">
+                <h2 className="text-[2.5rem] font-[900] text-secondary">
                   <CountUp start={0} duration={5} end={10} />k
                   <span>
                     <i className="fa-solid fa-plus"></i>
@@ -32,7 +32,7 @@ const Future = () => {
                 <p className="text-white text-[18px]">Agents</p>
               </div>
               <div className="text-center">
-                <h2 className="text-[2.5rem] font-[900] text-blue-300">
+                <h2 className="text-[2.5rem] font-[900] text-secondary">
                   <CountUp start={0} duration={5} end={100} />
                   <span>
                     <i className="fa-solid fa-plus"></i>
@@ -41,7 +41,7 @@ const Future = () => {
                 <p className="text-white text-[18px]">Businesses building with Ileyah</p>
               </div>
               <div className="text-center">
-                <h2 className="text-[2.5rem] font-[900] text-blue-300">
+                <h2 className="text-[2.5rem] font-[900] text-secondary">
                   <CountUp start={0} duration={5} end={5} />M
                   <span>
                     <i className="fa-solid fa-plus"></i>
@@ -50,7 +50,7 @@ const Future = () => {
                 <p className="text-white text-[18px]">Property bought </p>
               </div>
               <div className="text-center">
-                <h2 className="text-[2.5rem] font-[900] text-blue-300">
+                <h2 className="text-[2.5rem] font-[900] text-secondary">
                   <CountUp start={0} duration={5} end={10} />M
                   <span>
                     <i className="fa-solid fa-plus"></i>

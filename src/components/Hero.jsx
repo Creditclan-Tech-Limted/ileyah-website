@@ -6,9 +6,9 @@ const Hero = () => {
   return (
     <>
       <section class="bg-white font-nunito">
-        <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:pt-[40px] pb-[100px] lg:grid-cols-12">
+        <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:pt-[40px] pb-[70px] lg:grid-cols-12">
           <div class="mr-auto place-self-center lg:col-span-6 pt-[100px]">
-            <h1 class="max-w-2xl mb-4 text-7xl font-extrabold tracking-tight md:text-5xl xl:text-[3.5rem] text-primary">
+            <h1 class="max-w-2xl mb-4 text-7xl font-extrabold tracking-tight md:text-5xl xl:text-[3.5rem] text-black">
               Providing <br /> <span className="text-secondary">rent solutions</span> <br /> across Africa
             </h1>
             <p class="max-w-2xl mb-6 font-light text-xl text-gray-500 lg:mb-8 md:text-lg lg:text-xl text-primary">Introducing flexible payment
@@ -24,7 +24,7 @@ const Hero = () => {
               </svg>
             </a>
             <a href="#"
-              class="px-8 inline-flex items-center justify-center py-3 text-base font-medium text-center bg-secondary rounded-lg hover:bg-transparent hover:border-secondary hover:text-secondary text-blue-800 hover:border focus:ring-4 focus:ring-gray-100">
+              class="px-8 inline-flex items-center justify-center py-3 text-base font-medium text-center bg-secondary rounded-lg hover:bg-transparent hover:border-secondary hover:text-secondary text-white hover:border focus:ring-4 focus:ring-gray-100">
               See plans
             </a>
           </div>
@@ -40,7 +40,7 @@ const Hero = () => {
                 <div className='relative h-[150px] w-[150px] rounded-full after:content-[""] after:absolute after:h-[25px] after:w-[25px] after:rounded-full after:bg-[#ED6B49] after:top-[6rem] after:border-2 after:border-white rotate animation-delay-3'></div>
               </div>
               <div className="z-20 relative">
-                <div className="absolute bg-gray-100 w-[300px] rounded-lg top-[3rem] right-[7rem] shadow-md p-4 bounce">
+                <div className="absolute bg-gray-50 w-[300px] rounded-lg top-[3rem] right-[7rem] shadow-md p-4 bounce">
                   <div className="relative pb-6">
                     <svg
                       className="w-[10px]"

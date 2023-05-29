@@ -3,18 +3,15 @@ import React from 'react'
 const WhyUs = () => {
   return (
     <>
-      <div className="bg-[#edeef0] md:pt-14 pt-9 md:px-20 px-7 pb-12 w-full">
+      <div className="bg-[#edeef0] py-[160px] md:px-20 px-7 w-full">
         <div className="w-full max-w-[1440px] mx-auto">
-          <h5 className="uppercase md:text-sm text-xs mb-3.5 text-blue-800 font-semibold text-left">
+          <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary text-left tracking-wider">
             WHY ILEYAH
           </h5>
           <div className="flex justify-between flex-wrap md:mb-16 mb-14">
-            <h2 className="md:text-4xl text-2xl text-black font-bold w-full max-w-md text-left mb-5">
+            <h2 className="md:text-[2.5rem] leading-[1.1] text-3xl text-black font-bold w-full max-w-md text-left mb-5">
               Quality apartments. Trusted by millions of renters.
             </h2>
-            <p className="text-sm text-[#4B4F63] w-full max-w-xl">
-              We offer you access to premium residential solutions, with as little as possible. Filter by price, location, apartment type and duration to find your next home.
-            </p>
           </div>
           <div className="flex flex-wrap justify-between">
             <div className="mb-12 mr-2">

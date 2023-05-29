@@ -5,14 +5,14 @@ const FAW = () => {
     <>
       <div className="bg-[#F9FAFD] md:pt-24 pt-20 md:pb-32 pb-20 w-full">
         <div className="w-full max-w-[1366px] mx-auto md:px-32 px-7">
-          <h5 className="uppercase md:text-sm text-xs mb-3.5 text-blue-800 font-semibold text-left">
+          <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-left">
             COMMON QUESTIONS
           </h5>
-          <h2 className="md:text-4xl text-2xl text-black font-bold w-full text-left mb-5">
+          <h2 className="md:text-[2.5rem] text-3xl text-black font-bold w-full text-left mb-5">
             Frequently asked questions
           </h2>
-          <p className="text-sm text-[#4B4F63] w-full">
-            Get quick answers to all your questions and concerns about Ileyah and Ileyah homes. Whether as a member, host or just a visitor, we will have an answer waiting for you.
+          <p className="text-sm text-primary w-full">
+            Get quick answers to all your questions and concerns about Ileyah and Ileyah homes.<br/> Whether as a member, host or just a visitor, we will have an answer waiting for you.
           </p>
           <a href="/faq" className="block bg-blue-800 text-white text-sm w-40 py-4 rounded-[28px] text-center mt-8 mb-7 hover:text-white">Visit FAQs</a>
           <div>

@@ -1327,10 +1327,9 @@ a:focus {
   cursor: pointer;
   transition: all .2s ease-in-out;
   background: none;
-  position: relative;
   z-index: 2;
   position: absolute;
-  right: 0;
+  right: 2rem;
 
   &:hover {
     color: #fff;

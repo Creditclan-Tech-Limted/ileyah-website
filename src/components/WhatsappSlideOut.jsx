@@ -25,8 +25,6 @@ function WhatsappSlideOut({ isActive, handleToggle }) {
         className={classNames("main-overlay", { visible: isActive })}
       ></div>
       <div className={`dotted-bg sidebar ${isActive ? "active" : ""}`}>
-        <div>
-        </div>
         {view === "menu-view" && <MenuView onNext={(v) => setView(v)} handleToggle={handleToggle} />}
         {view === "user-details" && (
           <UserDetails

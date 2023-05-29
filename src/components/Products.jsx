@@ -1,13 +1,13 @@
 const Products = () => {
   return (
     <>
-      <div className="-mt-32 md:pt-28 pt-20 md:pl-16 px-7 md:pr-0 md:pb-44 pb-11 w-full">
+      <div className="md:pt-28 pt-20 md:pl-16 px-7 md:pr-0 md:pb-44 pb-11 w-full">
         <div className="w-full max-w-[1440px] mx-auto">
           <div className="md:mb-12 s-mb-7">
-            <h5 className="uppercase md:text-sm text-xs mb-3.5 text-blue-800 font-semibold text-center md:text-left">
+            <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-left md:text-left">
               OUR PRODUCTS
             </h5>
-            <h2 className="md:text-4xl text-2xl text-black font-bold w-full max-w-4xl text-center md:text-left">
+            <h2 className="md:text-[2.5rem] leading-[1.1] text-3xl text-black font-bold w-full max-w-4xl text-left md:text-left">
               Are you looking to rent or lease an apartment? We’ve got you covered.
             </h2>
           </div>

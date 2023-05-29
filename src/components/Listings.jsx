@@ -20,13 +20,13 @@ const Listings = () => {
     <>
       <div className=" max-w-7xl mx-auto mb-[80px] mt-[80px]">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between">
-          <div className="">
-            <h5 className="uppercase md:text-sm text-sm mb-3.5 text-blue-800 font-semibold text-center md:text-left">
+          <div>
+            <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-center md:text-left">
               LISTINGS
             </h5>
-            <div className="flex justify-between flex-wrap md:mb-16 mb-14">
-              <h2 className="md:text-4xl text-3xl text-black font-bold w-full md:max-w-md  text-center md:text-left mb-5">
-                Quality apartments. Trusted by millions of renters.
+            <div className="flex justify-between flex-wrap md:mb-8 mb-8">
+              <h2 className="md:text-[2.5rem] leading-[1.1] text-3xl text-black font-bold w-full md:max-w-md  text-center md:text-left mb-5">
+                Quality apartments. <br className="md:hidden"/> Trusted by millions of renters.
               </h2>
             </div>
             <button className="btn hidden md:block cta shadow bg-blue-800 text-white">
@@ -82,7 +82,7 @@ const Listings = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className="house-details">
+                              <div className="house-details bg-gray-100 shadow">
                                 <h3 className="pt-3">₦{houses.price}<span>/month</span></h3>
                                 <h5>
                                   <span><i className="fa-solid fa-location-dot mr-1"></i></span>{houses.location}
