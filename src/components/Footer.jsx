@@ -12,12 +12,12 @@ const Footer = () => {
               {
                 mode.dark ?
                   <img
-                    src="/assets/images/lyncs-logo-light.png"
+                    src="/assets/images/ileyah-logo.png"
                     className="h-8 mr-3"
                     alt="Ileya Logo"
                   /> :
                   <img
-                    src="/assets/images/lyncs-logo-blue.png"
+                    src="/assets/images/ileyah-logo.png"
                     className="h-8 mr-3"
                     alt="Ileya Logo"
                   />

@@ -7,8 +7,8 @@ const Navbar = () => {
     <>
       <nav className="bg-white border-gray-200 shadow-sm fixed w-full bg-transparent z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="https://flowbite.com/" className="flex items-center">
-            <img src="/assets/images/ileyah-logo.png" className="h-10 mr-3" alt="Flowbite Logo" />
+          <a className="flex items-center cursor-pointer">
+            <img src="/assets/images/ileyah-logo.png" className="h-10 mr-3" alt="Ileyah Logo" />
           </a>
           <div className="flex md:order-2">
             <button type="button" className="text-blue-800 bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0"  onClick={toggleIsSignupOpen} >Get started</button>
@@ -39,4 +39,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;

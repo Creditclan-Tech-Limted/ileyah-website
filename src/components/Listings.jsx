@@ -18,19 +18,18 @@ const Listings = () => {
   let today = new Date()
   return (
     <>
-      <div className="max-w-7xl mx-auto mb-[80px] mt-[80px]">
-        <div className="grid grid-cols-2 items-center justify-between">
+      <div className=" max-w-7xl mx-auto mb-[80px] mt-[80px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-between">
           <div className="">
-            <h5 className="uppercase md:text-sm text-xs mb-3.5 text-blue-800 font-semibold text-left">
+            <h5 className="uppercase md:text-sm text-sm mb-3.5 text-blue-800 font-semibold text-center md:text-left">
               LISTINGS
             </h5>
             <div className="flex justify-between flex-wrap md:mb-16 mb-14">
-              <h2 className="md:text-4xl text-2xl text-black font-bold w-full max-w-md text-left mb-5">
+              <h2 className="md:text-4xl text-3xl text-black font-bold w-full md:max-w-md  text-center md:text-left mb-5">
                 Quality apartments. Trusted by millions of renters.
               </h2>
             </div>
-
-            <button className="btn cta shadow bg-blue-800 text-white">
+            <button className="btn hidden md:block cta shadow bg-blue-800 text-white">
               Get Started
             </button>
           </div>

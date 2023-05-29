@@ -11,7 +11,7 @@ const Products = () => {
               Are you looking to rent or lease an apartment? We’ve got you covered.
             </h2>
           </div>
-          <div className="flex md:flex-nowrap flex-wrap">
+          <div className="flex md:flex-nowrap flex-wrap mt-10 md:mt-0">
             <div className="flex md:flex-nowrap flex-wrap mx-auto md:mx-0 md:w-full overflow-hidden scroll-smooth hide-scroll md:pr-4" style={{ width: 'fit-content' }}>
               <div className="w-full max-w-md md:min-w-[400px] md:mr-16 mx-auto mb-4 md:mb-0">
                 <div className="w-full md:h-[266px] h-56">
