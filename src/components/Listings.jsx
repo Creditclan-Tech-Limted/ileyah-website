@@ -1,5 +1,4 @@
 'use client'
-import Typed from "typed.js";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from 'swiper';
 import AOS from "aos";

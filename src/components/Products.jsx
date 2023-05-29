@@ -1,9 +1,7 @@
-import React from 'react'
-
 const Products = () => {
   return (
     <>
-      <div className="md:pt-28 pt-20 md:pl-16 px-7 md:pr-0 md:pb-44 pb-11 w-full">
+      <div className="-mt-32 md:pt-28 pt-20 md:pl-16 px-7 md:pr-0 md:pb-44 pb-11 w-full">
         <div className="w-full max-w-[1440px] mx-auto">
           <div className="md:mb-12 s-mb-7">
             <h5 className="uppercase md:text-sm text-xs mb-3.5 text-blue-800 font-semibold text-center md:text-left">
@@ -39,7 +37,7 @@ const Products = () => {
               </div>
               <div className="w-full max-w-md md:min-w-[400px] md:mr-16 mx-auto mb-4 md:mb-0">
                 <div className="w-full md:h-[266px] h-56">
-                  <img src="/assets/images/houses/9.jpg" alt="marketplace image" className="object-center rounded-tl-3xl rounded-tr-3xl" />
+                  <img src="/assets/images/houses/5.jpg" alt="marketplace image" className="object-center rounded-tl-3xl rounded-tr-3xl" />
                 </div>
                 <div className="md:px-10 px-[18px] md:py-8 py-6 bg-gray-100 rounded-bl-3xl rounded-br-3xl md:h-[274px] relative">
                   <div className="flex mb-8 itemcenter">
@@ -63,7 +61,7 @@ const Products = () => {
               </div>
               <div className="w-full max-w-md md:min-w-[400px] md:mr-16 mx-auto mb-4 md:mb-0">
                 <div className="w-full md:h-[266px] h-56">
-                  <img src="/assets/images/houses/7.jpg" alt="marketplace image" className="object-center rounded-tl-3xl rounded-tr-3xl" />
+                  <img src="/assets/images/houses/5.jpg" alt="marketplace image" className="object-center rounded-tl-3xl rounded-tr-3xl" />
                 </div>
                 <div className="md:px-10 px-[18px] md:py-8 py-6 bg-gray-100 rounded-bl-3xl rounded-br-3xl md:h-[274px] relative">
                   <div className="flex mb-8 itemcenter">

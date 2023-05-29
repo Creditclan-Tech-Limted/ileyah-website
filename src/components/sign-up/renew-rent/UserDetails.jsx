@@ -49,14 +49,14 @@ const UserDetails = ({ onBack, onNext }) => {
         </button>
       </div>
       <div className="pt-70 pb-3">
-        <p className="redirect-text font-30 text-deep-blue font-weight-bold mb-1">
+        <p className="text-4xl text-deep-blue font-bold mb-1">
           We would like to know you
         </p>
         <p className="text-cc-dark font-17">
           Please provide the following information to proceed
         </p>
       </div>
-      <form onSubmit={handleSubmit(submit)}>
+      <form onSubmit={handleSubmit(submit)} className="mt-10">
         <FormInput
           type="text"
           label="Full name"

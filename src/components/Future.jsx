@@ -21,7 +21,7 @@ const Future = () => {
             <h2 className="text-white text-center text-[3.5rem] font-[900] leading-[1.1] relative pb-10">
               Build for the future of <br /> digital Ecommerce
             </h2>
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4">
               <div className="text-center">
                 <h2 className="text-[2.5rem] font-[900] text-blue-300">
                   <CountUp start={0} duration={5} end={10} />k

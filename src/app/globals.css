@@ -17,3 +17,9 @@
   background-attachment: fixed;
   background-size: cover;
 }
+
+.wrapper{
+  display:grid;
+  /* height:100vh; */
+  place-items:center
+}

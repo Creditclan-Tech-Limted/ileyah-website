@@ -23,7 +23,7 @@ function MenuView({ onNext, handleToggle }) {
         </button>
       </div>
       <div className="pt-70 pb-3">
-        <p className="text-3xl text-black font-bold text-cc-dark m-0">
+        <p className="font-bold text-3xl text-deep-blue">
           Welcome to Rent now, Pay later
         </p>
         <p className="text-cc-dark text-sm">
@@ -133,13 +133,13 @@ function MenuView({ onNext, handleToggle }) {
           </div>
         </div>
       </div>
-      <div className="pb-3 d-md-flex align-items-center justify-content-between">
+      <div className="pb-3 flex items-center justify-between">
         <p className="redirect-text font-17 text-cc-dark mb-1">
           Already have a rent request ?
         </p>
         <button
           onClick={() => onNext("user-details")}
-          className="font-17 d-flex call-number btn btn-grey"
+          className="font-17 flex call-number btn btn-grey"
         >
           Check request
         </button>
