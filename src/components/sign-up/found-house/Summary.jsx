@@ -33,7 +33,7 @@ function Summary({ onBack, onNext }) {
     <>
       <div>
         <button
-         disabled={ isLoading || isUploadImageLoading }
+          disabled={isLoading || isUploadImageLoading}
           style={{ marginBottom: "0px" }}
           className="back"
           type="button"
@@ -53,7 +53,7 @@ function Summary({ onBack, onNext }) {
           <br />
           <br />
           <br />
-          <div className="d-flex flex-column justify-content-center align-items-center text-center py-5">
+          <div className="flex flex-column justify-center items-center text-center py-5">
             <div className="spinner-grow text-dark" role="status">
               <span className="sr-only">Loading...</span>
             </div>
@@ -69,32 +69,32 @@ function Summary({ onBack, onNext }) {
           </div>
           <div className="font-17">
             <ul className="list-group">
-              <li className="list-group-item d-flex justify-content-between align-items-center">
+              <li className="list-group-item flex justify-between items-center">
                 Rent amount:
                 <span className="font-weight-600 text-right">
                   {formatCurrency(data?.foundHouse.amount ?? 0)}
                 </span>
               </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
+              <li className="list-group-item flex justify-between items-center">
                 Type of house:
                 <span className="font-weight-600 text-right">
                   {capitalizeFirstLetter(data?.foundHouse?.house_type)}
                 </span>
               </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
+              <li className="list-group-item flex justify-between items-center">
                 Address:
                 <span className="font-weight-600 text-right">
                   {data?.foundHouse?.address}
                 </span>
               </li>
-              <li className="list-group-item d-flex justify-content-between align-items-center">
+              <li className="list-group-item flex justify-between items-center">
                 Landlord phone number:
                 <span className="font-weight-600 text-right">
                   {data?.foundHouse?.landlord_phone || "Not provided"}
                 </span>
               </li>
               {plans.slice(0, 1)?.map((plan, i) => (
-                <li key={i} className="list-group-item d-flex justify-content-between align-items-center">
+                <li key={i} className="list-group-item flex justify-between items-center">
                   Repayment schedule:
                   <span className="font-weight-600 text-right">
                     ₦{numberWithCommas(plan.monthly)}
@@ -109,21 +109,21 @@ function Summary({ onBack, onNext }) {
             </ul>
           </div>
           <div className="font-17 mt-4">
-          <button
-          onClick={submit}
-          disabled={ isLoading || isUploadImageLoading }
-          className="align-items-center btn btn-blue-full call-number d-flex justify-content-sm-center w-100"
-        >
-          { isLoading || isUploadImageLoading ? "Creating request" : "Submit request" }
+            <button
+              onClick={submit}
+              disabled={isLoading || isUploadImageLoading}
+              className="items-center btn btn-blue-full call-number flex justify-sm-center w-100"
+            >
+              {isLoading || isUploadImageLoading ? "Creating request" : "Submit request"}
 
-          { isLoading || isUploadImageLoading ? (
-            <span className="ml-3 spin">
-              <i className="fa-solid fa-spinner"></i>
-            </span>
-          ) : (
-            <></>
-          ) }
-        </button>
+              {isLoading || isUploadImageLoading ? (
+                <span className="ml-3 spin">
+                  <i className="fa-solid fa-spinner"></i>
+                </span>
+              ) : (
+                <></>
+              )}
+            </button>
           </div>
         </>
       )}

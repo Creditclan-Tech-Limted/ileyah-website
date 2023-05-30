@@ -10,10 +10,8 @@ const UserDetails = ({ onBack, onNext }) => {
     defaultValues: { ...data?.user },
   });
   const [error, setError] = useState(false);
-
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } =
     useCheckUserMutation();
-
   const submit = async (values) => {
     setError(false);
     updateData({ user: { ...values } });
@@ -29,7 +27,6 @@ const UserDetails = ({ onBack, onNext }) => {
       console.log({ e });
     }
   };
-
   return (
     <>
       <div>
@@ -53,14 +50,13 @@ const UserDetails = ({ onBack, onNext }) => {
           Please provide your whatsapp phone number
         </p>
         <p
-          className={`redirect-text text-white bg-danger error-text font-17 pb-0 ${
-            error === true ? "d-block p-3" : "d-none"
-          }`}
+          className={`redirect-text text-white bg-red-500 error-text font-17 pb-0 ${error === true ? "block p-3" : "hidden"
+            }`}
         >
           User with this number does not exist
         </p>{" "}
       </div>
-      <form onSubmit={handleSubmit(submit)}>
+      <form onSubmit={handleSubmit(submit)} className="mt-10">
         <FormInput
           type="tel"
           label="Phone number"
@@ -68,7 +64,7 @@ const UserDetails = ({ onBack, onNext }) => {
         />
         <button
           type="submit"
-          className="font-17 d-flex call-number btn btn-blue"
+          className="font-17 flex call-number btn btn-blue"
           disabled={isCheckUserLoading}
         >
           {isCheckUserLoading ? "Please wait" : "Proceed"}

@@ -53,7 +53,7 @@ function StepThree({ onBack, onNext }) {
           {
             types.map(t => (
               <div className="col-md-6" key={ t.id }>
-                <label className='d-flex align-items-center'>
+                <label className='flex items-center'>
                   <div className="checkbox">
                     <input
                       name="house_type" type="radio" className="checkbox__input" value={ t.id }
@@ -68,7 +68,7 @@ function StepThree({ onBack, onNext }) {
           }
         </div>
       </div>
-      <button onClick={handleSubmit} type="submit" className="align-items-center btn btn-blue-full call-number d-flex justify-content-sm-around font-17" disabled={isLoading || !houseType}>
+      <button onClick={handleSubmit} type="submit" className="items-center btn btn-blue-full call-number flex justify-content-sm-around font-17" disabled={isLoading || !houseType}>
                 {
                     isLoading ? 'Submitting request' : 'Submit request'
                 }

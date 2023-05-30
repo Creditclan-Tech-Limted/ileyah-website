@@ -79,7 +79,7 @@ function PictureUpload({ onBack, onNext }) {
                 }}
                 guides={true}
               />
-              <div className="mt-4 w-100 d-flex justify-content-center">
+              <div className="mt-4 w-100 flex justify-content-center">
                 <button
                   className="call-number btn btn-outline-gray"
                   onClick={handleCancel}
@@ -87,7 +87,7 @@ function PictureUpload({ onBack, onNext }) {
                   Cancel
                 </button>
                 <button
-                  className="d-flex call-number btn btn-blue-full ml-4"
+                  className="flex call-number btn btn-blue-full ml-4"
                   onClick={submit}
                 >
                   Upload image
@@ -107,7 +107,7 @@ function PictureUpload({ onBack, onNext }) {
               </p>
             </div>
             <div>
-              <label className="d-flex align-items-center">
+              <label className="flex items-center">
                 <div
                   style={{ backgroundImage: `url(${cropData})` }}
                   className="picture-upload"

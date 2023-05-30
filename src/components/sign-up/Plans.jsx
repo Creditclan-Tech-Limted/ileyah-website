@@ -47,7 +47,7 @@ function Plans({ onBack, onNext }) {
           <br />
           <br />
           <br />
-          <div className="d-flex flex-column justify-content-center align-items-center text-center py-5">
+          <div className="flex flex-column justify-center items-center text-center py-5">
             <div className="spinner-grow text-dark" role="status">
               <span className="sr-only">Loading...</span>
             </div>
@@ -95,9 +95,9 @@ function Plans({ onBack, onNext }) {
                         <div
                         style={{minHeight: "250px"}}
                           data-wow-delay="0.1s"
-                          className="feature-box bg-black card1 mb-4 feature-box-rounded wow fadeInUp center-feature d-flex flex-column h-100"
+                          className="feature-box bg-black card1 mb-4 feature-box-rounded wow fadeInUp center-feature flex flex-column h-100"
                         >
-                          <div className="plans-list d-flex h-100 flex-column flex-grow-1">
+                          <div className="plans-list flex h-100 flex-column flex-grow-1">
                             <h2 className="text-left text-white font-weight-bold mt-3 font-30 mb-0">
                               ₦{numberWithCommas(plan.monthly)}
                               <span className="font-17 text-white">/mo</span>

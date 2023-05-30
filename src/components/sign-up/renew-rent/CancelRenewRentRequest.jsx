@@ -32,9 +32,9 @@ function CancelRenewRentRequest({ onBack, onNext }) {
         <p className="mb-4 redirect-text text-deep-blue font-weight-bold font-22">
             You are about to cancel existing rent request. Do you wish to continue?
           </p>
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <button
-            onClick={ handleCancelRequest } className="d-flex align-items-center px-5 btn btn-outline-gray"
+            onClick={ handleCancelRequest } className="flex items-center px-5 btn btn-outline-gray"
             disabled={ (isCancelRequestLoading || isCancelCcRequestLoading) }
           >
             { (isCancelRequestLoading || isCancelCcRequestLoading) ? 'Cancelling' : 'Yes, cancel' }

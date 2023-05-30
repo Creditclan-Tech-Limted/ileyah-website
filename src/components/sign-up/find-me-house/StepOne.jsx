@@ -39,7 +39,7 @@ function StepOne({ onBack, onNext }) {
             {
               budgets.map(b => (
                 <div className="col-md-6" key={b.id}>
-                  <label className='d-flex align-items-center'>
+                  <label className='flex items-center'>
                     <div className="checkbox">
                       <input
                         name="house_type" type="radio" className="checkbox__input" value={b.id}

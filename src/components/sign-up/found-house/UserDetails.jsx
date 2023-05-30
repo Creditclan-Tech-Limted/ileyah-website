@@ -86,10 +86,10 @@ const UserDetails = ({ onBack, onNext }) => {
           label="Email address"
           {...register("email", { required: true })}
         />
-        <div className="d-flex">
+        <div className="flex">
           <button
             type="submit"
-            className="font-17 d-flex call-number btn btn-blue"
+            className="font-17 flex call-number btn btn-blue"
             disabled={ischeckRentRequestLoading}
           >
             {ischeckRentRequestLoading ? "Please wait" : "Proceed"}

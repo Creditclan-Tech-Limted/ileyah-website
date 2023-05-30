@@ -37,7 +37,7 @@ function StepThree({ onBack, onNext }) {
                     {
                         types.map(t => (
                             <div className="col-md-6" key={t.id}>
-                                <label className='d-flex align-items-center'>
+                                <label className='flex items-center'>
                                     <div className="checkbox">
                                         <input
                                             name="house_type" type="radio" className="checkbox__input" checked={houseType === t.id} value={t.id} onChange={(e) => setHouseType(e.target.value)}
