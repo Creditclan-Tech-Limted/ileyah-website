@@ -1,5 +1,5 @@
 'use client'
-import LandingPage from "@/Views/LandingPage";
+import LandingPage from "@/views/LandingPage";
 import WhatsappSlideOut from "@/components/WhatsappSlideOut";
 import useGlobalStore from "@/store/global";
 import { QueryClient, QueryClientProvider } from "react-query";

@@ -5,7 +5,7 @@ import Listings from '@/components/Listings'
 import Navbar from '@/components/Navbar'
 import Products from '@/components/Products'
 import WhyUs from '@/components/WhyUs'
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import Hero from "@/components/Hero";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopBtn from "@/components/ScrollToTpBtn";
@@ -30,19 +30,17 @@ const LandingPage = () => {
   }, []);
   return (
     <>
-      <ScrollToTop />
-      <Navbar />
-      <Hero />
-      <Products />
-      <div className="mt bg-white pt-70 pb-20">
-        <Listings />
-      </div>
-      <WhyUs />
-      <Future />
-      <FAW />
-      {/* <Achievement /> */}
-      <Footer />
-      <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
+      <ScrollToTop/>
+      <Navbar/>
+      <Hero/>
+      <Products/>
+      <Listings/>
+      <WhyUs/>
+      <Future/>
+      <FAW/>
+      {/* <Achievement /> */ }
+      <Footer/>
+      <ScrollToTopBtn scrollTop={ scrollTop } handleScrollTop={ handleScrollTop }/>
     </>
   )
 }

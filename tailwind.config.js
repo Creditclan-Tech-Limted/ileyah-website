@@ -9,9 +9,24 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        'primary': "#02163b",
+      colors: {
+        'primary': {
+          50: '#fff6da',
+          100: '#ffeaad',
+          200: '#ffe17d',
+          300: '#ffdc4b',
+          400: '#ffd91a',
+          500: '#e6c800',
+          600: '#b38f00',
+          700: '#805e00',
+          800: '#4d3400',
+          900: '#1c0f00',
+        },
         'secondary': "#F6D600"
+      },
+      container: {
+        padding: '2rem',
+        center: true,
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
