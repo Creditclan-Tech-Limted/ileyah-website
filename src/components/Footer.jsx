@@ -5,7 +5,7 @@ const Footer = () => {
   const mode = 'light';
   return (
     <>
-      <footer className={`hidden md:block p-4 ${mode.dark ? 'md:bg-black' : 'md:bg-[#F1F1F8]'} sm:p-6 font-dmSans`} style={{paddingTop: "100px"}}>
+      <footer className={`hidden md:block p-4 ${mode.dark ? 'md:bg-black' : 'md:bg-[#F1F1F8]'} sm:p-6 font-dmSans`} style={{ paddingTop: "100px" }}>
         <div className="grid grid-cols-12">
           <div className="col-start-2 col-span-2">
             <Link href="#" className="flex items-center">
@@ -28,61 +28,61 @@ const Footer = () => {
           <div className={`col-span-2 col-start-6 grid grid-row-3 gap-4 ${mode.dark ? 'md:text-white' : 'md:text-black'}`}>
             <h5 className="font-bold text-[18px] uppercase">
               <Link href="#" className="flex items-center">
-                Resources
+                Other Resources
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                MIT License
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                Terms & conditions
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                Pivacy Policy
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                Contact us
               </Link>
             </h5>
           </div>
           <div className={`col-span-2 grid grid-row-3 gap-4 ${mode.dark ? 'md:text-white' : 'md:text-black'}`}>
             <h5 className="font-bold text-[18px] uppercase">
               <Link href="#" className="flex items-center">
-                About Ileyah
+                Company
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                Contact us
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                About us
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                Blog
               </Link>
             </h5>
             <h5 className="text-[16px]">
               <Link href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}>
-                Lorem Ipsum
+                Our Products
               </Link>
             </h5>
           </div>
           <div className={`col-span-2 grid grid-row-3 gap-4 ${mode.dark ? 'md:text-white' : 'md:text-black'}`}>
             <h5 className="font-bold text-[18px] uppercase">
               <Link href="#" className="flex items-center">
-                Privacy policy
+                Services
               </Link>
             </h5>
             <h5 className="text-[16px]">
@@ -202,7 +202,7 @@ const Footer = () => {
         </div>
       </footer>
       <>
-    </>
+      </>
     </>
   )
 }

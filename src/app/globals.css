@@ -9,7 +9,7 @@
 }
 
 .bg-future {
-  background: linear-gradient(rgb(49 31 60 / 60%), rgb(78 57 96 / 60%)), url("../../public/assets/images/1.jpg");
+  background: linear-gradient(rgb(49 31 60 / 60%), rgb(78 57 96 / 60%)), url("/assets/images/1.jpg");
 }
 
 .bg-right {
