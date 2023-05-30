@@ -13,7 +13,7 @@ const FormInput = forwardRef(({ label, ...otherProps }, ref) => (
             </div>
           </label>
         ) :
-          <input ref={ref} className="form-input" placeholder={label} {...otherProps} />
+          <input ref={ref} className="form-input text-black" placeholder={label} {...otherProps} />
       }
     </div>
   </>

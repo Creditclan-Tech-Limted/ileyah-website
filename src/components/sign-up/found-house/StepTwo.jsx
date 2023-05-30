@@ -42,7 +42,7 @@ function StepTwo({ onBack, onNext }) {
         </p>
         <p
           className={`redirect-text text-white bg-danger error-text font-17 pb-0 ${
-            errors?.amount?.message?.length ? "d-block p-3" : "d-none"
+            errors?.amount?.message?.length ? "block p-3" : "hidden"
           }`}
         >
           {errors.amount?.message}

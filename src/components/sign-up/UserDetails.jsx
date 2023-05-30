@@ -50,7 +50,7 @@ const UserDetails = ({ onBack, onNext }) => {
           Please provide your whatsapp phone number
         </p>
         <p
-          className={`redirect-text text-white bg-red-500 error-text font-17 pb-0 ${error === true ? "block p-3" : "hidden"
+          className={`redirect-text text-white bg-red-500 error-text font-17 pb-0 ${error === true ? "block" : "hidden"
             }`}
         >
           User with this number does not exist
