@@ -9,6 +9,8 @@ import React, { useLayoutEffect, useState } from 'react'
 import Hero from "@/components/Hero";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopBtn from "@/components/ScrollToTpBtn";
+import Artisans from '@/components/Artisans'
+import Whatsapp from '@/components/Whatsapp'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -35,6 +37,8 @@ const LandingPage = () => {
       <Hero/>
       <Products/>
       <Listings/>
+      <Artisans/>
+      <Whatsapp />
       <WhyUs/>
       <Future/>
       <FAW/>
