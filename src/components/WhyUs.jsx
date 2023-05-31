@@ -7,10 +7,10 @@ const WhyUs = () => {
       <div className="py-20 md:py-40">
         <div className="container">
           <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary text-left tracking-wider">
-            WHY ILEYAH
+          Find a house, live like a king
           </h5>
           <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-            Quality apartments. Trusted by millions of renters.
+          Enjoy our complimentary/discounted maintenance services. 
           </h2>
           <div className="grid md:grid-cols-4 gap-10 mt-20">
             <div>

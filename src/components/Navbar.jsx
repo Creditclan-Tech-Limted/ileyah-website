@@ -34,7 +34,7 @@ const Navbar = () => {
                     href="#"
                     className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
                   >
-                    About
+                    Tenants
                   </a>
                 </li>
                 <li>
@@ -42,7 +42,7 @@ const Navbar = () => {
                     href="#"
                     className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
                   >
-                    Services
+                    Find Artisans
                   </a>
                 </li>
                 <li>
@@ -50,7 +50,7 @@ const Navbar = () => {
                     href="#"
                     className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
                   >
-                    Contact
+                    Landlords
                   </a>
                 </li>
               </ul>

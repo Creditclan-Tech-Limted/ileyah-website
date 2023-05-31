@@ -9,17 +9,17 @@ const Products = () => {
             OUR PRODUCTS
           </h5>
           <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-            Are you looking to rent or lease an apartment? We’ve got you covered.
+            Experience peace. Pay your rent monthly forever.
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-red-500 text-white">
-                  <IconRotate2 size="32"/>
+                  <IconRotate2 size="32" />
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Renew Rent
+                Rent Now, Pay Later
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
@@ -29,11 +29,11 @@ const Products = () => {
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-blue-500 text-white">
-                  <IconHomeHand size="32"/>
+                  <IconHomeHand size="32" />
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                I have found a House
+                Rent to Own (Beta)
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
@@ -43,11 +43,11 @@ const Products = () => {
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-green-500 text-white">
-                  <IconHomeSearch size="32"/>
+                  <IconHomeSearch size="32" />
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Find me a house
+                Shortlet (coming soon)
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal

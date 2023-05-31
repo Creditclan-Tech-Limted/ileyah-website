@@ -15,10 +15,10 @@ const Hero = () => {
             <div className="mr-auto place-self-center lg:col-span-6 pt-28 pb-32">
               <h1
                 className="max-w-2xl mb-4 text-5xl md:text-5xl xl:text-7xl font-extrabold tracking-tight text-black">
-                Providing <br/> <span className="text-primary-500">rent solutions</span> <br/> across Africa
+                Providing <br/> <span className="text-primary-500">freedom to tenants</span> <br/> across Africa
               </h1>
               <p className="max-w-xl font-light text-xl text-gray-500 mt-4 md:text-lg text-primary">
-                Introducing flexible payment solutions in the real estate sector. Become a homeowner today
+              We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
               </p>
               <Button onClick={ toggleIsSignupOpen } rightIcon={ <IconArrowRight/> } size="lg" className="mt-12">
                 Get started
