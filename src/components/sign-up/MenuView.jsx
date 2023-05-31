@@ -61,7 +61,7 @@ function MenuView({ onNext, handleToggle }) {
                   <SwiperSlide>
                     <div
                       onClick={() => onNext("renew-rent")}
-                      className="bg-primary min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
+                      className="bg-black min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
                       <div className="p-6">
                         <p className="text-white text-2xl font-bold text-left">
                           Renew rent
@@ -76,7 +76,7 @@ function MenuView({ onNext, handleToggle }) {
                           handle the full payment
                         </p>
                         <button
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-primary text-black bg-transparent border border-primary rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
                           Start now
                           <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1"
                             fill="currentColor" viewBox="0 0 20 20"
@@ -86,15 +86,13 @@ function MenuView({ onNext, handleToggle }) {
                               clip-rule="evenodd"></path>
                           </svg>
                         </button>
-
                       </div>
                     </div>
-
                   </SwiperSlide>
                   <SwiperSlide>
                     <div
                       onClick={() => onNext("found-house")}
-                      className="bg-primary min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
+                      className="bg-black min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
                       <div className="p-6">
                         <p className="text-white text-2xl font-bold text-left">
                           I found a house
@@ -109,7 +107,7 @@ function MenuView({ onNext, handleToggle }) {
                           handle the full payment
                         </p>
                         <button
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+                          className="inline-flex text-black items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
                           Start now
                           <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1"
                             fill="currentColor" viewBox="0 0 20 20"
@@ -125,7 +123,7 @@ function MenuView({ onNext, handleToggle }) {
                   <SwiperSlide>
                     <div
                       onClick={() => onNext("find-house")}
-                      className="bg-primary min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
+                      className="bg-black min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
                       <div className="p-6">
                         <p className="text-white text-2xl font-bold text-left">
                           Find me a house
@@ -140,7 +138,7 @@ function MenuView({ onNext, handleToggle }) {
                           handle the full payment
                         </p>
                         <button
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-primary hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+                          className="inline-flex text-black items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
                           Start now
                           <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1"
                             fill="currentColor" viewBox="0 0 20 20"
