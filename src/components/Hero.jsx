@@ -10,9 +10,9 @@ const Hero = () => {
       <section className="bg-white font-nunito">
         <div className="container">
           <div
-            className="grid max-w-screen-xl mx-auto lg:gap-8 xl:gap-0 lg:pt-[40px] pb-[70px] lg:grid-cols-12"
+            className="grid max-w-screen-xl mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12 pt-36 pb-20"
           >
-            <div className="mr-auto place-self-center lg:col-span-6 pt-28">
+            <div className="mr-auto place-self-center lg:col-span-6 pt-28 pb-32">
               <h1
                 className="max-w-2xl mb-4 text-5xl md:text-5xl xl:text-7xl font-extrabold tracking-tight text-black">
                 Providing <br/> <span className="text-primary-500">rent solutions</span> <br/> across Africa

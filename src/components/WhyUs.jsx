@@ -4,7 +4,7 @@ import { IconAngle, IconEyeOff, IconTable, IconUsersGroup } from "@tabler/icons-
 const WhyUs = () => {
   return (
     <>
-      <div className="bg-[#edeef0] py-20 md:py-40">
+      <div className="py-20 md:py-40">
         <div className="container">
           <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary text-left tracking-wider">
             WHY ILEYAH

@@ -17,7 +17,7 @@ const Listings = () => {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#edeef0] hidden md:block">
       <div className="container py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-8 items-center justify-between">
           <div>
@@ -65,7 +65,7 @@ const Listings = () => {
                       return (
                         <SwiperSlide key={ houses.id }>
                           <div className="p-2 swiper-slide">
-                            <div className="item">
+                            <div className="item shadow">
                               <div style={ { backgroundImage: `url(${ houses.houseImgSrc })` } }
                                    className="houses rounded-xl">
                                 <div className="loved">

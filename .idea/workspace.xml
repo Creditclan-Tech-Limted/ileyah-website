@@ -4,20 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dfdfa5a-8783-4d37-addf-beef41c3defb" name="Changes" comment="Made UI changes">
+    <list default="true" id="8dfdfa5a-8783-4d37-addf-beef41c3defb" name="Changes" comment="ui updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/LandingPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/LandingPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/global-styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global-styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FAW.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FAW.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Future.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Future.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Hero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hero.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Listings.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Listings.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Products.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Products.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WhyUs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WhyUs.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/global.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/global.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/signup.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +91,7 @@
       <workItem from="1685101145407" duration="12028000" />
       <workItem from="1685245206807" duration="11798000" />
       <workItem from="1685389585383" duration="2070000" />
-      <workItem from="1685457906609" duration="12076000" />
+      <workItem from="1685457906609" duration="18793000" />
     </task>
     <task id="LOCAL-00001" summary="Made UI changes">
       <created>1685390555768</created>
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685390555768</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ui updates">
+      <created>1685474415826</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685474415826</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +126,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made UI changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made UI changes" />
+    <MESSAGE value="ui updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="ui updates" />
   </component>
 </project>
