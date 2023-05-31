@@ -6,8 +6,8 @@ const Future = () => {
     <div>
       <div className="max-w-[1400px] mx-auto bg-gray-900 pattern-1 text-white rounded-3xl text-center py-28">
         <div className="container flex flex-col items-center justify-center">
-          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-            Build the future of <br/> digital Ecommerce
+          <h2 className="text-3xl md:text-6xl font-bold max-w-5xl">
+          Our payment plans are designed to accommodate your financial capabilities and goals.
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 mt-28 w-full">
             <div className="text-center">

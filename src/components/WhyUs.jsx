@@ -46,7 +46,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className="text-black text-lg font-bold">
-                Co-sharing option
+                AC Repairs
               </h3>
               <p className="mt-2 text-[.95rem]">
                 Choose between having the space to yourself or flat-sharing with
@@ -60,7 +60,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className="text-black text-lg font-bold">
-                No hidden charges
+                House cleaning
               </h3>
               <p className="mt-2 text-[.95rem]">
                 For homes at Spleet, there are no extra hidden charges. No viewing or inspection fees. Pay once, pay
