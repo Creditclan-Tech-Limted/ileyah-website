@@ -21,11 +21,10 @@ const faqs = [
     )
   },
   {
-    q: 'How do I request for Infographics?',
+    q: 'How many plans are available?',
     a: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
+        The customer is presented with 3 plans to select from.
       </>
     )
   },
@@ -39,29 +38,26 @@ const faqs = [
     )
   },
   {
-    q: 'How credible are the infographics provided from Ileyah',
+    q: 'How many percent of the total item amount makes up the equity contribution?',
     a: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
+        The equity contribution is 25%?
       </>
     )
   },
   {
-    q: 'How do I request for Ileyah to analyze my data',
+    q: 'What makes up the upfront payment?',
     a: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
+        3 months payment & 5% management fee?
       </>
     )
   },
   {
-    q: 'How can I subscribe to the newsletter',
+    q: 'Does the customer pay for the apartment inspection?',
     a: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
+        No, Ileyah covers the cost of the inspection.?
       </>
     )
   },
@@ -88,24 +84,24 @@ const FAW = () => {
             Frequently asked questions
           </h2>
           <p className="mt-6 text-lg">
-            Get quick answers to all your questions and concerns about Ileyah and Ileyah homes.<br/> Whether as a
+            Get quick answers to all your questions and concerns about Ileyah and Ileyah homes.<br /> Whether as a
             member, host or just a visitor, we will have an answer waiting for you.
           </p>
           <div className="space-y-4 lg:col-span-7 mt-16">
             {
               faqs.map(faq => (
-                <div key={ faq.q } className="border border-slate-200 rounded-xl">
+                <div key={faq.q} className="border border-slate-200 rounded-xl">
                   <Collapsible
-                    header={ (
+                    header={(
                       <h5 className="md:text-lg font-medium">
-                        { faq.q }
+                        {faq.q}
                       </h5>
-                    ) }
-                    content={ (
+                    )}
+                    content={(
                       <div className="opacity-80 pb-6 px-6">
-                        { faq.a }
+                        {faq.a}
                       </div>
-                    ) }
+                    )}
                   />
                 </div>
               ))
