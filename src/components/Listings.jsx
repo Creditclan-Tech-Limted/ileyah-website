@@ -21,11 +21,12 @@ const Listings = () => {
       <div className="container py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-8 items-center justify-between">
           <div>
-            {/* <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-center md:text-left">
-              LISTINGS
-            </h5> */}
+            <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-center md:text-left">
+              Browse our wide range of products
+            </h5>
             <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-              Quality apartments. <br className="md:hidden"/> Trusted by millions of renters.
+            Explore our extensive catalog of high-quality items available for rent.
+              {/* Quality apartments. <br className="md:hidden" /> Trusted by millions of renters. */}
             </h2>
             <Button className="mt-8">
               Get Started
@@ -34,14 +35,14 @@ const Listings = () => {
           <div>
             <Swiper
               loop
-              slidesPerView={ 1.5 }
-              spaceBetween={ 40 }
-              speed={ 10000 }
-              autoplay={ {
+              slidesPerView={1.5}
+              spaceBetween={40}
+              speed={10000}
+              autoplay={{
                 delay: 0,
                 disableOnInteraction: false,
-              } }
-              breakpoints={ {
+              }}
+              breakpoints={{
                 470: {
                   slidesPerView: 1.5,
                   spaceBetween: 20
@@ -54,7 +55,7 @@ const Listings = () => {
                   slidesPerView: 1.5,
                   spaceBetween: 20
                 }
-              } }
+              }}
               className="showcase"
             >
               <div className="swiper-pagination"></div>
@@ -63,40 +64,40 @@ const Listings = () => {
                   {
                     HousesData.map((houses) => {
                       return (
-                        <SwiperSlide key={ houses.id }>
+                        <SwiperSlide key={houses.id}>
                           <div className="p-2 swiper-slide">
                             <div className="item shadow">
-                              <div style={ { backgroundImage: `url(${ houses.houseImgSrc })` } }
-                                   className="houses rounded-xl">
+                              <div style={{ backgroundImage: `url(${houses.houseImgSrc})` }}
+                                className="houses rounded-xl">
                                 <div className="loved">
                                   <span><i className="fa-solid fa-heart"></i></span>
                                 </div>
                                 <div className="profile flex">
                                   <div className="img">
-                                    <img src={ houses.imgSrc } alt="" srcSet={ houses.imgSrc }/>
+                                    <img src={houses.imgSrc} alt="" srcSet={houses.imgSrc} />
                                   </div>
                                   <div className="name">
-                                    { houses.name }
+                                    {houses.name}
                                   </div>
                                 </div>
                               </div>
                               <div className="house-details bg-gray-100 shadow">
-                                <h3 className="pt-3">₦{ houses.price }<span>/month</span></h3>
+                                <h3 className="pt-3">₦{houses.price}<span>/month</span></h3>
                                 <h5>
-                                  <span><i className="fa-solid fa-location-dot mr-1"></i></span>{ houses.location }
+                                  <span><i className="fa-solid fa-location-dot mr-1"></i></span>{houses.location}
                                 </h5>
                                 <div className="flex justify-between features mt-3">
                                   <div className="beds mr-3">
                                     <i className="fa-solid fa-bed mr-1"></i>
-                                    { houses.bedrooms }
+                                    {houses.bedrooms}
                                   </div>
                                   <div className="bathrooms mr-3">
                                     <i className="fa-solid fa-bath mr-1"></i>
-                                    { houses.bathrooms }
+                                    {houses.bathrooms}
                                   </div>
                                   <div className="toilets mr-3">
                                     <i className="fa-solid fa-toilet mr-1"></i>
-                                    { houses.toilets }
+                                    {houses.toilets}
                                   </div>
                                 </div>
                               </div>

@@ -11,6 +11,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopBtn from "@/components/ScrollToTpBtn";
 import Artisans from '@/components/Artisans'
 import Whatsapp from '@/components/Whatsapp'
+import Testimonials from '@/components/Testimonials'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -40,6 +41,7 @@ const LandingPage = () => {
       <Artisans/>
       <Whatsapp />
       <WhyUs/>
+      <Testimonials />
       <Future/>
       <FAW/>
       {/* <Achievement /> */ }

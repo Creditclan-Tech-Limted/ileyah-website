@@ -22,3 +22,7 @@
   display: grid;
   place-items: center
 }
+
+.pp {
+  --marquee-duration: 28320ms;
+}
