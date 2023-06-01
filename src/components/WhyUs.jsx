@@ -36,7 +36,7 @@ const WhyUs = () => {
                 Flexible payment
               </h3>
               <p className="mt-2 text-[.95rem]">
-                Spleet offers monthly, quarterly or annual payment terms to fit your unique schedule.
+                Ileyah offers monthly, quarterly or annual payment terms to fit your unique schedule.
               </p>
             </div>
             <div>
@@ -63,7 +63,7 @@ const WhyUs = () => {
                 House cleaning
               </h3>
               <p className="mt-2 text-[.95rem]">
-                For homes at Spleet, there are no extra hidden charges. No viewing or inspection fees. Pay once, pay
+                For homes at Ileyah, there are no extra hidden charges. No viewing or inspection fees. Pay once, pay
                 all.
               </p>
             </div>
