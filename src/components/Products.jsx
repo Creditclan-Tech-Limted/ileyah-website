@@ -5,9 +5,9 @@ const Products = () => {
     <>
       <div className="py-20 md:py-32 w-full bg-gray-900 text-white">
         <div className="container">
-          <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider">
+          {/* <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider">
             OUR PRODUCTS
-          </h5>
+          </h5> */}
           <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
             Experience peace. Pay your rent monthly forever.
           </h2>

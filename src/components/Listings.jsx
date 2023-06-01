@@ -21,9 +21,9 @@ const Listings = () => {
       <div className="container py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-8 items-center justify-between">
           <div>
-            <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-center md:text-left">
+            {/* <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-center md:text-left">
               LISTINGS
-            </h5>
+            </h5> */}
             <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
               Quality apartments. <br className="md:hidden"/> Trusted by millions of renters.
             </h2>
