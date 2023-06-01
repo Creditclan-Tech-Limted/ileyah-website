@@ -19,7 +19,7 @@ const Whatsapp = () => {
                 Connect us with your landlord and we take it from there in monthly installments.
               </div>
               <Button className="mt-8">
-                <a href="https://wa.me/+2349155577732?text=Hi" target="_blank" className=""> Get started </a>
+                <a href="https://wa.me/+2349055552255?text=Hi" target="_blank" className=""> Get started </a>
               </Button>
             </div>
           </div>
