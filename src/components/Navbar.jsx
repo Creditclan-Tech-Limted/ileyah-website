@@ -10,8 +10,10 @@ import { useRouter } from "next/navigation";
 import SimpleDropdown from '@/global/SimpleDropdown';
 import Hover from '@/global/Hover';
 import products from '@/lib/products';
+import useGlobalStore from '@/store/global';
 
 const Navbar = () => {
+  const toggleIsSignupOpen = useGlobalStore(state => state.toggleIsSignupOpen);
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
@@ -113,9 +115,7 @@ const Navbar = () => {
             </div>
             <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">
               <div className="hidden lg:block space-x-4">
-                <Link href="/register">
-                  <Button>Get started</Button>
-                </Link>
+                <Button onClick={toggleIsSignupOpen}>Get started</Button>
               </div>
               <div className="-mr-1 lg:hidden">
                 <button
