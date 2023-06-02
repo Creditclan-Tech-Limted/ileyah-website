@@ -12,20 +12,23 @@ const Artisans = () => {
     <div className="py-20 md:py-32">
       <div className='container'>
         <h2 className="text-3xl md:text-6xl max-w-4xl font-bold mb-4">
-          We partnered thousands of trusted artisans to support you.
+          Find a House, Live Like a King
         </h2>
+        <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary text-left tracking-wider">
+          Enjoy our complimentary/discounted maintenance services.
+        </h5>
       </div>
       <div className="mt-20">
         <Swiper
           loop
-          slidesPerView={ 1.5 }
-          spaceBetween={ 40 }
-          speed={ 10000 }
-          autoplay={ {
+          slidesPerView={1.5}
+          spaceBetween={40}
+          speed={10000}
+          autoplay={{
             delay: 0,
             disableOnInteraction: false,
-          } }
-          breakpoints={ {
+          }}
+          breakpoints={{
             470: {
               slidesPerView: 1.5,
               spaceBetween: 20
@@ -38,7 +41,7 @@ const Artisans = () => {
               slidesPerView: 4.5,
               spaceBetween: 20
             }
-          } }
+          }}
           className="showcase"
         >
           <div className="swiper-pagination"></div>
@@ -47,18 +50,18 @@ const Artisans = () => {
               {
                 Artisan.map((houses) => {
                   return (
-                    <SwiperSlide key={ houses.id }>
+                    <SwiperSlide key={houses.id}>
                       <div className="p-2 swiper-slide">
                         <div className="item h-[350px] shadow text-white">
                           <div
-                            style={ {
-                              background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${ houses.houseImgSrc })`,
-                            } }
+                            style={{
+                              background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${houses.houseImgSrc})`,
+                            }}
                             className="rounded-xl h-full bg-cover"
                           >
                             <div className="text-left text-white p-10 h-full">
                               <p className='text-white text-3xl font-bold'>
-                                { houses.name }
+                                {houses.name}
                               </p>
                               <p className="text-white text-xl mt-2">
                                 1000+

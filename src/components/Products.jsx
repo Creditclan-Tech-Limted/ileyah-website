@@ -19,7 +19,7 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Rent Now, Pay Later
+                Renew Rent
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
@@ -33,7 +33,7 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Rent to Own (Beta)
+                Find me a House
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
@@ -47,7 +47,7 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Shortlet (coming soon)
+                I have found a house
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
