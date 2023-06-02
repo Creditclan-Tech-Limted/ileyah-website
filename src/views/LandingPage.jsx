@@ -37,10 +37,10 @@ const LandingPage = () => {
       <Navbar/>
       <Hero/>
       <Products/>
-      <Listings/>
-      <Artisans/>
       <Whatsapp/>
       <WhyUs/>
+      <Artisans/>
+      {/* <Listings/> */}
       <Future/>
       <Testimonials/>
       <FAW/>

@@ -3,7 +3,7 @@ import Button from "./global/Button";
 const Whatsapp = () => {
   return (
     <>
-      <div className="bg-gray-900 text-white py-20 md:py-32">
+      <div className=" py-20 md:py-32">
         <div className="container pt-5">
           <div
             className="flex items-center justify-center space-x-16"
