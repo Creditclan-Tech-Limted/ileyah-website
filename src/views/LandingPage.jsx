@@ -39,10 +39,10 @@ const LandingPage = () => {
       <Products/>
       <Listings/>
       <Artisans/>
-      <Whatsapp />
+      <Whatsapp/>
       <WhyUs/>
-      <Testimonials />
       <Future/>
+      <Testimonials/>
       <FAW/>
       {/* <Achievement /> */ }
       <Footer/>
