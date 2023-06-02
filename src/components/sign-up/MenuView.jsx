@@ -1,172 +1,106 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { IconChevronRight, IconHomeHand, IconHomeSearch, IconRotate2 } from "@tabler/icons-react";
 
 function MenuView({ onNext, handleToggle }) {
   return (
     <>
       <div className="position-relative">
         <button
-          style={{ marginBottom: "0px" }}
+          style={ { marginBottom: "0px" } }
           className="x sidebarCollapse"
           type="button"
-          onClick={handleToggle}
+          onClick={ handleToggle }
         >
           <span aria-hidden="true">
             <i
-              style={{ fontSize: "1rem !important" }}
+              style={ { fontSize: "1rem !important" } }
               className="fa-solid fa-x"
             ></i>
           </span>
         </button>
       </div>
-      <div className="pt-70 pb-8">
+      <div className="pt-70">
         <p className="font-bold text-3xl text-primary leading-[1.1]">
-          Welcome to <br /> Rent now, Pay later
+          Welcome to <br/> Rent now, Pay later
         </p>
-        <p className="text-cc-dark text-[17px]">
+        <p className="text-cc-dark mt-2">
           Please choose a rent now pay later option
         </p>
       </div>
-      <div>
-        <div className="row">
-          <div className="col-md-12 col-sm-3 col-xs-12">
-            <Swiper
-              slidesPerView={1.5}
-              spaceBetween={40}
-              breakpoints={{
-                0: {
-                  slidesPerView: 1.2,
-                  spaceBetween: 20,
-                },
-                470: {
-                  slidesPerView: 1.8,
-                  spaceBetween: 20,
-                },
-                760: {
-                  slidesPerView: 1.8,
-                  spaceBetween: 20,
-                },
-                1100: {
-                  slidesPerView: 1.8,
-                  spaceBetween: 20,
-                },
-              }}
-              className="showcase"
-            >
-              <div className="swiper-pagination"></div>
-              <div className="swiper-container">
-                <div className="swiper-wrapper pb-8">
-                  <SwiperSlide>
-                    <div
-                      onClick={() => onNext("renew-rent")}
-                      className="bg-black min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
-                      <div className="p-6">
-                        <p className="text-white text-2xl font-bold text-left">
-                          Renew rent
-                        </p>
-
-                      </div>
-
-                      <div
-                        className="bg-white shadow min-h-[200px] min-w-full rounded-tl-[24px] rounded-tr-[24px] p-6 rounded-bl-lg rounded-br-lg text-left">
-                        <p className="text-left md:text-black leading-[1.1] mb-4">
-                          Renew your house rent on a monthly basis while we
-                          handle the full payment
-                        </p>
-                        <button
-                          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-primary text-black bg-transparent border border-primary rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
-                          Start now
-                          <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1"
-                            fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                              clip-rule="evenodd"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div
-                      onClick={() => onNext("found-house")}
-                      className="bg-black min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
-                      <div className="p-6">
-                        <p className="text-white text-2xl font-bold text-left">
-                          I found a house
-                        </p>
-
-                      </div>
-
-                      <div
-                        className="bg-white shadow h-[200px] min-w-full rounded-tl-[24px] rounded-tr-[24px] p-6 rounded-bl-lg rounded-br-lg text-left">
-                        <p className="text-left md:text-black leading-[1.1] mb-4">
-                          Renew your house rent on a monthly basis while we
-                          handle the full payment
-                        </p>
-                        <button
-                          className="inline-flex text-black items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
-                          Start now
-                          <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1"
-                            fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                              clip-rule="evenodd"></path>
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div
-                      onClick={() => onNext("find-house")}
-                      className="bg-black min-h-[130px] min-w-full rounded-tl-[24px] rounded-tr-[24px] rounded-bl-lg rounded-br-lg mb-8">
-                      <div className="p-6">
-                        <p className="text-white text-2xl font-bold text-left">
-                          Find me a house
-                        </p>
-
-                      </div>
-
-                      <div
-                        className="bg-white shadow min-h-[200px] min-w-full rounded-tl-[24px] rounded-tr-[24px] p-6 rounded-bl-lg rounded-br-lg text-left">
-                        <p className="text-left md:text-black leading-[1.1] mb-4">
-                          Renew your house rent on a monthly basis while we
-                          handle the full payment
-                        </p>
-                        <button
-                          className="inline-flex text-black items-center px-3 py-2 text-sm font-medium text-center text-primary bg-transparent border border-primary rounded-lg hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
-                          Start now
-                          <svg aria-hidden="true" className="w-4 h-4 ml-2 -mr-1"
-                            fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                              clip-rule="evenodd"></path>
-                          </svg>
-                        </button>
-
-                      </div>
-
-                    </div>
-
-                  </SwiperSlide>
-                </div>
-              </div>
-            </Swiper>
+      <div className="space-y-4 mt-10">
+        <div
+          onClick={ () => onNext("renew-rent") }
+          className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
+        >
+          <div>
+            <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center">
+              <IconRotate2 size="20"/>
+            </div>
+          </div>
+          <div className="px-6">
+            <p className="text-lg font-medium text-left">
+              Renew rent
+            </p>
+            <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+              Renew your house rent on a monthly basis while we handle the full payment
+            </p>
+          </div>
+          <div>
+            <IconChevronRight className="text-black" size="20"/>
+          </div>
+        </div>
+        <div
+          onClick={ () => onNext("found-house") }
+          className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
+        >
+          <div>
+            <div className="w-10 h-10 rounded-full bg-blue-600 text-white grid place-items-center">
+              <IconHomeHand size="20"/>
+            </div>
+          </div>
+          <div className="px-6">
+            <p className="text-lg font-medium text-left">
+              I found a house
+            </p>
+            <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+              Renew your house rent on a monthly basis while we handle the full payment
+            </p>
+          </div>
+          <div>
+            <IconChevronRight className="text-black" size="20"/>
+          </div>
+        </div>
+        <div
+          onClick={ () => onNext("find-house") }
+          className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
+        >
+          <div>
+            <div className="w-10 h-10 rounded-full bg-green-600 text-white grid place-items-center">
+              <IconHomeSearch
+                size="20"/>
+            </div>
+          </div>
+          <div className="px-6">
+            <p className="text-lg font-medium text-left">
+              Find me a house
+            </p>
+            <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+              Renew your house rent on a monthly basis while we handle the full payment
+            </p>
+          </div>
+          <div>
+            <IconChevronRight className="text-black" size="20"/>
           </div>
         </div>
       </div>
-      <div className="pb-3 flex items-center justify-center">
-        <div className='pb-3'>
-          <p className="ml-2 text-[17px] font-medium cursor-pointer">
-            Already have an account? <a onClick={() => onNext("user-details")} className='text-blue-500'>Check
-              request</a>
-          </p>
-        </div>
+      <div className="mt-6">
+        <p className="font-medium cursor-pointer">
+          Already have an account? <a onClick={ () => onNext("user-details") } className='text-blue-500'>
+          Check request
+        </a>
+        </p>
       </div>
     </>
   );
