@@ -3,6 +3,7 @@ import useGlobalStore from "@/store/global";
 import Button from "@/components/global/Button";
 import IconButton from "@/components/global/IconButton";
 import { IconMenu } from "@tabler/icons-react";
+import Link from "next/link";
 
 const Navbar = () => {
   const toggleIsSignupOpen = useGlobalStore(state => state.toggleIsSignupOpen);
@@ -23,35 +24,32 @@ const Navbar = () => {
                 className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0">
                 <li>
                   <a
-                    href="#"
+                    href="/"
                     className="flex py-2 pl-3 pr-4 text-white bg-secondary rounded md:bg-transparent md:text-secondary md:p-0"
                   >
                     Home
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link href='/tenants'
                     className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
                   >
                     Tenants
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
-                  >
-                    Find Artisans
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
+                  <Link  href='landlords'
                     className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
                   >
                     Landlords
-                  </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href='find-artisans'
+                    className="flex py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-secondary md:p-0"
+                  >
+                    Find Artisans
+                  </Link>
                 </li>
               </ul>
             </div>
