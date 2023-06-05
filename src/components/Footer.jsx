@@ -35,28 +35,28 @@ const Footer = () => {
               <div className="space-y-3">
                 <div>
                   <Link
-                    href="#" className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     MIT License
                   </Link>
                 </div>
                 <div>
                   <Link
-                    href="#" className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     Terms & conditions
                   </Link>
                 </div>
                 <div>
                   <Link
-                    href="#" className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     Pivacy Policy
                   </Link>
                 </div>
                 <div>
                   <Link
-                    href="#" className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     Contact us
                   </Link>
@@ -66,23 +66,14 @@ const Footer = () => {
             <div className="md:col-span-3">
               <h5 className="font-semibold mb-5">
                 <Link href="#" className="flex items-center">
-                  Company
+                  The Company
                 </Link>
               </h5>
               <div className="space-y-3">
-
                 <div>
                   <Link
                     href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
-                  >
-                    Contact us
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     About us
                   </Link>
@@ -90,7 +81,7 @@ const Footer = () => {
                 <div>
                   <Link
                     href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     Blog
                   </Link>
@@ -98,9 +89,9 @@ const Footer = () => {
                 <div>
                   <Link
                     href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    Our Products
+                    Hiring
                   </Link>
                 </div>
               </div>
@@ -115,44 +106,28 @@ const Footer = () => {
                 <div>
                   <Link
                     href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    Lorem Ipsum
+                    FAQs
                   </Link>
                 </div>
                 <div>
                   <Link
                     href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    Lorem Ipsum
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
-                  >
-                    Lorem Ipsum
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="#"
-                    className={ `flex items-center ${ mode.dark ? 'md:text-gray-500' : 'md:text-black' }` }
-                  >
-                    Lorem Ipsum
+                    Contact Us
                   </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <hr className="border-gray-200"/>
+        <hr className="border-gray-200" />
         <div className="py-8">
           <div className="container flex justify-between items-center">
             <div className="text-gray-500">
-              © 2023{ " " }
+              © 2023{" "}
               <Link href="#" className="hover:underline">
                 Ileyah
               </Link>
@@ -160,15 +135,22 @@ const Footer = () => {
             </div>
             <div className="flex mt-4 space-x-6 sm:mt-0">
               <Link href="#" className="text-gray-500 hover:text-gray-900">
-                <IconBrandFacebook/>
+                <IconBrandFacebook />
                 <span className="sr-only">Facebook page</span>
               </Link>
               <Link href="#" className="text-gray-500 hover:text-gray-900">
-                <IconBrandInstagram/>
+                <IconBrandInstagram />
                 <span className="sr-only">Instagram page</span>
               </Link>
               <Link href="#" className="text-gray-500 hover:text-gray-900">
-                <IconBrandTwitter/>
+                <IconBrandTwitter />
+                <span className="sr-only">Twitter page</span>
+              </Link>
+              <Link href="#" className="text-gray-500 hover:text-gray-900">
+                <div>
+                  +234 9055 552 255
+                </div>
+                {/* <IconBrandTwitter/> */}
                 <span className="sr-only">Twitter page</span>
               </Link>
             </div>

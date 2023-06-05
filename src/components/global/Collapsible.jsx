@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
-import { IconChevronRight } from "@tabler/icons-react";
+import { IconChevronRight, IconPlus } from "@tabler/icons-react";
 
 const Collapsible = ({ header, content }) => {
   const [expanded, setExpanded] = useState(false);
@@ -26,7 +26,7 @@ const Collapsible = ({ header, content }) => {
               { 'bg-primary-700 text-white border-0': expanded }
             ) }
           >
-            <IconChevronRight
+            <IconPlus
               size="20"
               className={ classNames("transition-all duration-300", { 'rotate-90': expanded }) }
             />

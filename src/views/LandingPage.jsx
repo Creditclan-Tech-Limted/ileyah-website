@@ -1,7 +1,7 @@
 import FAW from '@/components/FAW'
 import Footer from '@/components/Footer'
 import Future from '@/components/Future'
-import Listings from '@/components/Listings'
+// import Listings from '@/components/Listings'
 import Navbar from '@/components/Navbar'
 import Products from '@/components/Products'
 import WhyUs from '@/components/WhyUs'

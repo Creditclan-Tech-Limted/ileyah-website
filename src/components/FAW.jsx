@@ -12,28 +12,10 @@ const faqs = [
     )
   },
   {
-    q: 'How old is Ileyah?',
-    a: (
-      <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
-      </>
-    )
-  },
-  {
     q: 'How many plans are available?',
     a: (
       <>
         The customer is presented with 3 plans to select from.
-      </>
-    )
-  },
-  {
-    q: 'How do I follow Ileyah on social media',
-    a: (
-      <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
       </>
     )
   },
@@ -60,15 +42,6 @@ const faqs = [
         No, Ileyah covers the cost of the inspection.?
       </>
     )
-  },
-  {
-    q: 'Is Ileyah a Nigerian company?',
-    a: (
-      <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
-      </>
-    )
   }
 ];
 
@@ -77,9 +50,9 @@ const FAW = () => {
     <>
       <div className="bg-[#F9FAFD] py-20 md:pt-10 md:pb-32">
         <div className="container">
-          <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-left">
+          {/* <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-left">
             COMMON QUESTIONS
-          </h5>
+          </h5> */}
           <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
             Frequently asked questions
           </h2>
