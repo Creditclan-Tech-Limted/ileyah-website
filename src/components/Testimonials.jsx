@@ -19,7 +19,16 @@ const Testimonials = () => {
         0: { slidesPerView: 1.2 },
         640: { slidesPerView: 2.2 },
         1024: { slidesPerView: 3.8 }
+      },
+      injectStyles: [`
+      .swiper-button-prev {
+        border: 1px solid red !important;
+        background-color: white !important;
+        color: black !important;
+        width: 20px;
+        height: 20px;
       }
+      `],
     };
     Object.assign(swiperElRef.current, swiperParams);
     swiperElRef.current.initialize();
@@ -42,7 +51,7 @@ const Testimonials = () => {
       <div className="mt-20">
         <swiper-container ref={swiperElRef} init={false} >
           {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => {
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => {
               return <swiper-slide key={i}>
                 <div className='mx-3'>
                   <figure className="relative rounded-3xl bg-white shadow-md px-10 py-14">

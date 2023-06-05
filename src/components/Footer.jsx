@@ -7,7 +7,7 @@ const Footer = () => {
     <>
       <footer className="md:bg-[#F1F1F8]">
         <div className="container">
-          <div className="grid md:grid-cols-12 pt-32 pb-24">
+          <div className="grid md:grid-cols-12 pt-32 pb-24 space-y-10 md:space-y-0">
             <div className="md:col-span-3">
               <Link href="#" className="flex items-center">
                 {

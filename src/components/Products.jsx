@@ -22,8 +22,7 @@ const Products = () => {
                 Renew Rent
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
-                fees required. Browse from our carefully curated listings, choose a space, pay and move in.
+                Is your rent due in a few days? Ileyah to the rescue! Chat the keyword "Renew" today and we'd be happy to assist you ease that burden. With Ileyah, bulk payments are now an issue of the past.
               </p>
             </div>
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
@@ -36,8 +35,8 @@ const Products = () => {
                 Find me a House
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
-                fees required. Browse from our carefully curated listings, choose a space, pay and move in.
+              Explore a wide range of real estate options, including residential, commercial, and investment properties, available on our platform. We partner with reputable real estate developers and agencies to bring you a curated selection of high-quality properties.
+
               </p>
             </div>
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
@@ -50,8 +49,7 @@ const Products = () => {
                 I have found a house
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Find an apartment in Nigeria and pay monthly, quarterly or annually. No inspection, agency or legal
-                fees required. Browse from our carefully curated listings, choose a space, pay and move in.
+                Contact us today to finance your rent while you pay us back in installments. Provide the full information, pictures of the property, and other required details, and we'll send a team to inspect, after which we pay and you move in. Simple as ABC.
               </p>
             </div>
           </div>

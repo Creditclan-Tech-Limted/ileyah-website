@@ -104,7 +104,7 @@ export const HousesData = [
   export const Artisan = [
     {
       name: "Electricians",
-      houseImgSrc: "/assets/images/artisans/electricians.jpeg",
+      houseImgSrc: "/assets/images/artisans/elect.png",
       id: 1
     },
     {
@@ -134,13 +134,8 @@ export const HousesData = [
     },
     {
       name: "Interior Design",
-      houseImgSrc: "/assets/images/artisans/interiror.jpeg",
+      houseImgSrc: "/assets/images/artisans/interior.jpeg",
       id: 8
-    },
-    {
-      name: "Pest Control Specialist",
-      houseImgSrc: "/assets/images/artisans/1.jpg",
-      id: 9
-    },
+    }
   ];
   

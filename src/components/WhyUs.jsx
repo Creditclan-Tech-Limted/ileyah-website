@@ -19,10 +19,10 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                Fully furnished apartments
+                Lease to Own
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                Find fully furnished apartments suited to the duration of your stay, a few months or a couple of years.
+              At Ileyah, With our flexible terms and supportive approach, we aim to make your homeownership dreams a reality
               </p>
             </div>
             <div>
