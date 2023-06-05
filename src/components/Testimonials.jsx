@@ -42,8 +42,8 @@ const Testimonials = () => {
       <div className="mt-20">
         <swiper-container ref={swiperElRef} init={false} >
           {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
-              return <swiper-slide>
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => {
+              return <swiper-slide key={i}>
                 <div className='mx-3'>
                   <figure className="relative rounded-3xl bg-white shadow-md px-10 py-14">
                     <svg aria-hidden="true" width="105" height="78"

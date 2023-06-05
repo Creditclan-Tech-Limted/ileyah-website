@@ -10,8 +10,8 @@ const WhyUs = () => {
             -- WHY ILEYAH --
           </h5>
           <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-            With Ileyah, life has never been easier.          </h2>
-          <div className="grid md:grid-cols-4 gap-10 mt-20 text-white">
+            With Ileyah, life has never been easier.</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-4  gap-10 mt-20 text-white">
             <div>
               <div className="flex mb-8">
                 <div className="w-14 h-14 rounded-3xl flex justify-center items-center bg-blue-500 text-white">
