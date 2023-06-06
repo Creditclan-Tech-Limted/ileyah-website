@@ -8,7 +8,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     const swiperParams = {
-      // navigation: true,
+      navigation: true,
       speed: 10000,
       spaceBetween: 0,
       autoplay: {
@@ -22,7 +22,6 @@ const Testimonials = () => {
       },
       injectStyles: [`
       .swiper-button-prev {
-        border: 1px solid red !important;
         background-color: white !important;
         color: black !important;
         width: 20px;

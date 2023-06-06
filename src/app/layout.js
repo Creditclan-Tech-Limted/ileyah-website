@@ -13,9 +13,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-    <body className={ inter.className }>{ children }</body>
-    <Script src='https://eligibility.clan.africa/assets/scripts/client.js'/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+      <body className={inter.className}>{children}</body>
+      <Script src='https://eligibility.clan.africa/assets/scripts/client.js' />
+      <Script src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js" />
     </html>
   )
 }
