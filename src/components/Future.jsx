@@ -12,27 +12,27 @@ const Future = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 mt-28 w-full">
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
+                <CountUp start={ 0 } duration={ 5 } end={ 1 }/>B+
+              </h2>
+              <p className="text-white opacity-75">in Tenancy </p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-5xl font-[900] text-primary-700">
                 <CountUp start={ 0 } duration={ 5 } end={ 10 }/>k+
               </h2>
-              <p className="text-white opacity-75">Agents</p>
-            </div>
-            <div className="text-center">
-              <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={ 0 } duration={ 5 } end={ 100 }/>+
-              </h2>
-              <p className="text-white opacity-75">Businesses building with Ileyah</p>
-            </div>
-            <div className="text-center">
-              <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={ 0 } duration={ 5 } end={ 5 }/>M+
-              </h2>
-              <p className="text-white opacity-75">Property bought </p>
+              <p className="text-white opacity-75">Properties</p>
             </div>
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
                 <CountUp start={ 0 } duration={ 5 } end={ 10 }/>M+
               </h2>
               <p className="text-white opacity-75">Customers</p>
+            </div>
+            <div className="text-center">
+              <h2 className="text-5xl font-[900] text-primary-700">
+                <CountUp start={ 0 } duration={ 5 } end={ 10 }/>K+
+              </h2>
+              <p className="text-white opacity-75">Businesses staffs</p>
             </div>
           </div>
         </div>
@@ -41,4 +41,4 @@ const Future = () => {
   )
 }
 
-export default Future
+export default Future;

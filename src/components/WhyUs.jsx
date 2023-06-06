@@ -1,5 +1,6 @@
 import React from 'react'
-import { IconAngle, IconEyeOff, IconTable, IconUsersGroup } from "@tabler/icons-react";
+import { IconDoorEnter, IconTable, IconUsersGroup } from "@tabler/icons-react";
+import { IconHome2 } from '@tabler/icons-react';
 
 const WhyUs = () => {
   return (
@@ -14,25 +15,12 @@ const WhyUs = () => {
           <div className="grid sm:grid-cols-2 md:grid-cols-4  gap-10 mt-20 text-white">
             <div>
               <div className="flex mb-8">
-                <div className="w-14 h-14 rounded-3xl flex justify-center items-center bg-blue-500 text-white">
-                  <IconTable size="28" />
-                </div>
-              </div>
-              <h3 className=" text-lg font-bold">
-                Lease to Own
-              </h3>
-              <p className="mt-2 text-[.95rem] text-gray-400">
-              At Ileyah, With our flexible terms and supportive approach, we aim to make your homeownership dreams a reality
-              </p>
-            </div>
-            <div>
-              <div className="flex mb-8">
                 <div className="w-14 h-14 rounded-3xl flex justify-center items-center bg-orange-500 text-white">
-                  <IconAngle size="28" />
+                  <IconHome2 size="28" />
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                Flexible payment
+                Rent Now, Pay Later
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
                 Ileyah offers monthly, quarterly or annual payment terms to fit your unique schedule.
@@ -45,7 +33,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                AC Repairs
+                Rent To Own (Beta)
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
                 Choose between having the space to yourself or flat-sharing with
@@ -55,15 +43,28 @@ const WhyUs = () => {
             <div>
               <div className="flex mb-8">
                 <div className="w-14 h-14 rounded-3xl flex justify-center items-center bg-red-500 text-white">
-                  <IconEyeOff size="28" />
+                  <IconDoorEnter size="28" />
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                House cleaning
+                Shortlet (coming soon)
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
                 For homes at Ileyah, there are no extra hidden charges. No viewing or inspection fees. Pay once, pay
                 all.
+              </p>
+            </div>
+            <div>
+              <div className="flex mb-8">
+                <div className="w-14 h-14 rounded-3xl flex justify-center items-center bg-blue-500 text-white">
+                  <IconTable size="28" />
+                </div>
+              </div>
+              <h3 className=" text-lg font-bold">
+                Lease to Own
+              </h3>
+              <p className="mt-2 text-[.95rem] text-gray-400">
+              At Ileyah, With our flexible terms and supportive approach, we aim to make your homeownership dreams a reality
               </p>
             </div>
           </div>

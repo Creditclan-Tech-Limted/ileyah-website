@@ -8,7 +8,7 @@ const Footer = () => {
       <footer className="md:bg-[#F1F1F8]">
         <div className="container">
           <div className="grid md:grid-cols-12 pt-32 pb-24 space-y-10 md:space-y-0">
-            <div className="md:col-span-3">
+            <div className="md:col-span-4">
               <Link href="#" className="flex items-center">
                 {
                   mode.dark ?
@@ -26,20 +26,13 @@ const Footer = () => {
 
               </Link>
             </div>
-            <div className="md:col-span-3">
+            <div className="md:col-span-4">
               <h5 className="font-semibold mb-5">
                 <Link href="#" className="flex items-center">
                   Other Resources
                 </Link>
               </h5>
               <div className="space-y-3">
-                <div>
-                  <Link
-                    href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
-                  >
-                    MIT License
-                  </Link>
-                </div>
                 <div>
                   <Link
                     href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
@@ -63,7 +56,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="md:col-span-3">
+            <div className="md:col-span-4">
               <h5 className="font-semibold mb-5">
                 <Link href="#" className="flex items-center">
                   The Company
@@ -84,39 +77,6 @@ const Footer = () => {
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     Blog
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="#"
-                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
-                  >
-                    Hiring
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="md:col-span-3">
-              <h5 className="font-semibold mb-5">
-                <Link href="#" className="flex items-center">
-                  Services
-                </Link>
-              </h5>
-              <div className="space-y-3">
-                <div>
-                  <Link
-                    href="#"
-                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
-                  >
-                    FAQs
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="#"
-                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
-                  >
-                    Contact Us
                   </Link>
                 </div>
               </div>

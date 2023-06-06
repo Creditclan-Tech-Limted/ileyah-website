@@ -7,7 +7,6 @@ import classNames from "classnames";
 import Button from "@/components/global/Button.jsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import SimpleDropdown from '@/global/SimpleDropdown';
 import Hover from '@/global/Hover';
 import products from '@/lib/products';
 import useGlobalStore from '@/store/global';
@@ -102,13 +101,13 @@ const Navbar = () => {
                     )
                   }
                 </Hover>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
                   Tenants
                 </Link>
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                   Landlords
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/find-artisans">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
                   Find Artisans
                 </Link>
               </div>
