@@ -9,10 +9,10 @@ function Success() {
           <p className="mb-1 redirect-text text-deep-blue font-weight-bold font-22">
             Thank you very much, <br/> we will contact you shortly.
           </p>
-          <p className="font-17 text-cc-dark font-17">You can also reach us on +2349155577731</p>
-          <a href="tel:+2349155577731" className="btn btn-blue-full font-17">
+          <p className="font-17 text-cc-dark font-17">You can also reach us on +234 905 555 2255</p>
+          <a href="tel:+2349055552255" className="btn btn-blue-full font-17">
             <span className="mr-3"><i className="fa-solid fa-phone"></i></span>
-            Call +2349155577731
+            Call +234 905 555 2255
           </a>
         </div>
       </div>
