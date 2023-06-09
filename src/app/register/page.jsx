@@ -63,7 +63,7 @@ const Page = () => {
                       })} error={errors?.password?.message} />
                     </div>
                     <div className="mb-12 pb-1 pt-1 flex justify-between">
-                      <Button type='submit' loading={isLoading}>Log in</Button>
+                      <Button type='submit' loading={isLoading}>Sign Up</Button>
                       <div className="mt-2">Forgot password?</div>
                     </div>
                     <div className="flex items-center pb-6">
