@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Input from '@/global/Input'
 import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
@@ -66,8 +66,6 @@ const Page = () => {
       setIsOpen(false)
     }
   };
-
-  console.log({ data })
 
   const onSubmit = async (data) => {
     const payload = {
