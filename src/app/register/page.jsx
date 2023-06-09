@@ -36,9 +36,9 @@ const Page = () => {
             <div className="g-0 lg:flex lg:flex-wrap">
               <div className="px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto">
                 <div className="md:p-12 max-w-xl mx-auto">
-                  <div className="text-center">
+                  <div className="">
                     <img
-                      className="w-48 mx-auto"
+                      className="w-48"
                       src="/assets/images/ileyah-logo.png"
                       alt="logo" />
                     <h4 className="mb-12 mt-1 pb-1">
