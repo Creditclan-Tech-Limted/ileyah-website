@@ -33,6 +33,57 @@ const Testimonials = () => {
     swiperElRef.current.initialize();
   }, []);
 
+  const i_testimonials = [
+    {
+      id: 1,
+      value: 'Using the Ileyah platform made renting so much easier and convenient. No more worrying about upfront payments',
+      name: 'Nebs Chwukuma',
+      ceo: 'Lyncs Africa'
+    },
+    {
+      id: 2,
+      value: 'Renting has never been this flexible. Thanks to Ileyah, I can choose a payment schedule that suits me.',
+      name: 'Jude Hawkson',
+      ceo: 'Isave NG'
+    },
+    {
+      id: 3,
+      value: 'I love how Ileyah allows me to spread out my rental payments. It helps me manage my budget better.',
+      ceo: 'Clan Africa',
+      name: 'Soji Okunuga',
+    },
+    {
+      id: 4,
+      value: "Ileyah saved me from financial stress. I could rent what I needed without worrying about immediate payment.",
+      ceo: 'Swift Solutions',
+      name: 'Eunice Adama',
+
+    },
+    {
+      id: 5,
+      value: "Thanks to Ileyah, I was able to rent items I wouldn't have been able to afford otherwise. It's a fantastic service.",
+      ceo: 'Tech Solutions NG'
+    },
+    {
+      id: 6,
+      value: "I never thought renting could be this hassle-free until I discovered Ileyah. It's a game-changer for sure.",
+      ceo: 'Business Manager',
+      name: 'Femi Araromi',
+    },
+    {
+      id: 7,
+      value: "Ileyah gave me the freedom to choose the rental duration that suited my needs. It's so flexible!",
+      ceo: "CEO at Kabu NG",
+      name: 'Joseph Francis',
+    },
+    {
+      id: 8,
+      value: "Renting through Ileyah was a breeze. The process was quick, and the payment options were convenient.",
+      ceo: 'Artichect',
+      name: 'Oshimen Abrecei',
+    }
+  ]
+
   return (
     <section id="testimonials" aria-label="What our customers are saying" className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl">
@@ -50,7 +101,7 @@ const Testimonials = () => {
       <div className="mt-20">
         <swiper-container ref={swiperElRef} init={false} >
           {
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => {
+            i_testimonials.map((item, i) => {
               return <swiper-slide key={i}>
                 <div className='mx-3'>
                   <figure className="relative rounded-3xl bg-white shadow-md px-10 py-14">
@@ -62,17 +113,15 @@ const Testimonials = () => {
                     </svg>
                     <blockquote className="relative">
                       <p className="text-lg tracking-tight text-slate-900">
-                        Ileyah is so easy to use I can’t help but wonder if it’s really doing the things the
-                        government
-                        expects me to do.
+                        {item.value}
                       </p>
                     </blockquote>
                     <figcaption
                       className="relative mt-6 flex items-center justify-end pt-3 text-right"
                     >
                       <div>
-                        <div className="font-display text-base text-slate-900">Sheryl Berge</div>
-                        <div className="mt-1 text-sm text-slate-500">CEO at Lynch LLC</div>
+                        <div className="font-display text-base text-slate-900">{item.name}</div>
+                        <div className="mt-1 text-sm text-slate-500">{item.ceo}</div>
                       </div>
                       <div className="overflow-hidden rounded-full bg-slate-50">
                         <img src="" alt="" />

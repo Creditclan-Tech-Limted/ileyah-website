@@ -31,6 +31,8 @@ const RequestDetails = ({ onNext }) => {
     request_id: request?.creditclan_request_id,
   });
 
+  console.log({ isGetLoanDetailsLoading });
+
   const handleEligibilityCancelled = async () => {
     if (!request?.creditclan_request_id) return await refetchRentRequest();
     await refetchLoanDetails();
@@ -125,11 +127,12 @@ const RequestDetails = ({ onNext }) => {
                         Refreshing..
                       </div>
                     )}
-                    {isGetLoanDetailsLoading ? (
+                    {isRentRequestLoading ? (
                       <div className="font-17 mt-4">
                         Fetching eligibility status..
                       </div>
-                    ) : (
+                    ) : 
+                    (
                       <>
                         {loan ? (
                           <>
