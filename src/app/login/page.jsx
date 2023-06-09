@@ -4,8 +4,10 @@ import Button from "@/components/global/Button"
 import Input from "@/global/Input"
 import Link from "next/link"
 import { useForm } from "react-hook-form"
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors }, } = useForm();
 
   const { mutateAsync: send, isLoading } = useLoginMutation()
