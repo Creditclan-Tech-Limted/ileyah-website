@@ -2,7 +2,7 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import { IconSearch } from '@tabler/icons-react'
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <Navbar />
@@ -38,4 +38,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;

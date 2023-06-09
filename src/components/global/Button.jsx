@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import classNames from "classnames";
-import Loader from "./Loader.jsx";
+import Loader from "../../global/Loader.jsx";
 import PropTypes from "prop-types";
 
 const classes = {

@@ -94,11 +94,11 @@ const Footer = () => {
               . All Rights Reserved.
             </div>
             <div className="flex mt-4 space-x-6 sm:mt-0">
-              <Link href="#" className="text-gray-500 hover:text-gray-900">
+              <Link href="https://www.facebook.com/ileyah.hq?mibextid=ZbWKwL" target='_blank' className="text-gray-500 hover:text-gray-900">
                 <IconBrandFacebook />
                 <span className="sr-only">Facebook page</span>
               </Link>
-              <Link href="#" className="text-gray-500 hover:text-gray-900">
+              <Link href="https://instagram.com/ileyah.hq?igshid=MzRlODBiNWFlZA==" target='_blank' className="text-gray-500 hover:text-gray-900">
                 <IconBrandInstagram />
                 <span className="sr-only">Instagram page</span>
               </Link>

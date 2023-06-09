@@ -1,5 +1,5 @@
 import { useCreateRentRequestMutation, useGetPlansQuery, useUploadImageMutation } from "@/api/rent";
-import { capitalizeFirstLetter, formatCurrency, numberWithCommas } from "@/lib/utils";
+import { capitalizeFirstLetter, formatCurrency } from "@/lib/utils";
 import useSignupStore from "@/store/signup";
 
 function Summary({ onBack, onNext }) {
@@ -68,32 +68,32 @@ function Summary({ onBack, onNext }) {
             </p>
           </div>
           <div className="font-17">
-            <ul className="list-group">
+            <ul className="list-group space-y-5">
               <li className="list-group-item flex justify-between items-center">
                 Rent amount:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {formatCurrency(data?.renew.amount ?? 0)}
                 </span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Type of house:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {capitalizeFirstLetter(data?.renew?.house_type)}
                 </span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Address:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {data?.renew?.address}
                 </span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Landlord phone number:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {data?.renew?.landlord_phone || "Not provided"}
                 </span>
               </li>
-              {plans.slice(0, 1)?.map((plan, i) => (
+              {/* {plans.slice(0, 1)?.map((plan, i) => (
                 <li key={i} className="list-group-item flex justify-between items-center">
                   Repayment schedule:
                   <span className="font-weight-600 text-right">
@@ -105,7 +105,7 @@ function Summary({ onBack, onNext }) {
                     </span>
                   </span>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
           <div className="font-17 mt-4">

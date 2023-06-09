@@ -31,13 +31,13 @@ function MiniSummary({ onBack, onNext, onPending}) {
         <ul className="list-group space-y-6">
           <li className="list-group-item flex justify-between items-center">
             Rent amount:
-            <span className="font-weight-600 text-right">
+            <span className=" text-right">
               {formatCurrency(data?.request.amount ?? 0)}
             </span>
           </li>
           <li className="list-group-item flex justify-between items-center">
             Type of house:
-            <span className="font-weight-600 text-right">
+            <span className=" text-right">
               {capitalizeFirstLetter(data?.request.house_type)}
             </span>
           </li>

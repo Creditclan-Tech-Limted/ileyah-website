@@ -1,6 +1,7 @@
 import useGlobalStore from "@/store/global";
 import { IconArrowRight } from "@tabler/icons-react";
 import Button from "@/components/global/Button";
+import Link from "next/link";
 
 const Hero = () => {
   const toggleIsSignupOpen = useGlobalStore(state => state.toggleIsSignupOpen);
@@ -20,9 +21,11 @@ const Hero = () => {
               <p className="max-w-xl font-light text-xl text-gray-500 mt-4 md:text-lg text-primary">
                 We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
               </p>
-              <Button onClick={toggleIsSignupOpen} rightIcon={<IconArrowRight />} size="lg" className="mt-12">
-                Get started
-              </Button>
+              <Link href='/register'>
+                <Button onClick={toggleIsSignupOpen} rightIcon={<IconArrowRight />} size="lg" className="mt-12">
+                  Get started
+                </Button>
+              </Link>
             </div>
             <div className="col-span-6 hidden lg:block">
               <div className="relative">

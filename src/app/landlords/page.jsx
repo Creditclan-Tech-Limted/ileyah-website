@@ -6,7 +6,7 @@ import GetPaid from './components/GetPaid'
 import FAW from '@/components/FAW'
 import WePay from './components/WePay'
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <Navbar />
@@ -19,4 +19,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Page;

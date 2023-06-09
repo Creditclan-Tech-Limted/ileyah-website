@@ -104,7 +104,7 @@ const Navbar = () => {
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
                   Tenants
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="#">
                   Landlords
                 </Link>
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
@@ -160,12 +160,6 @@ const Navbar = () => {
                 >
                   Our services
                 </Link>
-                {/* <Link
-                  onClick={() => setIsMobileNavVisible(false)} href="/infographics"
-                  className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
-                >
-                  Infographics
-                </Link> */}
                 <div>
                   <hr className="mx-2 my-2 border-zinc-300/40" />
                 </div>

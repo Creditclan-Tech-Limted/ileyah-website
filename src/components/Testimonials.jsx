@@ -8,7 +8,7 @@ const Testimonials = () => {
 
   useEffect(() => {
     const swiperParams = {
-      navigation: true,
+      // navigation: true,
       speed: 10000,
       spaceBetween: 0,
       autoplay: {

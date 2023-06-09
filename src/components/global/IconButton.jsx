@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Loader from "./Loader.jsx";
+import Loader from "../../global/Loader.jsx";
 
 const classes = {
   red: {

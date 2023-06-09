@@ -1,6 +1,21 @@
-import { useMutation, useQuery } from "react-query";
 import { parseJsonString } from "@/lib/utils.js";
 import http from "@/lib/http";
+import { useMutation, useQuery } from "@tanstack/react-query";
+
+// https://wema.creditclan.com/api/v3/rent/register
+export const useSignUpMutation = () => {
+  const { mutate, mutateAsync, isLoading } = useMutation(payload => {
+    return http.post('https://wema.creditclan.com/api/v3/rent/register', payload);
+  });
+  return { mutate, mutateAsync, isLoading };
+}
+
+export const useLoginMutation = () => {
+  const { mutate, mutateAsync, isLoading } = useMutation(payload => {
+    return http.post('https://wema.creditclan.com/api/v3/rent/login', payload);
+  });
+  return { mutate, mutateAsync, isLoading };
+}
 
 export const useCreateRentRequestMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
@@ -82,8 +97,8 @@ export const useGetLoanDetailsQuery = ({ email, phone, request_id }) => {
 
 export const useGetPlansQuery = ({ price }) => {
   const { data, isLoading, refetch, isFetching } = useQuery(["Rent Plans", price], async () => {
-      const res = await http.get(`https://cc-eligibility-staging.herokuapp.com/misc/plans?vertical=rent&amount=${price}`);
-      return res.data.plans;
+    const res = await http.get(`https://cc-eligibility-staging.herokuapp.com/misc/plans?vertical=rent&amount=${price}`);
+    return res.data.plans;
   }, { enabled: !!price });
   return { data, isLoading, refetch, isFetching };
 };
