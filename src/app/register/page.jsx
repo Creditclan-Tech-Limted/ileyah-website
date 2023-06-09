@@ -47,6 +47,22 @@ const Page = () => {
                   </div>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="relative mb-4" data-te-input-wrapper-init>
+                      <Input label='Full Name' bordered {...register('fullname', {
+                        required: {
+                          value: true,
+                          message: 'Full Name is required'
+                        }
+                      })} error={errors?.fullname?.message} />
+                    </div>
+                    <div className="relative mb-4" data-te-input-wrapper-init>
+                      <Input label='Email' bordered {...register('email', {
+                        required: {
+                          value: true,
+                          message: 'Email is required'
+                        }
+                      })} error={errors?.email?.message} />
+                    </div>
+                    <div className="relative mb-4" data-te-input-wrapper-init>
                       <Input label='Phone Number' bordered {...register('phone', {
                         required: {
                           value: true,
