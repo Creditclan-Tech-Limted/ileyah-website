@@ -104,7 +104,7 @@ const Navbar = () => {
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
                   Tenants
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="#">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                   Landlords
                 </Link>
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
