@@ -3,7 +3,7 @@ import { IconDatabase, IconDoorEnter, IconFileText, IconHome, IconHome2, IconHom
 export default [
     {
         name: 'Rent now, Pay Later',
-        description: `Lorem Ipsum, Lorem Ipsum dolor sit amet, consectetur adipiscing`,
+        description: `Is your rent due in a few days? Ileyah to the rescue.`,
         backgroundColor: 'bg-blue-500',
         textColor: 'text-blue-500',
         icon: IconHome,
@@ -12,7 +12,7 @@ export default [
     },
     {
         name: 'Rent to Own(Beta)',
-        description: `Ipsum dolor sit amet, consectetur adip`,
+        description: `Unlock the Door to Ownership: Rent to Own Solutions.`,
         backgroundColor: 'bg-yellow-600',
         textColor: 'text-red-500',
         icon: IconHomeBolt,
@@ -21,7 +21,7 @@ export default [
     },
     {
         name: 'Shortlet(coming soon)',
-        description: `Lorem Ipsum lorel, consectetur adip lorem, et`,
+        description: `Temporary Haven: Embrace Short-Term Rentals.`,
         backgroundColor: 'bg-teal-500',
         textColor: 'text-teal-500',
         icon: IconDoorEnter,

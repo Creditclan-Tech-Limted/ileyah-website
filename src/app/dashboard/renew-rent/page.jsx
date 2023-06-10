@@ -10,10 +10,10 @@ import { Cropper, ImageRestriction } from 'react-advanced-cropper';
 import 'react-advanced-cropper/dist/style.css'
 import Modal from '@/global/Modal'
 import { useCreateRentRequestMutation } from '@/api/rent'
-import RequestDetails from './RequestDetails'
-import Success from './Success'
 import { IconArrowLeft } from "@tabler/icons-react";
 import Link from "next/link";
+import RequestDetails from './RequestDetails'
+import Success from './Success'
 
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -22,7 +22,7 @@ const Page = () => {
   const [cropper, setCropper] = useState();
   const [houseType, setHouseType] = useState(data?.renew?.house_type);
   const [isOpen, setIsOpen] = useState(true);
-  const [userRequest, setUserRequest] = useState()
+  const [userRequest, setUserRequest] = useState();
   const cropperRef = useRef();
 
   const { mutateAsync: send, isLoading } = useCreateRentRequestMutation();
@@ -78,7 +78,6 @@ const Page = () => {
       email: 'oluwadhammiee@gmail.com'
     }
     const res = await send(payload);
-    console.log(res.data);
     if (res.data.status) {
       setUserRequest(res.data.rent_id);
       setViews('success')
@@ -91,7 +90,7 @@ const Page = () => {
         views === 'request' && (
           <>
             <Link href="/dashboard">
-              <Button variant="outlined" color="black" leftIcon={ <IconArrowLeft/> } className="mb-10">
+              <Button variant="outlined" color="black" leftIcon={<IconArrowLeft />} className="mb-10">
                 Renew rent
               </Button>
             </Link>
@@ -109,12 +108,12 @@ const Page = () => {
                       className="border-2 border-gray-300 border-dashed w-[150px] h-[150px] rounded-2xl flex justify-center items-center hover:bg-gray-100 cursor-pointer relative"
                     >
                       <input
-                        type="file" className="w-[1px] h-[1px] absolute top-0 left-0" onChange={ onChange }
+                        type="file" className="w-[1px] h-[1px] absolute top-0 left-0" onChange={onChange}
                       />
                       {
                         !!data?.houseImage?.picture ? (
                           <img
-                            src={ data?.houseImage?.picture } alt="user"
+                            src={data?.houseImage?.picture} alt="user"
                             className="absolute inset-0 w-full h-full bg-cover bg-center rounded-2xl"
                           />
                         ) : (
@@ -125,12 +124,12 @@ const Page = () => {
                   </div>
                 </div>
               </div>
-              <form onSubmit={ handleSubmit(onSubmit) }>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="space-y-6">
                   <div className="grid grid-cols-2 gap-6">
                     <Input
                       bordered label='Rent Amount' block
-                      { ...register("amount", {
+                      {...register("amount", {
                         required: {
                           value: true,
                           message: "amount is required"
@@ -143,31 +142,31 @@ const Page = () => {
                           value: 3000000,
                           message: "Please provide an amount less than ₦3million",
                         },
-                      }) } error={ errors?.amount?.message }
+                      })} error={errors?.amount?.message}
                     />
                     <Select
-                      options={ house_types } label='House Type' bordered
-                      { ...register('house_types', {
+                      options={house_types} label='House Type' bordered
+                      {...register('house_types', {
                         required: {
                           value: true,
                           message: 'House Type is required'
                         }
-                      }) }
-                      error={ errors?.house_types?.message }
+                      })}
+                      error={errors?.house_types?.message}
                     />
                   </div>
                   <TextArea
                     label='House Address' bordered
-                    { ...register('address', {
+                    {...register('address', {
                       required: {
                         value: true,
                         message: 'House Address is required'
                       }
-                    }) }
-                    error={ errors?.address?.message }
+                    })}
+                    error={errors?.address?.message}
                   />
                 </div>
-                <Button type='submit' className="mt-10" loading={ isLoading }>
+                <Button type='submit' className="mt-10" loading={isLoading}>
                   Submit
                 </Button>
               </form>
@@ -177,28 +176,28 @@ const Page = () => {
       }
       {
         views === 'success' && (
-          <Success onNext={ () => setViews('request-details') }/>
+          <Success onNext={() => setViews('request-details')} />
         )
       }
       {
         views === 'request-details' && (
-          <RequestDetails/>
+          <RequestDetails />
         )
       }
 
       {
         !!image && (
-          <Modal isOpen={ isOpen } size="md">
+          <Modal isOpen={isOpen} size="md">
             <Cropper
-              ref={ cropperRef }
-              src={ image }
-              className={ 'cropper' }
-              stencilProps={ { aspectRatio: 1 } }
-              imageRestriction={ ImageRestriction.fitArea }
+              ref={cropperRef}
+              src={image}
+              className={'cropper'}
+              stencilProps={{ aspectRatio: 1 }}
+              imageRestriction={ImageRestriction.fitArea}
             />
             <div className="flex justify-center mt-5 space-x-3">
-              <Button onClick={ handleCancel } variant='outlined' color='red'>Cancel</Button>
-              <Button onClick={ submit }>Upload</Button>
+              <Button onClick={handleCancel} variant='outlined' color='red'>Cancel</Button>
+              <Button onClick={submit}>Upload</Button>
             </div>
           </Modal>
         )
