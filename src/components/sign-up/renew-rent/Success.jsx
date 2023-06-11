@@ -8,7 +8,7 @@ function Success({ onDone }) {
           Congratulations, <br/>We are good to go
         </p>
       </div>
-      <button onClick={ onDone } className="call-number btn btn-blue-full">
+      <button onClick={ onDone } className="call-number btn btn-blue-full mt-5">
           Proceed to eligibility
         </button>
     </>

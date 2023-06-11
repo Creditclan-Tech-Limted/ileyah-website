@@ -7,32 +7,33 @@ const Future = () => {
       <div className="max-w-[1400px] mx-auto bg-gray-900 pattern-1 text-white rounded-3xl text-center py-28">
         <div className="container flex flex-col items-center justify-center">
           <h2 className="text-3xl md:text-6xl font-bold max-w-5xl">
-          Our payment plans are designed to accommodate your financial capabilities and goals.
+            Simplifying tenancy deals across Africa. One rent at a time.
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 mt-28 w-full">
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={ 0 } duration={ 5 } end={ 1 }/>B+
+                &#8358;
+                <CountUp start={0} duration={5} end={1} />B+
               </h2>
-              <p className="text-white opacity-75">in Tenancy </p>
+              <p className="text-white opacity-75">in Funding </p>
             </div>
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={ 0 } duration={ 5 } end={ 10 }/>k+
+                <CountUp start={0} duration={5} end={10} />k+
               </h2>
               <p className="text-white opacity-75">Properties</p>
             </div>
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={ 0 } duration={ 5 } end={ 10 }/>M+
+                <CountUp start={0} duration={5} end={12} />K+
               </h2>
-              <p className="text-white opacity-75">Customers</p>
+              <p className="text-white opacity-75">Tenants</p>
             </div>
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={ 0 } duration={ 5 } end={ 10 }/>K+
+                <CountUp start={0} duration={5} end={5} />K+
               </h2>
-              <p className="text-white opacity-75">Businesses staffs</p>
+              <p className="text-white opacity-75">Comapnies</p>
             </div>
           </div>
         </div>

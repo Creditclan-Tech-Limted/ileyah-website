@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter } from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter, IconMail, IconMapPin, IconPhone, IconPhoneCall } from "@tabler/icons-react";
 
 const Footer = () => {
   const mode = 'light';
@@ -8,8 +8,8 @@ const Footer = () => {
       <footer className="md:bg-[#F1F1F8]">
         <div className="container">
           <div className="grid md:grid-cols-12 pt-32 pb-24 space-y-10 md:space-y-0">
-            <div className="md:col-span-4">
-              <Link href="#" className="flex items-center">
+            <div className="md:col-span-3">
+              <Link href="/" className="flex items-center">
                 {
                   mode.dark ?
                     <img
@@ -23,13 +23,53 @@ const Footer = () => {
                       alt="Ileya Logo"
                     />
                 }
-
               </Link>
             </div>
-            <div className="md:col-span-4">
+            <div className="md:col-span-3">
               <h5 className="font-semibold mb-5">
                 <Link href="#" className="flex items-center">
-                  Other Resources
+                  Product
+                </Link>
+              </h5>
+              <div className="space-y-3">
+                <div>
+                  <Link
+                    href="#"
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    Monthly Rent
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    href="#"
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    Rent to own(Beta)
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    href="#"
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    Shortlet(Beta)
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    href="#"
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    Find Artisans(Beta)
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="md:col-span-3">
+              <h5 className="font-semibold mb-5">
+                <Link href="#" className="flex items-center">
+                  Quick Links
                 </Link>
               </h5>
               <div className="space-y-3">
@@ -49,17 +89,17 @@ const Footer = () => {
                 </div>
                 <div>
                   <Link
-                    href="#" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                    href="/contact-us" className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
                     Contact us
                   </Link>
                 </div>
               </div>
             </div>
-            <div className="md:col-span-4">
+            <div className="md:col-span-3">
               <h5 className="font-semibold mb-5">
                 <Link href="#" className="flex items-center">
-                  The Company
+                  Contact us
                 </Link>
               </h5>
               <div className="space-y-3">
@@ -68,7 +108,8 @@ const Footer = () => {
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    About us
+                    <IconPhoneCall size={20} className='mr-5' />
+                    +234 9055 552 255
                   </Link>
                 </div>
                 <div>
@@ -76,7 +117,17 @@ const Footer = () => {
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    Blog
+                    <IconMail size={20} className='mr-5'/>
+                    support@ileyah.com
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    href="#"
+                    className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    <IconMapPin size={20} className='mr-5'/>
+                    77, Samuel Adedoyin street, Victoria Island, Lagos.
                   </Link>
                 </div>
               </div>

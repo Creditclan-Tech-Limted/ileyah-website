@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import GetPaid from './components/GetPaid'
 import FAW from '@/components/FAW'
 import WePay from './components/WePay'
+import Testimonials from '@/components/Testimonials'
 
 const Page = () => {
   return (
@@ -13,6 +14,7 @@ const Page = () => {
       <Hero />
       <GetPaid />
       <WePay />
+      <Testimonials />
       <FAW />
       <Footer />
     </>

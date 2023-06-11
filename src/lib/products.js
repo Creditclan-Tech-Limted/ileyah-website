@@ -2,8 +2,8 @@ import { IconDatabase, IconDoorEnter, IconFileText, IconHome, IconHome2, IconHom
 
 export default [
     {
-        name: 'Rent now, Pay Later',
-        description: `Is your rent due in a few days? Ileyah to the rescue.`,
+        name: 'Monthly Rent',
+        description: `Pay your rent monthly forerver.`,
         backgroundColor: 'bg-blue-500',
         textColor: 'text-blue-500',
         icon: IconHome,
@@ -20,8 +20,8 @@ export default [
         dashboardLink: '/dashboard/betrue',
     },
     {
-        name: 'Shortlet(coming soon)',
-        description: `Temporary Haven: Embrace Short-Term Rentals.`,
+        name: 'Shortlet(Beta)',
+        description: `Daily tenancy simplified for Africa.`,
         backgroundColor: 'bg-teal-500',
         textColor: 'text-teal-500',
         icon: IconDoorEnter,

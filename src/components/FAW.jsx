@@ -6,24 +6,23 @@ const faqs = [
     q: 'What does Ileyah do?',
     a: (
       <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum, id magni qui veniam voluptas! Corporis ea
-        illum quia tempore?
+        We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
       </>
     )
   },
   {
-    q: 'How many plans are available?',
+    q: 'How long dies it take to close a deal?',
     a: (
       <>
-        The customer is presented with 3 plans to select from.
+        Depending on landlord availability. Usually between 2 and 7days.
       </>
     )
   },
   {
-    q: 'How many percent of the total item amount makes up the equity contribution?',
+    q: 'How many percent of the rent makes up the security deposit?',
     a: (
       <>
-        The equity contribution is 25%?
+        Depends on eligibility. Usually between 10% and 25%.
       </>
     )
   },
@@ -31,7 +30,7 @@ const faqs = [
     q: 'What makes up the upfront payment?',
     a: (
       <>
-        3 months payment & 5% management fee?
+        3 months payment & 5% management fee.
       </>
     )
   },
@@ -39,7 +38,7 @@ const faqs = [
     q: 'Does the customer pay for the apartment inspection?',
     a: (
       <>
-        No, Ileyah covers the cost of the inspection.?
+        No, Ileyah covers the cost of the inspection.
       </>
     )
   }

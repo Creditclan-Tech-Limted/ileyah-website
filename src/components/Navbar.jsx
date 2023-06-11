@@ -149,16 +149,28 @@ const Navbar = () => {
                 className="fixed inset-x-0 top-24 mt-4 flex origin-top flex-col rounded-3xl bg-white px-4 py-6 text-lg tracking-tight shadow-xl z-50 space-y-2"
               >
                 <Link
-                  onClick={() => setIsMobileNavVisible(false)} href="/about"
+                  onClick={() => setIsMobileNavVisible(false)} href="/"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
                 >
-                  About us
+                  Product
                 </Link>
                 <Link
-                  onClick={() => setIsMobileNavVisible(false)} href="/#services"
+                  onClick={() => setIsMobileNavVisible(false)} href="/tenants"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
                 >
-                  Our services
+                  Tenants
+                </Link>
+                <Link
+                  onClick={() => setIsMobileNavVisible(false)} href="/landlords"
+                  className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
+                >
+                  Landlords
+                </Link>
+                <Link
+                  onClick={() => setIsMobileNavVisible(false)} href="/find-artisans"
+                  className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
+                >
+                  Find Artisans
                 </Link>
                 <div>
                   <hr className="mx-2 my-2 border-zinc-300/40" />

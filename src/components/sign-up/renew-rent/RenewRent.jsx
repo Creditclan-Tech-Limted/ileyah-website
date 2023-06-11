@@ -53,7 +53,7 @@ function RenewRent({ onBack, onDone, onPending }) {
       {view === "picture-upload" && (
         <PictureUpload
           onBack={() => setView("step-four")}
-          onNext={() => setView("summary")}
+          onNext={() => setView("step-five")}
         />
       )}
       {view === "step-five" && (

@@ -5,6 +5,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Button from './global/Button';
 
 const Artisans = () => {
   SwiperCore.use([Autoplay]);
@@ -14,7 +15,7 @@ const Artisans = () => {
         <h2 className="text-3xl md:text-6xl max-w-4xl font-bold mb-4">
           Find a House, Live Like a King
         </h2>
-        <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary text-left tracking-wider">
+        <h5 className="mb-3.5 text-primary text-left tracking-wider text-lg">
           Enjoy our complimentary/discounted maintenance services.
         </h5>
       </div>
@@ -60,12 +61,15 @@ const Artisans = () => {
                             className="rounded-xl h-full bg-cover"
                           >
                             <div className="text-left text-white p-10 h-full">
-                              <p className='text-white text-3xl font-bold'>
-                                {houses.name}
-                              </p>
-                              <p className="text-white text-xl mt-2">
-                                1000+
-                              </p>
+                              <div>
+                                <p className='text-white text-3xl font-bold'>
+                                  {houses.name}
+                                </p>
+                                <p className="text-white text-xl mt-2">
+                                  100+
+                                </p>
+                              </div>
+                              <Button variant='outlined' color='white' size='sm' className='mt-5 transition-opacity duration-300 opacity-0 hover:opacity-100'>Get Started</Button>
                             </div>
                           </div>
                         </div>

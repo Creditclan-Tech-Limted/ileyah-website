@@ -12,26 +12,10 @@ const Products = () => {
           {/* <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider">
             OUR PRODUCTS
           </h5> */}
-          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
+          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl text-primary-500">
             Experience peace. Pay your rent monthly forever.
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-16">
-            <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
-              <div className="flex mb-8">
-                <div className="w-16 h-16 rounded-full flex justify-center items-center bg-red-500 text-white">
-                  <IconRotate2 size="32" />
-                </div>
-              </div>
-              <h2 className="text-xl font-medium">
-                Renew Rent
-              </h2>
-              <p className="mt-4 text-[.95rem] text-white">
-                Is your rent due in a few days? Ileyah to the rescue! We're be happy to assist you ease that burden. With Ileyah, bulk payments are now an issue of the past.
-              </p>
-              <Button className="mt-8" onClick={toggleIsSignupOpen} variant="outlined" color='white'>
-                Get started
-              </Button>
-            </div>
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-blue-500 text-white">
@@ -42,7 +26,23 @@ const Products = () => {
                 Find me a House
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-              Explore a wide range of real estate options, including residential, commercial, and investment properties, available on our platform.
+                Let's connect you with 10,000+ agents and landlords who fastrack your monthly tenancy.
+              </p>
+              <Button className="mt-8" onClick={toggleIsSignupOpen} variant="outlined" color='white'>
+                Get started
+              </Button>
+            </div>
+            <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
+              <div className="flex mb-8">
+                <div className="w-16 h-16 rounded-full flex justify-center items-center bg-red-500 text-white">
+                  <IconRotate2 size="32" />
+                </div>
+              </div>
+              <h2 className="text-xl font-medium">
+                Renew your Rent
+              </h2>
+              <p className="mt-4 text-[.95rem] text-white">
+                Rent due in a few days? We help you convert your current yearly tenancy into monthly forever.
               </p>
               <Button className="mt-8" onClick={toggleIsSignupOpen} variant="outlined" color='white'>
                 Get started
@@ -58,7 +58,8 @@ const Products = () => {
                 I have found a house
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Contact us today to finance your rent while you pay us back installmentally. Provide basic info, and we'll send a team to inspect, after which we pay and you move in.
+                Our houses don't suit you? You can find your own rent while we
+                partner with your landlord to pay monthly forever
               </p>
               <Button className="mt-8" onClick={toggleIsSignupOpen} variant="outlined" color='white'>
                 Get started

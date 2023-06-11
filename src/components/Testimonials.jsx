@@ -37,32 +37,30 @@ const Testimonials = () => {
     {
       id: 1,
       value: 'Using the Ileyah platform made renting so much easier and convenient. No more worrying about upfront payments',
-      name: 'Nebs Chwukuma',
       ceo: 'Lyncs Africa'
     },
     {
       id: 2,
       value: 'Renting has never been this flexible. Thanks to Ileyah, I can choose a payment schedule that suits me.',
-      name: 'Jude Hawkson',
       ceo: 'Isave NG'
     },
     {
       id: 3,
       value: 'I love how Ileyah allows me to spread out my rental payments. It helps me manage my budget better.',
-      ceo: 'Clan Africa',
+      ceo: 'Market Woman',
       name: 'Soji Okunuga',
     },
     {
       id: 4,
       value: "Ileyah saved me from financial stress. I could rent what I needed without worrying about immediate payment.",
-      ceo: 'Swift Solutions',
+      ceo: 'Artisans',
       name: 'Eunice Adama',
 
     },
     {
       id: 5,
       value: "Thanks to Ileyah, I was able to rent items I wouldn't have been able to afford otherwise. It's a fantastic service.",
-      ceo: 'Tech Solutions NG'
+      ceo: 'Business Woman'
     },
     {
       id: 6,
@@ -89,7 +87,7 @@ const Testimonials = () => {
       <div className="mx-auto max-w-7xl">
         <div className="">
           <h2 className="text-3xl md:text-6xl font-bold max-w-5xl">
-            Loved by Tenants and Landlords worldwide.
+            Loved by Tenants and Landlords.
           </h2>
           <p className="mt-6 text-lg tracking-tight text-slate-700">
             At Ileyah, we've developed a revolutionary Fintech solution that allows you to split your payments and make
@@ -120,8 +118,8 @@ const Testimonials = () => {
                       className="relative mt-6 flex items-center justify-end pt-3 text-right"
                     >
                       <div>
-                        <div className="font-display text-base text-slate-900">{item.name}</div>
-                        <div className="mt-1 text-sm text-slate-500">{item.ceo}</div>
+                        {/* <div className="font-display text-base text-slate-900">{item.name}</div> */}
+                        <div className="mt-2 text-sm text-slate-500">{item.ceo}</div>
                       </div>
                       <div className="overflow-hidden rounded-full bg-slate-50">
                         <img src="" alt="" />

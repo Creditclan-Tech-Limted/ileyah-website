@@ -20,7 +20,7 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                Rent Now, Pay Later
+                Monthly Rent.
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
                 Ileyah offers monthly, quarterly or annual payment terms to fit your unique schedule.
@@ -36,8 +36,7 @@ const WhyUs = () => {
                 Rent To Own (Beta)
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                Choose between having the space to yourself or flat-sharing with
-                verified housemates
+                We are partnering with estate developers to support you.
               </p>
             </div>
             <div>
@@ -47,11 +46,10 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                Shortlet (coming soon)
+                Shortlet (Beta)
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                For homes at Ileyah, there are no extra hidden charges. No viewing or inspection fees. Pay once, pay
-                all.
+                Overnight or short stay? We have you covered at Ileyah.
               </p>
             </div>
             <div>
@@ -61,10 +59,10 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                Lease to Own
+                Find Artisans(Beta)
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-              At Ileyah, With our flexible terms and supportive approach, we aim to make your homeownership dreams a reality
+                Let's connect you with 1000+, painters, plumbers etc.
               </p>
             </div>
           </div>

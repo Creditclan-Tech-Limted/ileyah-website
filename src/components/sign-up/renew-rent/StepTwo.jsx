@@ -1,5 +1,6 @@
 import FormInput from "@/global/FormInput";
 import useSignupStore from "@/store/signup";
+import { IconExclamationCircle } from "@tabler/icons-react";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -40,13 +41,6 @@ function StepTwo({ onBack, onNext }) {
         <p className="font-30 redirect-text text-deep-blue font-weight-bold pb-0 mb-0">
           How much is your rent
         </p>
-        <p
-          className={`redirect-text text-white bg-danger error-text font-17 pb-0 ${
-            errors?.amount?.message?.length ? "block p-3" : "hidden" 
-          }`}
-        >
-          {errors.amount?.message}
-        </p>
       </div>
       <form onSubmit={handleSubmit(submit)}>
         <FormInput
@@ -64,7 +58,14 @@ function StepTwo({ onBack, onNext }) {
             },
           })}
         />
-        <button type="submit" className="call-number btn btn-blue font-17">
+        <p
+          className={`bg-red-100 rounded-xl text-red-800 ${errors?.amount?.message?.length ? "block p-3" : "hidden"
+            }`}
+        >
+          <IconExclamationCircle className="inline-flex mr-2" />
+          {errors.amount?.message}
+        </p>
+        <button type="submit" className="call-number btn btn-blue font-17 mt-10">
           Continue
         </button>
       </form>
