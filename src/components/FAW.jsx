@@ -11,7 +11,7 @@ const faqs = [
     )
   },
   {
-    q: 'How long dies it take to close a deal?',
+    q: 'How long does it take to close a deal?',
     a: (
       <>
         Depending on landlord availability. Usually between 2 and 7days.

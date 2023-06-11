@@ -12,7 +12,7 @@ export default [
     },
     {
         name: 'Rent to Own(Beta)',
-        description: `Unlock the Door to Ownership: Rent to Own Solutions.`,
+        description: `We are partnering with estate developers to support you.`,
         backgroundColor: 'bg-yellow-600',
         textColor: 'text-red-500',
         icon: IconHomeBolt,
@@ -21,7 +21,7 @@ export default [
     },
     {
         name: 'Shortlet(Beta)',
-        description: `Daily tenancy simplified for Africa.`,
+        description: `Overnight or short stay? We have you covered at ileyah.`,
         backgroundColor: 'bg-teal-500',
         textColor: 'text-teal-500',
         icon: IconDoorEnter,

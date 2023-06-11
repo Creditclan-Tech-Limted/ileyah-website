@@ -12,26 +12,27 @@ import ScrollToTopBtn from "@/components/ScrollToTpBtn";
 import Artisans from '@/components/Artisans'
 import Whatsapp from '@/components/Whatsapp'
 import Testimonials from '@/components/Testimonials'
+import Call from '@/components/Call'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
-  // const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleScroll = (event) => {
-    // const scrollPosition = window.innerHeight + window.scrollY;
-    // const pageHeight = document.body.offsetHeight;
-    // const middleOfPage = pageHeight / 2;
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const pageHeight = document.body.offsetHeight;
+    const middleOfPage = pageHeight / 2;
 
-    // console.log({ scrollPosition, pageHeight, middleOfPage });
+    console.log({ scrollPosition, pageHeight, middleOfPage });
     setScrollTop(event.target.scrollingElement.scrollTop);
 
-    // if (scrollPosition >= middleOfPage) {
-    //   console.log('true');
-    //   setShowModal(true);
-    // } else {
-    //   console.log('failse');
-    //   setShowModal(false);
-    // }
+    if (scrollPosition >= middleOfPage) {
+      console.log('true');
+      setShowModal(true);
+    } else {
+      console.log('failse');
+      setShowModal(false);
+    }
   };
   const handleScrollTop = () => {
     window.scrollTo({
@@ -50,6 +51,7 @@ const LandingPage = () => {
   }, []);
   return (
     <>
+      {/* <Call /> */}
       <ScrollToTop />
       <Navbar />
       <Hero />

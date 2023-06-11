@@ -59,7 +59,7 @@ const Products = () => {
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Our houses don't suit you? You can find your own rent while we
-                partner with your landlord to pay monthly forever
+                partner with your landlord to pay monthly forever.
               </p>
               <Button className="mt-8" onClick={toggleIsSignupOpen} variant="outlined" color='white'>
                 Get started

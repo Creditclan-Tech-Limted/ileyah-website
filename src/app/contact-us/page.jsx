@@ -125,7 +125,7 @@ const Page = () => {
                   <div>
                     <button
                       type="submit"
-                      class="bg-blue-900 border-primary w-full rounded border p-3 text-white transition hover:bg-opacity-90"
+                      class="bg-yellow-500 border-primary w-full rounded border p-3 text-white transition hover:bg-opacity-90"
                     >
                       Send Message
                     </button>
