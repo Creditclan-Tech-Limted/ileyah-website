@@ -12,7 +12,7 @@ const Products = () => {
           {/* <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider">
             OUR PRODUCTS
           </h5> */}
-          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl text-primary-500">
+          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
             Experience peace. Pay your rent monthly forever.
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-16">

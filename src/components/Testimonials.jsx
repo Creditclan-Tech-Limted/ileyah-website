@@ -3,7 +3,8 @@ import { useEffect, useRef } from 'react';
 import { register } from 'swiper/element/bundle';
 
 register();
-const Testimonials = () => {
+const Testimonials = ({ source }) => {
+  console.log({source});
   const swiperElRef = useRef(null);
 
   useEffect(() => {
@@ -37,35 +38,38 @@ const Testimonials = () => {
     {
       id: 1,
       value: 'Using the Ileyah platform made renting so much easier and convenient. No more worrying about upfront payments',
-      ceo: 'Lyncs Africa'
+      name: 'Nebs Chwukuma',
+      ceo: 'Software Engineer'
     },
     {
       id: 2,
       value: 'Renting has never been this flexible. Thanks to Ileyah, I can choose a payment schedule that suits me.',
-      ceo: 'Isave NG'
+      name: 'Jude Hawkson',
+      ceo: 'Business Owner'
     },
     {
       id: 3,
       value: 'I love how Ileyah allows me to spread out my rental payments. It helps me manage my budget better.',
-      ceo: 'Market Woman',
-      name: 'Soji Okunuga',
+      ceo: 'Student',
+      name: 'Loveth Chris',
     },
     {
       id: 4,
       value: "Ileyah saved me from financial stress. I could rent what I needed without worrying about immediate payment.",
-      ceo: 'Artisans',
+      ceo: 'Sales Exceutive',
       name: 'Eunice Adama',
 
     },
     {
       id: 5,
       value: "Thanks to Ileyah, I was able to rent items I wouldn't have been able to afford otherwise. It's a fantastic service.",
-      ceo: 'Business Woman'
+      ceo: 'Football Analyst',
+      name: "Anita reone"
     },
     {
       id: 6,
       value: "I never thought renting could be this hassle-free until I discovered Ileyah. It's a game-changer for sure.",
-      ceo: 'Business Manager',
+      ceo: 'Electricians',
       name: 'Femi Araromi',
     },
     {
@@ -87,7 +91,7 @@ const Testimonials = () => {
       <div className="mx-auto max-w-7xl">
         <div className="">
           <h2 className="text-3xl md:text-6xl font-bold max-w-5xl">
-            Loved by Tenants and Landlords.
+            Loved by {source === 'main'? 'Tenants and Landlords.' : source === 'landlords' ? 'Landlords.': source === 'tenants'? 'Tenants.' : ''} 
           </h2>
           <p className="mt-6 text-lg tracking-tight text-slate-700">
             At Ileyah, we've developed a revolutionary Fintech solution that allows you to split your payments and make
@@ -97,7 +101,7 @@ const Testimonials = () => {
         </div>
       </div>
       <div className="mt-20">
-        <swiper-container ref={swiperElRef} init={false} >
+        <swiper-container ref={swiperElRef} init={false}>
           {
             i_testimonials.map((item, i) => {
               return <swiper-slide key={i}>
@@ -118,8 +122,10 @@ const Testimonials = () => {
                       className="relative mt-6 flex items-center justify-end pt-3 text-right"
                     >
                       <div>
-                        {/* <div className="font-display text-base text-slate-900">{item.name}</div> */}
-                        <div className="mt-2 text-sm text-slate-500">{item.ceo}</div>
+                        <div className="font-display text-base text-slate-900">{item.name}</div>
+                        {source !== 'landlords' && (
+                        <div className="mt-1 text-sm text-slate-500">{item.ceo}</div>
+                        )}
                       </div>
                       <div className="overflow-hidden rounded-full bg-slate-50">
                         <img src="" alt="" />

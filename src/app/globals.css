@@ -9,7 +9,7 @@
 }
 
 .bg-future {
-  background: linear-gradient(rgb(49 31 60 / 60%), rgb(78 57 96 / 60%)), url("/assets/images/1.jpg");
+  background: linear-gradient(rgb(49 31 60 / 60%), rgb(78 57 96 / 60%)), url("/assets/images/05.jpg");
 }
 
 .bg-right {
@@ -71,4 +71,67 @@
   border: 1px solid red !important;
 
   /* background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%234c71ae'%2F%3E%3C%2Fsvg%3E") !important; */
+}
+
+#flamelab-convo-widget {
+  position: fixed;
+  bottom: 80px;
+  left: -40px;
+  animation-name: flamelab-convo-widget_enter;
+  animation-duration: 1.5s;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 1000;
+  color: black;
+}
+
+#flamelab-convo-widget img {
+  animation-name: flamelab-convo-widget_rotate;
+  animation-duration: 1.5s;
+  transform: rotate(20deg);
+}
+
+.flamelab-cw-msg-box {
+  background: white;
+  width: 280px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .25);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  animation-name: flamelab-convo-widget_msg-appear;
+  animation-duration: 2s;
+  font-size: 15px;
+  line-height: 23px;
+}
+
+
+.flamelab-cw-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 -4px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.flamelab-cw-button-yes {
+  color: #FF1B96;
+  font-weight: 700;
+}
+
+.flamelab-cw-button {
+  cursor: pointer;
+  padding: 4px;
+  margin-right: 12px;
+  display: block;
+  text-decoration: none;
+}
+
+.flamelab-cw-button {
+    cursor: pointer;
+    padding: 4px;
+    margin-right: 12px;
+    display: block;
+    text-decoration: none;
 }

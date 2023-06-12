@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>Ileyah</title>
-        <meta name="description" content="Statisense" />
+        <meta name="description" content="Ileyah" />
         <link rel="icon" href="./favicon.ico" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,2&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />

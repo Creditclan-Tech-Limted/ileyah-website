@@ -16,7 +16,7 @@ const Whatsapp = () => {
             </div>
             <div className="text-left flex flex-col items-start">
               <div className='text-3xl md:text-6xl max-w-xl font-bold mb-4'>
-                Never ever renew your rent yearly again
+                Never ever pay your rent yearly again
               </div>
               <div className="text-lg">
                 Connect us with your landlord and we take it from there in monthly installments.

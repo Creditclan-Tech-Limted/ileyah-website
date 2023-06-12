@@ -101,10 +101,10 @@ const Navbar = () => {
                     )
                   }
                 </Hover>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
                   Tenants
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                   Landlords
                 </Link>
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
@@ -163,13 +163,13 @@ const Navbar = () => {
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/landlords"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
-                >
+                  >
                   Landlords
                 </Link>
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/find-artisans"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
-                >
+                  >
                   Find Artisans
                 </Link>
                 <div>

@@ -23,7 +23,7 @@ function MenuView({ onNext, handleToggle }) {
       </div>
       <div className="pt-70">
         <p className="font-bold text-3xl text-primary leading-[1.1]">
-          Welcome to <br/> Rent now, Pay later
+          Welcome. <br/> Pay your rent monthly forever.
         </p>
         <p className="text-cc-dark mt-2">
           Please choose a rent now pay later option

@@ -18,14 +18,14 @@ const faqs = [
       </>
     )
   },
-  {
-    q: 'How many percent of the rent makes up the security deposit?',
-    a: (
-      <>
-        Depends on eligibility. Usually between 10% and 25%.
-      </>
-    )
-  },
+  // {
+  //   q: 'How many percent of the rent makes up the security deposit?',
+  //   a: (
+  //     <>
+  //       Depends on eligibility. Usually between 10% and 25%.
+  //     </>
+  //   )
+  // },
   {
     q: 'What makes up the upfront payment?',
     a: (

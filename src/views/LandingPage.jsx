@@ -16,22 +16,24 @@ import Call from '@/components/Call'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState({
+    status: false,
+    isOpened: false,
+  });
 
   const handleScroll = (event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
     const pageHeight = document.body.offsetHeight;
     const middleOfPage = pageHeight / 2;
 
-    console.log({ scrollPosition, pageHeight, middleOfPage });
     setScrollTop(event.target.scrollingElement.scrollTop);
 
     if (scrollPosition >= middleOfPage) {
-      console.log('true');
-      setShowModal(true);
+      // console.log('true');
+      // setShowModal(true);
     } else {
-      console.log('failse');
-      setShowModal(false);
+      // console.log('failse');
+      // setShowModal(false);
     }
   };
   const handleScrollTop = () => {
@@ -42,7 +44,6 @@ const LandingPage = () => {
     });
   };
 
-
   useLayoutEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -52,6 +53,16 @@ const LandingPage = () => {
   return (
     <>
       {/* <Call /> */}
+      <div id="flamelab-convo-widget">
+        <img src="/assets/images/avatar.png" alt="Avatar Image" />
+        <div class="flamelab-cw-msg-box">
+          <span>Hey! Do you want us to call you?</span>
+          <div class="flamelab-cw-buttons">
+            <div class="flamelab-cw-button flamelab-cw-button-yes">Yes!</div>
+            <div class="flamelab-cw-button flamelab-cw-button-no">No thanks</div>
+          </div>
+        </div>
+      </div>
       <ScrollToTop />
       <Navbar />
       <Hero />
@@ -61,7 +72,7 @@ const LandingPage = () => {
       <Artisans />
       {/* <Listings/> */}
       <Future />
-      <Testimonials />
+      <Testimonials source='main' />
       <FAW />
       {/* <Achievement /> */}
       <Footer />
