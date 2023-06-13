@@ -27,7 +27,7 @@ const Page = () => {
                   </form>
                 </div>
               </div>
-              <div className="relative -mt-[25px]">
+              <div className="relative mt-[25px]">
                 <img src="/assets/images/ten.jpeg" className="rounded-xl shadow-md dark:shadow-gray-700" alt="" />
                 {/* <div className="absolute bottom-2/4 translate-y-2/4 start-0 end-0 text-center">
                   <a href="#!" data-type="youtube" data-id="yba7hPeTSjk" className="lightbox h-20 w-20 rounded-full shadow-md dark:shadow-gray-800 inline-flex items-center justify-center bg-white dark:bg-slate-900 text-green-600">

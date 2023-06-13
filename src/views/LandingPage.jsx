@@ -13,6 +13,8 @@ import Artisans from '@/components/Artisans'
 import Whatsapp from '@/components/Whatsapp'
 import Testimonials from '@/components/Testimonials'
 import Call from '@/components/Call'
+import WeCall from '@/components/WeCall'
+import classNames from 'classnames'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -20,6 +22,7 @@ const LandingPage = () => {
     status: false,
     isOpened: false,
   });
+  const [call, setCall] = useState(false)
 
   const handleScroll = (event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
@@ -56,13 +59,18 @@ const LandingPage = () => {
       <div id="flamelab-convo-widget">
         <img src="/assets/images/avatar.png" alt="Avatar Image" />
         <div class="flamelab-cw-msg-box">
-          <span>Hey! Do you want us to call you?</span>
+          <span>Hey 🥳   Want us to call you?</span>
           <div class="flamelab-cw-buttons">
-            <div class="flamelab-cw-button flamelab-cw-button-yes">Yes!</div>
+            <div class="flamelab-cw-button flamelab-cw-button-yes" onClick={() => setCall(true)}>Yes!</div>
             <div class="flamelab-cw-button flamelab-cw-button-no">No thanks</div>
           </div>
         </div>
       </div>
+      <div
+        onClick={() => setCall(false)}
+        className={classNames("main-overlay", { visible: call })}
+      ></div>
+      {call && (<WeCall handleToggle={() => setCall(false)} />)}
       <ScrollToTop />
       <Navbar />
       <Hero />
