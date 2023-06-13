@@ -1,5 +1,5 @@
 'use client'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Input from '@/global/Input'
 import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
@@ -14,10 +14,13 @@ import { IconArrowLeft } from "@tabler/icons-react";
 import Link from "next/link";
 import RequestDetails from './RequestDetails'
 import Success from './Success'
+import { useSearchParams } from 'next/navigation'
 
 const Page = () => {
-  const { data, updateData } = useSignupStore((state) => state);
   const [views, setViews] = useState('request')
+  const searchParams = useSearchParams()
+  const status = searchParams.get('status')
+  const { data, updateData } = useSignupStore((state) => state);
   const [image, setImage] = useState("");
   const [cropper, setCropper] = useState();
   const [houseType, setHouseType] = useState(data?.renew?.house_type);
@@ -27,6 +30,12 @@ const Page = () => {
 
   const { mutateAsync: send, isLoading } = useCreateRentRequestMutation();
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  useEffect(() => {
+    if (status === 'pending') {
+      setViews('request-details')
+    }
+  }, [])
 
   const house_types = [
     { value: 'room-only', text: 'Room only' },

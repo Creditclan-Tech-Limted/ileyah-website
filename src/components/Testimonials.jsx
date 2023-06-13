@@ -4,7 +4,6 @@ import { register } from 'swiper/element/bundle';
 
 register();
 const Testimonials = ({ source }) => {
-  console.log({source});
   const swiperElRef = useRef(null);
 
   useEffect(() => {

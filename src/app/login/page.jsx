@@ -6,6 +6,7 @@ import Link from "next/link"
 import { useForm } from "react-hook-form"
 import { useRouter } from 'next/navigation';
 import { useState } from "react"
+import useSignupStore from "@/store/signup"
 
 const Page = () => {
   const router = useRouter();
@@ -14,15 +15,15 @@ const Page = () => {
     status: false,
     message: ''
   })
-
+  const { data, updateData } = useSignupStore((state) => state);
   const { mutateAsync: send, isLoading } = useLoginMutation()
 
   const onSubmit = async (data) => {
     try {
       const res = await send(data);
-      console.log(res.data);
       if (res.data.status) {
         localStorage.setItem('ileyah_token', res?.data?.token)
+        updateData({ user: res?.data?.message, token: res?.data?.token })
         router.push('/dashboard')
       }
     } catch (error) {
@@ -78,7 +79,7 @@ const Page = () => {
                       })} error={errors?.phone?.message} />
                     </div>
                     <div className="relative mb-4" data-te-input-wrapper-init>
-                      <Input label='Passsword' bordered {...register('password', {
+                      <Input label='Passsword' type='password' bordered {...register('password', {
                         required: {
                           value: true,
                           message: 'Password is required'

@@ -27,8 +27,8 @@ const RequestDetails = () => {
     refetch: refetchLoanDetails,
     isFetching: isLoanDetailsRefetching,
   } = useGetLoanDetailsQuery({
-    email: data?.user?.email || 'oluwadhammueh@gmail.com',
-    phone: data?.user?.phone || '09039719017',
+    email: data?.user?.email,
+    phone: data?.user?.phone,
     request_id: request?.creditclan_request_id,
   });
 
@@ -122,6 +122,9 @@ const RequestDetails = () => {
                   <Button color="red" variant="outlined">Cancel Request</Button>
                 )
               }
+            </div>
+            <div className='flex w-screen'>
+              <img src="/assets/images/happy.png" alt="" className='bottom-0 absolute mx-[100px]' />
             </div>
           </>
         )

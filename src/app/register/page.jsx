@@ -78,7 +78,7 @@ const Page = () => {
                       })} error={errors?.phone?.message} />
                     </div>
                     <div className="relative mb-4" data-te-input-wrapper-init>
-                      <Input label='Passsword' bordered {...register('password', {
+                      <Input label='Passsword' type='password' bordered {...register('password', {
                         required: {
                           value: true,
                           message: 'Password is required'

@@ -32,11 +32,11 @@ const LandingPage = () => {
     setScrollTop(event.target.scrollingElement.scrollTop);
 
     if (scrollPosition >= middleOfPage) {
-      // console.log('true');
-      // setShowModal(true);
-    } else {
-      // console.log('failse');
-      // setShowModal(false);
+      console.log(showModal);
+      if (!showModal.isOpened && !showModal.status) {
+        console.log('true');
+        setShowModal({ status: true, isOpened: true });
+      }
     }
   };
   const handleScrollTop = () => {
@@ -56,16 +56,20 @@ const LandingPage = () => {
   return (
     <>
       {/* <Call /> */}
-      <div id="flamelab-convo-widget">
-        <img src="/assets/images/avatar.png" alt="Avatar Image" />
-        <div class="flamelab-cw-msg-box">
-          <span>Hey 🥳   Want us to call you?</span>
-          <div class="flamelab-cw-buttons">
-            <div class="flamelab-cw-button flamelab-cw-button-yes" onClick={() => setCall(true)}>Yes!</div>
-            <div class="flamelab-cw-button flamelab-cw-button-no">No thanks</div>
+      {
+        showModal.status && (
+          <div id="flamelab-convo-widget">
+            <img src="/assets/images/avatar.png" alt="Avatar Image" />
+            <div class="flamelab-cw-msg-box">
+              <span>Hey 🥳   Want us to call you?</span>
+              <div class="flamelab-cw-buttons">
+                <div class="flamelab-cw-button flamelab-cw-button-yes" onClick={() => setCall(true)}>Yes!</div>
+                <div class="flamelab-cw-button flamelab-cw-button-no">No thanks</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        )
+      }
       <div
         onClick={() => setCall(false)}
         className={classNames("main-overlay", { visible: call })}
