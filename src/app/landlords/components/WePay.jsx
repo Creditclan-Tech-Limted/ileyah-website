@@ -12,7 +12,7 @@ const WePay = () => {
                 <div className='mt-6 text-lg tracking-tight text-slate-500 space-y-6'>
                 <p>
                 Leave us to find tenants, that is our headache now -
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non mollitia praesentium.
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non mollitia.
                 </p>
                 <p>
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non.
@@ -23,7 +23,7 @@ const WePay = () => {
                 </Button>
               </div>
               <div class="flex justify-center">
-                <img src="/assets/images/Estate.png" alt="" class="w-full md:w-10/12 chat-illustration" />
+                <img src="/assets/images/ileyah-5.png" alt="" class="w-full md:w-10/12 chat-illustration" />
               </div>
             </div>
           </div>
