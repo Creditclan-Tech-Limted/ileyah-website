@@ -11,8 +11,8 @@ function CancelFindHouseRentRequest({ onBack, onNext }) {
   const handleCancelRequest = async () => {
     try {
       await cancelRequest(data.user.phone);
-      if (data?.data?.request?.creditclan_request_id) {
-        await cancelCcRequest(data.data.request.creditclan_request_id);
+      if (data?.request?.creditclan_request_id) {
+        await cancelCcRequest(data.request.creditclan_request_id);
       }
       onNext();
       await queryClient.clear();

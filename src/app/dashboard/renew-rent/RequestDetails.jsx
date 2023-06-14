@@ -123,9 +123,9 @@ const RequestDetails = () => {
                 )
               }
             </div>
-            <div className='flex w-screen'>
+            {/* <div className='flex w-screen'>
               <img src="/assets/images/happy.png" alt="" className='bottom-0 absolute mx-[100px]' />
-            </div>
+            </div> */}
           </>
         )
       }

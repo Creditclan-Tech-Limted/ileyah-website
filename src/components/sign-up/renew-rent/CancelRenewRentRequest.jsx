@@ -12,11 +12,13 @@ function CancelRenewRentRequest({ onBack, onNext }) {
   const { mutateAsync: cancelRequest, isLoading: isCancelRequestLoading } = useCancelRequestMutation();
   const { mutateAsync: cancelCcRequest, isLoading: isCancelCcRequestLoading } = useCancelCcRequestMutation();
 
+  console.log({data});
+
   const handleCancelRequest = async () => {
     try {
       await cancelRequest(data.user.phone);
-      if (data?.data?.request?.creditclan_request_id) {
-        await cancelCcRequest(data.data.request.creditclan_request_id);
+      if (data?.request?.creditclan_request_id) {
+        await cancelCcRequest(data.request.creditclan_request_id);
       }
       onNext();
       await queryClient.clear();
