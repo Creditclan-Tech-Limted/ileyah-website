@@ -2,21 +2,21 @@ import useSignupStore from '@/store/signup';
 import { useState } from 'react'
 
 const types = [
-  { id: 'room-only', name: 'Room only' },
-  { id: 'room-parlour', name: 'Room and parlour' },
-  { id: 'two-bedroom', name: 'Two bedroom' },
-  { id: 'three-bedroom', name: 'Three bedroom' },
-  { id: 'four-bedroom', name: 'Four bedroom' },
-  { id: 'bungalow', name: 'Bungalow' },
-  { id: 'duplex', name: 'Duplex' },
+  { id: 'Radio', name: 'Radio' },
+  { id: 'Facebook', name: 'Facebook' },
+  { id: 'Instagram', name: 'Instagram' },
+  { id: 'Twitter', name: 'Twitter' },
+  { id: 'Friends', name: 'Friends' },
+  { id: 'Ileyah Representative', name: 'Ileyah Representative' },
 ]
 
-function StepThree({ onBack, onNext }) {
+
+const Source = ({ onBack, onNext }) => {
   const { data, updateData } = useSignupStore(state => state);
-  const [houseType, setHouseType] = useState(data?.renew?.house_type)
+  const [source, setSource] = useState(data?.renew?.information_source);
 
   const submit = () => {
-    updateData({ renew: { ...data?.renew, house_type: houseType } });
+    updateData({ renew: { ...data?.renew, information_source: source } });
     onNext();
   };
 
@@ -29,7 +29,7 @@ function StepThree({ onBack, onNext }) {
       </div>
       <div className="pt-70 pb-2">
         <p className="font-30 redirect-text text-deep-blue font-weight-bold">
-          What type of house do you live in?
+          How did u hear about us?
         </p>
       </div>
       <div>
@@ -40,7 +40,7 @@ function StepThree({ onBack, onNext }) {
                 <label className='flex items-center'>
                   <div className="checkbox">
                     <input
-                      name="house_type" type="radio" className="checkbox__input" checked={houseType === t.id} value={t.id} onChange={(e) => setHouseType(e.target.value)}
+                      name="house_type" type="radio" className="checkbox__input" checked={source === t.id} value={t.id} onChange={(e) => setSource(e.target.value)}
                     />
                     <span className="checkbox__inner"></span>
                   </div>
@@ -51,7 +51,7 @@ function StepThree({ onBack, onNext }) {
           }
         </div>
       </div>
-      <button onClick={submit} type="submit" className="call-number btn btn-blue font-17" disabled={!houseType}>Continue</button>
+      <button onClick={submit} type="submit" className="call-number btn btn-blue font-17" disabled={!source}>Continue</button>
 
       <div className='illustration-image'>
         <img src="/assets/images/Living room-bro.svg" alt="" />
@@ -60,4 +60,4 @@ function StepThree({ onBack, onNext }) {
   )
 }
 
-export default StepThree;
+export default Source;

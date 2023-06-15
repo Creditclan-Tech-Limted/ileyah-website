@@ -10,6 +10,7 @@ import StepTwo from "./StepTwo.jsx";
 import Success from "./Success.jsx";
 import Summary from "./Summary.jsx";
 import UserDetails from "./UserDetails.jsx";
+import Source from "./Source.jsx";
 
 function RenewRent({ onBack, onDone, onPending }) {
   const [view, setView] = useState("step-one");
@@ -59,14 +60,20 @@ function RenewRent({ onBack, onDone, onPending }) {
       {view === "step-five" && (
         <StepFive
           onBack={() => setView("picture-upload")}
+          onNext={() => setView("step-six")}
+        />
+      )}
+      {view === "step-six" && (
+        <Source
+          onBack={() => setView("step-five")}
           onNext={() => setView("summary")}
         />
       )}
       {
         view === "summary" && (
           <Summary
-          onBack={() => setView("step-five")}
-          onNext={() => setView("success")} />
+            onBack={() => setView("step-six")}
+            onNext={() => setView("success")} />
         )
       }
       {view === "success" && <Success onDone={onDone} />}
