@@ -17,7 +17,7 @@ const Page = () => {
           <div className="container">
             <div className="grid grid-cols-1">
               <div className="text-center">
-                <h1 className="font-bold lg:leading leading-normal text-4xl lg:text-8xl">Are you ready to find your dream home</h1>
+                <h1 className="font-bold lg:leading leading-normal text-6xl lg:text-8xl">Are you ready to find your dream home</h1>
                 <p className="text-slate-400 mx-auto text-xl max-w-xl my-8">A great plateform to buy, sell and rent your properties without any agent or commisions.</p>
                 <div className="subcribe-form relative z-10">
                   <form className="relative max-w-2xl mx-auto">
@@ -40,7 +40,7 @@ const Page = () => {
         </section>
       </div>
       <GetPaid />
-      <WePay />
+      {/* <WePay /> */}
       <Future  />
       <Testimonials source='tenants' />
       <FAW />

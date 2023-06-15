@@ -10,6 +10,7 @@ import Future from './components/Future'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import { useLayoutEffect, useState } from 'react'
+import Whatsapp from '@/components/Whatsapp'
 
 const Page = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -47,8 +48,9 @@ const Page = () => {
       <ScrollToTop />
       <Navbar />
       <Hero />
-      <GetPaid />
+      {/* <GetPaid /> */}
       <WePay />
+      <Whatsapp />
       <Future />
       <Testimonials source='landlords'/>
       <FAW />
