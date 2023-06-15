@@ -136,7 +136,7 @@ const Footer = () => {
         </div>
         <hr className="border-gray-200" />
         <div className="py-8">
-          <div className="container flex justify-between items-center">
+          <div className="container flex-row sm:flex justify-between items-center">
             <div className="text-gray-500">
               © 2023{" "}
               <Link href="#" className="hover:underline">

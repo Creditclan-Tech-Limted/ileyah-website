@@ -10,7 +10,7 @@ const WhyUs = () => {
           <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary text-left tracking-wider">
             -- WHY ILEYAH --
           </h5>
-          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
+          <h2 className="text-5xl md:text-6xl font-bold max-w-4xl">
             With Ileyah, life has never been easier.</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4  gap-10 mt-20 text-white">
             <div>

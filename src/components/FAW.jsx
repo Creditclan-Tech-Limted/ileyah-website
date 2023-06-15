@@ -49,7 +49,7 @@ const FAW = () => {
     <>
       <div className="bg-[#F9FAFD] py-20 md:pt-10 md:pb-32">
         <div className="container">
-          <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
+          <h2 className="text-5xl md:text-6xl font-bold max-w-4xl">
             Frequently asked questions
           </h2>
           <p className="mt-6 text-lg">

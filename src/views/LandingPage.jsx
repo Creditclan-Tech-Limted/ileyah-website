@@ -5,7 +5,7 @@ import Future from '@/components/Future'
 import Navbar from '@/components/Navbar'
 import Products from '@/components/Products'
 import WhyUs from '@/components/WhyUs'
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
 import Hero from "@/components/Hero";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopBtn from "@/components/ScrollToTpBtn";
@@ -18,13 +18,10 @@ import classNames from 'classnames'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
-  const [showModal, setShowModal] = useState({
-    status: false,
-    isOpened: false,
-  });
+  const [showModal, setShowModal] = useState(false);
   const [call, setCall] = useState(false)
 
-  const handleScroll = (event) => {
+  const handleScroll = ((event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
     const pageHeight = document.body.offsetHeight;
     const middleOfPage = pageHeight / 2;
@@ -32,13 +29,12 @@ const LandingPage = () => {
     setScrollTop(event.target.scrollingElement.scrollTop);
 
     if (scrollPosition >= middleOfPage) {
-      console.log(showModal);
-      if (!showModal.isOpened && !showModal.status) {
-        console.log('true');
-        setShowModal({ status: true, isOpened: true });
-      }
+      if (call) return
+      setCall(true);
+      setShowModal(true);
     }
-  };
+  });
+
   const handleScrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -47,16 +43,16 @@ const LandingPage = () => {
     });
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [call, setCall]);
   return (
     <>
       {/* <Call /> */}
-      {
+      {/* {
         showModal.status && (
           <div id="flamelab-convo-widget">
             <img src="/assets/images/avatar.png" alt="Avatar Image" />
@@ -69,12 +65,12 @@ const LandingPage = () => {
             </div>
           </div>
         )
-      }
+      } */}
       <div
-        onClick={() => setCall(false)}
-        className={classNames("main-overlay", { visible: call })}
+        onClick={() => setShowModal(false)}
+        className={classNames("main-overlay", { visible: showModal })}
       ></div>
-      {call && (<WeCall handleToggle={() => setCall(false)} />)}
+      {showModal && (<WeCall handleToggle={() => setShowModal(false)} />)}
       <ScrollToTop />
       <Navbar />
       <Hero />

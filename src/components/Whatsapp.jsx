@@ -9,13 +9,13 @@ const Whatsapp = () => {
       <div className=" py-20 md:py-32">
         <div className="container pt-5">
           <div
-            className="flex items-center justify-center space-x-16"
+            className="flex-row md:flex items-center justify-center space-x-16"
           >
             <div className="ps-md-5 mt-5 mt-md-0">
               <img src="/assets/images/artisans/rent-gif.0ce0bd5d.gif" alt="" style={{ width: '300px' }} />
             </div>
             <div className="text-left flex flex-col items-start">
-              <div className='text-3xl md:text-6xl max-w-xl font-bold mb-4'>
+              <div className='text-5xl md:text-6xl max-w-xl font-bold mb-4'>
                 Never ever pay your rent yearly again
               </div>
               <div className="text-lg">

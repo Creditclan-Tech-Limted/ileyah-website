@@ -89,7 +89,7 @@ const Testimonials = ({ source }) => {
     <section id="testimonials" aria-label="What our customers are saying" className="py-20 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="">
-          <h2 className="text-3xl md:text-6xl font-bold max-w-5xl">
+          <h2 className="text-5xl md:text-6xl font-bold max-w-5xl">
             Loved by {source === 'main'? 'Tenants and Landlords.' : source === 'landlords' ? 'Landlords.': source === 'tenants'? 'Tenants.' : ''} 
           </h2>
           <p className="mt-6 text-lg tracking-tight text-slate-700">

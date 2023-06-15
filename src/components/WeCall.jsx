@@ -1,6 +1,7 @@
 import { useCheckRentRequestMutation } from '@/api/rent';
 import FormInput from '@/global/FormInput'
 import useSignupStore from '@/store/signup';
+import { IconPhoneCall } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 
 const WeCall = ({ onNext, handleToggle }) => {
@@ -20,15 +21,16 @@ const WeCall = ({ onNext, handleToggle }) => {
   } = useCheckRentRequestMutation();
 
   const submit = async (values) => {
-    updateData({ user: { ...values } });
-    try {
-      const res = await checkRentRequest(values.phone);
-      if (!res.data.status) return onNext("step-two");
-      updateData({ request: res.data.request });
-      onNext("mini-summary");
-    } catch (e) {
-      console.log({ e });
-    }
+    handleToggle()
+    // updateData({ user: { ...values } });
+    // try {
+    //   const res = await checkRentRequest(values.phone);
+    //   if (!res.data.status) return onNext("step-two");
+    //   updateData({ request: res.data.request });
+    //   onNext("mini-summary");
+    // } catch (e) {
+    //   console.log({ e });
+    // }
   };
   return (
     <>
@@ -50,7 +52,7 @@ const WeCall = ({ onNext, handleToggle }) => {
         </div>
         <div className="pt-70">
           <p className="font-bold text-3xl text-primary leading-[1.1]">
-            Hello 😎<br />
+            Let's call you 🥳  <br />
           </p>
           <p className="text-cc-dark font-17">
             Please provide the following information.
@@ -101,9 +103,12 @@ const WeCall = ({ onNext, handleToggle }) => {
             </button>
           </div>
         </form>
+        <div style={{ right: "-6rem" }} className="illustration-image">
+          <img src="/assets/images/phone-in-hand.png" width="100%" alt="" />
+        </div>
       </div>
     </>
   )
 }
 
-export default WeCall
+export default WeCall;
