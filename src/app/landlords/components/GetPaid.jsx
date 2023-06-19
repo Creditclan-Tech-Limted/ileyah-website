@@ -13,10 +13,10 @@ const GetPaid = () => {
               <h2 class="text-5xl md:text-6xl font-bold max-w-4xl leading-tight md:leading-[1.1]">  Ileyah pays Landlords 100% of your rent.</h2>
               <div className='mt-6 text-lg tracking-tight text-slate-500 space-y-6'>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non mollitia praesentium minima earum consequatur, consectetur quo dolorum cupiditate, officiis labore delectus, iusto soluta magni minus omnis culpa nisi!
+                  Experience the freedom of flexible payments with our Rent Now Pay Later solution. </p> <p> Say goodbye to rental headaches and enjoy the convenience of spreading your rent over manageable installments. Take control of your finances and secure your dream home without breaking the bank.
                 </p>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non mollitia praesentium minima earum consequatur, consectetur quo dolorum cupiditate, officiis labore delectus, iusto soluta magni minus omnis culpa nisi!
+
                 </p>
               </div>
               <Button className='mt-10 inline-flex' size='lg'>

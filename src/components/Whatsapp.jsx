@@ -1,7 +1,7 @@
 import useGlobalStore from "@/store/global";
 import Button from "./global/Button";
 
-const Whatsapp = () => {
+const Whatsapp = ({ source }) => {
   const toggleIsSignupOpen = useGlobalStore(state => state.toggleIsSignupOpen);
 
   return (
@@ -19,7 +19,8 @@ const Whatsapp = () => {
                 Never ever pay your rent yearly again
               </div>
               <div className="text-lg">
-                Connect us with your landlord and we take it from there in monthly installments.
+                {source === 'landlord' ? 'Onboard your property and we pay for your houses in bulk. Simple as ABC.' : '                Connect us with your landlord and we take it from there in monthly installments.'
+                }
               </div>
               <Button className="mt-8" onClick={toggleIsSignupOpen}>
                 Get started

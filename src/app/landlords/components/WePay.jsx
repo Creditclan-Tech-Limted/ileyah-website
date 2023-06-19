@@ -8,16 +8,16 @@ const WePay = () => {
           <div class="container">
             <div class="grid md:grid-cols-2 gap-6 md:gap-4 items-center">
               <div class="relative mt-12 max-w-lg mx-auto">
-                <h2 class="text-5xl md:text-6xl font-bold max-w-4xl leading-tight md:leading-[1.1]">  Even if your house is empty,we pay.</h2>
+                <h2 class="text-5xl md:text-6xl font-bold max-w-4xl leading-tight md:leading-[1.1]">  Even if your house is empty, we pay.</h2>
                 <div className='mt-6 text-lg tracking-tight text-slate-500 space-y-6'>
-                <p>
-                Leave us to find tenants, that is our headache now -
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non mollitia.
-                </p>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus non.
-                </p>
-              </div>
+                  <p>
+                    {/* Leave us to find tenants, that is our headache now - */}
+                    We provide a hassle-free solution that guarantees consistent income for your property, regardless of occupancy. With our innovative platform, you can enjoy peace of mind knowing that your house will generate revenue, even during periods of vacancy.
+                  </p>
+                  <p>
+                    Leave us to find tenants, that is our headache now -
+                  </p>
+                </div>
                 <Button className='mt-10 inline-flex' size='lg'>
                   Get started
                 </Button>

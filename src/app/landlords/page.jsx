@@ -50,7 +50,7 @@ const Page = () => {
       <Hero />
       {/* <GetPaid /> */}
       <WePay />
-      <Whatsapp />
+      <Whatsapp source='landlord' />
       <Future />
       <Testimonials source='landlords'/>
       <FAW />

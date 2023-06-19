@@ -12,7 +12,7 @@ const Future = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 mt-28 w-full">
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-400">
-                <CountUp start={0} duration={5} end={1} />K+
+                <CountUp start={0} duration={5} end={10} />K+
               </h2>
               <p className="text-white">Landlords</p>
             </div>
@@ -24,7 +24,7 @@ const Future = () => {
             </div>
             <div className="text-center mt-10 md:mt-0">
               <h2 className="text-5xl font-[900] text-primary-400">
-                <CountUp start={0} duration={5} end={12} />K+
+                <CountUp start={0} duration={5} end={15} />K+
               </h2>
               <p className="text-white">Tenants</p>
             </div>
