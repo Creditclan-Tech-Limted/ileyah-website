@@ -29,24 +29,24 @@ const Hero = () => {
             </div>
             <div className="col-span-6">
               <div className="relative">
-                <div className="absolute h-[300px] w-[300px] bg-[#F4BD68] rounded-full left-[2rem] md:left-[7rem]">
+                <div className="absolute h-[300px] w-[300px] bg-[#F4BD68] rounded-full left-[0rem] md:left-[7rem]">
                   <div
                     className='relative h-[300px] w-[300px] rounded-full after:content-[""] after:absolute after:h-[30px] after:w-[30px] after:rounded-full after:bg-[#02163B] after:top-[4rem] after:border-2 after:border-white rotate'
                   />
                 </div>
-                <div className="absolute h-[300px] w-[300px] bg-[#EE6C4C] rounded-full right-[3rem] top-[10rem]">
+                <div className="absolute h-[300px] w-[300px] bg-[#EE6C4C] rounded-full right-[-1rem] md:right-[3rem] top-[10rem]">
                   <div
                     className='relative h-[300px] w-[300px] rounded-full after:content-[""] after:absolute after:h-[30px] after:w-[30px] after:rounded-full after:bg-[#F4BD68] after:top-[4rem] after:border-2 after:border-white rotate animation-duration-8'
                   />
                 </div>
-                <div className="absolute h-[150px] w-[150px] bg-[#02163B] rounded-full top-[27rem] right-[18rem]">
+                <div className="absolute h-[150px] w-[150px] bg-[#02163B] rounded-full top-[27rem] right-[13rem] md:right-[18rem]">
                   <div
                     className='relative h-[150px] w-[150px] rounded-full after:content-[""] after:absolute after:h-[25px] after:w-[25px] after:rounded-full after:bg-[#ED6B49] after:top-[6rem] after:border-2 after:border-white rotate animation-delay-3'
                   />
                 </div>
                 <div className="z-20 relative">
                   <div
-                    className="absolute bg-gray-50 w-[300px] rounded-lg top-[3rem] right-[7rem] shadow-md p-4 bounce">
+                    className="absolute bg-gray-50 w-[300px] rounded-lg top-[3rem] right-[1rem] md:right-[7rem] shadow-md p-4 bounce">
                     <div className="relative pb-6">
                       <svg
                         className="w-[10px]"
