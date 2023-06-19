@@ -13,6 +13,8 @@ import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
 import { useCheckRentRequestMutation } from "@/api/rent";
 import { useRouter } from 'next/navigation';
+import Sidebar from './Sidebar';
+import DashNav from './DashNav';
 
 
 
@@ -43,6 +45,7 @@ const Page = () => {
 
   return (
     <>
+    <Sidebar />
       <div className="h-screen flex">
         {isCheckUserLoading && (
           <div className='my-auto mx-auto'>

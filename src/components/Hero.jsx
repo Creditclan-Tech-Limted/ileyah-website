@@ -21,15 +21,15 @@ const Hero = () => {
               <p className="max-w-xl font-light text-xl text-gray-500 mt-4 md:text-lg text-primary">
                 We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
               </p>
-              {/* <Link href='/register'> */}
+              <Link href='/register'>
                 <Button onClick={toggleIsSignupOpen} rightIcon={<IconArrowRight />} size="lg" className="mt-12">
                   Get started
                 </Button>
-              {/* </Link> */}
+              </Link>
             </div>
-            <div className="col-span-6 hidden lg:block">
+            <div className="col-span-6">
               <div className="relative">
-                <div className="absolute h-[300px] w-[300px] bg-[#F4BD68] rounded-full left-[7rem]">
+                <div className="absolute h-[300px] w-[300px] bg-[#F4BD68] rounded-full left-[2rem] md:left-[7rem]">
                   <div
                     className='relative h-[300px] w-[300px] rounded-full after:content-[""] after:absolute after:h-[30px] after:w-[30px] after:rounded-full after:bg-[#02163B] after:top-[4rem] after:border-2 after:border-white rotate'
                   />

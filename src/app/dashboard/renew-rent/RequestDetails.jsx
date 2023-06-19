@@ -6,6 +6,8 @@ import Loader from '@/global/Loader'
 import { formatCurrency } from '@/lib/utils';
 import useSignupStore from '@/store/signup';
 import { IconExclamationCircle } from "@tabler/icons-react";
+import DashNav from '../DashNav';
+import Sidebar from '../Sidebar';
 
 const RequestDetails = () => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -43,6 +45,7 @@ const RequestDetails = () => {
   };
   return (
     <>
+    <Sidebar mn   />
       {
         isRentRequestLoading && (
           <Loader text='Please wait...'/>
