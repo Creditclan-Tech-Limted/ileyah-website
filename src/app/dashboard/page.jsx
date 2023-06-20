@@ -45,7 +45,7 @@ const Page = () => {
 
   return (
     <>
-    <Sidebar />
+    {/* <Sidebar /> */}
       <div className="h-screen flex">
         {isCheckUserLoading && (
           <div className='my-auto mx-auto'>
