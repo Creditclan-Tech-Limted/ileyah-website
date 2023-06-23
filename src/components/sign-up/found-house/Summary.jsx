@@ -5,6 +5,8 @@ import useSignupStore from "@/store/signup";
 function Summary({ onBack, onNext }) {
   const data = useSignupStore((state) => state.data);
 
+  console.log({data});
+
   const { data: plans, isLoading: isPlansLoading } = useGetPlansQuery({
     price: data?.foundHouse?.amount,
   });
@@ -71,29 +73,36 @@ function Summary({ onBack, onNext }) {
             <ul className="list-group">
               <li className="list-group-item flex justify-between items-center">
                 Rent amount:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {formatCurrency(data?.foundHouse.amount ?? 0)}
                 </span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Type of house:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {capitalizeFirstLetter(data?.foundHouse?.house_type)}
                 </span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Address:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {data?.foundHouse?.address}
                 </span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Landlord phone number:
-                <span className="font-weight-600 text-right">
+                <span className="text-right">
                   {data?.foundHouse?.landlord_phone || "Not provided"}
                 </span>
               </li>
-              {plans.slice(0, 1)?.map((plan, i) => (
+              <li className="list-group-item flex justify-between items-center">
+                Source:
+                <span className="text-right">
+                  {data?.foundHouse?.information_source || "N/A"}
+                </span>
+              </li>
+
+              {/* {plans.slice(0, 1)?.map((plan, i) => (
                 <li key={i} className="list-group-item flex justify-between items-center">
                   Repayment schedule:
                   <span className="font-weight-600 text-right">
@@ -105,7 +114,7 @@ function Summary({ onBack, onNext }) {
                     </span>
                   </span>
                 </li>
-              ))}
+              ))} */}
             </ul>
           </div>
           <div className="font-17 mt-4">
