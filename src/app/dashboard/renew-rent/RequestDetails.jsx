@@ -45,7 +45,7 @@ const RequestDetails = () => {
   };
   return (
     <>
-    <Sidebar mn   />
+    {/* <Sidebar mn   /> */}
       {
         isRentRequestLoading && (
           <Loader text='Please wait...'/>

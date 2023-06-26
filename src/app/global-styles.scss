@@ -21,7 +21,7 @@
     font-size: 18px;
     padding-top: 1.5rem !important;
 
-    & ~ .form-input-label {
+    &~.form-input-label {
       top: -25px;
       font-size: 15px;
       // color: #fb8627;
@@ -182,7 +182,7 @@ body {
     background: #b5f2e3;
     border-radius: 7px;
     box-shadow: 0 16px 16px rgba(50, 50, 71, 0.08),
-    0 24px 32px rgba(50, 50, 71, 0.08);
+      0 24px 32px rgba(50, 50, 71, 0.08);
   }
 }
 
@@ -208,9 +208,9 @@ body {
 
   &__grad {
     background: linear-gradient(180deg,
-            #ffffff 0%,
-            rgba(255, 255, 255, 0.660833) 45.83%,
-            #f8f7ff 100%);
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.660833) 45.83%,
+        #f8f7ff 100%);
   }
 }
 
@@ -270,7 +270,7 @@ body {
   padding: 3.5rem 3rem;
   transform: translateY(50%);
   box-shadow: 0 20px 20px rgba(50, 50, 71, 0.1),
-  0 32px 40px rgba(50, 50, 71, 0.1);
+    0 32px 40px rgba(50, 50, 71, 0.1);
   border-radius: 19px;
   margin-bottom: 27%;
 }
@@ -1184,15 +1184,18 @@ a:focus {
   background-size: contain;
   color: #fff;
   transition: all 0.3s;
-  height: 100%;
+  height: calc(100% - 30px);
   width: 350px;
   position: fixed;
   z-index: 999;
-  top: 0;
-  right: 0;
+  top: 15px;
+  bottom: 0px;
+  right: 15px;
   overflow-x: hidden;
   padding: 2rem 2.5rem;
   margin-right: -550px;
+  border-radius: 10px;
+  // margin: 10px;
 }
 
 .sidebar.active {
@@ -1375,7 +1378,7 @@ a:focus {
   }
 }
 
-.contact-slideout.active + #main {
+.contact-slideout.active+#main {
   margin-right: 0;
 }
 
@@ -1537,7 +1540,7 @@ a:focus {
   cursor: pointer;
 }
 
-.checkbox__input:checked + .checkbox__inner {
+.checkbox__input:checked+.checkbox__inner {
   background: #0c3d8c;
   border: none;
 }
@@ -1987,7 +1990,8 @@ a:focus {
 }
 
 .bounce {
-  animation: bounce 2s ease infinite alternate;;
+  animation: bounce 2s ease infinite alternate;
+  ;
 }
 
 @keyframes bounce {

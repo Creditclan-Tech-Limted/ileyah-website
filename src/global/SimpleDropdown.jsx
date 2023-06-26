@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { Menu } from '@headlessui/react'
 import classNames from "classnames";

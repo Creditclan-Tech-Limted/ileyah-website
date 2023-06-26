@@ -5,9 +5,8 @@ const DashboardLayout = ({ children }) => {
   return (
     <>
       <DashNav />
-      <div className="max-w-3xl mx-auto mb-20">
-        <div className="py-16">
-          <img src="/assets/images/ileyah-logo.png" alt="Logo" className="w-36" />
+      <div className="max-w-3xl md:mx-auto mb-20 mx-10">
+        <div className="py-10">
         </div>
         {children}
       </div>
