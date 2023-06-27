@@ -5,6 +5,8 @@ import Script from 'next/script'
 import QueryProvider from '@/components/QueryProvider'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+// import TagManager from 'react-gtm-module';
+// import { useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <Script
+        {/* <Script
           id="fb-pixel"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -29,7 +31,7 @@ export default function RootLayout({ children }) {
           })(window,document,'script','dataLayer','GTM-5DKKR2P');
           `,
           }}
-        />
+        /> */}
         <title>Ileyah</title>
         <meta name="description" content="Ileyah" />
         <link rel="icon" href="./fav.png" />
