@@ -17,7 +17,6 @@ import Sidebar from './Sidebar';
 import DashNav from './DashNav';
 
 
-
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const router = useRouter();
@@ -36,8 +35,6 @@ const Page = () => {
       console.log({ e });
     }
   };
-
-  console.log({ isCheckUserLoading });
 
   useEffect(() => {
     getUser()

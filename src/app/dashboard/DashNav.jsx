@@ -18,4 +18,4 @@ const DashNav = () => {
   )
 }
 
-export default DashNaviWeldone ; 
+export default DashNav; 
