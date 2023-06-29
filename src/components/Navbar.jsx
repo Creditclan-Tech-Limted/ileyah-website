@@ -40,7 +40,7 @@ const Navbar = () => {
   return (
     <>
       <header className={classNames(
-        'fixed top-0 inset-x-0 z-50 h-28 transition-all',
+        'fixed top-0 inset-x-0 z-50 h-28 transition-all bg-white',
         { 'bg-white/90 backdrop-blur-lg text-neutral-900 shadow !h-24': scrolled },
         { 'text-neutral-900 shadow': !scrolled },
       )}>
@@ -107,7 +107,7 @@ const Navbar = () => {
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                   Landlords
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/">
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/find-artisans">
                   Find Artisans
                 </Link>
               </div>
@@ -163,13 +163,13 @@ const Navbar = () => {
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/landlords"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
-                  >
+                >
                   Landlords
                 </Link>
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/find-artisans"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
-                  >
+                >
                   Find Artisans
                 </Link>
                 <div>

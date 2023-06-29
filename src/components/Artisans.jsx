@@ -13,7 +13,7 @@ const Artisans = () => {
     <div className="py-20 md:py-32">
       <div className='container'>
         <h2 className="text-5xl md:text-6xl max-w-4xl font-bold mb-4">
-          Find a House, Live Like a King
+          Find a House, Live Like a King.
         </h2>
         <h5 className="mb-3.5 text-primary text-left tracking-wider text-lg">
           Enjoy our complimentary/discounted maintenance services.
