@@ -42,19 +42,27 @@ const Page = () => {
 
   return (
     <>
-    {/* <Sidebar /> */}
+      {/* <Sidebar /> */}
+      <DashNav />
       <div className="h-screen flex">
         {isCheckUserLoading && (
-          <div className='my-auto mx-auto'>
-            <Loader />
+          <div className='my-auto mx-auto relative'>
+            <div role="status" class="space-y-2.5 animate-pulse max-w-lg relative">
+              <div class="relative flex items-center w-full space-x-2">
+                <div class="h-50 bg-gray-200 rounded-full dark:bg-gray-700 w-32"></div>
+                <div class="h-50 bg-gray-300 rounded-full dark:bg-gray-600 w-24"></div>
+                <div class="h-50 bg-gray-300 rounded-full dark:bg-gray-600 w-full"></div>
+              </div>
+            </div>
+            <Loader text='Loading...' />
           </div>
         )}
         {!isCheckUserLoading && (
-          <div>
+          <div className='p-10'>
             <p className="text-lg">
               Choose an option below to get started
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-8">
               <Link href='/dashboard/renew-rent'>
                 <div
                   className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
@@ -70,7 +78,7 @@ const Page = () => {
                       Renew your house rent on a monthly basis while we handle the full payment
                     </p>
                   </div>
-                  <div>
+                  <div className='my-auto'>
                     <IconChevronRight className="text-black" size="20" />
                   </div>
                 </div>
@@ -89,7 +97,7 @@ const Page = () => {
                     Renew your house rent on a monthly basis while we handle the full payment
                   </p>
                 </div>
-                <div>
+                <div className='my-auto'>
                   <IconChevronRight className="text-black" size="20" />
                 </div>
               </div>
@@ -107,7 +115,7 @@ const Page = () => {
                     Renew your house rent on a monthly basis while we handle the full payment
                   </p>
                 </div>
-                <div>
+                <div className='my-auto'>
                   <IconChevronRight className="text-black" size="20" />
                 </div>
               </div>
@@ -125,7 +133,7 @@ const Page = () => {
                     Renew your house rent on a monthly basis while we handle the full payment
                   </p>
                 </div>
-                <div>
+                <div className='my-auto'>
                   <IconChevronRight className="text-black" size="20" />
                 </div>
               </div>
@@ -143,7 +151,7 @@ const Page = () => {
                     Renew your house rent on a monthly basis while we handle the full payment
                   </p>
                 </div>
-                <div>
+                <div className='my-auto'>
                   <IconChevronRight className="text-black" size="20" />
                 </div>
               </div>
@@ -161,7 +169,7 @@ const Page = () => {
                     Renew your house rent on a monthly basis while we handle the full payment
                   </p>
                 </div>
-                <div>
+                <div className='my-auto'>
                   <IconChevronRight className="text-black" size="20" />
                 </div>
               </div>

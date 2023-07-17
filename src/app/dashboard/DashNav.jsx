@@ -11,7 +11,7 @@ const DashNav = () => {
               <img src="/assets/images/ileyah logo yellow.png" alt="Logo" className="w-36" />
             </div>
           </div>
-          <UserDropdown className='my-auto'/>
+          <UserDropdown className='my-auto mt-8 md:mt-0'/>
         </div>
       </div>
     </>

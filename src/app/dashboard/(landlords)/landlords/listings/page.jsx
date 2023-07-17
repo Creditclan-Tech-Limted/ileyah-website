@@ -1,12 +1,12 @@
 'use client'
 import Button from '@/components/global/Button'
-import { IconBath, IconBed, IconHeart, IconHeartFilled, IconLocation, IconMap, IconMapPinFilled, IconPlus, IconToiletPaper } from '@tabler/icons-react'
+import { IconBed, IconHeartFilled, IconMapPinFilled, IconPlus, IconToiletPaper } from '@tabler/icons-react'
 
 const Page = () => {
   return (
     <>
-      <div className='h-screen'>
-        <div className='flex justify-between mr-16'>
+      <div className='h-full'>
+        <div className='flex justify-between'>
           <div>
             <div className='text-4xl'>
               Welcome, Landlord 👋🏿
@@ -18,7 +18,7 @@ const Page = () => {
           </div>
         </div>
 
-        <div className='mt-10 mr-16'>
+        <div className='mt-10 mb-10'>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
             <div className=' bg-white shadow-lg rounded-xl p-1'>
               <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>

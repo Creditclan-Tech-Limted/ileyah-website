@@ -10,46 +10,46 @@ const Page = () => {
       <div className='text-4xl'>
         Welcome, Landlord 👋🏿
       </div>
-      <div className="grid grid-cols-[2fr_1fr] gap-10 mt-5">
+      <div className="grid grid-cols-[1fr] md:grid-cols-[2fr_1fr] gap-10 mt-10">
         <div>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
-            <div class=" bg-[#F0F3FA] shadow rounded-xl px-8 py-6 hover:bg-gray-50 cursor-pointer h-[100px]">
+            <div class="bg-red-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div class="flex justify-between">
                 <div>
                   <div class="text-3xl font-bold">100</div>
                   <div className='text-sm mt-2'>Total House</div>
                 </div>
                 <div class="my-auto">
-                  <IconChevronRight color='gray' />
+                  <IconChevronRight className='text-white md:text-gray-500' />
                 </div>
               </div>
             </div>
-            <div class=" bg-[#F0F3FA] shadow rounded-xl px-8 py-6 hover:bg-gray-50 cursor-pointer h-[100px]">
+            <div class="bg-blue-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div class="flex justify-between">
                 <div>
                   <div class="text-3xl font-bold">100</div>
                   <div className='text-sm mt-2'>Rented Apartments</div>
                 </div>
                 <div class="my-auto">
-                  <IconChevronRight color='gray' />
+                  <IconChevronRight className='text-white md:text-gray-500' />
                 </div>
               </div>
             </div>
-            <div class=" bg-[#F0F3FA] shadow rounded-xl px-8 py-6 hover:bg-gray-50 cursor-pointer h-[100px]">
+            <div class=" bg-cyan-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div class="flex justify-between">
                 <div>
                   <div class="text-3xl font-bold">100</div>
                   <div className='text-sm mt-2'>Vacant Apartments</div>
                 </div>
                 <div class="my-auto">
-                  <IconChevronRight color='gray' />
+                  <IconChevronRight className='text-white md:text-gray-500' />
                 </div>
               </div>
             </div>
           </div>
-        <Transactions />
+          <Transactions />
         </div>
-        <div className='mr-10'>
+        <div className='hidden md:block'>
           <div className="bg-blue-600 rounded-xl p-4 inline-flex w-full">
             <IconHome2 color='white' />
             <p className='text-white mx-5'>Claim Your <span className='font-bold'>SIGNUP</span> Bonus </p>

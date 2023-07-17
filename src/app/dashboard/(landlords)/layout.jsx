@@ -4,14 +4,14 @@ import Sidebar from '../Sidebar'
 const layout = ({ children }) => {
   return (
     <>
-      <div className="grid grid-cols-[300px_1fr] gap-10 space-x-10  h-screen">
+      <div className="grid grid-cols-[0_1fr] md:grid-cols-[300px_1fr] h-screen">
         <div className=''>
           <Sidebar />
         </div>
-        <div className="md:mx-auto mb-20 mx-10">
-          <div className="py-5">
+        <div className="p-8">
+          <div className='max-w-7xl mx-auto pb-[100px]'>
+            {children}
           </div>
-          {children}
         </div>
       </div>
     </>

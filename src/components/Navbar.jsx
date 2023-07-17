@@ -107,6 +107,9 @@ const Navbar = () => {
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                   Landlords
                 </Link>
+                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/companies">
+                  For Company
+                </Link>
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/find-artisans">
                   Find Artisans
                 </Link>
@@ -165,6 +168,12 @@ const Navbar = () => {
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
                 >
                   Landlords
+                </Link>
+                <Link
+                  onClick={() => setIsMobileNavVisible(false)} href="/companies"
+                  className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
+                >
+                  For Companies
                 </Link>
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/find-artisans"

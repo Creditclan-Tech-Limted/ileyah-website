@@ -5,14 +5,13 @@ import Future from '@/components/Future'
 import Navbar from '@/components/Navbar'
 import Products from '@/components/Products'
 import WhyUs from '@/components/WhyUs'
-import React, { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Hero from "@/components/Hero";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopBtn from "@/components/ScrollToTpBtn";
 import Artisans from '@/components/Artisans'
 import Whatsapp from '@/components/Whatsapp'
 import Testimonials from '@/components/Testimonials'
-import Call from '@/components/Call'
 import WeCall from '@/components/WeCall'
 import classNames from 'classnames'
 
@@ -51,21 +50,6 @@ const LandingPage = () => {
   }, [call, setCall]);
   return (
     <>
-      {/* <Call /> */}
-      {/* {
-        showModal.status && (
-          <div id="flamelab-convo-widget">
-            <img src="/assets/images/avatar.png" alt="Avatar Image" />
-            <div class="flamelab-cw-msg-box">
-              <span>Hey 🥳   Want us to call you?</span>
-              <div class="flamelab-cw-buttons">
-                <div class="flamelab-cw-button flamelab-cw-button-yes" onClick={() => setCall(true)}>Yes!</div>
-                <div class="flamelab-cw-button flamelab-cw-button-no">No thanks</div>
-              </div>
-            </div>
-          </div>
-        )
-      } */}
       <div
         onClick={() => setShowModal(false)}
         className={classNames("main-overlay", { visible: showModal })}
@@ -78,11 +62,9 @@ const LandingPage = () => {
       <Whatsapp />
       <WhyUs />
       <Artisans />
-      {/* <Listings/> */}
       <Future />
       <Testimonials source='main' />
       <FAW />
-      {/* <Achievement /> */}
       <Footer />
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
     </>
