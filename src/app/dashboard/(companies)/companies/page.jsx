@@ -4,45 +4,48 @@ import { IconChevronRight, IconHome, IconHome2, IconStar } from '@tabler/icons-r
 import React from 'react'
 import Transactions from './Transactions';
 import { formatCurrency } from '@/lib/utils';
+import useSignupStore from '@/store/signup';
 
 const Page = () => {
+  const { data, updateData } = useSignupStore((state) => state);
+
   return (
     <>
       <div className='text-4xl font-bold'>
-        Welcome, Ileyah 👋🏿
+        Welcome, {data?.user?.fullname} 👋🏿
       </div>
       <div className="grid grid-cols-[1fr] md:grid-cols-[2fr_1fr] gap-10 mt-10">
         <div>
-          <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
-            <div class="bg-red-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
-              <div class="flex justify-between">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">
+            <div className="bg-red-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
+              <div className="flex justify-between">
                 <div>
-                  <div class="text-3xl font-bold">100</div>
+                  <div className="text-3xl font-bold">100</div>
                   <div className='text-sm mt-2'>Staffs</div>
                 </div>
-                <div class="my-auto">
+                <div className="my-auto">
                   <IconChevronRight className='text-white md:text-gray-500' />
                 </div>
               </div>
             </div>
-            <div class="bg-blue-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
-              <div class="flex justify-between">
+            <div className="bg-blue-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
+              <div className="flex justify-between">
                 <div>
-                  <div class="text-3xl font-bold">100</div>
+                  <div className="text-3xl font-bold">100</div>
                   <div className='text-sm mt-2'>Requests</div>
                 </div>
-                <div class="my-auto">
+                <div className="my-auto">
                   <IconChevronRight className='text-white md:text-gray-500' />
                 </div>
               </div>
             </div>
-            <div class=" bg-cyan-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
-              <div class="flex justify-between">
+            <div className=" bg-cyan-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
+              <div className="flex justify-between">
                 <div>
-                  <div class="text-3xl font-bold"> {formatCurrency(10000)}</div>
+                  <div className="text-3xl font-bold"> {formatCurrency(10000)}</div>
                   <div className='text-sm mt-2'>Loans</div>
                 </div>
-                <div class="my-auto">
+                <div className="my-auto">
                   <IconChevronRight className='text-white md:text-gray-500' />
                 </div>
               </div>
@@ -60,7 +63,7 @@ const Page = () => {
             <div className="flex mt-5 font-bold">
               <Button className='inline-flex' variant='outlined' color='black' size='sm' rightIcon={<IconChevronRight />} >Get Started </Button>
             </div>
-            <img src="/assets/images/house-svg.png" alt="Image" class="absolute bottom-0 right-0 w-32 h-32" />
+            <img src="/assets/images/house-svg.png" alt="Image" className="absolute bottom-0 right-0 w-32 h-32" />
           </div>
         </div>
       </div>

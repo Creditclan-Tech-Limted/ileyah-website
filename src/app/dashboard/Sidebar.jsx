@@ -1,5 +1,6 @@
 'use client'
 import { IconApps, IconGitPullRequest, IconHome, IconListDetails, IconSettings, IconSettings2, IconUser } from '@tabler/icons-react'
+import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -7,15 +8,15 @@ import React from 'react'
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard/landlords',
+    link: '/dashboard/companies',
     icon: <IconApps />,
     name: 'Dashboard'
   },
   {
     id: 2,
-    link: '/dashboard/landlords/listings',
+    link: '/dashboard/companies/staffs',
     icon: <IconListDetails />,
-    name: 'Listings'
+    name: 'Staffs'
   },
   {
     id: 3,
@@ -43,13 +44,13 @@ const Sidebar = () => {
               </div>
               <div className="flex">
                 <ul className="f-m-m pl-5 mt-10">
-                  <Link href='/dashboard/landlords'>
-                    <li className="text-black px-6 py-3 rounded-full bg-gray-200">
+                  <Link href='/dashboard/companies'>
+                    <li className={classNames('px-6 py-3 rounded-full', query === '/dashboard/companies' ? 'bg-gray-200 text-black' : '')} >
                       <div className="flex items-center">
                         <div className="md:w-6 md:h-6 w-5 h-5">
                           <IconApps />
                         </div>
-                        <div className="text-black ml-10 text-lg">Dashboard</div>
+                        <div className="ml-10 text-lg">Dashboard</div>
                       </div>
                     </li>
                   </Link>
@@ -67,14 +68,14 @@ const Sidebar = () => {
                     </li>
                   </Link> */}
                   <Link href='/dashboard/companies/staffs'>
-                    <li className="text-gray-400 px-6 py-4 rounded-full">
+                  <li className={classNames('px-6 py-3 rounded-full', query === '/dashboard/companies/staffs' ? 'bg-gray-200 text-black' : '')} >
                       <div className="flex items-center">
                         <div className="flex items-center">
                           <div className="md:w-6 md:h-6 w-5 h-5">
                             <IconListDetails />
                           </div>
                           {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
-                          <div className="text-gray-400 ml-10 text-lg">My Staffs</div>
+                          <div className="ml-10 text-lg">My Staffs</div>
                         </div>
                       </div>
                     </li>
@@ -137,7 +138,7 @@ const Sidebar = () => {
       <div className='fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden'>
         <div className="grid grid-cols-3">
           {navLinks.map((n, i) => (
-            <Link href={n.link} key={i}>
+            <Link href={n.link} key={i} className={query === n.link ? 'bg-slate-700' : ''}>
               <div className='flex flex-col p-6'>
                 <div className='mx-auto'>{n.icon}</div>
                 <div className='mx-auto'>{n.name}</div>

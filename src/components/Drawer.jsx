@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import classNames from "classnames";
 import Backdrop from "./Backdrop.jsx";
 import { AnimatePresence, motion } from "framer-motion";
-// import IconButton from "./IconButton.jsx";
 import { useMediaQuery } from 'react-responsive'
 import { IconX } from "@tabler/icons-react";
 import Button from './global/Button.jsx';
