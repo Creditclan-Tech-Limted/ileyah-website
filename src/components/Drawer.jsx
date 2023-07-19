@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import classNames from "classnames";
 import Backdrop from "./Backdrop.jsx";
 import { AnimatePresence, motion } from "framer-motion";
-import IconButton from "./IconButton.jsx";
+// import IconButton from "./IconButton.jsx";
 import { useMediaQuery } from 'react-responsive'
 import { IconX } from "@tabler/icons-react";
+import Button from './global/Button.jsx';
 
 const Drawer = (
   { isOpen, title, padding = true, onClose, children }
@@ -61,10 +62,10 @@ const Drawer = (
                   !!title && (
                     <div className="flex items-center justify-between mb-10">
                       <h3 className="text-xl font-semibold">{ title }</h3>
-                      <IconButton
-                        onClick={ onClose } rounded icon={ <IconX size="20"/> }
+                      <Button
+                        onClick={ onClose } rounded-full
                         size="sm" color="red" variant="outlined"
-                      />
+                      > <IconX /> </Button>
                     </div>
                   )
                 }

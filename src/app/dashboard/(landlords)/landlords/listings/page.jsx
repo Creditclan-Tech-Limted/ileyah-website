@@ -8,7 +8,7 @@ const Page = () => {
       <div className='h-full'>
         <div className='flex justify-between'>
           <div>
-            <div className='text-4xl'>
+            <div className='text-4xl font-bold'>
               Welcome, Landlord 👋🏿
             </div>
             <p className='text-gray-500'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, corporis </p>

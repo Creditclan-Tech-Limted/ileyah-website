@@ -3,12 +3,13 @@ import Button from '@/components/global/Button';
 import { IconChevronRight, IconHome, IconHome2, IconStar } from '@tabler/icons-react';
 import React from 'react'
 import Transactions from './Transactions';
+import { formatCurrency } from '@/lib/utils';
 
 const Page = () => {
   return (
     <>
       <div className='text-4xl font-bold'>
-        Welcome, Landlord 👋🏿
+        Welcome, Ileyah 👋🏿
       </div>
       <div className="grid grid-cols-[1fr] md:grid-cols-[2fr_1fr] gap-10 mt-10">
         <div>
@@ -17,7 +18,7 @@ const Page = () => {
               <div class="flex justify-between">
                 <div>
                   <div class="text-3xl font-bold">100</div>
-                  <div className='text-sm mt-2'>Total House</div>
+                  <div className='text-sm mt-2'>Staffs</div>
                 </div>
                 <div class="my-auto">
                   <IconChevronRight className='text-white md:text-gray-500' />
@@ -28,7 +29,7 @@ const Page = () => {
               <div class="flex justify-between">
                 <div>
                   <div class="text-3xl font-bold">100</div>
-                  <div className='text-sm mt-2'>Rented Apartments</div>
+                  <div className='text-sm mt-2'>Requests</div>
                 </div>
                 <div class="my-auto">
                   <IconChevronRight className='text-white md:text-gray-500' />
@@ -38,8 +39,8 @@ const Page = () => {
             <div class=" bg-cyan-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div class="flex justify-between">
                 <div>
-                  <div class="text-3xl font-bold">100</div>
-                  <div className='text-sm mt-2'>Vacant Apartments</div>
+                  <div class="text-3xl font-bold"> {formatCurrency(10000)}</div>
+                  <div className='text-sm mt-2'>Loans</div>
                 </div>
                 <div class="my-auto">
                   <IconChevronRight className='text-white md:text-gray-500' />
@@ -55,7 +56,7 @@ const Page = () => {
             <p className='text-white mx-5'>Claim Your <span className='font-bold'>SIGNUP</span> Bonus </p>
           </div>
           <div className='mt-3 bg-[#F0F3FA] shadow rounded-lg pl-10 pr-10 pt-10 text-xl h-[350px] relative'>
-            <p className='text-5xl font-medium'>No more Tenant Palava</p>
+            <p className='text-5xl font-medium'>Your staff can look like a King </p>
             <div className="flex mt-5 font-bold">
               <Button className='inline-flex' variant='outlined' color='black' size='sm' rightIcon={<IconChevronRight />} >Get Started </Button>
             </div>

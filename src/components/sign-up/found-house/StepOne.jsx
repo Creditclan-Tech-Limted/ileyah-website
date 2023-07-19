@@ -24,9 +24,9 @@ function StepOne({ onNext, onBack }) {
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
             3. We visit your address in 24-48hrs
           </li>
-          <li className='list-style-none pb-2 font-17 text-cc-dark'>
+          {/* <li className='list-style-none pb-2 font-17 text-cc-dark'>
             4. You pay 12% deposit & 1st month
-          </li>
+          </li> */}
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
             5. Bank pays your landlord immediately
           </li>
@@ -37,4 +37,4 @@ function StepOne({ onNext, onBack }) {
   )
 }
 
-export default StepOne
+export default StepOne;

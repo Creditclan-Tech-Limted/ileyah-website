@@ -1,5 +1,5 @@
 'use client'
-import { IconApps, IconHome, IconListDetails, IconUser } from '@tabler/icons-react'
+import { IconApps, IconGitPullRequest, IconHome, IconListDetails, IconSettings, IconSettings2, IconUser } from '@tabler/icons-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -27,6 +27,7 @@ const navLinks = [
 
 const Sidebar = () => {
   const query = usePathname();
+  console.log(query);
 
   return (
     <>
@@ -52,30 +53,55 @@ const Sidebar = () => {
                       </div>
                     </li>
                   </Link>
-                  <Link href='/dashboard/landlords/listings'>
-                    <li className="text-black px-6 py-4 rounded-full">
+                  {/* <Link href='/dashboard/landlords/listings'>
+                    <li className="text-gray-400 px-6 py-4 rounded-full">
                       <div className="flex items-center">
                         <div className="flex items-center">
                           <div className="md:w-6 md:h-6 w-5 h-5">
                             <IconListDetails />
                           </div>
-                          <div className="text-black ml-10 text-lg">My Listings</div>
-                        </div>
-                        <div>
-                          <button id="chevronup2" onclick="listHandler2(true)" className="ml-4 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded">
-                            <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/light_with_dark_page_title_and_white_box-svg3.svg" alt="up" />
-                          </button>
-                          <button id="chevrondown2" onclick="listHandler2(false)" className="hidden ml-4 focus:outline-none focus:ring-2 focus:ring-gray-500 rounded">
-                            <img className="transform rotate-180" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/light_with_dark_page_title_and_white_box-svg3.svg" alt="down" />
-                          </button>
+                          <div className="text-gray-400 ml-10 text-lg">My Listings</div>
+                          <div className="text-gray-400 ml-10 text-lg">My Staffs</div>
                         </div>
                       </div>
-                      <div id="list2" className="hidden">
-                        <ul className="my-3">
-                          <li className="text-sm text-white py-2 px-6">Best Sellers</li>
-                          <li className="text-sm text-gray-800 hover:text-white py-2 px-6">Out of Stock</li>
-                          <li className="text-sm text-gray-800 hover:text-white py-2 px-6">New Products</li>
-                        </ul>
+                    </li>
+                  </Link> */}
+                  <Link href='/dashboard/companies/staffs'>
+                    <li className="text-gray-400 px-6 py-4 rounded-full">
+                      <div className="flex items-center">
+                        <div className="flex items-center">
+                          <div className="md:w-6 md:h-6 w-5 h-5">
+                            <IconListDetails />
+                          </div>
+                          {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
+                          <div className="text-gray-400 ml-10 text-lg">My Staffs</div>
+                        </div>
+                      </div>
+                    </li>
+                  </Link>
+                  <Link href='/dashboard/landlords/listings'>
+                    <li className="text-gray-400 px-6 py-4 rounded-full">
+                      <div className="flex items-center">
+                        <div className="flex items-center">
+                          <div className="md:w-6 md:h-6 w-5 h-5">
+                            <IconGitPullRequest />
+                          </div>
+                          {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
+                          <div className="text-gray-400 ml-10 text-lg">Request</div>
+                        </div>
+                      </div>
+                    </li>
+                  </Link>
+                  <Link href='/dashboard/landlords/listings'>
+                    <li className="text-gray-400 px-6 py-4 rounded-full">
+                      <div className="flex items-center">
+                        <div className="flex items-center">
+                          <div className="md:w-6 md:h-6 w-5 h-5">
+                            <IconSettings2 />
+                          </div>
+                          {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
+                          <div className="text-gray-400 ml-10 text-lg">Settings</div>
+                        </div>
                       </div>
                     </li>
                   </Link>

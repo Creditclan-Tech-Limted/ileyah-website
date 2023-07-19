@@ -24,7 +24,11 @@ const Page = () => {
       if (res.data.status) {
         localStorage.setItem('ileyah_token', res?.data?.token)
         updateData({ user: res?.data?.message, token: res?.data?.token })
-        router.push('/dashboard')
+        if (res?.data?.message?.source === 'company') {
+          return router.push('/dashboard/companies')
+        } else {
+          router.push('/dashboard')
+        }
       }
     } catch (error) {
       console.log(error);

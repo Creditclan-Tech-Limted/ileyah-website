@@ -47,7 +47,7 @@ const Modal = (
     >
       {
         isOpen && (
-          <Backdrop onClick={ onClose } className="text-black mt-10 overflow-y-auto py-10">
+          <Backdrop onClick={ onClose } className="text-black">
             <motion.div
               onClick={ e => e.stopPropagation() }
               variants={ variants }
@@ -55,7 +55,7 @@ const Modal = (
               animate="visible"
               exit="exit"
               className={ classNames(
-                "w-full m-auto relative rounded-2xl bg-white min-h-52",
+                "w-full overflow-hidden mx-auto relative rounded-2xl bg-white min-h-52",
                 { 'p-8': padding, 'max-w-3xl': size === 'md', 'max-w-lg': size === 'sm' }
               ) }
             >

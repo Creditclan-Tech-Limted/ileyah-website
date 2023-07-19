@@ -8,16 +8,16 @@ const Select = forwardRef((
 ) => {
   return (
     <div className="flex flex-col">
-      { !!label && <label htmlFor={ id } className="text-sm mb-1">{ label }</label> }
+      {!!label && <label htmlFor={id} className="text-sm mb-1">{label}</label>}
       <div className="relative">
         <select
-          className={ classNames(
+          className={classNames(
             "px-4 py-3 rounded-md w-full appearance-none pr-12 transition duration-300",
             { 'opacity-60 pointer-events-none': disabled },
             { 'bg-transparent border border-gray-400 focus:border-primary-600': bordered },
             { 'bg-gray-100 focus:ring-2 ring-offset-2 ring-primary-800 ring-opacity-30': !bordered },
-          ) }
-          id={ id } { ...props } ref={ ref }
+          )}
+          id={id} {...props} ref={ref}
         >
           {
             loading
@@ -25,11 +25,14 @@ const Select = forwardRef((
               : (
                 <>
                   {
-                    !!placeholder && <option value="">{ placeholder }</option>
+                    !!placeholder && <option value="">{placeholder}</option>
                   }
+                  <option value="">Please choose a sector</option>
                   {
                     options.map(option => (
-                      <option key={ option.value } value={ option.value }>{ option.text }</option>
+                      <>
+                        <option key={option.value} value={option.value}>{option.text}</option>
+                      </>
                     ))
                   }
                 </>
@@ -39,11 +42,11 @@ const Select = forwardRef((
         <div
           className="absolute top-1/2 -translate-y-1/2 right-2 w-8 h-8 rounded-md flex items-center justify-center pointer-events-none"
         >
-          <FiChevronDown/>
+          <FiChevronDown />
         </div>
       </div>
       {
-        !!error && <div className="text-sm text-red-500 mt-1">{ error }</div>
+        !!error && <div className="text-sm text-red-500 mt-1">{error}</div>
       }
     </div>
   );
