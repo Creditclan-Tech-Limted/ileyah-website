@@ -1,8 +1,25 @@
 'use client'
 import Button from '@/components/global/Button'
-import { IconBed, IconHeartFilled, IconMapPinFilled, IconPlus, IconToiletPaper } from '@tabler/icons-react'
+import { IconBed, IconHeartFilled, IconMapPinFilled, IconPlus, IconBath } from '@tabler/icons-react'
+import AddNewProperty from './Modals/AddNewProperty'
+import useSignupStore from '@/store/signup'
+import { useState } from 'react'
 
 const Page = () => {
+  const { data, updateData } = useSignupStore((state) => state);
+  const [openAddNewStaff, setOpenAddNewStaff] = useState(false)
+  const [staff, setStaff] = useState({
+    open: false,
+    staff: ''
+  });
+
+  const handleClose = async () => {
+    try {
+      setOpenAddNewStaff(false)
+    } catch (error) {
+      console.log({ error });
+    }
+  }
   return (
     <>
       <div className='h-full'>
@@ -14,7 +31,7 @@ const Page = () => {
             <p className='text-gray-500'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed, corporis </p>
           </div>
           <div>
-            <Button size='sm' leftIcon={<IconPlus />} >New Property</Button>
+            <Button onClick={() => setOpenAddNewStaff(true)} size='sm' leftIcon={<IconPlus />}>Add New Property</Button>
           </div>
         </div>
 
@@ -35,7 +52,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -52,7 +69,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -69,7 +86,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -86,7 +103,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -106,7 +123,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -123,7 +140,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -140,7 +157,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -157,7 +174,7 @@ const Page = () => {
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
                 <p className='flex justify-between'>
-                  <div className='inline-flex'><IconToiletPaper /> 2 Bathrooms</div>
+                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
                   <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
                 </p>
               </div>
@@ -165,6 +182,8 @@ const Page = () => {
           </div>
         </div>
       </div>
+
+      <AddNewProperty isOpen={openAddNewStaff} onClose={handleClose} />
     </>
   )
 }

@@ -58,5 +58,51 @@ export const staff_strength = [
   { value: '5-10', text: '5-10' },
   { value: '10-25', text: '10-25' },
   { value: '25-50', text: '25-50' },
-  { value: '50-100', text: '50 - 100'}
+  { value: '50-100', text: '50 - 100' }
 ]
+
+export const lgas = [
+  { text: 'Agege', value: 'Agege' },
+  { text: 'Ajeromi-Ifelodun', value: 'Ajeromi-Ifelodun' },
+  { text: 'Alimosho', value: 'Alimosho' },
+  { text: 'Amuwo-Odofin', value: 'Amuwo-Odofin' },
+  { text: 'Apapa', value: 'Apapa' },
+  { text: 'Badagry', value: 'Badagry' },
+  { text: 'Epe', value: 'Epe' },
+  { text: 'Eti-Osa', value: 'Eti-Osa' },
+  { text: 'Ibeju-Lekki', value: 'Ibeju-Lekki' },
+  { text: 'Ifako-Ijaiye', value: 'Ifako-Ijaiye' },
+  { text: 'Ikeja', value: 'Ikeja' },
+  { text: 'Ikorodu', value: 'Ikorodu' },
+  { text: 'Kosofe', value: 'Kosofe' },
+  { text: 'Lagos Island', value: 'Lagos Island' },
+  { text: 'Lagos Mainland', value: 'Lagos Mainland' },
+  { text: 'Mushin', value: 'Mushin' },
+  { text: 'Ojo', value: 'Ojo' },
+  { text: 'Oshodi-Isolo', value: 'Oshodi-Isolo' },
+  { text: 'Shomolu', value: 'Shomolu' },
+  { text: 'Surulere', value: 'Surulere' }
+];
+
+export const areas = [
+  { text: 'Ajah', value: 'Ajah' },
+  { text: 'Ikorodu Road', value: 'Ikorodu Road' },
+  { text: 'Ikeja', value: 'Ikeja' },
+  { text: 'Victoria Island', value: 'Victoria Island' },
+  { text: 'Lekki', value: 'Lekki' },
+  { text: 'Yaba', value: 'Yaba' },
+  { text: 'Surulere', value: 'Surulere' },
+  { text: 'Ikoyi', value: 'Ikoyi' },
+  { text: 'Oshodi', value: 'Oshodi' },
+  { text: 'Ikorodu', value: 'Ikorodu' },
+  { text: 'Apapa', value: 'Apapa' },
+  { text: 'Mushin', value: 'Mushin' },
+  { text: 'Berger', value: 'Berger' },
+  { text: 'Maryland', value: 'Maryland' },
+  { text: 'Ojota', value: 'Ojota' },
+  { text: 'Alausa', value: 'Alausa' },
+  { text: 'Ogba', value: 'Ogba' },
+  { text: 'Idimu', value: 'Idimu' },
+  { text: 'Egbeda', value: 'Egbeda' },
+  { text: 'Isolo', value: 'Isolo' }
+];

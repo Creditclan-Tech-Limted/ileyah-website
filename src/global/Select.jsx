@@ -27,7 +27,7 @@ const Select = forwardRef((
                   {
                     !!placeholder && <option value="">{placeholder}</option>
                   }
-                  <option value="">Please choose a sector</option>
+                  <option value="">Please select an option</option>
                   {
                     options.map(option => (
                       <>

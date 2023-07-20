@@ -45,7 +45,7 @@ const Sidebar = () => {
               <div className="flex">
                 <ul className="f-m-m pl-5 mt-10">
                   <Link href='/dashboard/companies'>
-                    <li className={classNames('px-6 py-3 rounded-full', query === '/dashboard/companies' ? 'bg-gray-200 text-black' : '')} >
+                    <li className={classNames('px-6 py-3 rounded-full w-full', query === '/dashboard/companies' ? 'bg-gray-200 text-black' : '')} >
                       <div className="flex items-center">
                         <div className="md:w-6 md:h-6 w-5 h-5">
                           <IconApps />
@@ -68,14 +68,14 @@ const Sidebar = () => {
                     </li>
                   </Link> */}
                   <Link href='/dashboard/companies/staffs'>
-                  <li className={classNames('px-6 py-3 rounded-full', query === '/dashboard/companies/staffs' ? 'bg-gray-200 text-black' : '')} >
+                  <li className={classNames('px-6 py-3 rounded-full text-gray-400', query === '/dashboard/companies/staffs' ? 'bg-gray-200 text-black' : '')} >
                       <div className="flex items-center">
                         <div className="flex items-center">
                           <div className="md:w-6 md:h-6 w-5 h-5">
                             <IconListDetails />
                           </div>
                           {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
-                          <div className="ml-10 text-lg">My Staffs</div>
+                          <div className="ml-10 text-lg text-gray-400">My Staffs</div>
                         </div>
                       </div>
                     </li>
@@ -135,7 +135,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className='fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden'>
+      <div className='fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden z-50'>
         <div className="grid grid-cols-3">
           {navLinks.map((n, i) => (
             <Link href={n.link} key={i} className={query === n.link ? 'bg-slate-700' : ''}>
