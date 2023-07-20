@@ -34,6 +34,7 @@ export default function RootLayout({ children }) {
         <Script async src={`https://www.googletagmanager.com/gtag/js?id=G-8XC2913QCD`} />
         <title>Ileyah</title>
         <meta name="description" content="Ileyah" />
+        <meta name="google-site-verification" content="XpmonODFr23ZEwrl50lvuT8h3tBUhheDChhFd23WOg4" />
         <link rel="icon" href="./fav.png" />
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1,2&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
