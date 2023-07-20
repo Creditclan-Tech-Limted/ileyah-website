@@ -9,6 +9,8 @@ import Footer from '@/components/Footer';
 import FAW from '@/components/FAW';
 import Testimonials from '@/components/Testimonials';
 import Future from '@/components/Future';
+import Products from './components/Products';
+import Artisans from '@/components/Artisans';
 
 const Page = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -49,6 +51,8 @@ const Page = () => {
       <Navbar />
       <Hero />
       <Benefit />
+      <Products />
+      <Artisans />
       <Future />
       <Testimonials source='company' />
       <FAW />

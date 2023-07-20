@@ -5,7 +5,7 @@ import { IconChevronDownLeft, IconChevronRight, IconPlus } from '@tabler/icons-r
 import AddNewStaff from './modals/AddNewStaff';
 import { useState } from 'react';
 
-const page = () => {
+const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const [openAddNewStaff, setOpenAddNewStaff] = useState(false)
   const [staff, setStaff] = useState({
@@ -52,7 +52,7 @@ const page = () => {
                 <tbody>
                   {
                     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, i) => (
-                      <tr className="hover:bg-gray-50 cursor-pointer select-none border-b">
+                      <tr className="hover:bg-gray-50 cursor-pointer select-none border-b" key={i}>
                         <td scope="row" className="px-6 py-4 whitespace-nowrap">Oyegbile Praise </td>
                         <td className="px-6 py-4 whitespace-nowrap">+234 903 9719 017</td>
                         <td className="px-6 py-4 whitespace-nowrap">praise@ileyah.com</td>
@@ -135,14 +135,14 @@ const page = () => {
                   </nav>
                 </div>
               </div>
-              </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <AddNewStaff isOpen={openAddNewStaff} onClose={handleClose} />
-      </>
-      )
+      <AddNewStaff isOpen={openAddNewStaff} onClose={handleClose} />
+    </>
+  )
 }
 
-      export default page;
+export default Page;
