@@ -6,7 +6,7 @@ import Button from '@/components/global/Button';
 const Products = () => {
   return (
     <>
-      <div className="mt-[600px] md:mt-0 py-20 md:py-32 w-full bg-gray-900 text-white">
+      <div className="py-20 md:py-32 w-full bg-gray-900 text-white">
         <div className="container">
           <h2 className="text-5xl md:text-6xl font-bold max-w-4xl">
             Flexible Rental Solutions for Your Employees
@@ -19,7 +19,7 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Find me a House
+                Lorem Ipsum Dolor
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Let's connect you with 10,000+ agents and landlords who fastrack your monthly tenancy.
@@ -35,7 +35,7 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Renew your Rent
+                Lorem Ipsum Dolor             
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Rent due in a few days? We help you convert your current yearly tenancy into monthly forever.
@@ -51,7 +51,7 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                I have found a house
+                Lorem Ipsum Dolor              
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Our houses don't suit you? You can find your own rent while we

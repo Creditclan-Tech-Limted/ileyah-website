@@ -7,7 +7,7 @@ import { useState } from 'react'
 
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
-  const [openAddNewStaff, setOpenAddNewStaff] = useState(false)
+  const [openAddNewStaff, setOpenAddNewStaff] = useState(false);
   const [staff, setStaff] = useState({
     open: false,
     staff: ''
@@ -20,6 +20,7 @@ const Page = () => {
       console.log({ error });
     }
   }
+
   return (
     <>
       <div className='h-full'>
@@ -51,9 +52,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -68,9 +69,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -85,9 +86,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -102,9 +103,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -115,16 +116,16 @@ const Page = () => {
                 </div>
               </div>
               <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl flex justify-between'>
+                <p className='font-bold text-xl flex space-x-3'>
                   <div className='text-black'>$300.99</div>
                   <div className='bg-red-100 p-2 rounded-full'><IconHeartFilled size='15' className='text-red-500' /></div>
                 </p>
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -139,9 +140,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -156,9 +157,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>
@@ -173,9 +174,9 @@ const Page = () => {
                 <p className='font-bold'>The Mainland Estate</p>
                 <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
                 <hr />
-                <p className='flex justify-between'>
-                  <div className='inline-flex'><IconBath /> 2 Bathrooms</div>
-                  <div className='inline-flex'><IconBed /> 4 Bedrooms</div>
+                <p className='flex space-x-3'>
+                  <div className='inline-flex'><IconBath /> 2 </div>
+                  <div className='inline-flex'><IconBed /> 4 </div>
                 </p>
               </div>
             </div>

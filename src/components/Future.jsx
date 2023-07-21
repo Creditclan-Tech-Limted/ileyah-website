@@ -1,7 +1,7 @@
 'use client'
 import CountUp from 'react-countup';
 
-const Future = () => {
+const Future = ({ source }) => {
   return (
     <div>
       <div className="max-w-[1400px] mx-auto bg-gray-900 pattern-1 text-white rounded-3xl text-center py-28">
@@ -27,7 +27,7 @@ const Future = () => {
               <h2 className="text-5xl font-[900] text-primary-700">
                 <CountUp start={0} duration={5} end={12} />K+
               </h2>
-              <p className="text-white opacity-75">Tenants</p>
+              <p className="text-white opacity-75"> {source === 'company' ? 'Employees' : 'Tenants'} </p>
             </div>
             <div className="text-center mt-14 md:mt-0">
               <h2 className="text-5xl font-[900] text-primary-700">

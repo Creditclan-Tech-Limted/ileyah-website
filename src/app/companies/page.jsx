@@ -53,7 +53,7 @@ const Page = () => {
       <Benefit />
       <Products />
       <Artisans />
-      <Future />
+      <Future source='company' />
       <Testimonials source='company' />
       <FAW />
       <Footer />

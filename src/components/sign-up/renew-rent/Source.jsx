@@ -1,5 +1,7 @@
+import FormInput from '@/global/FormInput';
 import useSignupStore from '@/store/signup';
 import { useState } from 'react'
+import { useForm } from 'react-hook-form';
 
 const types = [
   { id: 'Radio', name: 'Radio' },
@@ -14,6 +16,22 @@ const types = [
 const Source = ({ onBack, onNext }) => {
   const { data, updateData } = useSignupStore(state => state);
   const [source, setSource] = useState(data?.renew?.information_source);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { ...data?.renew },
+  });
+
+  const setIleyahSource = async (e) => {
+    try {
+      setSource(e?.target?.value)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   const submit = () => {
     updateData({ renew: { ...data?.renew, information_source: source } });
@@ -40,7 +58,7 @@ const Source = ({ onBack, onNext }) => {
                 <label className='flex items-center'>
                   <div className="checkbox">
                     <input
-                      name="house_type" type="radio" className="checkbox__input" checked={source === t.id} value={t.id} onChange={(e) => setSource(e.target.value)}
+                      name="house_type" type="radio" className="checkbox__input" checked={source === t.id} value={t.id} onChange={(e) => setIleyahSource(e)}
                     />
                     <span className="checkbox__inner"></span>
                   </div>
@@ -50,6 +68,16 @@ const Source = ({ onBack, onNext }) => {
             ))
           }
         </div>
+      </div>
+      { }
+      <div className='mt-10'>
+        <FormInput
+          type="number"
+          label="Representative Name"
+          {...register("agent_details", {
+            required: true,
+          })}
+        />
       </div>
       <button onClick={submit} type="submit" className="call-number btn btn-blue font-17" disabled={!source}>Continue</button>
 

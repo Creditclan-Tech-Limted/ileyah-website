@@ -6,8 +6,8 @@ const Benefit = () => {
         <>
             <div className="">
                 <div className="max-w-7xl mx-auto py-28">
-                    <div className='font-bold text-5xl max-w-xl text-center mx-auto'>
-                        Your Employee can leave like a King 👑
+                    <div className='font-bold text-5xl md:text-6xl max-w-3xl text-center mx-auto'>
+                        Your Employee can leave like a King 👑 
                     </div>
                     <div className="grid md:grid-cols-2 gap-10 mt-20 px-4 md:px-0">
                         <div className='bg-slate-200 rounded-xl p-10 space-y-4'>
