@@ -4,13 +4,31 @@ import Input from '@/global/Input';
 import Select from '@/global/Select';
 import TextArea from '@/global/TextArea';
 import { areas, lgas } from '@/lib/utils';
-import { IconChevronLeft, IconPlus, IconX } from '@tabler/icons-react';
-import { useState } from 'react';
+import { IconChevronLeft, IconCircleChevronRight, IconPlus, IconTrash, IconTrashFilled, IconX } from '@tabler/icons-react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddNewProperty = ({ isOpen, onClose }) => {
+  const file = useRef(null);
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
   const [views, setViews] = useState('form');
+  const [selectedFiles, setSelectedFiles] = useState([]);
+
+  const handleChange = async (e) => {
+    try {
+      const files = Array.from(e.target.files);
+      console.log({ files });
+      setSelectedFiles(files);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleImageRemove = (src) => {
+    // Remove image from the array
+    const filteredImages = selectedFiles.filter((image) => image !== src);
+    setSelectedFiles(filteredImages);
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -67,25 +85,43 @@ const AddNewProperty = ({ isOpen, onClose }) => {
 
               <Select options={lgas} label='L.G.A' />
 
-              <Button type='submit' className='mt-10' leftIcon={<IconPlus />} onClick={() => setViews('image')} > Continue </Button>
+              <Button type='submit' className='mt-10' rightIcon={<IconCircleChevronRight />} onClick={() => setViews('image')} > Continue </Button>
             </form>
           </div>
         )}
         {views === 'image' && (
           <div>
-            <div className="flex items-center justify-between mb-10">
+            <div className="flex items-center justify-between mb-10 cursor-pointer">
               <div onClick={() => setViews('form')} className='border border-black rounded-full p-1'> <IconChevronLeft /> </div>
-              {/* <h3 className="text-xl font-semibold">  </h3> */}
               <Button
                 onClick={onClose} rounded-full
                 size="sm" color="red" variant="outlined"
               > <IconX /> </Button>
             </div>
-            <div>
-              <h3 className="text-xl">Please upload property image</h3>
-              <div className='border border-black h-52 w-52 rounded-full mt-5 flex items-center justify-center'>
-                <IconPlus size={50} />
+            {!selectedFiles.length && (
+              <div>
+                <h3 className="text-xl">Please upload property image</h3>
+                <div className='border border-black h-52 w-52 rounded-full mt-5 flex items-center justify-center cursor-pointer' onClick={() => file.current.click()}>
+                  <IconPlus size={50} />
+                  <input
+                    ref={file}
+                    type="file"
+                    multiple
+                    accept='.jpg, .jpeg, .png, .gif'
+                    className="hidden"
+                    onChange={handleChange}
+                  />
+                </div>
               </div>
+            )}
+            <div className="grid grid-cols-2 gap-4">
+              {selectedFiles?.map((file, index) => (
+                <div className='relative inline-block' key={index}>
+                  <img className="h-auto max-w-full rounded-lg" key={index} src={URL.createObjectURL(file)} alt={`Image ${index}`} />
+
+                  <IconTrash color='white' onClick={() => handleImageRemove(file)} className="absolute top-0 right-0 p-1 m-1 bg-red-500 rounded-full" />
+                </div>
+              ))}
             </div>
           </div>
         )}

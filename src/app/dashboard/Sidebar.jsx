@@ -54,7 +54,7 @@ const Sidebar = () => {
                       </div>
                     </li>
                   </Link>
-                  {/* <Link href='/dashboard/landlords/listings'>
+                  <Link href='/dashboard/landlords/listings'>
                     <li className="text-gray-400 px-6 py-4 rounded-full">
                       <div className="flex items-center">
                         <div className="flex items-center">
@@ -62,11 +62,11 @@ const Sidebar = () => {
                             <IconListDetails />
                           </div>
                           <div className="text-gray-400 ml-10 text-lg">My Listings</div>
-                          <div className="text-gray-400 ml-10 text-lg">My Staffs</div>
+                          {/* <div className="text-gray-400 ml-10 text-lg">My Staffs</div> */}
                         </div>
                       </div>
                     </li>
-                  </Link> */}
+                  </Link>
                   <Link href='/dashboard/companies/staffs'>
                   <li className={classNames('px-6 py-3 rounded-full text-gray-400', query === '/dashboard/companies/staffs' ? 'bg-gray-200 text-black' : '')} >
                       <div className="flex items-center">
