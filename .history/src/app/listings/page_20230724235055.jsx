@@ -1,0 +1,88 @@
+import ListingFlex from '@/components/listings/ListingFlex'
+import React from 'react'
+
+const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`
+const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
+
+const Page = () => {
+  return (
+    <div>
+      <div className="max-w-sm rounded overflow-hidden shadow-lg">
+        <img className="w-full" src={image1} alt="Sunset in the mountains" />
+        <div className="px-6 py-4">
+          <p className="text-lg uppercase  text-orange-600 ">For Rent</p>
+          <div className="text-gray-900 font-bold text-2xl mb-2 hover:text-orange-600 cursor-pointer">
+            New Apartment Nice View
+          </div>
+          <div className=" my-4 flex gap-2 items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              className="text-orange-600 w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+              />
+            </svg>
+
+            <p className="text-gray-700 text-base hover:text-orange-600 cursor-pointer">
+              Boltimol, Chicago
+            </p>
+          </div>
+          <div className=" my-4 flex items-center gap-2 text-gray-500 ">
+            <p>
+              <span className="font-bold text-gray-500">2 </span> bed
+            </p>
+            <p>
+              <span className="font-bold text-gray-500">3bathNum} </span> {bath}
+            </p>
+            <p>
+              <span className="font-bold text-gray-500">{lengthNum}</span>{' '}
+              {length}
+            </p>
+          </div>
+        </div>
+        <div className="px-6 pt-4 pb-2">
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #photography
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #travel
+          </span>
+          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #winter
+          </span>
+        </div>
+      </div>
+
+      <ListingFlex
+        houseImg={image1}
+        heading="For Rent"
+        price="$34,900/Month"
+        title="New Apartment Nice View"
+        avatar={imageAvatar}
+        name="Jonathan Reinink"
+        role="Estate Agents"
+        location=" Belmore Garden, Chicago"
+        lengthNum="3450"
+        bedNum="3"
+        bathNum="2"
+        bed="Bed"
+        bath="Bath"
+        length="Square Ft"
+      />
+    </div>
+  )
+}
+
+export default Page
