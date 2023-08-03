@@ -24,7 +24,7 @@ export default function ListingsGrid({
           src={houseImg}
           alt="Sunset in the mountains"
         />
-        <div className="absolute z-[999] top-3 right-3">
+        <div className="absolute z-[9] top-3 right-3">
           <img
             className="w-14 h-14 border-gray-300 border-2 rounded-full mr-4"
             src={avatar}
