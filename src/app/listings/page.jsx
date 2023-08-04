@@ -6,6 +6,8 @@ import SearchBar from '@/components/listings/SearchBar'
 import React, { useState } from 'react'
 import DropdownSearch from '../../components/listings/DropdownSearch'
 import PriceRangeSlider from '@/components/listings/RangeSlider'
+import Explore from '@/components/listings/Explore'
+import Pagination from '@/components/listings/pagination'
 
 const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
@@ -17,13 +19,21 @@ const Page = () => {
     setIsGridView((prev) => !prev)
   }
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const totalPages = 5 // Replace with the total number of pages
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber)
+    // You can perform additional actions here, like fetching data for the selected page.
+  }
+
   return (
     <div>
       <div className='flex container justify-between  '>
         <div className=''>
           <h1 className='text-3xl font-bold mb-2'>Advance Information</h1>
           <p>about 8898 result (in 10 seconds)</p>
-          <div className=' bg-white h- shadow-xl border-2'>
+          <div className=' bg-white shadow-xl border-2'>
             <IndexPage
               title='Property Type'
               label='Check this box'
@@ -171,8 +181,14 @@ const Page = () => {
               />
             </div>
           )}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
+      <Explore />
     </div>
   )
 }

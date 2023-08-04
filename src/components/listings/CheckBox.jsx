@@ -39,7 +39,7 @@ const IndexPage = ({title, label, value}) => {
   }
 
   return (
-    <div className='container mx-auto p-4'>
+    <div className='container mx-auto px-4'>
       
       <Checkbox
         label={label}
