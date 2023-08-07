@@ -1,48 +1,52 @@
-import { useState } from 'react'
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-const DropdownSearch = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [searchTerm, setSearchTerm] = useState('')
-  const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
-
-  const handleInputChange = (e) => {
-    setSearchTerm(e.target.value)
-  }
-
-  const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(searchTerm.toLowerCase())
-  )
-
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev)
-  }
-
-  return (
-    <div className="relative inline-block">
-      <input
-        type="text"
-        className="w-64 px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-500"
-        placeholder="Search..."
-        onChange={handleInputChange}
-        onFocus={toggleDropdown}
-        onBlur={toggleDropdown}
-        value={searchTerm}
-      />
-      {isOpen && (
-        <ul className="absolute z-10 w-64 mt-2 py-2 bg-white border rounded-lg shadow-lg">
-          {filteredOptions.map((option) => (
-            <li
-              key={option}
-              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
-              onClick={() => setSearchTerm(option)}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  )
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default DropdownSearch
+export default function DropdownSearch({options}) {
+  return (
+    <Menu as='div' className='relative inline-block text-left'>
+      <div>
+        <Menu.Button className='inline-flex w-full min-w-[200px] justify-between gap-x-2.5 rounded-md bg-white px-3 py-4 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
+          {options}
+          <ChevronDownIcon
+            className='-mr-1 h-5 w-5 text-gray-400'
+            aria-hidden='true'
+          />
+        </Menu.Button>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter='transition ease-out duration-100'
+        enterFrom='transform opacity-0 scale-95'
+        enterTo='transform opacity-100 scale-100'
+        leave='transition ease-in duration-75'
+        leaveFrom='transform opacity-100 scale-100'
+        leaveTo='transform opacity-0 scale-95'
+      >
+        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+          <div className='py-1'>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href='#'
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Account settings
+                </a>
+              )}
+            </Menu.Item>
+            
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
+  )
+}

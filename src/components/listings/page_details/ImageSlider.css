@@ -1,0 +1,24 @@
+/* ImageSlider.css */
+.swiper-container:hover .swiper-button-prev,
+.swiper-container:hover .swiper-button-next {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.mySwiper {
+   --swiper-navigation-color: orange;
+}
+
+.swiper-button-prev, .swiper-button-next {
+      border: none !important;
+      transition: all .3s ease-in-out;
+
+}
+
+.swiper-button-prev{
+      transform: translateX(-140%);
+}
+.swiper-button-next{
+      transform: translateX(140%);
+
+}
