@@ -2,9 +2,10 @@ import React from 'react'
 
 const LineWithText = ({ text }) => {
   return (
-    <div className='flex items-center space-x-4'>
-      <div className='border border-orange-500 flex-1'></div>
-      <span className='text-gray-500 font-semibold'>{text}</span>
+    <div className='my-6  '>
+      <span className=' border-l-2 px-2 py-2 border-orange-500 text-2xl font-bold'>
+        {text}
+      </span>
     </div>
   )
 }

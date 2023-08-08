@@ -49,7 +49,7 @@ const FeedbackForm = () => {
         </div>
         <button
           type='submit'
-          className='bg-orange-500 text-white py-6 min-w-[300px] px-4 rounded-md hover:bg-orange-300 transition-colors duration-300'
+          className='bg-orange-500 text-white py-6 min-w-[200px] max-w-[300px] px-4 rounded-md hover:bg-orange-300 transition-colors duration-300'
         >
           Send Message
         </button>
