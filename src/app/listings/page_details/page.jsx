@@ -17,6 +17,11 @@ import PropertyDetails from '@/components/listings/page_details/PropertyDetails'
 import Checkbox from '@/components/listings/page_details/CheckBox'
 import ReviewForm from '@/components/listings/page_details/ReviewForm'
 import VideoPlayer from '@/components/listings/page_details/VideoPlayer'
+// import MapComponent from '@/components/listings/page_details/MapComponent'
+import dynamic from 'next/dynamic'
+import FloorPlan from '@/components/listings/page_details/FloorPlan'
+
+const Map = dynamic(() => import('@/components/listings/page_details/MapComponent'), { ssr: false })
 
 const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
@@ -24,7 +29,7 @@ const video1 = `https://www.youtube.com/watch?v=eWUxqVFBq74&t=6s`
 
 const Page = () => {
   return (
-    <div className='containe  mx-auto p-4'>
+    <div className='containe bg-white  mx-auto p-4'>
       <ImageSlider />
       <div className='container flex justify-between gap-6 my-6 py-6'>
         <div className=''>
@@ -95,11 +100,16 @@ const Page = () => {
             </div>
             <div className=''>
               <LineWithText text='Location' />
-              <div className=''></div>
+              <div className='py-4'>
+                {/* <MapComponent /> */}
+                <Map />
+              </div>
             </div>
             <div className=''>
               <LineWithText text='Floor Plans' />
-              <div className=''></div>
+              <div className='py-4'>
+                <FloorPlan />
+              </div>
             </div>
             <div className=''>
               <LineWithText text='Property Video' />
