@@ -2,6 +2,9 @@
 import { useSignUpMutation } from "@/api/rent"
 import Button from "@/components/global/Button"
 import Input from "@/global/Input"
+import Select from "@/global/Select"
+import { areas, lgas } from "@/lib/utils"
+import useSignupStore from "@/store/signup"
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
 import { useState } from "react"
@@ -9,12 +12,15 @@ import { useForm } from "react-hook-form"
 
 const Page = () => {
   const router = useRouter();
-  const { mutateAsync: send, isLoading } = useSignUpMutation()
+  const { mutateAsync: send, isLoading } = useSignUpMutation();
+  const { data, updateData } = useSignupStore((state) => state);
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
   const [error, setError] = useState({
     status: false,
     message: ''
   })
+
+  console.log({ data });
 
   const onSubmit = async (data) => {
     try {
@@ -94,10 +100,18 @@ const Page = () => {
                         }
                       })} error={errors?.password?.message} />
                     </div>
+                    {data?.user_type === 'agent/landlords' && (
+                      <div className="my-4">
+                        <Select options={areas} label='Area' />
+                        <Select options={lgas} label='L.G.A' />
+                      </div>
+                    )}
                     <div className="mb-12 pb-1 pt-1 flex justify-between">
                       <Button type='submit' loading={isLoading}>Sign Up</Button>
                       <div className="mt-2">Forgot password?</div>
                     </div>
+
+
                     <div className="flex items-center pb-6">
                       <p className="mb-0 mr-2">Already have an account?</p>
                       <Link href='/login'>
