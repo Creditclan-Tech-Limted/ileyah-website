@@ -4,9 +4,11 @@ import { useState } from 'react'
 const Checkbox = ({ label, checked, onChange, amount, descp }) => {
   return (
     <div className=' bg-white p-4'>
-      <div className='py-2 mb-4'>
-        <h2 className='text-black font-bold text-xl'>{descp}</h2>
-      </div>
+      {!!descp && (
+        <div className='py-2 mb-4'>
+          <h2 className='text-black font-bold text-xl'>{descp}</h2>
+        </div>
+      )}
       <div className='flex items-center justify-between'>
         <div className='flex items-center space-x-2'>
           <label className='flex items-center space-x-2 cursor-pointer'>
@@ -39,7 +41,6 @@ const IndexPage = ({ title, label, value }) => {
 
   return (
     <div className='container mx-auto px-4'>
-
       <Checkbox
         label={label}
         amount={value}

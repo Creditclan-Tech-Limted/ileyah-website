@@ -136,25 +136,78 @@ const Page = () => {
           <h1 className='text-3xl font-bold'>Advance Information</h1>
           <p className='text-gray-500 space-y-5'>about 8898 result (in 10 seconds)</p>
           <div className='bg-white border-2'>
+            <div className="">
             <IndexPage
               title='Property Type'
-              label='Check this box'
+              label='House'
               value='2000'
             />
-            <IndexPage title='Amenities' label='Check this box' value='2000' />
+            <IndexPage
+              label='single Family'
+              value='2600'
+            />
+            <IndexPage
+              label='Apartment'
+              value='4000'
+            />
+            <IndexPage
+              label='Office Villa'
+              value='2900'
+            />
+            <IndexPage
+              label='Luxary Home'
+              value='1000'
+            />
+            <IndexPage
+              label='Studio'
+              value='500'
+            />
+
+            </div>
+            <div className="">
+            <IndexPage title='Amenities' label='Dishwaser' value='4000' />
+            <IndexPage  label='Floor Covering' value='3000' />
+            <IndexPage  label='Internet' value='500' />
+            <IndexPage  label='Build Wardrobes' value='4000' />
+            <IndexPage  label='Supermarket' value='2000' />
+            <IndexPage  label='Kids Zone' value='4000' />
+
+            </div>
+            <div className="">
             <IndexPage
               title='Price Renge'
-              label='Check this box'
-              value='2000'
+              label='Low Budget'
+              value='2000 - 10000'
             />
+            <IndexPage
+              label='Meduim'
+              value=' 10000 - 30000'
+            />
+            <IndexPage
+              label='High Budget'
+              value='30000 up'
+            />
+
+            </div>
 
             <PriceRangeSlider
               title='Filter By Price'
               minAmount={10}
               maxAmount={300}
             />
-            <IndexPage title='Bed/Bath' label='Check this box' value='2000' />
-            <IndexPage title='Catagory' label='Check this box' value='2000' />
+            <div className="">
+            <IndexPage title='Bed/Bath' label='Single' value='2000' />
+            <IndexPage  label='Double' value='4000' />
+            <IndexPage  label='Up to 3' value='1500' />
+            <IndexPage  label='Up to 5' value='1000' />
+
+            </div>
+            <div className="">
+            <IndexPage title='Catagory' label='Buying' value='5000' />
+            <IndexPage  label='Renting' value='4000' />
+            <IndexPage  label='Selling' value='2000' />
+
+            </div>
           </div>
         </div>
       </div>
