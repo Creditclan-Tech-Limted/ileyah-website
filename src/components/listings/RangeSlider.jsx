@@ -11,7 +11,7 @@ const PriceRangeSlider = ({ title, minAmount, maxAmount }) => {
 
   return (
     <div className='container mx-auto p-4'>
-      <div className='border-b-2 p-4'>
+      <div className='p-4'>
         <h1 className='font-bold text-xl mb-4'>{title}</h1>
         <InputRange
           minValue={minAmount}

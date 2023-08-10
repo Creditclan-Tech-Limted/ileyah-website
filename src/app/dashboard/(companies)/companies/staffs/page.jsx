@@ -43,7 +43,6 @@ const Page = () => {
                     <th scope="col" className="px-6 py-4">Email</th>
                     <th scope="col" className="px-6 py-4">Amount</th>
                     <th scope="col" className="px-6 py-4">Department</th>
-                    {/* <th scope="col" className="px-6 py-4">Role</th> */}
                     <th scope="col" className="px-6 py-4">Status </th>
                     <th scope="col" className="px-6 py-4">Date </th>
                     <th scope="col" className="px-6 py-4">Action </th>
@@ -58,7 +57,6 @@ const Page = () => {
                         <td className="px-6 py-4 whitespace-nowrap">praise@ileyah.com</td>
                         <td className="px-6 py-4 whitespace-nowrap">N1,000,000</td>
                         <td className="px-6 py-4 whitespace-nowrap">Technology</td>
-                        {/* <td className="px-6 py-4 whitespace-nowrap">Software Engineer</td> */}
                         <td className="px-6 py-4">
                           {i !== 1 ? <div className="px-2.5 py-1 leading-none inline-block rounded-full border border-gray-600 text-gray-600 !border-red-500 !text-red-500">Failed Eligibility</div> : <div className="px-2.5 py-1 leading-none inline-block rounded-full border border-gray-600 text-gray-600 !border-green-500 !text-green-500">Approved</div>}
                         </td>
