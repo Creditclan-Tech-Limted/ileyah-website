@@ -29,10 +29,13 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
               </p>
             </div>
             <div className=' my-4 flex items-center gap-2 text-gray-500 '>
+            <div className=' my-4 flex items-center gap-2 text-gray-500 '>
               <p>
+                <span className='font-bold text-gray-500'>{bedNum} </span> {bed}
                 <span className='font-bold text-gray-500'>{bedNum} </span> {bed}
               </p>
               <p>
+                <span className='font-bold text-gray-500'>{bathNum} </span>{' '}
                 <span className='font-bold text-gray-500'>{bathNum} </span>{' '}
                 {bath}
               </p>
