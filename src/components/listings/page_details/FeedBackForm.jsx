@@ -16,7 +16,7 @@ const FeedbackForm = () => {
   }
 
   return (
-    <div className='max-w-md mx-auto bg-white p-6  rounded-md'>
+    <div className='w-full lg:max-w-md mx-auto bg-white p-6  rounded-md'>
       <form onSubmit={handleSubmit}>
         <div className='mb-4'>
           <input

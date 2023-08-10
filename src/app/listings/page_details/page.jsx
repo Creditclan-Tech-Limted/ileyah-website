@@ -29,11 +29,11 @@ const video1 = `https://www.youtube.com/watch?v=eWUxqVFBq74&t=6s`
 
 const Page = () => {
   return (
-    <div className='containe bg-white  mx-auto p-4'>
+    <div className='containe bg-white  mx-auto'>
       <ImageSlider />
-      <div className='container flex justify-between gap-6 my-6 py-6'>
+      <div className='container grid lg:flex justify-between gap-6 my-6 py-6'>
         <div className=''>
-          <div className='continer'>
+          <div className='container'>
             <div className='flex gap-6 font-semibold '>
               <button className='uppercase text-white py-2 px-3 bg-red-500'>
                 featured
@@ -186,18 +186,11 @@ const Page = () => {
             imageUrl={imageAvatar}
             job='Traveller/Photographer'
           />
-          <ReviewCard
-            name='Jane Smith'
-            rating={5}
-            review="The best experience I've had at any establishment. The staff goes above and beyond!"
-            imageUrl={imageAvatar}
-            job='Traveller'
-          />
           <RightHandContainer title={'Search Objects'}>
             <SearchBar placeholder={'Search Key word'} />
           </RightHandContainer>
           <RightHandContainer>
-            <div className='flex items-center justify-center flex-col'>
+            <div className=''>
               <div className=' py-4'>
                 <h1 className='text-xl border-l-2 border-red-500 font-semibold px-4'>
                   Drop Messege For Book
