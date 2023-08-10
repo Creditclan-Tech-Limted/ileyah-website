@@ -85,6 +85,7 @@ const Page = () => {
             <div className='grid grid-cols-2 gap-4'>
               {[0, 1, 2, 3].map((m, i) => (
                 <ListingsGrid
+                key={i}
                   houseImg={image1}
                   heading='For Rent'
                   price='$34,900/Month'
@@ -106,6 +107,7 @@ const Page = () => {
             <div className=''>
               {[0, 1, 2, 3].map((m, i) => (
                 <ListingFlex
+                key={i}
                   houseImg={image1}
                   heading='For Rent'
                   price='$34,900/Month'
