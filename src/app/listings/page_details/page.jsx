@@ -22,9 +22,6 @@ import dynamic from 'next/dynamic'
 import FloorPlan from '@/components/listings/page_details/FloorPlan'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import InspectionScheduler from '@/components/listings/inspection/Inspection'
-import Button from '@/components/global/Button'
-import useGlobalStore from '@/store/global'
 
 const Map = dynamic(() => import('@/components/listings/page_details/MapComponent'), { ssr: false })
 
@@ -40,6 +37,8 @@ const Page = () => {
   }
 
   return (
+    <div className="">
+        <Navbar />
     <div className='containe bg-white  mx-auto'>
       <ImageSlider />
       <div className='container grid lg:flex justify-between gap-6 my-6 py-6'>
@@ -218,6 +217,8 @@ const Page = () => {
           <RightHandContainer title='Popular Tags'></RightHandContainer>
         </div>
       </div>
+    </div>
+      <Footer />
     </div>
   )
 }

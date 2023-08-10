@@ -13,7 +13,6 @@ import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import { IconLayoutGrid, IconLayoutList } from '@tabler/icons-react'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
 
 const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
@@ -229,9 +228,7 @@ const Page = () => {
         </div>
       </div>
       <Explore />
-      <div className='pt-24'>
-        <Footer />
-      </div>
+      <Footer />
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
     </div>
   )
