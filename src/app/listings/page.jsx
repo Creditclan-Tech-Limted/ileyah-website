@@ -99,49 +99,45 @@ const Page = () => {
           {isGridView ? (
             <div className='grid grid-cols-2 gap-4'>
               {[0, 1, 2, 3].map((m, i) => (
-                <Link key={i}  href='/listings/page_details'>
-                  <ListingsGrid
-                    key={i}
-                    houseImg={image1}
-                    heading='For Rent'
-                    price='$34,900/Month'
-                    title='New Apartment Nice View'
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location=' Belmore Garden, Chicago'
-                    lengthNum='3450'
-                    bedNum='3'
-                    bathNum='2'
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                  />
-                </Link>
+                <ListingsGrid
+                key={i}
+                  houseImg={image1}
+                  heading='For Rent'
+                  price='$34,900/Month'
+                  title='New Apartment Nice View'
+                  avatar={imageAvatar}
+                  name='Jonathan Reinink'
+                  role='Estate Agents'
+                  location=' Belmore Garden, Chicago'
+                  lengthNum='3450'
+                  bedNum='3'
+                  bathNum='2'
+                  bed='Bed'
+                  bath='Bath'
+                  length='Square Ft'
+                />
               ))}
             </div>
           ) : (
             <div className=''>
               {[0, 1, 2, 3].map((m, i) => (
-                <Link key={i}  href='/listings/page_details'>
-                  <ListingFlex
-                    key={i}
-                    houseImg={image1}
-                    heading='For Rent'
-                    price='$34,900/Month'
-                    title='New Apartment Nice View'
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location=' Belmore Garden, Chicago'
-                    lengthNum='3450'
-                    bedNum='3'
-                    bathNum='2'
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                  />
-                </Link>
+                <ListingFlex
+                key={i}
+                  houseImg={image1}
+                  heading='For Rent'
+                  price='$34,900/Month'
+                  title='New Apartment Nice View'
+                  avatar={imageAvatar}
+                  name='Jonathan Reinink'
+                  role='Estate Agents'
+                  location=' Belmore Garden, Chicago'
+                  lengthNum='3450'
+                  bedNum='3'
+                  bathNum='2'
+                  bed='Bed'
+                  bath='Bath'
+                  length='Square Ft'
+                />
               ))}
             </div>
           )}
