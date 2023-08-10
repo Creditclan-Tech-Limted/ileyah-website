@@ -20,6 +20,8 @@ import VideoPlayer from '@/components/listings/page_details/VideoPlayer'
 // import MapComponent from '@/components/listings/page_details/MapComponent'
 import dynamic from 'next/dynamic'
 import FloorPlan from '@/components/listings/page_details/FloorPlan'
+import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 
 const Map = dynamic(() => import('@/components/listings/page_details/MapComponent'), { ssr: false })
 
@@ -29,6 +31,8 @@ const video1 = `https://www.youtube.com/watch?v=eWUxqVFBq74&t=6s`
 
 const Page = () => {
   return (
+    <div className="">
+        <Navbar />
     <div className='containe bg-white  mx-auto'>
       <ImageSlider />
       <div className='container grid lg:flex justify-between gap-6 my-6 py-6'>
@@ -207,6 +211,8 @@ const Page = () => {
           <RightHandContainer title='Popular Tags'></RightHandContainer>
         </div>
       </div>
+    </div>
+      <Footer />
     </div>
   )
 }
