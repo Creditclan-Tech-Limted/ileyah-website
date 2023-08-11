@@ -13,7 +13,7 @@ const Future = ({ source }) => {
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
                 &#8358;
-                <CountUp start={0} duration={5} end={1} />B+
+                <CountUp start={0} duration={5} end={100} />M+
               </h2>
               <p className="text-white opacity-75">in Funding </p>
             </div>
@@ -33,7 +33,7 @@ const Future = ({ source }) => {
               <h2 className="text-5xl font-[900] text-primary-700">
                 <CountUp start={0} duration={5} end={5} />K+
               </h2>
-              <p className="text-white opacity-75">Comapnies</p>
+              <p className="text-white opacity-75">Companies</p>
             </div>
           </div>
         </div>

@@ -61,7 +61,7 @@ const Testimonials = ({ source }) => {
     },
     {
       id: 5,
-      value: "Thanks to Ileyah, I was able to rent items I wouldn't have been able to afford otherwise. It's a fantastic service.",
+      value: "Thanks to Ileyah, I was able to rent my apartment, I wouldn't have been able to afford otherwise. It's a fantastic service.",
       ceo: 'Football Analyst',
       name: "Anita reone"
     },
@@ -90,7 +90,7 @@ const Testimonials = ({ source }) => {
       <div className="mx-auto max-w-7xl">
         <div className="">
           <h2 className="text-5xl md:text-6xl font-bold max-w-5xl">
-            Loved by {source === 'main'? 'Tenants and Landlords.' : source === 'landlords' ? 'Tenants.': source === 'tenants'? 'Tenants.' : source ==='company' ? 'Companies' : ''} 
+            Loved by {source === 'main' ? 'Tenants and Landlords.' : source === 'landlords' ? 'Tenants.' : source === 'tenants' ? 'Tenants.' : source === 'company' ? 'Companies' : ''}
           </h2>
           <p className="mt-6 text-lg tracking-tight text-slate-700">
             At Ileyah, we've developed a revolutionary Fintech solution that allows you to split your payments and make
@@ -123,7 +123,7 @@ const Testimonials = ({ source }) => {
                       <div>
                         <div className="font-display text-base text-slate-900">{item.name}</div>
                         {source !== 'landlords' && (
-                        <div className="mt-1 text-sm text-slate-500">{item.ceo}</div>
+                          <div className="mt-1 text-sm text-slate-500">{item.ceo}</div>
                         )}
                       </div>
                       <div className="overflow-hidden rounded-full bg-slate-50">
