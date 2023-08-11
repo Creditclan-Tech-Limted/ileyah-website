@@ -23,7 +23,7 @@ const WhyUs = () => {
                 Monthly Rent.
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                Ileyah offers monthly, quarterly or annual payment terms to fit your unique schedule.
+                Ileyah offers monthly, quarterly or annual payment terms to fit your unique budget.
               </p>
             </div>
             <div>
@@ -62,7 +62,7 @@ const WhyUs = () => {
                 Find Artisans(Beta)
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                Let's connect you with 1000+, painters, plumbers etc.
+                Let's connect you with our well curated list of 1000+ artisans such as painters, plumbers, electricians, etc.
               </p>
             </div>
           </div>
