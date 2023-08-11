@@ -55,7 +55,7 @@ const Products = () => {
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Our houses don't suit you? You can find your own dream house while we
-                partner with your landlord to pay monthly forever.
+                partner with your landlord to pay monthly in monthly instalments.
               </p>
               <Button className="mt-8" variant="outlined" color='white'>
                 Get started
