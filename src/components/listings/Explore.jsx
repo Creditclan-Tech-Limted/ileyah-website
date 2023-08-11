@@ -2,8 +2,8 @@ import React from 'react'
 
 const Explore = () => {
   return (
-    <div className='container bg-primary-500 py-8 px-2 flex justify-between items-center flex-wrap z-40 my-4'>
-      <div className='max-w-7xl mx-10'>
+    <div className='container bg-primary-500 py-8 px-2 flex justify-between items-center flex-wrap left-1/2 transform -translate-x-1/2  z40 mt-4 absolute'>
+      <div className='max-w-7xl  mx-10'>
         <div className='sm:flex sm:flex-col sm:align-center'>
           <h2 className='text-3xl font-extrabold  sm:text-4xl'>
             Looking for a dream home?
