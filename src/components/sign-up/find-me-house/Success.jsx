@@ -1,4 +1,7 @@
 import React from 'react'
+import ImageLoadingAnimation from './LoadingAnimation'
+
+const imgSrc = `https://images.unsplash.com/photo-1530412254853-ee708387a8ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80`
 
 function Success() {
   return (
@@ -14,6 +17,7 @@ function Success() {
             <span className="mr-3"><i className="fa-solid fa-phone"></i></span>
             Call +234 905 555 2255
           </a>
+          <ImageLoadingAnimation src={imgSrc} />
         </div>
       </div>
     </>
