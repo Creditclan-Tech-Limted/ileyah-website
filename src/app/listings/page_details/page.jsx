@@ -22,6 +22,9 @@ import dynamic from 'next/dynamic'
 import FloorPlan from '@/components/listings/page_details/FloorPlan'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import InspectionScheduler from '@/components/listings/inspection/Inspection'
+import Button from '@/components/global/Button'
+import useGlobalStore from '@/store/global'
 
 const Map = dynamic(() => import('@/components/listings/page_details/MapComponent'), { ssr: false })
 
@@ -41,6 +44,11 @@ const Page = () => {
       <Navbar />
       <div className='containe bg-white  mx-auto mt-[120px]'>
         <ImageSlider />
+        <div className=''>
+          <Button onClick={toggleIsSignupOpen}>
+            Sechedual Inspection Date
+          </Button>
+        </div>
         <div className='container grid lg:flex justify-between gap-6 my-6 py-6'>
           <div className=''>
             <div className='container'>
@@ -219,6 +227,8 @@ const Page = () => {
         </div>
       </div>
       <Footer />
+
+      <InspectionScheduler isOpen={isOpen} isClosed={isClosed} />
     </div>
   )
 }
