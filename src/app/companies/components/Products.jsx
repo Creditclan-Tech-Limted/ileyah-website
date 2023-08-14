@@ -38,7 +38,7 @@ const Products = () => {
                 Lorem Ipsum Dolor             
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Rent due in a few days? We help you convert your current yearly tenancy into monthly forever.
+                Rent due in a few days? We help you convert your current yearly tenancy into monthly tenancy forever.
               </p>
               <Button className="mt-8" variant="outlined" color='white'>
                 Get started
@@ -54,8 +54,8 @@ const Products = () => {
                 Lorem Ipsum Dolor              
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Our houses don't suit you? You can find your own rent while we
-                partner with your landlord to pay monthly forever.
+                Our houses don't suit you? You can find your own dream house while we
+                partner with your landlord to pay monthly in monthly instalments.
               </p>
               <Button className="mt-8" variant="outlined" color='white'>
                 Get started
