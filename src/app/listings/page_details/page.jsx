@@ -22,6 +22,9 @@ import dynamic from 'next/dynamic'
 import FloorPlan from '@/components/listings/page_details/FloorPlan'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import InspectionScheduler from '@/components/listings/inspection/Inspection'
+import Button from '@/components/global/Button'
+import useGlobalStore from '@/store/global'
 
 const Map = dynamic(() => import('@/components/listings/page_details/MapComponent'), { ssr: false })
 
@@ -29,12 +32,19 @@ const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixl
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 const video1 = `https://www.youtube.com/watch?v=eWUxqVFBq74&t=6s`
 
-const Page = () => {
+const Page = ({ isOpen , isClosed}) => {
+  const toggleIsSignupOpen = useGlobalStore((state) => state.toggleIsSignupOpen)
+
   return (
     <div className=''>
       <Navbar />
       <div className='containe bg-white  mx-auto mt-[120px]'>
         <ImageSlider />
+        <div className=''>
+          <Button onClick={toggleIsSignupOpen}>
+            Sechedual Inspection Date
+          </Button>
+        </div>
         <div className='container grid lg:flex justify-between gap-6 my-6 py-6'>
           <div className=''>
             <div className='container'>
@@ -213,6 +223,8 @@ const Page = () => {
         </div>
       </div>
       <Footer />
+
+      <InspectionScheduler isOpen={isOpen} isClosed={isClosed} />
     </div>
   )
 }
