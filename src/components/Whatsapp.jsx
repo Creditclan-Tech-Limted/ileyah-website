@@ -19,7 +19,7 @@ const Whatsapp = ({ source }) => {
                 Never ever pay your rent yearly again
               </div>
               <div className="text-lg">
-                {source === 'landlord' ? 'Onboard your property and we pay for your houses in bulk. Simple as ABC.' : '                Connect us with your landlord and we take it from there in monthly installments.'
+                {source === 'landlord' ? 'Onboard your property and we pay for your houses in bulk. Simple as ABC.' : '                Connect us with your landlord and we take it from there.'
                 }
               </div>
               <Button className="mt-8" onClick={toggleIsSignupOpen}>

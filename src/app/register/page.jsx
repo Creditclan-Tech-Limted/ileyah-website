@@ -20,8 +20,6 @@ const Page = () => {
     message: ''
   })
 
-  console.log({ data });
-
   const onSubmit = async (data) => {
     try {
       const res = await send(data);
