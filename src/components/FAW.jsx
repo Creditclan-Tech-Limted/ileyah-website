@@ -6,7 +6,7 @@ const faqs = [
     q: 'What does Ileyah do?',
     a: (
       <>
-        We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
+        We helps millions of tenants pay their rent in easy, monthly instalment across Africa.
       </>
     )
   },
@@ -14,7 +14,7 @@ const faqs = [
     q: 'How long does it take to close a deal?',
     a: (
       <>
-        Depending on landlord availability. Usually between 2 and 7days.
+        Depending on landlord availability and eligibility. Usually between 2 and 7days.
       </>
     )
   },
@@ -30,7 +30,7 @@ const faqs = [
     q: 'What makes up the upfront payment?',
     a: (
       <>
-        3 months payment & 5% management fee.
+        30% of the rent value.
       </>
     )
   },

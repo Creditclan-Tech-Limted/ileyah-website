@@ -16,7 +16,7 @@ const Artisans = () => {
           Find a House, Live Like a King.
         </h2>
         <h5 className="mb-3.5 text-primary text-left tracking-wider text-lg">
-          Enjoy our complimentary/discounted maintenance services.
+          Enjoy our complimentary/discounted house maintenance services.
         </h5>
       </div>
       <div className="mt-20">
