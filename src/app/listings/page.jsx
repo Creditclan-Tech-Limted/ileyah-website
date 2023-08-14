@@ -109,7 +109,6 @@ const Page = () => {
                   bed='Bed'
                   bath='Bath'
                   length='Square Ft'
-                  key={i}
                 />
               ))}
             </div>
@@ -132,7 +131,6 @@ const Page = () => {
                   bed='Bed'
                   bath='Bath'
                   length='Square Ft'
-                  key={i}
                 />
               ))}
             </div>
