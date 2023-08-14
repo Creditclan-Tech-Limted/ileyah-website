@@ -13,24 +13,32 @@ const types = [
 ]
 
 function StepThree({ onBack, onNext }) {
-  const { data } = useSignupStore(state => ({ data: state.data }));
+  // const { data, updateData } = useSignupStore((state) => ({ data: state.data }))
+  const { data, updateData } = useSignupStore((state) => state)
   const [houseType, setHouseType] = useState('');
+  const [loading, setLoading] = useState(false)
   const { mutateAsync: send, isLoading } = useFindMeHouseMutation();
 
   const handleSubmit = async () => {
     if (!houseType) return;
     try {
-      const area = typeof data.find_me_house.area === 'object' ? data.find_me_house.area.map(t => t.value).join(', ') : data.find_me_house.area;
-      const payload = {
-        ...data.user,
-        ...data.find_me_house,
-        area,
-        house_type: houseType,
-        process_type: "findMeAHouse",
-        source: 1
-      };
-      await send(payload);
-      onNext();
+      // const area = typeof data.find_me_house.area === 'object' ? data.find_me_house.area.map(t => t.value).join(', ') : data.find_me_house.area;
+      // const payload =
+      //  {...data.user,
+      //   ...data.find_me_house,
+      //   area,
+      //   house_type: houseType,
+      //   process_type: "findMeAHouse",
+      //   source: 1
+      // };
+     
+
+      // await send(payload);
+      setLoading(true)
+      setTimeout(() => {
+
+        onNext();
+      }, 5000)
     } catch (e) {
       console.log({ e });
     }
@@ -70,10 +78,11 @@ function StepThree({ onBack, onNext }) {
       </div>
       <button onClick={handleSubmit} type="submit" className="items-center btn btn-blue-full call-number flex justify-content-sm-around font-17" disabled={isLoading || !houseType}>
                 {
-                    isLoading ? 'Submitting request' : 'Submit request'
+                    // isLoading ? 'Submitting request' : 'Submit request'
+                    loading ? 'Submitting request' : 'Submit request'
                 }
 
-                {isLoading ? (
+                {loading ? (
                     <span
                         className="ml-3 spin"><i className="fa-solid fa-spinner"></i></span>
                 ): <></>
