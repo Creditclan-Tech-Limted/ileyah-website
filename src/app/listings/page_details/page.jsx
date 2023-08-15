@@ -49,7 +49,7 @@ const Page = () => {
           <div className=''>
             <div className='container'>
               <div className='flex gap-6 font-semibold '>
-                <button className='uppercase text-white py-2 px-3 bg-red-500'>
+                <button className='uppercase text-white py-2 px-3 bg-blue-700'>
                   featured
                 </button>
                 <button className='uppercase text-white px-3 py-2 bg-yellow-500'>
@@ -57,19 +57,19 @@ const Page = () => {
                   for rent
                 </button>
                 <div className='flex items-center'>
-                  <IconCalendar className='text-red-500' />
+                  <IconCalendar className='text-blue-700' />
                   <span className='text-gray-600 ml-2'>2021-01-01</span>
                 </div>
                 <div className='flex items-center'>
-                  <IconCommand className='text-red-500' />
+                  <IconCommand className='text-blue-700' />
                   <span className='text-gray-600 ml-2'>35 Comment</span>
                 </div>
               </div>
               <h1 className='font-bold text-4xl py-3 my-3'>
                 Diamond Manor Apartment
               </h1>
-              <div className='flex gap-2'>
-                <IconMap className='text-red-500' />
+              <div className='flex gap-2 py-2'>
+                <IconMap className='text-blue-700' />
                 <p className='text-gray-500 font-medium text-md'>
                   {' '}
                   Belmont Gardens, Chicago
@@ -77,7 +77,7 @@ const Page = () => {
               </div>
               <div className=''>
                 <LineWithText text='Description' />
-                <p>
+                <p className='py-4'>
                   Massa tempor nec feugiat nisl pretium. Egestas fringilla
                   phasellus faucibus scelerisque eleifend donec Porta nibh
                   venenatis cras sed felis eget velit aliquet. Neque volutpat ac
@@ -86,11 +86,11 @@ const Page = () => {
               </div>
               <div className=''>
                 <LineWithText text='Property Detail' />
-                <div className='my-8 pb-4'>
+                <div className='py-4'>
                   <PropertyDetails />
                 </div>
               </div>
-              <div className=''>
+              <div className='py-4'>
                 <Button onClick={toggleModal}>Sechedual Inspection Date</Button>
               </div>
               <div className=''>
@@ -195,7 +195,7 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 gap-4 '>
+          <div className='space-y-2 '>
             <ReviewCard
               name='John Doe'
               rating={4.5}
@@ -209,7 +209,7 @@ const Page = () => {
             <RightHandContainer>
               <div className=''>
                 <div className=' py-4'>
-                  <h1 className='text-xl border-l-2 border-red-500 font-semibold px-4'>
+                  <h1 className='text-xl border-l-2 border-blue-700 font-semibold px-4'>
                     Drop Messege For Book
                   </h1>
                 </div>

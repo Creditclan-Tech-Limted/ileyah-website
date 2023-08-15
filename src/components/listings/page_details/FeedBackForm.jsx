@@ -23,7 +23,7 @@ const FeedbackForm = () => {
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className='w-full px-3 py-4 border rounded-md focus:outline-none focus:border-orange-500'
+            className='w-full px-3 py-4 border rounded-md focus:outline-none focus:border-blue-700'
             placeholder='Your Name*'
             required
           />
@@ -33,7 +33,7 @@ const FeedbackForm = () => {
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className='w-full px-3 py-4 border rounded-md focus:outline-none focus:border-orange-500'
+            className='w-full px-3 py-4 border rounded-md focus:outline-none focus:border-blue-700'
             placeholder='Your Email*'
             required
           />
@@ -42,14 +42,14 @@ const FeedbackForm = () => {
           <textarea
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
-            className='w-full px-3 py-4 border rounded-md resize-none focus:outline-none focus:border-orange-500'
+            className='w-full px-3 py-4 border rounded-md resize-none focus:outline-none focus:border-blue-700'
             placeholder='Your Message...'
             required
           />
         </div>
         <button
           type='submit'
-          className='bg-orange-500 text-white py-6 min-w-[200px] max-w-[300px] px-4 rounded-md hover:bg-orange-300 transition-colors duration-300'
+          className='bg-blue-700 text-white py-6 min-w-[200px] max-w-[300px] px-4 rounded-md hover:bg-blue-300 transition-colors duration-300'
         >
           Send Message
         </button>
