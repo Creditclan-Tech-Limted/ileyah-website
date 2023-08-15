@@ -3,7 +3,7 @@ import React from 'react'
 export default function PropertyDetails() {
   return (
     <div>
-      <div className='grid bg-gray-300 grid-cols-3 divide-x-2'>
+      <div className='grid bg-white shadow-lg grid-cols-3 divide-x-2'>
         <div>
           <div className='flex justify-around py-4'>
             <p className='text-md font-semibold text-gray-500'>Property ID:</p>

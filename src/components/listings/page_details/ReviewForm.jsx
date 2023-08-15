@@ -32,7 +32,7 @@ const ReviewForm = () => {
           <textarea
             value={review}
             onChange={(e) => setReview(e.target.value)}
-            className='w-full px-3 py-2 border rounded-md resize-none focus:outline-none focus:ring focus:border-orange-500'
+            className='w-full px-3 py-2 border rounded-md resize-none focus:outline-none focus:ring focus:border-blue-700'
             placeholder='Your Comment...'
           />
         </div>
@@ -41,7 +41,7 @@ const ReviewForm = () => {
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className='w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-orange-500'
+            className='w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-700'
             placeholder='Your Name'
           />
         </div>
@@ -49,7 +49,7 @@ const ReviewForm = () => {
           <select
             value={rating}
             onChange={(e) => setRating(Number(e.target.value))}
-            className='w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-orange-500'
+            className='w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-700'
             required
           >
             <option value='5'>5 Stars</option>
@@ -64,7 +64,7 @@ const ReviewForm = () => {
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className='w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-orange-500'
+            className='w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:border-blue-700'
             placeholder='Your Email'
           />
         </div>
@@ -74,8 +74,8 @@ const ReviewForm = () => {
               type='checkbox'
               checked={isChecked}
               onChange={handleCheckboxChange}
-              className='form-checkbox w-4 h-4 border border-gray-400 rounded accent-orange-600 checked:border-transparent 
-          checked:border-orange-600 checked:bg-orange-600 focus:outline-none'
+              className='form-checkbox w-4 h-4 border border-gray-400 rounded accent-blue-700 checked:border-transparent 
+          checked:border-blue-700 checked:bg-blue-700 focus:outline-none'
             />
             <span className='text-gray-700 font-semibold'>
              Save my name, email, and website in this browser for the next time
@@ -85,7 +85,7 @@ const ReviewForm = () => {
         </div>
         <button
           type='submit'
-          className='bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors duration-300'
+          className='bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-300 transition-colors duration-300'
         >
           Submit Review
         </button>

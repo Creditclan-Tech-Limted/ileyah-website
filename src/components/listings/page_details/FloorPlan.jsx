@@ -54,11 +54,11 @@ export default function FloorPlan() {
               key={category}
               className={({ selected }) =>
                 classNames(
-                  'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-orange-600',
+                  'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700',
                   'ring-white ring-opacity-60 ring-offset-2 ring-orange-blue-400 focus:outline-none focus:ring-2',
                   selected
-                    ? 'bg-orange-600 shadow text-white'
-                    : 'text-blue-100 hover:bg-white/[0.12] hover:text-red-600'
+                    ? 'bg-blue-700 shadow text-white'
+                    : 'text-blue-100 hover:bg-white/[0.12] hover:text-yellow-600'
                 )
               }
             >
@@ -75,29 +75,28 @@ export default function FloorPlan() {
                 'ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2'
               )}
             >
-              
-                {posts.map((post) => (
-                  <div
-                    key={post.id}
-                    className='relative grid grid-cols-2  gap-4 items-center justify-between rounded-md p-3 hover:bg-gray-100'
-                  >
-                    <div className=''>
-                      <img
-                        alt={post.title}
-                        src={post.imageUrl}
-                        className='w-full h-'
-                      />
-                    </div>
-                    <div className=''>
-                      <h1 className='mt-1 text-3xl font-bold text-gray-900 truncate'>
-                        {post.title}
-                      </h1>
-                      <p className='mt-1 text-md text-gray-500  max-w-xl'>
-                        {post.des}
-                      </p>
-                    </div>
+              {posts.map((post) => (
+                <div
+                  key={post.id}
+                  className='relative grid grid-cols-2  gap-4 items-center justify-between rounded-md p-3 hover:bg-gray-100'
+                >
+                  <div className=''>
+                    <img
+                      alt={post.title}
+                      src={post.imageUrl}
+                      className='w-full h-'
+                    />
                   </div>
-                ))}
+                  <div className=''>
+                    <h1 className='mt-1 text-3xl font-bold text-gray-900 truncate'>
+                      {post.title}
+                    </h1>
+                    <p className='mt-1 text-md text-gray-500  max-w-xl'>
+                      {post.des}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </Tab.Panel>
           ))}
         </Tab.Panels>

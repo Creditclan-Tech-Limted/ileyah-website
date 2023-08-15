@@ -7,10 +7,10 @@ const FactAndFeature = ({ name,  size, }) => {
      
 
   return (
-    <div className='bg-white rounded-lg  p-6 my-3'>
-      <div className='flex items-start gap-4'>
+    <div className='bg-white rounded-lg  p-3 my-1'>
+      <div className='flex items-start gap-2'>
         <div className='flex-shrink-0'>
-          <IconBed  className='text-red-500 w-10 h-10 bg-red-300 rounded-md p-1' />
+          <IconBed className='text-blue-700 w-10 h-10 bg-blue-300 rounded-md p-1' />
         </div>
         <div className=' '>
           <div className='flex justify-between items-center'>
@@ -20,9 +20,7 @@ const FactAndFeature = ({ name,  size, }) => {
                 <div className='flex'>{size}</div>
               </div>
             </div>
-            
           </div>
-
         </div>
       </div>
     </div>
