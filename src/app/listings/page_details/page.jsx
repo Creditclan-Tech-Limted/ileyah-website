@@ -44,11 +44,7 @@ const Page = () => {
       <Navbar />
       <div className='containe bg-white  mx-auto mt-[120px]'>
         <ImageSlider />
-        <div className=''>
-          <Button onClick={toggleIsSignupOpen}>
-            Sechedual Inspection Date
-          </Button>
-        </div>
+
         <div className='container grid lg:flex justify-between gap-6 my-6 py-6'>
           <div className=''>
             <div className='container'>
@@ -93,6 +89,9 @@ const Page = () => {
                 <div className='my-8 pb-4'>
                   <PropertyDetails />
                 </div>
+              </div>
+              <div className=''>
+                <Button onClick={toggleModal}>Sechedual Inspection Date</Button>
               </div>
               <div className=''>
                 <LineWithText text='Facts and Features' />
@@ -228,7 +227,7 @@ const Page = () => {
       </div>
       <Footer />
 
-      <InspectionScheduler isOpen={isOpen} isClosed={isClosed} />
+      <InspectionScheduler isOpen={isModalOpen} onClose={toggleModal} />
     </div>
   )
 }
