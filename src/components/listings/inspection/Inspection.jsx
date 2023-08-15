@@ -11,7 +11,11 @@ import TimePicker from 'react-time-picker'
 import 'react-time-picker/dist/TimePicker.css'
 import { useState } from 'react'
 
-const InspectionScheduler = ({ isOpen, isClosed }) => {
+const InspectionScheduler = ({ isOpen, onClose }) => {
+    const [loading, setLoading] = useState(false)
+    const [selectedDate, setSelectedDate] = useState(null)
+    const [selectedTime, setSelectedTime] = useState('10:00')
+
   const {
     register,
     handleSubmit,
@@ -22,14 +26,14 @@ const InspectionScheduler = ({ isOpen, isClosed }) => {
   const onSubmit = async (data) => {
     try {
       console.log({ data })
+      setLoading(true)
     } catch (error) {
       console.log({ error })
     }
   }
 
-  const [selectedDate, setSelectedDate] = useState(null)
-  const [selectedTime, setSelectedTime] = useState('10:00')
-
+  
+  
   const handleDateChange = (date) => {
     setSelectedDate(date)
   }
@@ -40,7 +44,7 @@ const InspectionScheduler = ({ isOpen, isClosed }) => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={isClosed} title='Scheduler Inspection'>
+      <Drawer isOpen={isOpen} onClose={onClose} title='Scheduler Inspection'>
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
           <div className='flex flex-col items-center p-4 mt-[120px] '>
             <h1 className='text-xl font-semibold mb-4'>
@@ -70,9 +74,16 @@ const InspectionScheduler = ({ isOpen, isClosed }) => {
             </div>
             <button
               type='submit'
-              className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none'
+              className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none flex justify-content-sm-around'
             >
-              Schedule Inspection
+              {loading ? ' Scheduling' : ' Schedule Inspection'}
+              {loading ? (
+                <span className='ml-3 spin'>
+                  <i className='fa-solid fa-spinner'></i>
+                </span>
+              ) : (
+                <></>
+              )}
             </button>
           </div>
         </form>
