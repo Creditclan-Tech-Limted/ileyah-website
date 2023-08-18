@@ -15,11 +15,20 @@ import { IconLayoutGrid, IconLayoutList } from '@tabler/icons-react'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
-const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`
+const image1 = `https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/1.jpg`
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
 const Page = () => {
   const [isGridView, setIsGridView] = useState(true)
+
+  const img = [
+    `https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/1.jpg`,
+    'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/2.jpg',
+    'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/3.jpg',
+    'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/4.jpg',
+    'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/5.jpg',
+    'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/6.jpg'
+  ]
 
   const [scrollTop, setScrollTop] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -75,9 +84,9 @@ const Page = () => {
     <div>
       <ScrollToTop />
       <Navbar />
-      <div className='flex container justify-between mt-[150px]'>
+      <div className='grid grid-cols-[1fr_370px] gap-10 container  mt-[150px]'>
         <div className=''>
-          <div className='my-2 flex items-center'>
+          <div className='flex items-center mb-4'>
             <div className='flex gap-4'>
               <IconLayoutGrid
                 size={35}
@@ -97,12 +106,12 @@ const Page = () => {
           </div>
           <SearchBar placeholder='Search your key word...' />
           {isGridView ? (
-            <div className='grid grid-cols-2 gap-4'>
-              {[0, 1, 2, 3].map((m, i) => (
-                <Link key={i}  href='/listings/page_details'>
+            <div className='grid grid-cols-2 gap-10'>
+              {[0, 1, 2, 3, 4, 5].map((m, i) => (
+                <Link key={i} href='/listings/page_details'>
                   <ListingsGrid
                     key={i}
-                    houseImg={image1}
+                    houseImg={img[i]}
                     heading='For Rent'
                     price='$34,900/Month'
                     title='New Apartment Nice View'
@@ -123,11 +132,11 @@ const Page = () => {
             </div>
           ) : (
             <div className=''>
-              {[0, 1, 2, 3].map((m, i) => (
-                <Link key={i}  href='/listings/page_details'>
+              {[0, 1, 2, 3, 4, 5].map((m, i) => (
+                <Link key={i} href='/listings/page_details'>
                   <ListingFlex
                     key={i}
-                    houseImg={image1}
+                    houseImg={img[i]}
                     heading='For Rent'
                     price='$34,900/Month'
                     title='New Apartment Nice View'
@@ -143,7 +152,7 @@ const Page = () => {
                     length='Square Ft'
                   />
                 </Link>
-                
+
               ))}
             </div>
           )}
@@ -155,7 +164,7 @@ const Page = () => {
         </div>
         <div className=''>
           <h1 className='text-3xl font-bold'>Advance Information</h1>
-          <p className='text-gray-500 space-y-5'>
+          <p className='text-gray-500 my-5'>
             about 8898 result (in 10 seconds)
           </p>
           <div className='bg-white border-2'>

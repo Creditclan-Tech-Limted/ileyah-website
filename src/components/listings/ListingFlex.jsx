@@ -1,12 +1,9 @@
 import { IconMapPinFilled } from '@tabler/icons-react'
-import React from 'react'
-
 
 const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum, bedNum, bathNum, bed, bath, length, role, avatar}) => {
   return (
     <div>
-      <div className='max-w-sm w-full bg-white lg:w-[56rem]  lg:max-w-5xl lg:flex lg:gap-4 p-8 shadow-lg m-auto mt-4'>
-      <div className='max-w-sm w-full bg-white lg:max-w-4xl lg:flex lg:gap-4 p-8 shadow-lg m-auto mt-4'>
+      <div className='max-w-sm w-full bg-white lg:max-w-4xl lg:flex lg:gap-4 p-8 shadow m-auto mt-4'>
         <div
           className='h-48 lg:h-64 lg:w-80 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden hover:scale-110 transition duration-500 cursor-pointer'
           style={{ backgroundImage: `url(${houseImg}) ` }}
@@ -22,13 +19,11 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
                 <p className='text-lg  text-blue-700 '>{price} </p>
               </div>
             </div>
-
             <div className='text-gray-900 font-bold text-2xl mb-2 hover:text-blue-700 cursor-pointer'>
               {title}
             </div>
             <div className=' my-4 flex gap-2 items-center'>
-              <IconMapPinFilled />
-
+            <IconMapPinFilled size="20"/>
               <p className='text-gray-700 text-base hover:text-blue-700 cursor-pointer'>
                 {location}
               </p>
@@ -69,7 +64,6 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
         </div>
       </div>
       </div>
-    </div>
   )
 }
 

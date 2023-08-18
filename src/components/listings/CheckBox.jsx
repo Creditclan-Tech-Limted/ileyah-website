@@ -16,14 +16,14 @@ const Checkbox = ({ label, checked, onChange, amount, descp }) => {
               type='checkbox'
               checked={checked}
               onChange={onChange}
-              className={`w-5 h-5 border border-gray-400 rounded accent-orange-600 checked:border-transparent 
-          checked:border-orange-600 checked:bg-orange-600 focus:outline-none`}
+              className={`w-5 h-5 border border-gray-400 rounded accent-blue-600 checked:border-transparent 
+          checked:border-blue-600 checked:bg-blue-600 focus:outline-none`}
             />
-            <span className='font-bold text-gray-500'>{label}</span>
+            <span className=' text-gray-500'>{label}</span>
           </label>
         </div>
         <div className=''>
-          <p className='font-bold text-gray-500'>{amount}</p>
+          <p className=' text-gray-500'>{amount}</p>
         </div>
       </div>
     </div>
