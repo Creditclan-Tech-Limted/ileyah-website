@@ -39,9 +39,9 @@ const Page = () => {
 
   return (
     <>
-      <div className='g-6 flex flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
+      <div className='g-6 flex h-screen flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200'>
         <div className='w-full'>
-          <div className='block bg-gray-50   text-black'>
+          <div className='block bg-gray-50 shadow-lg hscreen text-black'>
             <div className='g-0 lg:flex lg:flex-wrap'>
               <div className='px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto'>
                 <div className='md:p-12 max-w-xl mx-auto'>
@@ -159,7 +159,7 @@ const Page = () => {
                 </div>
               </div>
               <div
-                className='flex items-center hidden sm:block rounded-b-lg lg:w-4/12 bg-cover bg-[70%]'
+                className='flex items-center hidden sm:block rounded-b-lg lg:w-4/12 hscreen bg-cover bg-[70%]'
                 style={{
                   backgroundImage:
                     'url(https://images.squarespace-cdn.com/content/v1/57ab5a96893fc0d6eb45155c/1612477205306-97NIAJL9357XNLBQMSPN/SHIBA_blackfamily.png)',
