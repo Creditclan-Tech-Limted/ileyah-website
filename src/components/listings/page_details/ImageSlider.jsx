@@ -9,9 +9,17 @@ import SwiperCore, { Navigation, Pagination } from 'swiper'
 SwiperCore.use([Navigation, Pagination])
 
 
-const image1 = `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`
+const img = [
+  `https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/1.jpg`,
+  'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/2.jpg',
+  'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/3.jpg',
+  'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/4.jpg',
+  'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/5.jpg',
+  'https://tunatheme.com/tf/react/quarter-preview/quarter/assets/img/product-3/6.jpg',
+  `https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80`,
+]
 
-
+console.log(img, 'img')
 const ImageSlider = () => {
   return (
     <div className='relative'>
@@ -38,45 +46,14 @@ const ImageSlider = () => {
         className='mySwiper swiper-container'
         observeParents={true}
       >
-        <SwiperSlide>
-          <ImageCard imageUrl={image1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImageCard
-            imageUrl={image1}
-            
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImageCard
-            imageUrl={image1}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImageCard
-            imageUrl={image1}
-            
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImageCard
-            imageUrl={image1}
-            
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImageCard
-            imageUrl={image1}
-            
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ImageCard
-            imageUrl={image1}
-            
-          />
-        </SwiperSlide>
-        {/* Add more slides as needed */}
+        {img.map((imageUrl, index) => (
+          <SwiperSlide
+            key={index}
+          >
+            <ImageCard imageUrl={imageUrl} />
+          </SwiperSlide>
+        ))}
+     
       </Swiper>
     </div>
   )
