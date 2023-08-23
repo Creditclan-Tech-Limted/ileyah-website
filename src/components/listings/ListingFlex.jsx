@@ -1,6 +1,6 @@
 import { IconMapPinFilled } from '@tabler/icons-react'
 
-const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum, bedNum, bathNum, bed, bath, length, role, avatar}) => {
+const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNum, bedNum, bathNum, bed, bath, length, role, avatar }) => {
   return (
     <div>
       <div className='max-w-sm w-full relative bg-white lg:max-w-4xl lg:flex lg:gap-4 p-8 shadow m-auto mt-4'>
@@ -17,7 +17,7 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
                   {heading}
                 </p>
               </div>
-              
+
             </div>
             <div className='text-gray-900 font-bold text-2xl my-4 hover:text-blue-700 cursor-pointer'>
               {title}
@@ -29,13 +29,10 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
               </p>
             </div>
             <div className=' my-4 flex items-center gap-2 text-gray-500 '>
-            <div className=' my-4 flex items-center gap-2 text-gray-500 '>
               <p>
-                <span className='font-bold text-gray-500'>{bedNum} </span> {bed}
                 <span className='font-bold text-gray-500'>{bedNum} </span> {bed}
               </p>
               <p>
-                <span className='font-bold text-gray-500'>{bathNum} </span>{' '}
                 <span className='font-bold text-gray-500'>{bathNum} </span>{' '}
                 {bath}
               </p>
@@ -46,7 +43,7 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
             </div>
           </div>
           <div className='lg:flex items-center gap-4 justify-between'>
-            
+
             <div className=' flex items-center justify-between '>
               <div className='text-sm'>
                 <p className='text-black font-bold my-2 leading-none'>{name}</p>
@@ -63,4 +60,4 @@ const ListingFlex = ({heading, price, title, houseImg, location, name,lengthNum,
   )
 }
 
-export default ListingFlex
+export default ListingFlex;
