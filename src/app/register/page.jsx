@@ -1,10 +1,12 @@
 'use client'
+import { AUTH_ENDPOINT } from "@/api/landlord"
 import { useSignUpMutation } from "@/api/rent"
 import Button from "@/components/global/Button"
 import Input from "@/global/Input"
 import Select from "@/global/Select"
 import { areas, lgas } from "@/lib/utils"
 import useSignupStore from "@/store/signup"
+import axios from "axios"
 import Link from "next/link"
 import { useRouter } from 'next/navigation';
 import { useState } from "react"
@@ -19,11 +21,17 @@ const Page = () => {
     status: false,
     message: ''
   })
+  const [loading, setLoading] = useState(false)
 
   const onSubmit = async (data) => {
     try {
-      const res = await send(data);
-      if (res.data.status) {
+      // const res = await send(data);
+      console.log(data, 'data')
+      // const res = await axios.post(AUTH_ENDPOINT.REGISTER(data));
+      const res = await axios.post(AUTH_ENDPOINT.REGISTER(),{ ...data});
+      setLoading(true)
+      console.log(res, 'response');
+      if (res.data.status === true) {
         router.push('/login')
       }
     } catch (error) {
@@ -82,7 +90,8 @@ const Page = () => {
                       <Input
                         label='Full Name'
                         bordered
-                        {...register('fullname', {
+                        name='name'
+                        {...register('name', {
                           required: {
                             value: true,
                             message: 'Full Name is required',
@@ -94,6 +103,7 @@ const Page = () => {
                     <div className='relative mb-4' data-te-input-wrapper-init>
                       <Input
                         label='Email'
+                        name='email'
                         bordered
                         {...register('email', {
                           required: {
@@ -108,6 +118,7 @@ const Page = () => {
                       <Input
                         label='Phone Number'
                         bordered
+                        name='phone'
                         {...register('phone', {
                           required: {
                             value: true,
@@ -121,6 +132,7 @@ const Page = () => {
                       <Input
                         label='Passsword'
                         type='password'
+                        name='passsword'
                         bordered
                         {...register('password', {
                           required: {
@@ -134,17 +146,39 @@ const Page = () => {
                     {data?.user_type === 'agent/landlords' && (
                       <div className='relative my-4'>
                         <div className='mb-4'>
-                          <Select options={areas} label='Area' />
+                          <Select
+                            options={areas}
+                            label='Area'
+                            name='Area'
+                            {...register('area', {
+                              required: {
+                                value: true,
+                                message: 'Area is required',
+                              },
+                            })}
+                            error={errors?.area?.message}
+                          />
                         </div>
                         <div className='mb-4'>
-                          <Select options={lgas} label='L.G.A' />
+                          <Select
+                            options={lgas}
+                            label='L.G.A'
+                            name='LGA'
+                            {...register('lga', {
+                              required: {
+                                value: true,
+                                message: 'LGA is required',
+                              },
+                            })}
+                            error={errors?.lga?.message}
+                          />
                         </div>
                       </div>
                     )}
 
                     <div className='mb-12 pb-1 pt-1 flex justify-between'>
                       <Button type='submit' loading={isLoading}>
-                        Sign Up
+                        {loading ? 'Loading...' : 'Sign Up'}{' '}
                       </Button>
                       <div className='mt-2'>Forgot password?</div>
                     </div>
