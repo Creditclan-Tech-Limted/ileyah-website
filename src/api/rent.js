@@ -2,24 +2,24 @@ import { parseJsonString } from "@/lib/utils.js";
 import http from "@/lib/http";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-// https://wema.creditclan.com/api/v3/rent/register
+// https://ileyah.creditclan.com/api/v3/rent/register
 export const useSignUpMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
-    return http.post('https://wema.creditclan.com/api/v3/rent/register', payload);
+    return http.post('https://ileyah.creditclan.com/api/v3/rent/register', payload);
   });
   return { mutate, mutateAsync, isLoading };
 }
 
 export const useLoginMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
-    return http.post('https://wema.creditclan.com/api/v3/rent/login', payload);
+    return http.post('https://ileyah.creditclan.com/api/v3/rent/login', payload);
   });
   return { mutate, mutateAsync, isLoading };
 }
 
 export const useCreateRentRequestMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
-    return http.post('https://wema.creditclan.com/rent/create/request', payload);
+    return http.post('https://ileyah.creditclan.com/rent/create/request', payload);
   });
   return { mutate, mutateAsync, isLoading };
 };
@@ -40,7 +40,7 @@ export const useFindMeHouseMutation = () => {
 
 export const useCheckRentRequestQuery = (phone, onSettled) => {
   const { data, isLoading, refetch, isFetching } = useQuery(['request', phone], () => {
-    return http.post('https://wema.creditclan.com/rent/pending/request', { phone });
+    return http.post('https://ileyah.creditclan.com/rent/pending/request', { phone });
   }, { enabled: !!phone, onSettled, cacheTime: 0 });
   const request = data?.data?.request ?? null;
   if (request) request.payload = parseJsonString(request.payload) || request.payload;
@@ -49,14 +49,14 @@ export const useCheckRentRequestQuery = (phone, onSettled) => {
 
 export const useCheckRentRequestMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(phone => {
-    return http.post('https://wema.creditclan.com/rent/pending/request', { phone });
+    return http.post('https://ileyah.creditclan.com/rent/pending/request', { phone });
   });
   return { mutate, mutateAsync, isLoading };
 };
 
 export const useCancelRequestMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(phone => {
-    return http.post('https://wema.creditclan.com/rent/cancel/request', { phone });
+    return http.post('https://ileyah.creditclan.com/rent/cancel/request', { phone });
   });
   return { mutate, mutateAsync, isLoading };
 };

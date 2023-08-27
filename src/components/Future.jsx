@@ -19,19 +19,19 @@ const Future = ({ source }) => {
             </div>
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={0} duration={5} end={10} />k+
+                <CountUp start={0} duration={5} end={1} />k+
               </h2>
               <p className="text-white opacity-75">Properties</p>
             </div>
             <div className="text-center mt-14 md:mt-0">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={0} duration={5} end={12} />K+
+                <CountUp start={0} duration={5} end={5} />K+
               </h2>
               <p className="text-white opacity-75"> {source === 'company' ? 'Employees' : 'Tenants'} </p>
             </div>
             <div className="text-center mt-14 md:mt-0">
               <h2 className="text-5xl font-[900] text-primary-700">
-                <CountUp start={0} duration={5} end={5} />K+
+                <CountUp start={0} duration={5} end={500} />+
               </h2>
               <p className="text-white opacity-75">Companies</p>
             </div>

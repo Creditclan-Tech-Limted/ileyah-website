@@ -12,14 +12,15 @@ const Whatsapp = ({ source }) => {
             className="flex-row md:flex items-center justify-center space-x-16"
           >
             <div className="ps-md-5 mt-5 mt-md-0">
-              <img src="/assets/images/artisans/rent-gif.0ce0bd5d.gif" alt="" style={{ width: '300px' }} />
+              {/* <img src="/assets/images/artisans/rent-gif.0ce0bd5d.gif" alt="" style={{ width: '300px' }} /> */}
+              <img src="/assets/images/ileyahbot_iphone13blue_portrait.png" alt="" style={{ width: '400px' }} />
             </div>
             <div className="text-left flex flex-col items-start">
               <div className='text-5xl md:text-6xl max-w-xl font-bold mb-4'>
                 Never ever pay your rent yearly again
               </div>
               <div className="text-lg">
-                {source === 'landlord' ? 'Onboard your property and we pay for your houses in bulk. Simple as ABC.' : '                Connect us with your landlord and we take it from there.'
+                {source === 'landlord' ? 'Onboard your property and we pay for your houses in bulk. Simple as ABC.' : ' Connect us with your landlord and we take it from there.'
                 }
               </div>
               <Button className="mt-8" onClick={toggleIsSignupOpen}>
