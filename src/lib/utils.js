@@ -106,3 +106,4 @@ export const areas = [
   { text: 'Egbeda', value: 'Egbeda' },
   { text: 'Isolo', value: 'Isolo' }
 ];
+
