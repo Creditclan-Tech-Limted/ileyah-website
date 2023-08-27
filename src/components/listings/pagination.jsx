@@ -5,10 +5,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       pageNumbers.push(
         <li
           key={i}
-          className={`mx-1 px-3 py-1 rounded-lg cursor-pointer font-semibold text-lg ${currentPage === i
+          className={`mx-1 px-3 py-1 rounded-lg cursor-pointer font-semibold text-lg ${
+            currentPage === i
               ? 'bg-blue-700 text-white'
               : 'bg-white text-gray-600 hover:bg-blue-200'
-            }`}
+          }`}
           onClick={() => onPageChange(i)}
         >
           {i}
@@ -23,7 +24,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <ul className='flex space-x-1'>
         {currentPage > 1 && (
           <li
-            className='mx-1 px-3 py-1 rounded-full cursor-pointer bg-white text-blue-700 hover:bg-blue-200'
+            className='mx-1 px-3 py-1 rounded-lg cursor-pointer bg-white text-blue-700 hover:bg-blue-200'
             onClick={() => onPageChange(currentPage - 1)}
           >
             Previous
@@ -32,7 +33,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         {renderPageNumbers()}
         {currentPage < totalPages && (
           <li
-            className='mx-1 px-3 py-1 rounded-full cursor-pointer bg-white text-blue-700 hover:bg-blue-200'
+            className='mx-1 px-3 py-1 rounded-lg cursor-pointer bg-white text-blue-700 hover:bg-blue-200'
             onClick={() => onPageChange(currentPage + 1)}
           >
             Next

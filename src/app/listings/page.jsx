@@ -98,6 +98,16 @@ const Page = () => {
                 onClick={toggleView}
                 className={!isGridView ? 'text-blue-700' : 'text-black'}
               />
+              <IconLayoutGrid
+                size={35}
+                onClick={toggleView}
+                className={isGridView ? 'text-blue-700' : 'text-black'}
+              />
+              <IconLayoutList
+                size={35}
+                onClick={toggleView}
+                className={!isGridView ? 'text-blue-700' : 'text-black'}
+              />
             </div>
             <div className='flex gap-4 px-4'>
               <DropdownSearch options='Sort by new arrivals' />
@@ -164,7 +174,7 @@ const Page = () => {
         </div>
         <div className=''>
           <h1 className='text-3xl font-bold'>Advance Information</h1>
-          <p className='text-gray-500 my-5'>
+          <p className='text-gray-500 space-y-5'>
             about 8898 result (in 10 seconds)
           </p>
           <div className='bg-white border-2'>

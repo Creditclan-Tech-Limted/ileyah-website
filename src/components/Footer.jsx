@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter, IconMail, IconMapPin, IconPhone, IconPhoneCall } from "@tabler/icons-react";
+import { IconBrandFacebook, IconBrandInstagram, IconBrandTwitter, IconMail, IconMapPin, IconPhoneCall } from "@tabler/icons-react";
 
 const Footer = () => {
   const mode = 'light';
