@@ -13,7 +13,7 @@ import UserDetails from "./UserDetails.jsx";
 import Source from "./Source.jsx";
 
 function RenewRent({ onBack, onDone, onPending }) {
-  const [view, setView] = useState("step-six");
+  const [view, setView] = useState("step-one");
 
   return (
     <>
