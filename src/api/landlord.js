@@ -10,3 +10,7 @@ export const AUTH_ENDPOINT = {
   VERIFY_RESET: () => '',
   RESET_PASSWORD: () => '',
 }
+export const UPLOAD_IMAGE = {
+  UPLOAD: () =>
+    'https://mobile.creditclan.com/webapi/v1/upload/imagefilemerchant',
+}
