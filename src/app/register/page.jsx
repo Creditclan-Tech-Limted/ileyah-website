@@ -28,7 +28,10 @@ const Page = () => {
       // const res = await send(data);
       console.log(data, 'data')
       // const res = await axios.post(AUTH_ENDPOINT.REGISTER(data));
-      const res = await axios.post(AUTH_ENDPOINT.REGISTER(),{ ...data});
+      const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
+        ...data,
+        user_type: 'agent/landlords',
+      })
       setLoading(true)
       console.log(res, 'response');
       if (res.data.status === true) {

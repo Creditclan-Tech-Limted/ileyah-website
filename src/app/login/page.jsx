@@ -28,14 +28,15 @@ const Page = () => {
       console.log(res, 'login')
       setLoading(true)
       if (res.data.status) {
-        // localStorage.setItem('ileyah_token', res?.data?.token)
-        // updateData({ user: res?.data?.message, token: res?.data?.token })
-        // if (res?.data?.message?.source === 'company') {
-        //   return router.push('/dashboard/companies')
-        // } else {
-        //   router.push('/dashboard')
-        // }
-        return router.push('/dashboard/landlords')
+        localStorage.setItem('ileyah_token', res?.data?.token)
+        updateData({ user: res?.data?.message, token: res?.data?.token })
+        if (res?.data?.data?.user_type === 'agent/landlords') {
+          return router.push('/dashboard/landlords')
+        } else if (res?.data?.data?.user_type === 'companies') {
+          router.push('/dashboard/companies')
+        }else{
+          router.push('/dashboard')
+        }
       }
     } catch (error) {
       console.log(error);
