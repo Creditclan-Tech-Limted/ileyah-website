@@ -1,61 +1,123 @@
-import Drawer from '@/components/Drawer';
-import Button from '@/components/global/Button';
-import Input from '@/global/Input';
-import Select from '@/global/Select';
-import TextArea from '@/global/TextArea';
-import { areas, lgas } from '@/lib/utils';
-import { IconChevronLeft, IconCircleChevronRight, IconPlus, IconTrash, IconTrashFilled, IconX } from '@tabler/icons-react';
-import { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { UPLOAD_IMAGE } from '@/api/landlord'
+import Drawer from '@/components/Drawer'
+import Button from '@/components/global/Button'
+import Input from '@/global/Input'
+import Select from '@/global/Select'
+import TextArea from '@/global/TextArea'
+import { areas, lgas } from '@/lib/utils'
+import {
+  IconChevronLeft,
+  IconCircleChevronRight,
+  IconPlus,
+  IconTrash,
+  IconTrashFilled,
+  IconX,
+} from '@tabler/icons-react'
+import { useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 const AddNewProperty = ({ isOpen, onClose }) => {
-  const file = useRef(null);
-  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
-  const [views, setViews] = useState('form');
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const file = useRef(null)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
+  const [views, setViews] = useState('form')
+  const [selectedFiles, setSelectedFiles] = useState([])
 
   const handleChange = async (e) => {
     try {
-      const files = Array.from(e.target.files);
-      console.log({ files });
-      setSelectedFiles(files);
+      const files = Array.from(e.target.files)
+      console.log({ files })
+      setSelectedFiles(files)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   }
 
   const handleImageRemove = (src) => {
     // Remove image from the array
-    const filteredImages = selectedFiles.filter((image) => image !== src);
-    setSelectedFiles(filteredImages);
-  };
+    const filteredImages = selectedFiles.filter((image) => image !== src)
+    setSelectedFiles(filteredImages)
+  }
 
   const imagePromises = Array.from(selectedFiles).map((file) => {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onload = (event) => {
-        resolve(event.target.result);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
-  });
+        resolve(event.target.result)
+      }
+      reader.onerror = reject
+      reader.readAsDataURL(file)
+    })
+  })
+
+  const axiosRequests = selectedFiles.map(async(item) => {
+    return await axios.post(UPLOAD_IMAGE.UPLOAD(), item, {
+        headers: {
+          'x-api-key':
+            'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228',
+        },
+      })
+      .then((response) => response.data)
+      .catch((error) => {
+        console.error('Error with Axios request:', error)
+        return null // Handle errors as needed
+      })
+  })
+
+  // Promise.all(axiosRequests)
+  //   .then((responses) => {
+  //     console.log('Array of Responses:', responses)
+  //     // Process responses as needed
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error with Promise.all:', error)
+  //     // Handle errors with Promise.all if needed
+  //   })
 
   const onSubmit = async (data) => {
     try {
-      Promise.all(imagePromises)
-        .then((base64Images) => {
-          console.log({ base64Images });
-          // Now you can send the base64Images array to the API
-          // Replace this console.log with your API request code
-          console.log("Base64 Images:", base64Images);
-          
+      // const t = Promise.all(imagePromises)
+      //   .then((base64Images) => {
+      //     const imageUploadPromises = base64Images.map(async (base64Image) => {
+      //       const response = await axios.post(
+      //         UPLOAD_IMAGE.UPLOAD(),
+      //         { file: base64Image },
+      //         {
+      //           headers: {
+      //             'x-api-key':
+      //               'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228',
+      //           },
+      //         }
+      //       )
+
+      //       return response.data // Return the uploaded image data from the API
+      //     })
+
+      //     const uploadedImages = Promise.resolve(t)
+
+      //     console.log({ uploadedImages })
+
+      //     console.log('Uploaded Images:', imageUploadPromises)
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error converting images to base64:', error)
+      //   })
+      Promise.all(axiosRequests)
+        .then((responses) => {
+          console.log('Array of Responses:', responses)
+          // Process responses as needed
         })
         .catch((error) => {
-          console.error("Error converting images to base64:", error);
-        });
+          console.error('Error with Promise.all:', error)
+          // Handle errors with Promise.all if needed
+        })
     } catch (error) {
-      console.log({ error });
+      console.log({ error })
     }
   }
 
@@ -242,4 +304,4 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   )
 }
 
-export default AddNewProperty;
+export default AddNewProperty
