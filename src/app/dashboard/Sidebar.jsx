@@ -8,15 +8,15 @@ import React from 'react'
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard/companies',
+    link: '/dashboard/landlords',
     icon: <IconApps />,
     name: 'Dashboard'
   },
   {
     id: 2,
-    link: '/dashboard/companies/staffs',
+    link: '/dashboard/landlords/listings',
     icon: <IconListDetails />,
-    name: 'Staffs'
+    name: 'Listings'
   },
   {
     id: 3,
@@ -44,8 +44,8 @@ const Sidebar = () => {
               </div>
               <div className="flex">
                 <ul className="f-m-m pl-5 mt-10">
-                  <Link href='/dashboard/companies'>
-                    <li className={classNames('px-6 py-3 rounded-full w-full', query === '/dashboard/companies' ? 'bg-gray-200 text-black' : '')} >
+                  <Link href='/dashboard/landlords'>
+                    <li className={classNames('px-6 py-3 rounded-full w-full', query === '/dashboard/landlords' ? 'bg-gray-200 text-black' : '')} >
                       <div className="flex items-center">
                         <div className="md:w-6 md:h-6 w-5 h-5">
                           <IconApps />

@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar'
 const layout = ({ children }) => {
   return (
     <>
-      <div className="grid grid-cols-[0_1fr] md:grid-cols-[300px_1fr] h-screen">
+      <div className="grid grid-cols-[0_1fr] md:grid-cols-[300px_1fr] h-screen md:overflow-hidden">
         <div className=''>
           <Sidebar />
         </div>
