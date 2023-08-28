@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import classNames from "classnames";
 import Backdrop from "./Backdrop.jsx";
 import { AnimatePresence, motion } from "framer-motion";
+import Button from './global/Button.jsx';
 import { useMediaQuery } from 'react-responsive'
 import { IconX } from "@tabler/icons-react";
-import Button from './global/Button.jsx';
 
 const Drawer = (
   { isOpen, title, padding = true, onClose, children }
@@ -37,41 +37,43 @@ const Drawer = (
   }
 
   return (
-    <AnimatePresence initial={ false } mode="wait" onExitComplete={ () => null }>
+    <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
       {
         isOpen && (
-          <Backdrop onClick={ onClose } className="text-black">
+          <div>
+            <Backdrop onClick={onClose} className="text-black" />
             <motion.div
-              onClick={ e => e.stopPropagation() }
-              variants={ variants }
+              variants={variants}
               initial="hidden"
               animate="visible"
               exit="exit"
-              className={ classNames(
-                "fixed right-0 bottom-0 sm:top-0 w-full sm:max-w-xl overflow-hidden",
-                "rounded-t-3xl md:rounded-r-3xl md:rounded-l-3xl md:p-4"
-              ) }
+              className={classNames(
+                "fixed right-0 bottom-0 top-0 w-full h-full sm:max-w-xl overflow-hidden flex flex-col justify-end z-[999]",
+                "md:p-4 pointer-events-none"
+              )}
             >
-              <div className={ classNames(
-                "relative inset-x-0 bottom-0 bg-white h-min max-h-full sm:h-full overflow-x-hidden overflow-y-auto",
-                "rounded-t-3xl md:rounded-r-3xl md:rounded-l-3xl flex flex-col",
-                { 'p-8 md:p-10': padding }
-              ) }>
+              <div
+                className={classNames(
+                  "relative inset-x-0 bottom-0 bg-white h-min max-h-full sm:h-full overflow-x-hidden overflow-y-auto",
+                  "rounded-t-[30px] md:rounded-r-[30px] md:rounded-l-[30px] min-h-[50vh] flex flex-col pointer-events-auto",
+                  { 'p-8 md:p-10': padding }
+                )}
+              >
                 {
                   !!title && (
                     <div className="flex items-center justify-between mb-10">
-                      <h3 className="text-xl font-semibold">{ title }</h3>
+                      <h3 className="text-xl font-semibold">{title}</h3>
                       <Button
-                        onClick={ onClose } rounded-full
+                        onClick={onClose} rounded icon={<IconX size="20" />}
                         size="sm" color="red" variant="outlined"
-                      > <IconX /> </Button>
+                      />
                     </div>
                   )
                 }
-                { children }
+                {children}
               </div>
             </motion.div>
-          </Backdrop>
+          </div>
         )
       }
     </AnimatePresence>
