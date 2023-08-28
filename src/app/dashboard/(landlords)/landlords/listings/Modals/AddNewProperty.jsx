@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-import { UPLOAD_IMAGE } from '@/api/landlord'
+import { ADD_NEW_PROPERTY, UPLOAD_IMAGE } from '@/api/landlord'
 import Drawer from '@/components/Drawer'
 import Button from '@/components/global/Button'
 import Input from '@/global/Input'
@@ -11,25 +10,11 @@ import {
   IconCircleChevronRight,
   IconPlus,
   IconTrash,
-  IconTrashFilled,
   IconX,
 } from '@tabler/icons-react'
+import axios from 'axios'
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
-=======
-import { UPLOAD_IMAGE } from '@/api/landlord';
-import Drawer from '@/components/Drawer';
-import Button from '@/components/global/Button';
-import Input from '@/global/Input';
-import Select from '@/global/Select';
-import TextArea from '@/global/TextArea';
-import { areas, lgas } from '@/lib/utils';
-import { IconChevronLeft, IconCircleChevronRight, IconPlus, IconTrash, IconX } from '@tabler/icons-react';
-import axios from 'axios';
-import { useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
->>>>>>> 3c8a1b4e7fc9714c3bffa2f6c384e16f2d204f7b
 
 const AddNewProperty = ({ isOpen, onClose }) => {
   const file = useRef(null)
@@ -69,8 +54,9 @@ const AddNewProperty = ({ isOpen, onClose }) => {
     })
   })
 
-  const axiosRequests = selectedFiles.map(async(item) => {
-    return await axios.post(UPLOAD_IMAGE.UPLOAD(), item, {
+  const axiosRequests = selectedFiles.map(async (item) => {
+    return await axios
+      .post(UPLOAD_IMAGE.UPLOAD(), item, {
         headers: {
           'x-api-key':
             'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228',
@@ -95,62 +81,36 @@ const AddNewProperty = ({ isOpen, onClose }) => {
 
   const onSubmit = async (data) => {
     try {
-<<<<<<< HEAD
-      // const t = Promise.all(imagePromises)
-      //   .then((base64Images) => {
-      //     const imageUploadPromises = base64Images.map(async (base64Image) => {
-      //       const response = await axios.post(
-      //         UPLOAD_IMAGE.UPLOAD(),
-      //         { file: base64Image },
-      //         {
-      //           headers: {
-      //             'x-api-key':
-      //               'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228',
-      //           },
-      //         }
-      //       )
-
-      //       return response.data // Return the uploaded image data from the API
-      //     })
-
-      //     const uploadedImages = Promise.resolve(t)
-
-      //     console.log({ uploadedImages })
-
-      //     console.log('Uploaded Images:', imageUploadPromises)
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error converting images to base64:', error)
-      //   })
-      Promise.all(axiosRequests)
-        .then((responses) => {
-          console.log('Array of Responses:', responses)
-          // Process responses as needed
+      Promise.all(imagePromises).then(async (base64Images) => {
+        const axiosRequests = base64Images.map(async (item) => {
+          try {
+            const response = await axios.post(
+              UPLOAD_IMAGE.UPLOAD(),
+              { file: item },
+              {
+                headers: {
+                  'x-api-key':
+                    'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228',
+                },
+              }
+            )
+            console.log(response.data.data)
+            return response.data.data.filename
+          } catch (error) {
+            console.error('Error with Axios request:', error)
+            return null
+          }
         })
-        .catch((error) => {
-          console.error('Error with Promise.all:', error)
-          // Handle errors with Promise.all if needed
-        })
-=======
-      Promise.all(imagePromises)
-        .then(async (base64Images) => {
-          const axiosRequests = base64Images.map(async item => {
-            try {
-              const response = await axios.post(UPLOAD_IMAGE.UPLOAD(), { file: item }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
-              console.log(response.data.data);
-              return response.data.data.filename;
-            } catch (error) {
-              console.error('Error with Axios request:', error);
-              return null;
-            }
-          });
 
-          const img = await Promise.all(axiosRequests)
-          console.log({ img });
+        const img = await Promise.all(axiosRequests)
+        console.log({ img })
 
-          // console.log({ axiosRequests });
+        // console.log({ axiosRequests });
+        const response = axios.post(ADD_NEW_PROPERTY.ADD(), data, {
+          images: img,
         })
->>>>>>> 3c8a1b4e7fc9714c3bffa2f6c384e16f2d204f7b
+        console.log({ response })
+      })
     } catch (error) {
       console.log({ error })
     }
