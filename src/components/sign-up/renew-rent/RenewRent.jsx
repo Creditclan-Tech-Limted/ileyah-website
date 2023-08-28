@@ -17,14 +17,22 @@ import CompanyIdUplod from "./CompanyIdUplod.jsx";
 import NoRequest from "./NoRequest.jsx";
 
 function RenewRent({ onBack, onDone, noRequest, onPending }) {
-  const [view, setView] = useState("step-one-b");
+  const [view, setView] = useState("step-one");
 
   return (
     <>
+      {view === 'step-one' && (
+        <StepOne
+          onBack={onBack}
+          // onBack={() => setView('company-email')}
+          onNext={() => setView('step-one-b')}
+        />
+      )}
+
       {view === 'step-one-b' && (
         <StepOneB
           noRequest={() => setView('no-request')}
-          onBack={onBack}
+          onBack={() => setView('step-one')}
           onNext={() => setView('company-email')}
         />
       )}
@@ -41,20 +49,13 @@ function RenewRent({ onBack, onDone, noRequest, onPending }) {
       {view === 'company-id-upload' && (
         <CompanyIdUplod
           onBack={() => setView('company-email')}
-          onNext={() => setView('step-one')}
-        />
-      )}
-      {view === 'step-one' && (
-        <StepOne
-          // onBack={onBack}
-          onBack={() => setView('company-email')}
           onNext={() => setView('request-details')}
         />
       )}
 
       {view === 'request-details' && (
         <UserDetails
-          onBack={() => setView('step-one')}
+          onBack={() => setView('company-id-upload')}
           onNext={(v) => setView(v)}
         />
       )}
