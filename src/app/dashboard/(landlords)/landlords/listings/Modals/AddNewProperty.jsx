@@ -1,10 +1,12 @@
+import { UPLOAD_IMAGE } from '@/api/landlord';
 import Drawer from '@/components/Drawer';
 import Button from '@/components/global/Button';
 import Input from '@/global/Input';
 import Select from '@/global/Select';
 import TextArea from '@/global/TextArea';
 import { areas, lgas } from '@/lib/utils';
-import { IconChevronLeft, IconCircleChevronRight, IconPlus, IconTrash, IconTrashFilled, IconX } from '@tabler/icons-react';
+import { IconChevronLeft, IconCircleChevronRight, IconPlus, IconTrash, IconX } from '@tabler/icons-react';
+import axios from 'axios';
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -44,16 +46,23 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   const onSubmit = async (data) => {
     try {
       Promise.all(imagePromises)
-        .then((base64Images) => {
-          console.log({ base64Images });
-          // Now you can send the base64Images array to the API
-          // Replace this console.log with your API request code
-          console.log("Base64 Images:", base64Images);
-          
+        .then(async (base64Images) => {
+          const axiosRequests = base64Images.map(async item => {
+            try {
+              const response = await axios.post(UPLOAD_IMAGE.UPLOAD(), { file: item }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
+              console.log(response.data.data);
+              return response.data.data.filename;
+            } catch (error) {
+              console.error('Error with Axios request:', error);
+              return null;
+            }
+          });
+
+          const img = await Promise.all(axiosRequests)
+          console.log({ img });
+
+          // console.log({ axiosRequests });
         })
-        .catch((error) => {
-          console.error("Error converting images to base64:", error);
-        });
     } catch (error) {
       console.log({ error });
     }
