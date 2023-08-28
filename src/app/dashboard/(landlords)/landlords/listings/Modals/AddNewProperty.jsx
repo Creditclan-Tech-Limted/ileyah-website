@@ -24,31 +24,36 @@ const AddNewProperty = ({ isOpen, onClose }) => {
     }
   }
 
-  console.log(selectedFiles, 'selectedFiles')
-
-  // const handleFileUpload = () =>{
-
-  // }
-  const getBase64 = (file) => {
-    let reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = function () {
-      console.log(reader.result)
-    }
-    reader.onerror = function (error) {
-      console.log('Error: ', error)
-    }
-  }
-
   const handleImageRemove = (src) => {
     // Remove image from the array
     const filteredImages = selectedFiles.filter((image) => image !== src);
     setSelectedFiles(filteredImages);
   };
 
+  const imagePromises = Array.from(selectedFiles).map((file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        resolve(event.target.result);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  });
+
   const onSubmit = async (data) => {
     try {
-      console.log({ data });
+      Promise.all(imagePromises)
+        .then((base64Images) => {
+          console.log({ base64Images });
+          // Now you can send the base64Images array to the API
+          // Replace this console.log with your API request code
+          console.log("Base64 Images:", base64Images);
+          
+        })
+        .catch((error) => {
+          console.error("Error converting images to base64:", error);
+        });
     } catch (error) {
       console.log({ error });
     }
@@ -225,7 +230,7 @@ const AddNewProperty = ({ isOpen, onClose }) => {
               type='submit'
               className='mt-10'
               rightIcon={<IconCircleChevronRight />}
-              onClick={() => setViews('image')}
+              onClick={onSubmit}
             >
               {' '}
               Continue{' '}
