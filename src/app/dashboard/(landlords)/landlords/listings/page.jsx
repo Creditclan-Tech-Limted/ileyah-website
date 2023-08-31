@@ -4,6 +4,7 @@ import { IconBed, IconHeartFilled, IconMapPinFilled, IconPlus, IconBath } from '
 import AddNewProperty from './Modals/AddNewProperty'
 import useSignupStore from '@/store/signup'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -12,7 +13,7 @@ const Page = () => {
     open: false,
     staff: ''
   });
-
+  
   const handleClose = async () => {
     try {
       setOpenAddNewStaff(false)

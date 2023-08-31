@@ -5,6 +5,7 @@ import Script from 'next/script'
 import QueryProvider from '@/components/QueryProvider'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { ToastProvider } from '@/lib/use-toast'
 // import TagManager from 'react-gtm-module';
 // import { useEffect } from 'react'
 
@@ -66,41 +67,20 @@ export default function RootLayout({ children }) {
           rel='stylesheet'
           href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css'
         />
+        <link href="toastr.css" rel="stylesheet" />
       </head>
 
       <body>
         <QueryProvider>
-          {/* <ToastContainer
-            position='top-right'
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='light'
-            // theme='dark'
-          /> */}
-          <ToastContainer
-            position='top-center'
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='light'
-          />
-          {/* </ToastContainer> */}
-          {children}
+          <ToastProvider>
+            {children}
+          </ToastProvider>
         </QueryProvider>
       </body>
+
       <Script src='https://eligibility.clan.africa/assets/scripts/client.js' />
       <Script src='https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js' />
+      <Script src="toastr.js" />
     </html>
   )
 }

@@ -6,7 +6,6 @@ import Input from '@/global/Input'
 import Select from '@/global/Select'
 import TextArea from '@/global/TextArea'
 import { areas, lgas } from '@/lib/utils'
-import useSignupStore from '@/store/signup'
 import {
   IconChevronLeft,
   IconCircleChevronRight,
@@ -17,10 +16,14 @@ import {
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { useForm } from 'react-hook-form';
+import { useToast } from '@/lib/use-toast'
+
 
 const AddNewProperty = ({ isOpen, onClose }) => {
+  const toast = useToast();
+  const userId = UserInfor().userId
+  const router = useRouter()
   const file = useRef(null)
   const {
     register,
@@ -31,8 +34,6 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   const [views, setViews] = useState('form')
   const [selectedFiles, setSelectedFiles] = useState([])
   const [loading, setLoading] = useState(false)
-  // const { data, updateData } = useSignupStore((state) => state)
-  // const [cropData] = useState(data?.houseImage?.picture)
 
   const handleChange = async (e) => {
     try {
@@ -45,7 +46,6 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   }
 
   const handleImageRemove = (src) => {
-    // Remove image from the array
     const filteredImages = selectedFiles.filter((image) => image !== src)
     setSelectedFiles(filteredImages)
   }
@@ -59,24 +59,6 @@ const AddNewProperty = ({ isOpen, onClose }) => {
       reader.onerror = reject
       reader.readAsDataURL(file)
     })
-  })
-
-  const userId = UserInfor().userId
-  const router = useRouter()
-
-  const axiosRequests = selectedFiles.map(async (item) => {
-    return await axios
-      .post(UPLOAD_IMAGE.UPLOAD(), item, {
-        headers: {
-          'x-api-key':
-            'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228',
-        },
-      })
-      .then((response) => response.data)
-      .catch((error) => {
-        console.error('Error with Axios request:', error)
-        return null // Handle errors as needed
-      })
   })
 
   const onSubmit = async (data) => {
