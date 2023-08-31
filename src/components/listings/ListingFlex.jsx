@@ -17,8 +17,6 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
                   {heading}
                 </p>
               </div>
-              
-
             </div>
             <div className='text-gray-900 font-bold text-2xl my-4 hover:text-blue-700 cursor-pointer'>
               {title}

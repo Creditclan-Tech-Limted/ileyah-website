@@ -1,4 +1,4 @@
-import { IconLocation, IconMapPin, IconMapPinFilled } from '@tabler/icons-react'
+import { IconMapPinFilled } from '@tabler/icons-react'
 import React from 'react'
 
 export default function ListingsGrid({
@@ -31,7 +31,6 @@ export default function ListingsGrid({
           Rent
         </div>
         <div className='px-8 py-6 space-y-3'>
-          {/* <p className='text-lg uppercase  text-blue-700 '>{heading}</p> */}
           <div className='text-gray-900 font-bold text-2xl hover:text-blue-700 cursor-pointer'>
             {title}
           </div>
