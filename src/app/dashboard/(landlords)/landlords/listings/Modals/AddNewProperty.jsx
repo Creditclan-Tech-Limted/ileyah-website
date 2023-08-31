@@ -80,7 +80,11 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   //   })
 
   const onSubmit = async (data) => {
+<<<<<<< HEAD
     console.log(data)
+=======
+    console.log(data);
+>>>>>>> e373b21e114b099d1e852bfc6e7a25cf5c5869eb
     try {
       Promise.all(imagePromises).then(async (base64Images) => {
         const axiosRequests = base64Images.map(async (item) => {
@@ -107,12 +111,21 @@ const AddNewProperty = ({ isOpen, onClose }) => {
         console.log({ img })
         console.log(data, ' data')
 
+<<<<<<< HEAD
         console.log({ axiosRequests })
         // const response = axios.post(ADD_NEW_PROPERTY.ADD(), {
         //   ...data,
         //   images: img,
         // })
         // console.log({ response })
+=======
+        console.log(data);
+
+        const response = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/addPropertyByAgent', { ...data, images: img, landlordAgentId: 'osomhe' });
+
+        // const response = await axios.post(ADD_NEW_PROPERTY.ADD(), { ...data, images: img })
+        console.log(response?.data)
+>>>>>>> e373b21e114b099d1e852bfc6e7a25cf5c5869eb
       })
     } catch (error) {
       console.log({ error })
@@ -122,22 +135,22 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose}>
-        {views === 'form' && (
-          <div>
-            <div className='flex items-center justify-between mb-10'>
-              <h3 className='text-xl font-semibold'>Add new Property</h3>
-              <Button
-                onClick={onClose}
-                rounded-full
-                size='sm'
-                color='red'
-                variant='outlined'
-              >
-                {' '}
-                <IconX />{' '}
-              </Button>
-            </div>
-            <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {views === 'form' && (
+            <div className='space-y-8'>
+              <div className='flex items-center justify-between mb-10'>
+                <h3 className='text-xl font-semibold'>Add new Property</h3>
+                <Button
+                  onClick={onClose}
+                  rounded-full
+                  size='sm'
+                  color='red'
+                  variant='outlined'
+                >
+                  {' '}
+                  <IconX />{' '}
+                </Button>
+              </div>
               <Input
                 label='Property Name'
                 bordered
@@ -149,14 +162,18 @@ const AddNewProperty = ({ isOpen, onClose }) => {
                 })}
                 error={errors?.name?.message}
               />
-
-              <TextArea label='House Address' />
-
+              <TextArea label='House Address' {...register('address', {
+                required: {
+                  value: true,
+                  message: ' Address is required',
+                },
+              })}
+                error={errors?.address?.message} />
               <Input
                 type='number'
                 label='House Number'
                 bordered
-                {...register('phone', {
+                {...register('house_no', {
                   required: {
                     value: true,
                     message: 'House Number is required',
@@ -192,7 +209,7 @@ const AddNewProperty = ({ isOpen, onClose }) => {
               <Input
                 label='Bathroom'
                 bordered
-                {...register('bat', {
+                {...register('bath', {
                   required: {
                     value: true,
                     message: 'Bathroom is required',
@@ -225,78 +242,78 @@ const AddNewProperty = ({ isOpen, onClose }) => {
                 {' '}
                 Continue{' '}
               </Button>
-            </form>
-          </div>
-        )}
-        {views === 'image' && (
-          <div>
-            <div className='flex items-center justify-between mb-10 cursor-pointer'>
-              <div
-                onClick={() => setViews('form')}
-                className='border border-black rounded-full p-1'
-              >
-                {' '}
-                <IconChevronLeft />{' '}
+            </div>
+          )}
+          {views === 'image' && (
+            <div>
+              <div className='flex items-center justify-between mb-10 cursor-pointer'>
+                <div
+                  onClick={() => setViews('form')}
+                  className='border border-black rounded-full p-1'
+                >
+                  {' '}
+                  <IconChevronLeft />{' '}
+                </div>
+                <Button
+                  onClick={onClose}
+                  rounded-full
+                  size='sm'
+                  color='red'
+                  variant='outlined'
+                >
+                  {' '}
+                  <IconX />{' '}
+                </Button>
+              </div>
+              {!selectedFiles.length && (
+                <div>
+                  <h3 className='text-xl'>Please upload property image</h3>
+                  <div
+                    className='border border-black h-52 w-52 rounded-full mt-5 flex items-center justify-center cursor-pointer'
+                    onClick={() => file.current.click()}
+                  >
+                    <IconPlus size={50} />
+                    <input
+                      ref={file}
+                      type='file'
+                      multiple
+                      accept='.jpg, .jpeg, .png, .gif'
+                      className='hidden'
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              )}
+              <div className='grid grid-cols-2 gap-4'>
+                {selectedFiles?.map((file, index) => (
+                  <div className='relative inline-block' key={index}>
+                    <img
+                      className='h-auto max-w-full rounded-lg'
+                      key={index}
+                      src={URL.createObjectURL(file)}
+                      alt={`Image ${index}`}
+                    />
+
+                    <IconTrash
+                      color='white'
+                      onClick={() => handleImageRemove(file)}
+                      className='absolute top-0 right-0 p-1 m-1 bg-red-500 rounded-full'
+                    />
+                  </div>
+                ))}
               </div>
               <Button
-                onClick={onClose}
-                rounded-full
-                size='sm'
-                color='red'
-                variant='outlined'
+                type='submit'
+                className='mt-10'
+                rightIcon={<IconCircleChevronRight />}
               >
                 {' '}
-                <IconX />{' '}
+                Continue{' '}
               </Button>
             </div>
-            {!selectedFiles.length && (
-              <div>
-                <h3 className='text-xl'>Please upload property image</h3>
-                <div
-                  className='border border-black h-52 w-52 rounded-full mt-5 flex items-center justify-center cursor-pointer'
-                  onClick={() => file.current.click()}
-                >
-                  <IconPlus size={50} />
-                  <input
-                    ref={file}
-                    type='file'
-                    multiple
-                    accept='.jpg, .jpeg, .png, .gif'
-                    className='hidden'
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-            )}
-            <div className='grid grid-cols-2 gap-4'>
-              {selectedFiles?.map((file, index) => (
-                <div className='relative inline-block' key={index}>
-                  <img
-                    className='h-auto max-w-full rounded-lg'
-                    key={index}
-                    src={URL.createObjectURL(file)}
-                    alt={`Image ${index}`}
-                  />
+          )}
+        </form>
 
-                  <IconTrash
-                    color='white'
-                    onClick={() => handleImageRemove(file)}
-                    className='absolute top-0 right-0 p-1 m-1 bg-red-500 rounded-full'
-                  />
-                </div>
-              ))}
-            </div>
-            <Button
-              type='submit'
-              className='mt-10'
-              rightIcon={<IconCircleChevronRight />}
-              onClick={onSubmit}
-            >
-              {' '}
-              Continue{' '}
-            </Button>
-          </div>
-        )}
       </Drawer>
     </>
   )

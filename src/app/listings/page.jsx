@@ -98,16 +98,6 @@ const Page = () => {
                 onClick={toggleView}
                 className={!isGridView ? 'text-blue-700' : 'text-black'}
               />
-              <IconLayoutGrid
-                size={35}
-                onClick={toggleView}
-                className={isGridView ? 'text-blue-700' : 'text-black'}
-              />
-              <IconLayoutList
-                size={35}
-                onClick={toggleView}
-                className={!isGridView ? 'text-blue-700' : 'text-black'}
-              />
             </div>
             <div className='flex gap-4 px-4'>
               <DropdownSearch options='Sort by new arrivals' />
@@ -123,12 +113,12 @@ const Page = () => {
                     key={i}
                     houseImg={img[i]}
                     heading='For Rent'
-                    price='$34,900/Month'
+                    price='240,900/Month'
                     title='New Apartment Nice View'
                     avatar={imageAvatar}
                     name='Jonathan Reinink'
                     role='Estate Agents'
-                    location=' Belmore Garden, Chicago'
+                    location='Premier View, Victoria Island, Lagos'
                     lengthNum='3450'
                     bedNum='3'
                     bathNum='2'
@@ -137,7 +127,6 @@ const Page = () => {
                     length='Square Ft'
                   />
                 </Link>
-
               ))}
             </div>
           ) : (
@@ -148,12 +137,12 @@ const Page = () => {
                     key={i}
                     houseImg={img[i]}
                     heading='For Rent'
-                    price='$34,900/Month'
+                    price='240,900/Month'
                     title='New Apartment Nice View'
                     avatar={imageAvatar}
-                    name='Jonathan Reinink'
+                    name='Tobi Osunmade'
                     role='Estate Agents'
-                    location=' Belmore Garden, Chicago'
+                    location='Premier View, Victoria Island, Lagos'
                     lengthNum='3450'
                     bedNum='3'
                     bathNum='2'
