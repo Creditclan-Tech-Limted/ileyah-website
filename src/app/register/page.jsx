@@ -1,25 +1,31 @@
 'use client'
-import { AUTH_ENDPOINT } from "@/api/landlord"
-import { useSignUpMutation } from "@/api/rent"
-import Button from "@/components/global/Button"
-import Input from "@/global/Input"
-import Select from "@/global/Select"
-import { areas, lgas } from "@/lib/utils"
-import useSignupStore from "@/store/signup"
-import axios from "axios"
-import Link from "next/link"
-import { useRouter } from 'next/navigation';
-import { useState } from "react"
-import { useForm } from "react-hook-form"
+import { AUTH_ENDPOINT } from '@/api/landlord'
+import { useSignUpMutation } from '@/api/rent'
+import Button from '@/components/global/Button'
+import Input from '@/global/Input'
+import Select from '@/global/Select'
+import { areas, lgas } from '@/lib/utils'
+import useSignupStore from '@/store/signup'
+import axios from 'axios'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 const Page = () => {
-  const router = useRouter();
-  const { mutateAsync: send, isLoading } = useSignUpMutation();
-  const { data, updateData } = useSignupStore((state) => state);
-  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+  const router = useRouter()
+  const { mutateAsync: send, isLoading } = useSignUpMutation()
+  const { data, updateData } = useSignupStore((state) => state)
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
   const [error, setError] = useState({
     status: false,
-    message: ''
+    message: '',
   })
   const [loading, setLoading] = useState(false)
 
@@ -33,16 +39,23 @@ const Page = () => {
         user_type: 'agent/landlords',
       })
       setLoading(true)
-      console.log(res, 'response');
       if (res.data.status === true) {
+        toast.success(response.data.message)
         router.push('/login')
       }
     } catch (error) {
-      if (!error?.response?.data?.status && error?.response?.data?.message.includes('User already exist')) {
+      if (
+        !error?.response?.data?.status &&
+        error?.response?.data?.message.includes('User already exist')
+      ) {
         setError({ status: true, message: error?.response?.data?.message })
         reset()
       } else {
-        setError({ status: true, message: error?.response?.data?.message || 'An error occured, pls try again' })
+        setError({
+          status: true,
+          message:
+            error?.response?.data?.message || 'An error occured, pls try again',
+        })
         reset()
       }
     }

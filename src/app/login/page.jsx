@@ -1,46 +1,58 @@
 'use client'
-import { useLoginMutation } from "@/api/rent"
-import Button from "@/components/global/Button"
-import Input from "@/global/Input"
-import Link from "next/link"
-import { useForm } from "react-hook-form"
-import { useRouter } from 'next/navigation';
-import { useState } from "react"
-import useSignupStore from "@/store/signup"
-import axios from "axios"
-import { AUTH_ENDPOINT } from "@/api/landlord"
+import { useLoginMutation } from '@/api/rent'
+import Button from '@/components/global/Button'
+import Input from '@/global/Input'
+import Link from 'next/link'
+import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import useSignupStore from '@/store/signup'
+import axios from 'axios'
+import { AUTH_ENDPOINT } from '@/api/landlord'
+import { toast } from 'react-toastify'
 
 const Page = () => {
-  const router = useRouter();
-  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+  const router = useRouter()
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm()
   const [error, setError] = useState({
     status: false,
     message: '',
   })
   const [loading, setLoading] = useState(false)
-  const { data, updateData } = useSignupStore((state) => state);
+  const { data, updateData } = useSignupStore((state) => state)
   const { mutateAsync: send, isLoading } = useLoginMutation()
 
   const onSubmit = async (data) => {
     try {
       // const res = await send(data);
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), { ...data })
-      console.log(res, 'login')
       setLoading(true)
+      console.log(res.data, 'data.id')
+      console.log(res.data.data.id, 'data.id')
       if (res.data.status) {
         localStorage.setItem('ileyah_token', res?.data?.token)
+        localStorage.setItem('userId', res?.data?.data?.id)
         updateData({ user: res?.data?.message, token: res?.data?.token })
         if (res?.data?.data?.user_type === 'agent/landlords') {
+          toast.success(response.data.message)
           return router.push('/dashboard/landlords')
         } else if (res?.data?.data?.user_type === 'companies') {
+          toast.success(response.data.message)
           router.push('/dashboard/companies')
-        }else{
+        } else {
+          toast.success(response.data.message)
           router.push('/dashboard')
         }
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error)
       setError({ status: true, message: error?.response?.data?.message })
+      toast.error(error?.response?.data?.message)
       reset()
     }
   }
@@ -148,4 +160,4 @@ const Page = () => {
   )
 }
 
-export default Page;
+export default Page

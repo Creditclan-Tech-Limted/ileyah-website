@@ -1,3 +1,4 @@
+import UserInfor from '@/api/UserInfor'
 import { ADD_NEW_PROPERTY, UPLOAD_IMAGE } from '@/api/landlord'
 import Drawer from '@/components/Drawer'
 import Button from '@/components/global/Button'
@@ -5,6 +6,7 @@ import Input from '@/global/Input'
 import Select from '@/global/Select'
 import TextArea from '@/global/TextArea'
 import { areas, lgas } from '@/lib/utils'
+import useSignupStore from '@/store/signup'
 import {
   IconChevronLeft,
   IconCircleChevronRight,
@@ -13,8 +15,10 @@ import {
   IconX,
 } from '@tabler/icons-react'
 import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 const AddNewProperty = ({ isOpen, onClose }) => {
   const file = useRef(null)
@@ -26,6 +30,9 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   } = useForm()
   const [views, setViews] = useState('form')
   const [selectedFiles, setSelectedFiles] = useState([])
+  const [loading, setLoading] = useState(false)
+  // const { data, updateData } = useSignupStore((state) => state)
+  // const [cropData] = useState(data?.houseImage?.picture)
 
   const handleChange = async (e) => {
     try {
@@ -54,6 +61,9 @@ const AddNewProperty = ({ isOpen, onClose }) => {
     })
   })
 
+  const userId = UserInfor().userId
+  const router = useRouter()
+
   const axiosRequests = selectedFiles.map(async (item) => {
     return await axios
       .post(UPLOAD_IMAGE.UPLOAD(), item, {
@@ -69,24 +79,10 @@ const AddNewProperty = ({ isOpen, onClose }) => {
       })
   })
 
-  // Promise.all(axiosRequests)
-  //   .then((responses) => {
-  //     console.log('Array of Responses:', responses)
-  //     // Process responses as needed
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error with Promise.all:', error)
-  //     // Handle errors with Promise.all if needed
-  //   })
-
   const onSubmit = async (data) => {
-<<<<<<< HEAD
-    console.log(data)
-=======
-    console.log(data);
->>>>>>> e373b21e114b099d1e852bfc6e7a25cf5c5869eb
     try {
       Promise.all(imagePromises).then(async (base64Images) => {
+        setLoading(true)
         const axiosRequests = base64Images.map(async (item) => {
           try {
             const response = await axios.post(
@@ -103,32 +99,28 @@ const AddNewProperty = ({ isOpen, onClose }) => {
             return response.data.data.filename
           } catch (error) {
             console.error('Error with Axios request:', error)
+            setLoading(false)
             return null
           }
         })
 
         const img = await Promise.all(axiosRequests)
-        console.log({ img })
-        console.log(data, ' data')
-
-<<<<<<< HEAD
-        console.log({ axiosRequests })
-        // const response = axios.post(ADD_NEW_PROPERTY.ADD(), {
-        //   ...data,
-        //   images: img,
-        // })
-        // console.log({ response })
-=======
-        console.log(data);
-
-        const response = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/addPropertyByAgent', { ...data, images: img, landlordAgentId: 'osomhe' });
-
-        // const response = await axios.post(ADD_NEW_PROPERTY.ADD(), { ...data, images: img })
+        const response = await axios.post(ADD_NEW_PROPERTY.ADD(), {
+          ...data,
+          images: img,
+          landlordAgentId: userId,
+        })
+        setLoading(true)
         console.log(response?.data)
->>>>>>> e373b21e114b099d1e852bfc6e7a25cf5c5869eb
+        if (response.data.status === true) {
+          toast.success(response.data.message)
+          router.push('dashboard/landlords')
+        }
       })
     } catch (error) {
       console.log({ error })
+      setLoading(false)
+      toast.error('Error')
     }
   }
 
@@ -162,13 +154,16 @@ const AddNewProperty = ({ isOpen, onClose }) => {
                 })}
                 error={errors?.name?.message}
               />
-              <TextArea label='House Address' {...register('address', {
-                required: {
-                  value: true,
-                  message: ' Address is required',
-                },
-              })}
-                error={errors?.address?.message} />
+              <TextArea
+                label='House Address'
+                {...register('address', {
+                  required: {
+                    value: true,
+                    message: ' Address is required',
+                  },
+                })}
+                error={errors?.address?.message}
+              />
               <Input
                 type='number'
                 label='House Number'
@@ -229,7 +224,7 @@ const AddNewProperty = ({ isOpen, onClose }) => {
                 error={errors?.area?.message}
               />
 
-              <Select options={areas} label='Area' />
+              {/* <Select options={areas} label='Area' /> */}
 
               <Select options={lgas} label='L.G.A' />
 
@@ -302,18 +297,19 @@ const AddNewProperty = ({ isOpen, onClose }) => {
                   </div>
                 ))}
               </div>
-              <Button
-                type='submit'
-                className='mt-10'
-                rightIcon={<IconCircleChevronRight />}
-              >
-                {' '}
-                Continue{' '}
-              </Button>
+              {selectedFiles.length > 0 ? (
+                <Button
+                  type='submit'
+                  className='mt-10'
+                  rightIcon={<IconCircleChevronRight />}
+                >
+                  {' '}
+                  {loading ? 'Loading...' : 'Continue'}
+                </Button>
+              ) : null}
             </div>
           )}
         </form>
-
       </Drawer>
     </>
   )
