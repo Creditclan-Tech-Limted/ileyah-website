@@ -80,6 +80,7 @@ const AddNewProperty = ({ isOpen, onClose }) => {
   //   })
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
       Promise.all(imagePromises).then(async (base64Images) => {
         const axiosRequests = base64Images.map(async (item) => {
@@ -104,12 +105,14 @@ const AddNewProperty = ({ isOpen, onClose }) => {
 
         const img = await Promise.all(axiosRequests)
         console.log({ img })
+        console.log(data, ' data')
 
-        // console.log({ axiosRequests });
-        const response = axios.post(ADD_NEW_PROPERTY.ADD(), data, {
-          images: img,
-        })
-        console.log({ response })
+        console.log({ axiosRequests })
+        // const response = axios.post(ADD_NEW_PROPERTY.ADD(), {
+        //   ...data,
+        //   images: img,
+        // })
+        // console.log({ response })
       })
     } catch (error) {
       console.log({ error })
