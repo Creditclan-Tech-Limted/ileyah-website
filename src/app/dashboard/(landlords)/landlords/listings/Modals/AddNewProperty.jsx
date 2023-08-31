@@ -108,7 +108,7 @@ const AddNewProperty = ({ isOpen, onClose }) => {
 
         console.log(data);
 
-        const response = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/addPropertyByAgent', { ...data, images: img });
+        const response = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/addPropertyByAgent', { ...data, images: img, landlordAgentId: 'osomhe' });
 
         // const response = await axios.post(ADD_NEW_PROPERTY.ADD(), { ...data, images: img })
         console.log(response?.data)
