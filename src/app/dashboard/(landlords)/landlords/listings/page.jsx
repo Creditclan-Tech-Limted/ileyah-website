@@ -5,15 +5,21 @@ import AddNewProperty from './Modals/AddNewProperty'
 import useSignupStore from '@/store/signup'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import UserInfor from '@/api/UserInfor'
+import { formatCurrency, formatToNaira } from '@/lib/utils'
 
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const [openAddNewStaff, setOpenAddNewStaff] = useState(false);
+  const [property, setProperty] = useState([]);
+  const userId = UserInfor().userId
   const [staff, setStaff] = useState({
     open: false,
     staff: ''
   });
-  
+
   const handleClose = async () => {
     try {
       setOpenAddNewStaff(false)
@@ -21,6 +27,23 @@ const Page = () => {
       console.log({ error });
     }
   }
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/getAgentProperty', { landlordAgentId: userId })
+      return res?.data?.data
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  const { data: userData, isLoading, error } = useQuery(['data'], fetchData);
+
+  console.log(isLoading);
+
+  const mergedArray = userData?.reduce((accumulator, currentObject) => {
+    return accumulator.concat(currentObject.images);
+  }, []);
 
   return (
     <>
@@ -39,148 +62,28 @@ const Page = () => {
 
         <div className='mt-10 mb-10'>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
-                  Rent
+            {userData?.map((user, i) => (
+              <div className=' bg-white shadow-lg rounded-xl p-1'>
+                <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(${user?.images[0]})`, borderRadius: '10px' }}>
+                  <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
+                    Rent
+                  </div>
+                </div>
+                <div className='p-3 space-y-2'>
+                  <p className='font-bold text-xl flex justify-between'>
+                    <div className='text-black'>{formatCurrency(user?.amount)} </div>
+                    <div className='bg-red-100 p-2 rounded-full'><IconHeartFilled size='15' className='text-red-500' /></div>
+                  </p>
+                  <p className='font-bold'>  {user?.name}</p>
+                  <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
+                  <hr />
+                  <p className='flex space-x-3'>
+                    <div className='inline-flex'><IconBath /> 2 </div>
+                    <div className='inline-flex'><IconBed /> 4 </div>
+                  </p>
                 </div>
               </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl flex justify-between'>
-                  <div className='text-black'>$300.99</div>
-                  <div className='bg-red-100 p-2 rounded-full'><IconHeartFilled size='15' className='text-red-500' /></div>
-                </p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-red-500 w-[50px] text-center text-white rounded-xl">
-                  Sell
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl text'>$234.90</p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
-                  Rent
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl text'>$234.90</p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
-                  Rent
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl text'>$234.90</p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
-                  Rent
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl flex space-x-3'>
-                  <div className='text-black'>$300.99</div>
-                  <div className='bg-red-100 p-2 rounded-full'><IconHeartFilled size='15' className='text-red-500' /></div>
-                </p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-red-500 w-[50px] text-center text-white rounded-xl">
-                  Sell
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl text'>$234.90</p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
-                  Rent
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl text'>$234.90</p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
-            <div className=' bg-white shadow-lg rounded-xl p-1'>
-              <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(/assets/images/05.jpg)`, borderRadius: '10px' }}>
-                <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
-                  Rent
-                </div>
-              </div>
-              <div className='p-3 space-y-2'>
-                <p className='font-bold text-xl text'>$234.90</p>
-                <p className='font-bold'>The Mainland Estate</p>
-                <p className='inline-flex text-sm text-gray-400' > <IconMapPinFilled color='red' size={15} className='mr-2' /> Zenith Bank, VI </p>
-                <hr />
-                <p className='flex space-x-3'>
-                  <div className='inline-flex'><IconBath /> 2 </div>
-                  <div className='inline-flex'><IconBed /> 4 </div>
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

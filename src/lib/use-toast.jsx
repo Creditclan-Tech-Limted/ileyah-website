@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTimeoutFn } from "react-use";
 import { IconCheck, IconExclamationCircle, IconExclamationMark, IconInfoCircle } from "@tabler/icons-react";
 import Portal from "@/global/Portal";
-// import Portal from "@/components/global/Portal.jsx";
 
 const ToastContext = createContext({
   success: () => {
@@ -47,7 +46,7 @@ export const ToastProvider = ({ children }) => {
     open({ message, type: 'success', timeout });
   };
 
-  const error = (message, timeout = 5000000) => {
+  const error = (message, timeout = 5000) => {
     open({ message, type: 'error', timeout });
   };
 
@@ -66,18 +65,18 @@ export const ToastProvider = ({ children }) => {
   const value = { success, error, warning, info, default: _default, };
 
   return (
-    <ToastContext.Provider value={ value }>
-      { children }
+    <ToastContext.Provider value={value}>
+      {children}
       <Portal selector="body">
         <div
-          className={ classNames('p-4 md:p-8 space-y-3 w-full md:w-max md:max-w-md fixed bottom-0 left-1/2 transform -translate-x-1/2 z-[999]', {
+          className={classNames('p-4 md:p-8 space-y-3 w-full md:w-max md:max-w-md fixed bottom-0 left-1/2 transform -translate-x-1/2 z-[999]', {
             'pointer-events-none': !toasts.length
-          }) }
+          })}
         >
           <AnimatePresence>
-            { toasts.reverse().map(toast => (
-              <Toast key={ toast.id } onClose={ () => close(toast.id) } toast={ toast }/>
-            )) }
+            {toasts.reverse().map(toast => (
+              <Toast key={toast.id} onClose={() => close(toast.id)} toast={toast} />
+            ))}
           </AnimatePresence>
         </div>
       </Portal>
@@ -93,26 +92,26 @@ const Toast = ({ toast, onClose }) => {
   return (
     <motion.div
       layout
-      initial={ { opacity: 0, y: 30, scale: 0.3 } }
-      animate={ { opacity: 1, y: 0, scale: 1 } }
-      exit={ { opacity: 0, y: 20, scale: 0.5 } }
-      transition={ { type: "spring", stiffness: 500, damping: 30, mass: 1 } }
-      className={ classNames(
+      initial={{ opacity: 0, y: 30, scale: 0.3 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.5 }}
+      transition={{ type: "spring", stiffness: 500, damping: 30, mass: 1 }}
+      className={classNames(
         "px-4 py-3 rounded-xl flex items-start w-full z-[9999]",
         { 'bg-green-600 text-white': toast.type === 'success' },
         { 'bg-red-600 !text-white': toast.type === 'error' },
         { 'bg-orange-600 text-white': toast.type === 'warning' },
         { 'bg-blue-600 text-white': toast.type === 'info' },
         { 'bg-white shadow text-gray-800': toast.type === 'default' },
-      ) }
+      )}
     >
       <div className="mt-[2px] mr-3">
-        { toast.type === 'success' && <IconCheck size="20"/> }
-        { toast.type === 'error' && <IconExclamationCircle size="20"/> }
-        { toast.type === 'warning' && <IconExclamationMark size="20"/> }
-        { toast.type === 'info' && <IconInfoCircle size="20"/> }
+        {toast.type === 'success' && <IconCheck size="20" />}
+        {toast.type === 'error' && <IconExclamationCircle size="20" />}
+        {toast.type === 'warning' && <IconExclamationMark size="20" />}
+        {toast.type === 'info' && <IconInfoCircle size="20" />}
       </div>
-      <p>{ toast.message }</p>
+      <p>{toast.message}</p>
     </motion.div>
   )
 };

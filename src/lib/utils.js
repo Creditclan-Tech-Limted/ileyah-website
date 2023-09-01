@@ -9,11 +9,22 @@ export const parseJsonString = value => {
     return null;
   }
 }
+
 export function numberWithCommas(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
 export function capitalizeFirstLetter(string) {
   return string?.charAt(0).toUpperCase() + string?.slice(1);
+}
+
+export function formatToNaira(number) {
+  const formattedNumber = number.toLocaleString("en-NG", {
+    style: "currency",
+    currency: "NGN",
+    minimumFractionDigits: 2,
+  });
+  return formattedNumber;
 }
 
 export const sectors = [

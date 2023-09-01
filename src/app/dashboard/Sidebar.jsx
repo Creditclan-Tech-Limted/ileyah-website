@@ -2,9 +2,7 @@
 import {
   IconApps,
   IconGitPullRequest,
-  IconHome,
   IconListDetails,
-  IconSettings,
   IconSettings2,
   IconUser,
 } from '@tabler/icons-react'

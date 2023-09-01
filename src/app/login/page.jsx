@@ -33,17 +33,16 @@ const Page = () => {
       // const res = await send(data);
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), { ...data })
       setLoading(true)
-      console.log(res.data, 'data.id')
-      console.log(res.data.data.id, 'data.id')
       if (res.data.status) {
+        console.log(res.data.data)
+        updateData({ user: res?.data?.data })
         localStorage.setItem('ileyah_token', res?.data?.token)
         localStorage.setItem('userId', res?.data?.data?.id)
-        updateData({ user: res?.data?.message, token: res?.data?.token })
         if (res?.data?.data?.user_type === 'agent/landlords') {
-          toast.success(response.data.message)
+          toast.success(res.data.message)
           return router.push('/dashboard/landlords')
         } else if (res?.data?.data?.user_type === 'companies') {
-          toast.success(response.data.message)
+          toast.success(res.data.message)
           router.push('/dashboard/companies')
         } else {
           toast.error('error')
@@ -51,7 +50,7 @@ const Page = () => {
         }
       }
     } catch (error) {
-      // console.log(error)
+      console.log(error)
       setError({ status: true, message: error?.response?.data?.message })
       toast.error(error?.response?.data?.message)
       reset()
