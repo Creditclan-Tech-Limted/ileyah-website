@@ -32,9 +32,11 @@ const Hero = () => {
               {/* <Link href='/register'> */}
               <div className="flex w-full">
                 <div className="md:mx-auto space-x-5">
-                  <Button onClick={() => setOpenSignUp(true)} size="lg">
-                    Get started
-                  </Button>
+                  <Link href='/register/companies'>
+                    <Button size="lg">
+                      Get started
+                    </Button>
+                  </Link>
                   <Link href='/login'>
                     <Button variant='outlined' color='white' size="lg">
                       Sign In

@@ -73,14 +73,27 @@ const Page = () => {
                 </div>
               </div>
               <div className='px-4 md:px-0 lg:w-8/12 md:my-auto mt-20 text-left mx-auto'>
-                <div className='md:p-12 max-w-xl mx-auto'>
+                <div className='md:p-12 max-w-xl mx-auto space-y-6'>
                   <div className=''>
                     <img
                       className='w-48'
                       src='/assets/images/ileyah-logo.png'
                       alt='logo'
                     />
-                    <h4 className='mb-12 mt-3 pb-1'>Sign in to continue</h4>
+                    <h4 className='pb-1 text-gray-400'>Sign in to continue</h4>
+                  </div>
+                  <div>
+                    <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between">
+                      <li class="">
+                        <a href="#" aria-current="page" class="inline-block p-4 bg-gray-200 rounded-t-lg active">Tenants</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50">Agents</a>
+                      </li>
+                      <li class="">
+                        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50">Companies</a>
+                      </li>
+                    </ul>
                   </div>
                   <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='relative mb-4' data-te-input-wrapper-init>

@@ -4,11 +4,10 @@ import { IconBed, IconHeartFilled, IconMapPinFilled, IconPlus, IconBath } from '
 import AddNewProperty from './Modals/AddNewProperty'
 import useSignupStore from '@/store/signup'
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import UserInfor from '@/api/UserInfor'
-import { formatCurrency, formatToNaira } from '@/lib/utils'
+import { formatCurrency } from '@/lib/utils'
 
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
