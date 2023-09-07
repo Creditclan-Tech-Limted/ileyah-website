@@ -28,31 +28,41 @@ const Page = () => {
   const { data, updateData } = useSignupStore((state) => state)
   const { mutateAsync: send, isLoading } = useLoginMutation()
 
+  const [activeTab, setActiveTab] = useState('tenants')
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab)
+  }
+
   const onSubmit = async (data) => {
     try {
       // const res = await send(data);
-      const res = await axios.post(AUTH_ENDPOINT.LOGIN(), { ...data })
+      console.log(data, 'data')
+      const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
+        ...data,
+        user_type: activeTab,
+      })
+      console.log(res, 'res')
       setLoading(true)
       if (res.data.status) {
         console.log(res.data.data)
         updateData({ user: res?.data?.data })
         localStorage.setItem('ileyah_token', res?.data?.token)
         localStorage.setItem('userId', res?.data?.data?.id)
-        if (res?.data?.data?.user_type === 'agent/landlords') {
+        if (res?.data?.data?.user_type === 'agents/landlords') {
           toast.success(res.data.message)
           return router.push('/dashboard/landlords')
         } else if (res?.data?.data?.user_type === 'companies') {
           toast.success(res.data.message)
           router.push('/dashboard/companies')
         } else {
-          toast.error('error')
           router.push('/dashboard')
         }
       }
     } catch (error) {
       console.log(error)
       setError({ status: true, message: error?.response?.data?.message })
-      toast.error(error?.response?.data?.message)
+      toast.error(error?.res ?.data?.message)
       reset()
     }
   }
@@ -82,63 +92,215 @@ const Page = () => {
                     />
                     <h4 className='pb-1 text-gray-400'>Sign in to continue</h4>
                   </div>
-                  <div>
-                    <ul class="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between">
-                      <li class="">
-                        <a href="#" aria-current="page" class="inline-block p-4 bg-gray-200 rounded-t-lg active">Tenants</a>
-                      </li>
-                      <li class="">
-                        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50">Agents</a>
-                      </li>
-                      <li class="">
-                        <a href="#" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50">Companies</a>
-                      </li>
-                    </ul>
+
+                  <div className=''>
+                    <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
+                      <button
+                        className={`py-2 px-4 rounded-t-lg ${
+                          activeTab === 'tenants'
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
+                        }`}
+                        onClick={() => handleTabClick('tenants')}
+                      >
+                        Tenants
+                      </button>
+                      <button
+                        className={`py-2 px-4 rounded-t-lg ${
+                          activeTab === 'agents/landlords'
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
+                        }`}
+                        onClick={() => handleTabClick('agents/landlords')}
+                      >
+                        Agents
+                      </button>
+                      <button
+                        className={`py-2 px-4 rounded-t-lg ${
+                          activeTab === 'companies'
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
+                        }`}
+                        onClick={() => handleTabClick('companies')}
+                      >
+                        Company
+                      </button>
+                    </div>
+                    <div className=' p-4  rounded-b-lg'>
+                      {activeTab === 'tenants' && (
+                        <div>
+                          {/* Tenants Login Form */}
+                          <form onSubmit={handleSubmit(onSubmit)}>
+                            <div
+                              className='relative mb-4'
+                              data-te-input-wrapper-init
+                            >
+                              <Input
+                                label='Phone'
+                                name='phone'
+                                bordered
+                                {...register('phone', {
+                                  required: {
+                                    value: true,
+                                    message: 'Phone number is required',
+                                  },
+                                })}
+                                error={errors?.phone?.message}
+                              />
+                            </div>
+                            <div
+                              className='relative mb-4'
+                              data-te-input-wrapper-init
+                            >
+                              <Input
+                                label='Passsword'
+                                name='password'
+                                type='password'
+                                bordered
+                                {...register('password', {
+                                  required: {
+                                    value: true,
+                                    message: 'Password is required',
+                                  },
+                                })}
+                                error={errors?.password?.message}
+                              />
+                            </div>
+                            <div className='mb-12 pb-1 pt-1 flex justify-between'>
+                              <Button type='submit' loading={isLoading}>
+                                {' '}
+                                {loading ? 'Loading...' : 'Log in'}{' '}
+                              </Button>
+                              <div className='mt-2'>Forgot password?</div>
+                            </div>
+                            <div className='flex items-center pb-6'>
+                              <p className='mb-0 mr-2'>
+                                Don't have an account?
+                              </p>
+                              <Link href='/register'>
+                                <p>Register</p>
+                              </Link>
+                            </div>
+                          </form>
+                        </div>
+                      )}
+                      {activeTab === 'agents/landlords' && (
+                        <div>
+                          {/* Agent Login Form */}
+                          <form onSubmit={handleSubmit(onSubmit)}>
+                            <div
+                              className='relative mb-4'
+                              data-te-input-wrapper-init
+                            >
+                              <Input
+                                label='Phone'
+                                name='phone'
+                                bordered
+                                {...register('phone', {
+                                  required: {
+                                    value: true,
+                                    message: 'Phone number is required',
+                                  },
+                                })}
+                                error={errors?.phone?.message}
+                              />
+                            </div>
+                            <div
+                              className='relative mb-4'
+                              data-te-input-wrapper-init
+                            >
+                              <Input
+                                label='Passsword'
+                                name='password'
+                                type='password'
+                                bordered
+                                {...register('password', {
+                                  required: {
+                                    value: true,
+                                    message: 'Password is required',
+                                  },
+                                })}
+                                error={errors?.password?.message}
+                              />
+                            </div>
+                            <div className='mb-12 pb-1 pt-1 flex justify-between'>
+                              <Button type='submit' loading={isLoading}>
+                                {' '}
+                                {loading ? 'Loading...' : 'Log in'}{' '}
+                              </Button>
+                              <div className='mt-2'>Forgot password?</div>
+                            </div>
+                            <div className='flex items-center pb-6'>
+                              <p className='mb-0 mr-2'>
+                                Don't have an account?
+                              </p>
+                              <Link href='/register/agents'>
+                                <p>Register</p>
+                              </Link>
+                            </div>
+                          </form>
+                        </div>
+                      )}
+                      {activeTab === 'companies' && (
+                        <div>
+                          {/* Company Login Form */}
+                          <form onSubmit={handleSubmit(onSubmit)}>
+                            <div
+                              className='relative mb-4'
+                              data-te-input-wrapper-init
+                            >
+                              <Input
+                                label='Email'
+                                name='email'
+                                bordered
+                                {...register('email', {
+                                  required: {
+                                    value: true,
+                                    message: 'email number is required',
+                                  },
+                                })}
+                                error={errors?.phone?.message}
+                              />
+                            </div>
+                            <div
+                              className='relative mb-4'
+                              data-te-input-wrapper-init
+                            >
+                              <Input
+                                label='Passsword'
+                                name='password'
+                                type='password'
+                                bordered
+                                {...register('password', {
+                                  required: {
+                                    value: true,
+                                    message: 'Password is required',
+                                  },
+                                })}
+                                error={errors?.password?.message}
+                              />
+                            </div>
+                            <div className='mb-12 pb-1 pt-1 flex justify-between'>
+                              <Button type='submit' loading={isLoading}>
+                                {' '}
+                                {loading ? 'Loading...' : 'Log in'}{' '}
+                              </Button>
+                              <div className='mt-2'>Forgot password?</div>
+                            </div>
+                            <div className='flex items-center pb-6'>
+                              <p className='mb-0 mr-2'>
+                                Don't have an account?
+                              </p>
+                              <Link href='/register/companies'>
+                                <p>Register</p>
+                              </Link>
+                            </div>
+                          </form>
+                          {/* Add your company login form here */}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                  <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className='relative mb-4' data-te-input-wrapper-init>
-                      <Input
-                        label='Phone'
-                        name='phone'
-                        bordered
-                        {...register('phone', {
-                          required: {
-                            value: true,
-                            message: 'Phone number is required',
-                          },
-                        })}
-                        error={errors?.phone?.message}
-                      />
-                    </div>
-                    <div className='relative mb-4' data-te-input-wrapper-init>
-                      <Input
-                        label='Passsword'
-                        name='password'
-                        type='password'
-                        bordered
-                        {...register('password', {
-                          required: {
-                            value: true,
-                            message: 'Password is required',
-                          },
-                        })}
-                        error={errors?.password?.message}
-                      />
-                    </div>
-                    <div className='mb-12 pb-1 pt-1 flex justify-between'>
-                      <Button type='submit' loading={isLoading}>
-                        {' '}
-                        {loading ? 'Loading...' : 'Log in'}{' '}
-                      </Button>
-                      <div className='mt-2'>Forgot password?</div>
-                    </div>
-                    <div className='flex items-center pb-6'>
-                      <p className='mb-0 mr-2'>Don't have an account?</p>
-                      <Link href='/register'>
-                        <p>Register</p>
-                      </Link>
-                    </div>
-                  </form>
                 </div>
               </div>
             </div>

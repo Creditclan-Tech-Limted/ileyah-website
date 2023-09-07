@@ -1,5 +1,5 @@
 'use client'
-import { AUTH_ENDPOINT } from '@/api/landlord'
+import { AUTH_ENDPOINT } from '@/api/companies'
 import { useSignUpMutation } from '@/api/rent'
 import Button from '@/components/global/Button'
 import Input from '@/global/Input'
@@ -11,12 +11,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
+import { useToast } from '@/lib/use-toast'
 
 const Page = () => {
   const router = useRouter()
   const { mutateAsync: send, isLoading } = useSignUpMutation()
   const { data, updateData } = useSignupStore((state) => state)
+  const toast = useToast()
   const {
     register,
     handleSubmit,
@@ -30,22 +32,24 @@ const Page = () => {
   const [loading, setLoading] = useState(false)
 
   const onSubmit = async (data) => {
+    console.log(data, 'data')
     try {
       const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
         ...data,
         user_type: 'companies',
       })
+      
       setLoading(true)
-      if (res.data.status === true) {
-        toast.success(response.data.message)
+      if (res.data.status) {
+        toast.success(res.data.message)
         router.push('/login')
       }
     } catch (error) {
       if (
-        !error?.response?.data?.status &&
-        error?.response?.data?.message.includes('User already exist')
+        !error?.res?.data?.status &&
+        error?.res?.data?.message.includes('User already exist')
       ) {
-        setError({ status: true, message: error?.response?.data?.message })
+        setError({ status: true, message: error?.res?.data?.message })
         reset()
       } else {
         setError({
