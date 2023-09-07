@@ -73,7 +73,7 @@ function MenuView({ onNext, handleToggle }) {
           </div>
         </div>
         <div
-          // onClick={ () => onNext("find-house") }
+          onClick={ () => onNext("find-house") }
           className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
         >
           <div>

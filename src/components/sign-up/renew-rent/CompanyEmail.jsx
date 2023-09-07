@@ -3,14 +3,17 @@ import FormInput from "@/global/FormInput";
 import OtpPinInput from "@/global/OtpPinInput";
 import useSignupStore from "@/store/signup";
 import axios from "axios";
+import { useRef } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useRaf } from "react-use";
 
 const CompanyEmail = ({ onBack, onNext }) => {
   const { data, updateData } = useSignupStore((state) => state);
   const [views, setViews] = useState('email');
-  const ref = useRaf()
+  const input = useRef();
+  const [otpLoading, setOtpLoading] = useState(false);
+  const [verifyOtp, setVerifyOtp] = useState(false);
+  const [email, setEmail] = useState('')
   const {
     register,
     handleSubmit,
@@ -26,10 +29,13 @@ const CompanyEmail = ({ onBack, onNext }) => {
 
   const submit = async (values) => {
     try {
-      setViews('otp')
-      // console.log({ values });
-      // const res = await axios.post('https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual', { vertical, otp });
-      // console.log(res?.data);
+      setOtpLoading(true);
+      setEmail(values?.email)
+      const otp = Math.floor(100000 + Math.random() * 900000)
+      await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/sendToken', { email: values?.email, otp })
+      await axios.post('https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual', { vertical: "Ileya", otp, email: values?.email });
+      setOtpLoading(false)
+      setViews('otp');
     } catch (error) {
       console.log({ error });
     }
@@ -43,6 +49,20 @@ const CompanyEmail = ({ onBack, onNext }) => {
     //   console.log({ e });
     // }
   };
+
+  const handlePinDone = async (values) => {
+    try {
+      console.log({ values });
+      setVerifyOtp(true);
+      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/verifyToken', { email, otp: values });
+
+      if (res?.data?.status) {
+        return onNext('request-details')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -83,10 +103,10 @@ const CompanyEmail = ({ onBack, onNext }) => {
               <button
                 type="submit"
                 className="font-17 flex call-number btn btn-blue"
-                disabled={ischeckRentRequestLoading}
+                disabled={otpLoading}
               >
-                {ischeckRentRequestLoading ? "Please wait" : "Proceed"}
-                {ischeckRentRequestLoading ? (
+                {otpLoading ? "Please wait..." : "Proceed"}
+                {otpLoading ? (
                   <span className="ml-3 spin">
                     <i className="fa-solid fa-spinner"></i>
                   </span>
@@ -125,15 +145,15 @@ const CompanyEmail = ({ onBack, onNext }) => {
             </p>
           </div>
           <form onSubmit={handleSubmit(submit)} className="mt-10">
-            <OtpPinInput length={6} ref={input} />
-            <div className="flex">
+            <OtpPinInput length={6} ref={input} onDone={handlePinDone} />
+            <div className="flex mt-5">
               <button
                 type="submit"
                 className="font-17 flex call-number btn btn-blue"
-                disabled={ischeckRentRequestLoading}
+                disabled={verifyOtp}
               >
-                {ischeckRentRequestLoading ? "Please wait" : "Proceed"}
-                {ischeckRentRequestLoading ? (
+                {verifyOtp ? "Please wait..." : "Submit"}
+                {verifyOtp ? (
                   <span className="ml-3 spin">
                     <i className="fa-solid fa-spinner"></i>
                   </span>

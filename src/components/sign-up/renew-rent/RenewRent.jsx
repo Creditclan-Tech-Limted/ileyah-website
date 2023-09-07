@@ -43,9 +43,10 @@ function RenewRent({ onBack, onDone, noRequest, onPending }) {
       {view === 'company-email' && (
         <CompanyEmail
           onBack={() => setView('step-one-b')}
-          onNext={() => setView('company-id-upload')}
+          onNext={() => setView('request-details')}
         />
       )}
+
       {view === 'company-id-upload' && (
         <CompanyIdUplod
           onBack={() => setView('company-email')}
