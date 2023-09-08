@@ -23,10 +23,8 @@ const Page = () => {
     setScrollTop(event.target.scrollingElement.scrollTop);
 
     if (scrollPosition >= middleOfPage) {
-      // console.log('true');
       // setShowModal(true);
     } else {
-      // console.log('failse');
       // setShowModal(false);
     }
   };
