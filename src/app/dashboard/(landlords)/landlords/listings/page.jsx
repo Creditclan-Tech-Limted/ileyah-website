@@ -62,7 +62,7 @@ const Page = () => {
         <div className='mt-10 mb-10'>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
             {userData?.map((user, i) => (
-              <div className=' bg-white shadow-lg rounded-xl p-1'>
+              <div className=' bg-white shadow-lg rounded-xl p-1' key={i}>
                 <div className='bg-cover h-40 p-2' style={{ backgroundImage: `url(${user?.images[0]})`, borderRadius: '10px' }}>
                   <div className="bg-green-500 w-[50px] text-center text-white rounded-xl">
                     Rent

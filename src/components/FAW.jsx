@@ -41,6 +41,18 @@ const faqs = [
         No, Ileyah covers the cost of the inspection.
       </>
     )
+  },
+  {
+    q: 'What are the requirements for application?',
+    a: (
+      <>
+        - Register your house. <br />
+        - We test your eligibility in 10min. <br />
+        - We visit your address in 24-48hrs. <br />
+        - You pay security deposit. <br />
+        - Landlord paid immediately..
+      </>
+    )
   }
 ];
 

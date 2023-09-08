@@ -63,7 +63,7 @@ const Page = () => {
     } catch (error) {
       console.log(error)
       setError({ status: true, message: error?.response?.data?.message })
-      toast.error(error?.res ?.data?.message)
+      toast.error(error?.res?.data?.message)
       reset()
     }
   }
@@ -97,31 +97,28 @@ const Page = () => {
                   <div className=''>
                     <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${
-                          activeTab === 'tenants'
+                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
                             : ''
-                        }`}
+                          }`}
                         onClick={() => handleTabClick('tenants')}
                       >
                         Tenants
                       </button>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${
-                          activeTab === 'agents/landlords'
+                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'agents/landlords'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
                             : ''
-                        }`}
+                          }`}
                         onClick={() => handleTabClick('agents/landlords')}
                       >
                         Agents
                       </button>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${
-                          activeTab === 'companies'
+                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'companies'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
                             : ''
-                        }`}
+                          }`}
                         onClick={() => handleTabClick('companies')}
                       >
                         Company

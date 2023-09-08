@@ -69,7 +69,7 @@ const Sidebar = () => {
               <div className='flex'>
                 <ul className='f-m-m pl-5 mt-10'>
                   {navLinks.map((nav, i) => (
-                    <Link href={nav.link}>
+                    <Link href={nav.link} key={i}>
                       <li
                         className={classNames(
                           'px-6 py-3 rounded-full w-full',

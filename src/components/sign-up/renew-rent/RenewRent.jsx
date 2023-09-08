@@ -24,8 +24,7 @@ function RenewRent({ onBack, onDone, noRequest, onPending }) {
       {view === 'step-one' && (
         <StepOne
           onBack={onBack}
-          // onBack={() => setView('company-email')}
-          onNext={() => setView('step-one-b')}
+          onNext={() => setView("request-details")}
         />
       )}
 
@@ -56,7 +55,7 @@ function RenewRent({ onBack, onDone, noRequest, onPending }) {
 
       {view === 'request-details' && (
         <UserDetails
-          onBack={() => setView('company-id-upload')}
+          onBack={() => setView('step-one')}
           onNext={(v) => setView(v)}
         />
       )}
