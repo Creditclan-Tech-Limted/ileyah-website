@@ -12,7 +12,7 @@ const Page = () => {
   return (
     <>
       <div className='text-4xl font-bold'>
-        Welcome, {data?.user?.fullname} 👋🏿
+        Welcome, {data?.user?.fullname || 'Ileyah'} 👋🏿
       </div>
       <div className="grid grid-cols-[1fr] md:grid-cols-[2fr_1fr] gap-10 mt-10">
         <div>

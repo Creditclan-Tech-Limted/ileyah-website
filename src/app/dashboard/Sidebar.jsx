@@ -30,6 +30,18 @@ const navLinks = [
     icon: <IconUser />,
     name: 'Profile',
   },
+  {
+    id: 4,
+    link: '/dashboard/landlords/profile',
+    icon: <IconGitPullRequest />,
+    name: 'Request',
+  },
+  {
+    id: 5,
+    link: '/dashboard/landlords/profile',
+    icon: <IconSettings2 />,
+    name: 'Settings',
+  },
 ]
 
 const Sidebar = () => {
@@ -56,24 +68,26 @@ const Sidebar = () => {
               </div>
               <div className='flex'>
                 <ul className='f-m-m pl-5 mt-10'>
-                  <Link href='/dashboard/landlords'>
-                    <li
-                      className={classNames(
-                        'px-6 py-3 rounded-full w-full',
-                        query === '/dashboard/landlords'
-                          ? 'bg-gray-200 text-black'
-                          : ''
-                      )}
-                    >
-                      <div className='flex items-center'>
-                        <div className='md:w-6 md:h-6 w-5 h-5'>
-                          <IconApps />
+                  {navLinks.map((nav, i) => (
+                    <Link href={nav.link}>
+                      <li
+                        className={classNames(
+                          'px-6 py-3 rounded-full w-full',
+                          query === nav?.link
+                            ? 'bg-gray-200 text-black'
+                            : ''
+                        )}
+                      >
+                        <div className='flex items-center'>
+                          <div className='md:w-6 md:h-6 w-5 h-5'>
+                            {nav?.icon}
+                          </div>
+                          <div className='ml-10 text-lg'>{nav?.name}</div>
                         </div>
-                        <div className='ml-10 text-lg'>Dashboard</div>
-                      </div>
-                    </li>
-                  </Link>
-                  <Link href='/dashboard/landlords/listings'>
+                      </li>
+                    </Link>
+                  ))}
+                  {/* <Link href='/dashboard/landlords/listings'>
                     <li className='text-gray-400 px-6 py-4 rounded-full'>
                       <div className='flex items-center'>
                         <div className='flex items-center'>
@@ -83,7 +97,6 @@ const Sidebar = () => {
                           <div className='text-gray-400 ml-10 text-lg'>
                             My Listings
                           </div>
-                          {/* <div className="text-gray-400 ml-10 text-lg">My Staffs</div> */}
                         </div>
                       </div>
                     </li>
@@ -102,7 +115,6 @@ const Sidebar = () => {
                           <div className='md:w-6 md:h-6 w-5 h-5'>
                             <IconListDetails />
                           </div>
-                          {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
                           <div className='ml-10 text-lg text-gray-400'>
                             My Staffs
                           </div>
@@ -117,7 +129,6 @@ const Sidebar = () => {
                           <div className='md:w-6 md:h-6 w-5 h-5'>
                             <IconGitPullRequest />
                           </div>
-                          {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
                           <div className='text-gray-400 ml-10 text-lg'>
                             Request
                           </div>
@@ -132,14 +143,13 @@ const Sidebar = () => {
                           <div className='md:w-6 md:h-6 w-5 h-5'>
                             <IconSettings2 />
                           </div>
-                          {/* <div className="text-gray-400 ml-10 text-lg">My Listings</div> */}
                           <div className='text-gray-400 ml-10 text-lg'>
                             Settings
                           </div>
                         </div>
                       </div>
                     </li>
-                  </Link>
+                  </Link> */}
                 </ul>
               </div>
             </div>

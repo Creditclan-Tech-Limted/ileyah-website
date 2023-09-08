@@ -200,10 +200,10 @@ const Page = () => {
                 </div>
               </div>
               <div
-                className='flex items-center hidden sm:block rounded-b-lg lg:w-4/12 bg-cover bg-[60%]'
+                className='flex items-center sm:block rounded-b-lg lg:w-4/12 bg-cover bg-[60%]'
                 style={{
                   backgroundImage:
-                    'url(https://istock.7xm.xyz/images/463354.jpg)',
+                    'url(/assets/agent_register.jpeg)',
                 }}
               >
                 <div className='px-4 py-6  md:mx-6 md:p-12'>

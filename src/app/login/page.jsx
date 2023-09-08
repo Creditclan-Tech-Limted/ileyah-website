@@ -59,6 +59,7 @@ const Page = () => {
           router.push('/dashboard')
         }
       }
+      setLoading(false)
     } catch (error) {
       console.log(error)
       setError({ status: true, message: error?.response?.data?.message })
@@ -224,7 +225,7 @@ const Page = () => {
                               />
                             </div>
                             <div className='mb-12 pb-1 pt-1 flex justify-between'>
-                              <Button type='submit' loading={isLoading}>
+                              <Button type='submit' loading={loading}>
                                 {' '}
                                 {loading ? 'Loading...' : 'Log in'}{' '}
                               </Button>
@@ -281,7 +282,7 @@ const Page = () => {
                               />
                             </div>
                             <div className='mb-12 pb-1 pt-1 flex justify-between'>
-                              <Button type='submit' loading={isLoading}>
+                              <Button type='submit' loading={loading}>
                                 {' '}
                                 {loading ? 'Loading...' : 'Log in'}{' '}
                               </Button>
