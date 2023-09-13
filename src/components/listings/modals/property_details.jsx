@@ -27,7 +27,7 @@ const ProDetails = ({ isOpen, onClose, property }) => {
         <div>
           <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation='true' pagination='true'>
             {property?.images.map((img, i) => (
-              <swiper-slide>
+              <swiper-slide key={i}>
                 <img src={img} alt="" key={i} className="h-[500px] w-full object-cover" />
               </swiper-slide>
             ))}
