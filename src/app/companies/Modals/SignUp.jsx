@@ -1,16 +1,21 @@
+import { AUTH_ENDPOINT } from '../../../api/companies';
 import Drawer from '@/components/Drawer'
 import Button from '@/components/global/Button';
 import Input from '@/global/Input';
 import Select from '@/global/Select';
 import { sectors, staff_strength } from '@/lib/utils';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 const SignUp = ({ isOpen, isClosed }) => {
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
 
   const onSubmit = async (data) => {
+    console.log(data, 'data')
     try {
       console.log({ data });
+      const response = await axios.post(AUTH_ENDPOINT.REGISTER(), {data})
+      console.log(response, 'response')
     } catch (error) {
       console.log({ error });
     }

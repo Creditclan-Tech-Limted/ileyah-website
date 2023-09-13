@@ -31,12 +31,9 @@ function StepThree({ onBack, onNext }) {
       //   process_type: "findMeAHouse",
       //   source: 1
       // };
-     
-
       // await send(payload);
       setLoading(true)
       setTimeout(() => {
-
         onNext();
       }, 5000)
     } catch (e) {
@@ -47,29 +44,29 @@ function StepThree({ onBack, onNext }) {
   return (
     <>
       <div>
-        <button style={ { marginBottom: "0px" } } className="back" type="button" onClick={ onBack }>
-          <span aria-hidden="true"><i style={ { fontSize: "1rem !important" } } className="fa-solid fa-angle-left"></i></span>
+        <button style={{ marginBottom: "0px" }} className="back" type="button" onClick={onBack}>
+          <span aria-hidden="true"><i style={{ fontSize: "1rem !important" }} className="fa-solid fa-angle-left"></i></span>
         </button>
       </div>
       <div className="pt-70 pb-2">
         <p className="redirect-text text-deep-blue font-30 font-weight-bold">
-        What type of house would you prefer?
+          What type of house would you prefer?
         </p>
       </div>
       <div>
         <div className='row mb-3'>
           {
             types.map(t => (
-              <div className="col-md-6" key={ t.id }>
+              <div className="col-md-6" key={t.id}>
                 <label className='flex items-center'>
                   <div className="checkbox">
                     <input
-                      name="house_type" type="radio" className="checkbox__input" value={ t.id }
-                      onChange={ (e) => setHouseType(e.target.value) } checked={ houseType === t.id }
+                      name="house_type" type="radio" className="checkbox__input" value={t.id}
+                      onChange={(e) => setHouseType(e.target.value)} checked={houseType === t.id}
                     />
                     <span className="checkbox__inner"></span>
                   </div>
-                  <p className="font-17 mb-2 ml-2 text-dark cursor-pointer">{ t.name }</p>
+                  <p className="font-17 mb-2 ml-2 text-dark cursor-pointer">{t.name}</p>
                 </label>
               </div>
             ))
@@ -77,20 +74,20 @@ function StepThree({ onBack, onNext }) {
         </div>
       </div>
       <button onClick={handleSubmit} type="submit" className="items-center btn btn-blue-full call-number flex justify-content-sm-around font-17" disabled={isLoading || !houseType}>
-                {
-                    // isLoading ? 'Submitting request' : 'Submit request'
-                    loading ? 'Submitting request' : 'Submit request'
-                }
+        {
+          // isLoading ? 'Submitting request' : 'Submit request'
+          loading ? 'Submitting request' : 'Submit request'
+        }
 
-                {loading ? (
-                    <span
-                        className="ml-3 spin"><i className="fa-solid fa-spinner"></i></span>
-                ): <></>
-                }
-            </button>
-            <div className='illustration-image pt-5'>
-                <img src="/assets/images/Build your home-amico.svg" alt="" />
-            </div>
+        {loading ? (
+          <span
+            className="ml-3 spin"><i className="fa-solid fa-spinner"></i></span>
+        ) : <></>
+        }
+      </button>
+      <div className='illustration-image pt-5'>
+        <img src="/assets/images/Build your home-amico.svg" alt="" />
+      </div>
     </>
   )
 }

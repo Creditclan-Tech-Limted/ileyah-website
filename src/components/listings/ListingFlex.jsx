@@ -17,7 +17,6 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
                   {heading}
                 </p>
               </div>
-
             </div>
             <div className='text-gray-900 font-bold text-2xl my-4 hover:text-blue-700 cursor-pointer'>
               {title}
@@ -43,6 +42,7 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
             </div>
           </div>
           <div className='lg:flex items-center gap-4 justify-between'>
+            
 
             <div className=' flex items-center justify-between '>
               <div className='text-sm'>

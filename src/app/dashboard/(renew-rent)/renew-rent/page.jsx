@@ -35,7 +35,7 @@ const Page = () => {
     if (status === 'pending') {
       setViews('request-details')
     }
-  }, [])
+  }, [status])
 
   const house_types = [
     { value: 'room-only', text: 'Room only' },

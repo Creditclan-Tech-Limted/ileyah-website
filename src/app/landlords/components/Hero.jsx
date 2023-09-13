@@ -10,7 +10,7 @@ const Hero = () => {
   const handleRegister = async () => {
     try {
       updateData({ user_type: 'agent/landlords' })
-      router.push('/register')
+      router.push('/register/agents')
     } catch (error) {
       console.log(error);
     }

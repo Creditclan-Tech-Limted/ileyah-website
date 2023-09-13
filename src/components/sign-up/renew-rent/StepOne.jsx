@@ -1,4 +1,3 @@
-
 function StepOne({ onNext, onBack }) {
   return (
     <>
@@ -15,19 +14,22 @@ function StepOne({ onNext, onBack }) {
       <div className='mt-4 text-left'>
         <ul className='p-0'>
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
-            1. Register your house.
+            1. Must be a Salary Earner.
           </li>
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
-            2. We test your eligibility in 10min.
+            2. Register your house.
           </li>
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
-            3. We visit your address in 24-48hrs.
+            3. We test your eligibility in 10min.
           </li>
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
-            4. You pay security deposit.
+            4. We visit your address in 24-48hrs.
           </li>
           <li className='list-style-none pb-2 font-17 text-cc-dark'>
-            5. Landlord paid immediately.
+            5. You pay security deposit.
+          </li>
+          <li className='list-style-none pb-2 font-17 text-cc-dark'>
+            6. Landlord paid immediately.
           </li>
           <button onClick={ onNext } className="mt-4 font-17 call-number btn btn-blue">Renew my rent</button>
         </ul>

@@ -1133,7 +1133,6 @@ p {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.7em;
-  color: #222335;
 }
 
 a,
@@ -1182,7 +1181,7 @@ a:focus {
   max-width: 550px;
   background-color: #fff;
   background-size: contain;
-  color: #fff;
+  // color: #fff;
   transition: all 0.3s;
   height: calc(100% - 30px);
   width: 350px;
