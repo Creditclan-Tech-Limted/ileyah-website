@@ -29,7 +29,7 @@ const Page = () => {
           <div className='text-4xl font-bold'>
             Welcome, {data?.user?.fullname || 'Ileyah hq'} 👋🏿
           </div>
-          <Button onClick={() => setOpenAddNewStaff(true)} leftIcon={<IconPlus />} size='xs' className='my-5 md:my-0 ml-auto'  >Add New Staff</Button>
+          <Button onClick={() => setOpenAddNewStaff(true)} leftIcon={<IconPlus />} size='xs' className='my-5 md:my-0 ml-auto' >Add New Staff</Button>
         </div>
 
         <div className='w-screen md:w-full'>

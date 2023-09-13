@@ -27,7 +27,6 @@ const Page = () => {
   const [loading, setLoading] = useState(false)
   const { data, updateData } = useSignupStore((state) => state)
   const { mutateAsync: send, isLoading } = useLoginMutation()
-
   const [activeTab, setActiveTab] = useState('tenants')
 
   const handleTabClick = (tab) => {
@@ -44,7 +43,7 @@ const Page = () => {
       if (res.data.status) {
         console.log(res.data.data)
         updateData({ user: res?.data?.data })
-        localStorage.setItem('ileyah_token', res?.data?.token)
+        localStorage.setItem('ileyah_token', res?.data?.data)
         localStorage.setItem('userId', res?.data?.data?.id)
         if (res?.data?.data?.user_type === 'agents/landlords') {
           toast.success(res.data.message)

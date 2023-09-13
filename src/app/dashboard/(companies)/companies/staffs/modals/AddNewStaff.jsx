@@ -5,8 +5,8 @@ import { IconPlus } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 
 const AddNewStaff = ({ isOpen, onClose }) => {
+  console.log({ isOpen });
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
-
   const onSubmit = async (data) => {
     try {
       console.log({ data });
@@ -48,18 +48,18 @@ const AddNewStaff = ({ isOpen, onClose }) => {
           })} error={errors?.amount?.message} />
 
           <Input type='text' label='Salary Range' bordered {...register('salary', {
-                  required: {
-                     value: true,
-                     message: 'Salary Range is required'
-                  }
-               })} error={errors?.salary?.message} />
-
-          {/* <Input type='text' label='Department' bordered {...register('department', {
             required: {
               value: true,
-              message: ' Department is required'
+              message: 'Salary Range is required'
             }
-          })} error={errors?.department?.message} /> */}
+          })} error={errors?.salary?.message} />
+
+          <Input type='text' label='Work Email' bordered {...register('work_email', {
+            required: {
+              value: true,
+              message: ' Work Email is required'
+            }
+          })} error={errors?.work_email?.message} />
 
           <Button type='submit' className='mt-10' leftIcon={<IconPlus />} >Add New Staff</Button>
         </form>

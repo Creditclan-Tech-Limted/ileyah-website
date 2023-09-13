@@ -1,4 +1,5 @@
 'use client'
+import useSignupStore from '@/store/signup'
 import {
   IconApps,
   IconGitPullRequest,
@@ -9,24 +10,23 @@ import {
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
 
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard/landlords',
+    link: '/dashboard/landlords/',
     icon: <IconApps />,
     name: 'Dashboard',
   },
   {
     id: 2,
-    link: '/dashboard/landlords/listings',
+    link: '/dashboard/landlords/listings/',
     icon: <IconListDetails />,
     name: 'Listings',
   },
   {
     id: 3,
-    link: '/dashboard/landlords/profile',
+    link: '/dashboard/landlords/profile/',
     icon: <IconUser />,
     name: 'Profile',
   },
@@ -45,11 +45,15 @@ const navLinks = [
 ]
 
 const Sidebar = () => {
-  const query = usePathname()
+  const query = usePathname();
+  const { data, updateData } = useSignupStore((state) => state);
+
+  console.log({ data });
+
 
   return (
     <>
-      <div className='w-full h-full z-40 hidden lg:block fixed'>
+      <div className='w-full h-full z-40 hidden lg:block'>
         <div
           className='opacity-0 inset-0 w-full h-full'
           onClick='sidebarHandler(false)'
