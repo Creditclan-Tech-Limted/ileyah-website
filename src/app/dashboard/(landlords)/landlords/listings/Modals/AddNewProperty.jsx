@@ -20,7 +20,7 @@ import { useForm } from 'react-hook-form';
 import { useToast } from '@/lib/use-toast'
 
 
-const AddNewProperty = ({ isOpen, onClose }) => {
+const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
   const toast = useToast();
   const userId = UserInfor().userId
   const router = useRouter()
@@ -91,12 +91,14 @@ const AddNewProperty = ({ isOpen, onClose }) => {
           ...data,
           images: img,
           landlordAgentId: userId,
+          staff_phone: refferal_code,
         })
         setLoading(true)
         console.log(response?.data)
         if (response.data.status === true) {
           toast.success(response.data.message)
-          router.push('dashboard/landlords')
+          onClose()
+          // router.push('dashboard/landlords')
         }
       })
     } catch (error) {
@@ -175,7 +177,7 @@ const AddNewProperty = ({ isOpen, onClose }) => {
               <Input
                 label='Area'
                 bordered
-                {...register('area', {
+                {...register('Area', {
                   required: {
                     value: true,
                     message: 'Area is required',
@@ -183,32 +185,29 @@ const AddNewProperty = ({ isOpen, onClose }) => {
                 })}
                 error={errors?.area?.message}
               />
+              
               <Input
-                label='Bathroom'
+                label='Agent Phone Number'
                 bordered
-                {...register('bath', {
+                {...register('agent_no', {
                   required: {
                     value: true,
-                    message: 'Bathroom is required',
-                  },
-                })}
-                error={errors?.area?.message}
-              />
-              <Input
-                label='Bedroom'
-                bordered
-                {...register('bed', {
-                  required: {
-                    value: true,
-                    message: 'Bedroom is required',
+                    message: 'Agent No is required',
                   },
                 })}
                 error={errors?.area?.message}
               />
 
-              {/* <Select options={areas} label='Area' /> */}
-
-              <Select options={lgas} label='L.G.A' />
+              <TextArea
+                label='Descriptions'
+                {...register('description', {
+                  required: {
+                    value: true,
+                    message: ' description is required',
+                  },
+                })}
+                error={errors?.description?.message}
+              />
 
               <Button
                 type='submit'

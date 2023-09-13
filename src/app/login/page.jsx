@@ -36,13 +36,10 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
-      // const res = await send(data);
-      console.log(data, 'data')
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
         ...data,
         user_type: activeTab,
       })
-      console.log(res, 'res')
       setLoading(true)
       if (res.data.status) {
         console.log(res.data.data)
@@ -51,7 +48,7 @@ const Page = () => {
         localStorage.setItem('userId', res?.data?.data?.id)
         if (res?.data?.data?.user_type === 'agents/landlords') {
           toast.success(res.data.message)
-          return router.push('/dashboard/landlords')
+          return router.push(`/dashboard/landlords/listings?r=${res?.data?.data?.phone}`)
         } else if (res?.data?.data?.user_type === 'companies') {
           toast.success(res.data.message)
           router.push('/dashboard/companies')
@@ -98,8 +95,8 @@ const Page = () => {
                     <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
-                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                            : ''
+                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                          : ''
                           }`}
                         onClick={() => handleTabClick('tenants')}
                       >
@@ -107,8 +104,8 @@ const Page = () => {
                       </button>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'agents/landlords'
-                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                            : ''
+                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                          : ''
                           }`}
                         onClick={() => handleTabClick('agents/landlords')}
                       >
@@ -116,8 +113,8 @@ const Page = () => {
                       </button>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'companies'
-                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                            : ''
+                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                          : ''
                           }`}
                         onClick={() => handleTabClick('companies')}
                       >

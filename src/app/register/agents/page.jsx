@@ -33,7 +33,7 @@ const Page = () => {
     try {
       const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
         ...data,
-        user_type: 'agent/landlords',
+        user_type: 'agents/landlords',
       })
       setLoading(true)
       if (res.data.status === true) {

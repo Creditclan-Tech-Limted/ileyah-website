@@ -66,7 +66,7 @@ const Drawer = (
                       <Button
                         onClick={onClose} rounded icon={<IconX size="20" />}
                         size="sm" color="red" variant="outlined"
-                      />
+                      > <IconX /> </Button>
                     </div>
                   )
                 }
