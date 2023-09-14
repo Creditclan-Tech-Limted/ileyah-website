@@ -1,10 +1,13 @@
-import { useCheckRentRequestMutation } from "@/api/rent";
-import FormInput from "@/global/FormInput";
-import useSignupStore from "@/store/signup";
-import { useForm } from "react-hook-form";
+import { useCheckRentRequestMutation } from '@/api/rent';
+import FormInput from '@/global/FormInput';
+import Input from '@/global/Input';
+import useSignupStore from '@/store/signup';
+import React from 'react'
+import { useForm } from 'react-hook-form';
 
-const UserDetails = ({ onBack, onNext }) => {
+const UserDetails = () => {
   const { data, updateData } = useSignupStore((state) => state);
+
   const {
     register,
     handleSubmit,
@@ -19,39 +22,15 @@ const UserDetails = ({ onBack, onNext }) => {
   } = useCheckRentRequestMutation();
 
   const submit = async (values) => {
-    updateData({ user: { ...values } });
     try {
-      const res = await checkRentRequest(values.phone);
-      if (!res.data.status) return onNext("step-two");
-      updateData({ request: res.data.request });
-      onNext("mini-summary");
-    } catch (e) {
-      console.log({ e });
-    }
-  };
+      console.log({ values });
+    } catch (error) {
 
+    }
+  }
   return (
     <>
-      <div>
-        <button
-          style={{ marginBottom: "0px" }}
-          className="back"
-          type="button"
-          onClick={onBack}
-          disabled={ischeckRentRequestLoading}
-        >
-          <span aria-hidden="true">
-            <i
-              style={{ fontSize: "1rem !important" }}
-              className="fa-solid fa-angle-left"
-            ></i>
-          </span>
-        </button>
-      </div>
-      <div className="pt-70 pb-3">
-        <p className="text-4xl text-deep-blue font-bold mb-1">
-          We would like to know you
-        </p>
+      <div className="pb-3">
         <p className="text-cc-dark font-17">
           Please provide the following information to proceed
         </p>
@@ -84,6 +63,8 @@ const UserDetails = ({ onBack, onNext }) => {
           label="Email address"
           {...register("email", { required: true })}
         />
+
+        <Input bordered />
         <div className="flex">
           <button
             type="submit"
@@ -102,7 +83,7 @@ const UserDetails = ({ onBack, onNext }) => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
 export default UserDetails;

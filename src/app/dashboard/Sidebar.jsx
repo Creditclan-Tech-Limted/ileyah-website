@@ -14,16 +14,16 @@ import { usePathname } from 'next/navigation'
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard/landlords/',
+    link: '/dashboard/',
     icon: <IconApps />,
     name: 'Dashboard',
   },
-  {
-    id: 2,
-    link: '/dashboard/landlords/listings/',
-    icon: <IconListDetails />,
-    name: 'Listings',
-  },
+  // {
+  //   id: 2,
+  //   link: '/dashboard/landlords/listings/',
+  //   icon: <IconListDetails />,
+  //   name: 'Listings',
+  // },
   {
     id: 3,
     link: '/dashboard/landlords/profile/',
@@ -36,20 +36,17 @@ const navLinks = [
   //   icon: <IconGitPullRequest />,
   //   name: 'Request',
   // },
-  // {
-  //   id: 5,
-  //   link: '/dashboard/landlords/profile',
-  //   icon: <IconSettings2 />,
-  //   name: 'Settings',
-  // },
+  {
+    id: 5,
+    link: '/dashboard/landlords/profile',
+    icon: <IconSettings2 />,
+    name: 'Settings',
+  },
 ]
 
 const Sidebar = () => {
   const query = usePathname();
   const { data, updateData } = useSignupStore((state) => state);
-
-  console.log({ data });
-
 
   return (
     <>

@@ -32,7 +32,10 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
-      setLoading(true)
+      setLoading(true);
+
+      // if(data.user_type === '')
+
       const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
         ...data,
         user_type: 'users',
