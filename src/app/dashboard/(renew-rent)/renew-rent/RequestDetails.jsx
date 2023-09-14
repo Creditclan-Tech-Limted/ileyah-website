@@ -16,7 +16,7 @@ const RequestDetails = () => {
     request,
     isLoading: isRentRequestLoading,
     refetch: refetchRentRequest,
-  } = useCheckRentRequestQuery(data?.user?.phone || '09039719017', (data, err) => {
+  } = useCheckRentRequestQuery(data?.user?.phone, (data, err) => {
     if (data?.data?.request) {
       updateData({ ...data });
     }

@@ -65,8 +65,8 @@ const Page = () => {
           <div className='p-10 space-y-10'>
             <div className="flex">
               <div>
-                <p className='text-2xl'>Hello <span className='font-semibold'>Praise</span> 🥳</p>
-                {/* <p className="text-xl"> Choose an option below to get started </p> */}
+                <p className='text-2xl'>Hello <span className='font-semibold'>{data?.user?.name}</span> 🥳</p>
+                <p className="text-xl"> Choose an option below to get started </p>
               </div>
               <div className='ml-auto'>
                 <Button leftIcon={<IconHeadset />}> Support</Button>
@@ -123,6 +123,60 @@ const Page = () => {
                   <div className="px-6">
                     <p className="text-lg font-medium text-left">
                       Find me a house
+                    </p>
+                    <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                      Renew your house rent on a monthly basis while we handle the full payment
+                    </p>
+                  </div>
+                  <div className='my-auto'>
+                    <IconChevronRight className="text-black" size="20" />
+                  </div>
+                </div>
+                <div
+                  className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                >
+                  <div className="text-purple-600 grid place-items-center mt-1">
+                    <IconHomeBolt size="32" />
+                  </div>
+                  <div className="px-6">
+                    <p className="text-lg font-medium text-left">
+                      Distress Sales (coming soon)
+                    </p>
+                    <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                      Renew your house rent on a monthly basis while we handle the full payment
+                    </p>
+                  </div>
+                  <div className='my-auto'>
+                    <IconChevronRight className="text-black" size="20" />
+                  </div>
+                </div>
+                <div
+                  className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                >
+                  <div className="text-yellow-600 grid place-items-center mt-1">
+                    <IconHomeHand size="32" />
+                  </div>
+                  <div className="px-6">
+                    <p className="text-lg font-medium text-left">
+                      Rent to own (Beta)
+                    </p>
+                    <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                      Renew your house rent on a monthly basis while we handle the full payment
+                    </p>
+                  </div>
+                  <div className='my-auto'>
+                    <IconChevronRight className="text-black" size="20" />
+                  </div>
+                </div>
+                <div
+                  className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                >
+                  <div className="text-black grid place-items-center mt-1">
+                    <IconDoorEnter size="32" />
+                  </div>
+                  <div className="px-6">
+                    <p className="text-lg font-medium text-left">
+                      Shortlet (coming soon)
                     </p>
                     <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
                       Renew your house rent on a monthly basis while we handle the full payment
@@ -189,7 +243,7 @@ const Page = () => {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <h3 class="text-xl font-medium mb-8 px-1 border-b pb-6">Pending Rent Request</h3>
               <div className='grid grid-cols-2'>
                 <div>
@@ -206,7 +260,7 @@ const Page = () => {
                   N300,000
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         )}
       </div>

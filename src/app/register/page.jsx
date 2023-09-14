@@ -40,8 +40,9 @@ const Page = () => {
         ...data,
         user_type: 'users',
       })
-      if (res.data.status === true) {
-        toast.success(response.data.message)
+      console.log(res?.data);
+      if (res.data.status) {
+        toast.success(res.data.message)
         router.push('/login');
         setLoading(false)
       }
