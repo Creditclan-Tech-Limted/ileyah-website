@@ -296,4 +296,4 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
   )
 }
 
-export default AddNewProperty
+export default AddNewProperty;
