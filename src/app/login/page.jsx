@@ -12,8 +12,8 @@ import { AUTH_ENDPOINT } from '@/api/landlord'
 import { useToast } from '@/lib/use-toast'
 
 const Page = () => {
-  const router = useRouter();
-  const toast = useToast();
+  const router = useRouter()
+  const toast = useToast()
   const {
     register,
     handleSubmit,
@@ -42,11 +42,14 @@ const Page = () => {
       })
       if (res.data.status) {
         updateData({ user: res?.data?.data })
-        localStorage.setItem('ileyah_token', res?.data?.data)
+        localStorage.setItem('ileyah_token', JSON.stringify(res?.data?.data))
         localStorage.setItem('userId', res?.data?.data?.id)
+        localStorage.setItem('userName', res?.data?.data?.name)
         if (res?.data?.data?.user_type === 'agents/landlords') {
           toast.success(res.data.message)
-          return router.push(`/dashboard/landlords/listings?r=${res?.data?.data?.phone}`)
+          return router.push(
+            `/dashboard/landlords/listings?r=${res?.data?.data?.phone}`
+          )
         } else if (res?.data?.data?.user_type === 'companies') {
           toast.success(res.data.message)
           router.push('/dashboard/companies')
@@ -92,28 +95,31 @@ const Page = () => {
                   <div className=''>
                     <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
-                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                          : ''
-                          }`}
+                        className={`py-2 px-4 rounded-t-lg ${
+                          activeTab === 'tenants'
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
+                        }`}
                         onClick={() => handleTabClick('tenants')}
                       >
                         Tenants
                       </button>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'agents/landlords'
-                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                          : ''
-                          }`}
+                        className={`py-2 px-4 rounded-t-lg ${
+                          activeTab === 'agents/landlords'
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
+                        }`}
                         onClick={() => handleTabClick('agents/landlords')}
                       >
                         Agents
                       </button>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'companies'
-                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                          : ''
-                          }`}
+                        className={`py-2 px-4 rounded-t-lg ${
+                          activeTab === 'companies'
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
+                        }`}
                         onClick={() => handleTabClick('companies')}
                       >
                         Company
@@ -274,7 +280,8 @@ const Page = () => {
                               />
                             </div>
                             <div className='mb-12 pb-1 pt-1 flex justify-between'>
-                              <Button type='submit' loading={loading}>Log in
+                              <Button type='submit' loading={loading}>
+                                Log in
                               </Button>
                               <div className='mt-2'>Forgot password?</div>
                             </div>

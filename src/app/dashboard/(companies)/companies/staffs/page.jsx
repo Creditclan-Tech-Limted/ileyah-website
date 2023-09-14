@@ -25,6 +25,7 @@ const Page = () => {
     staff: '',
   })
   let companyId = UserInfor().userId
+  let companyName = UserInfor().userName
 
   const handleClose = async () => {
     try {
@@ -59,7 +60,7 @@ const Page = () => {
       <div className='w-full'>
         <div className='md:flex justify-between'>
           <div className='text-4xl font-bold'>
-            Welcome, {data?.user?.fullname || 'Ileyah hq'} 👋🏿
+            Welcome, {companyName || 'Ileyah hq'} 👋🏿
           </div>
           <Button
             onClick={() => setOpenAddNewStaff(true)}
