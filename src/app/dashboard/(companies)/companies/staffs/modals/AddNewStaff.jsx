@@ -1,17 +1,33 @@
+import UserInfor from '@/api/UserInfor';
+import { STAFF } from '@/api/companies';
 import Drawer from '@/components/Drawer';
 import Button from '@/components/global/Button';
 import Input from '@/global/Input';
 import { IconPlus } from '@tabler/icons-react';
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import { useToast } from '@/lib/use-toast'
+
 
 const AddNewStaff = ({ isOpen, onClose }) => {
-  console.log({ isOpen });
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+  const companyId = UserInfor().userId
+      const toast = useToast()
+
   const onSubmit = async (data) => {
+  
     try {
-      console.log({ data });
+      const res = await axios.post(STAFF.ADD_STAFF(), {
+        ...data,
+        companyId: companyId,
+      })
+      if(res?.data?.status){
+        toast.success(res?.data?.message)
+        reset()
+        onClose()
+      }
     } catch (error) {
-      console.log({ error });
+       toast.error(error?.response?.data?.message)
     }
   }
 
