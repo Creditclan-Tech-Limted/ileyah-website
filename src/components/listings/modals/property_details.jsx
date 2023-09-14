@@ -23,7 +23,7 @@ const ProDetails = ({ isOpen, onClose, property }) => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose} title='Property Details'>
+      <Drawer isOpen={isOpen} onClose={onClose} padding={false}>
         <div>
           <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation='true' pagination='true'>
             {property?.images.map((img, i) => (
@@ -33,7 +33,7 @@ const ProDetails = ({ isOpen, onClose, property }) => {
             ))}
           </swiper-container>
         </div>
-        <div className="mt-5 space-y-5">
+        <div className="space-y-5 p-8">
           <p className="text-xl">{property?.name} ▪️ {property?.Area} </p>
           <hr />
           <div>
@@ -48,7 +48,6 @@ const ProDetails = ({ isOpen, onClose, property }) => {
             {property?.description}
           </div>
         </div>
-
       </Drawer>
     </>
   )
