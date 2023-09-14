@@ -35,13 +35,12 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true)
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
         ...data,
         user_type: activeTab,
       })
-      setLoading(true)
       if (res.data.status) {
-        console.log(res.data.data)
         updateData({ user: res?.data?.data })
         localStorage.setItem('ileyah_token', res?.data?.data)
         localStorage.setItem('userId', res?.data?.data?.id)
@@ -275,9 +274,7 @@ const Page = () => {
                               />
                             </div>
                             <div className='mb-12 pb-1 pt-1 flex justify-between'>
-                              <Button type='submit' loading={loading}>
-                                {' '}
-                                {loading ? 'Loading...' : 'Log in'}{' '}
+                              <Button type='submit' loading={loading}>Log in
                               </Button>
                               <div className='mt-2'>Forgot password?</div>
                             </div>
