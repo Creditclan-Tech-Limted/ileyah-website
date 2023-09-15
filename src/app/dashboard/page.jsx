@@ -10,7 +10,7 @@ import {
   IconHomeSearch,
   IconRotate2
 } from '@tabler/icons-react';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
@@ -25,14 +25,13 @@ import IconButton from '@/global/IconButton';
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const router = useRouter();
+  const [isCheckUserLoading, setIsCheckUserLoading] = useState(false)
 
-  const { mutateAsync: checkUser, isLoading: isCheckUserLoading } =
-    useCheckRentRequestMutation();
+  // const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
 
   const getUser = async () => {
     try {
       const res = await checkUser(data?.user?.phone);
-      console.log(res?.data);
       if (res.data.status) {
         updateData({ request: res.data.request })
         router.push('/dashboard/renew-rent?status=pending')
@@ -65,8 +64,8 @@ const Page = () => {
           <div className='p-10 space-y-10'>
             <div className="flex">
               <div>
-                <p className='text-2xl'>Hello <span className='font-semibold'>{data?.user?.name}</span> 🥳</p>
-                <p className="text-xl"> Choose an option below to get started </p>
+                <p className='text-2xl'>Welcome <span className='font-semibold'>{data?.user?.name}</span> 🥳</p>
+                {/* <p className="text-xl"> Choose an option below to get started </p> */}
               </div>
               <div className='ml-auto'>
                 <Button leftIcon={<IconHeadset />}> Support</Button>
@@ -132,7 +131,7 @@ const Page = () => {
                     <IconChevronRight className="text-black" size="20" />
                   </div>
                 </div>
-                <div
+                {/* <div
                   className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
                 >
                   <div className="text-purple-600 grid place-items-center mt-1">
@@ -185,7 +184,7 @@ const Page = () => {
                   <div className='my-auto'>
                     <IconChevronRight className="text-black" size="20" />
                   </div>
-                </div>
+                </div> */}
                 {/* <div
                 className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
               >
@@ -243,24 +242,28 @@ const Page = () => {
               </div>
             </div>
 
-            {/* <div>
+            <div>
               <h3 class="text-xl font-medium mb-8 px-1 border-b pb-6">Pending Rent Request</h3>
               <div className='grid grid-cols-2'>
-                <div>
-                  <div className="flex">
-                    <div> <IconHome /> </div>
-                    <div>
-                      <p>lorem</p>
-                      <p>lorem</p>
-                      <p>lorem</p>
+                <div className=''>
+                  <div className="flex p-5  rounded-xl items-center bg-red-500 text-white">
+                    <div className='my-auto'> <IconHomeSearch size={50} /> </div>
+                    <div className='px-5'>
+                      <p className='text-xl '>No 3 Bamidele Close, Millenium Estate.</p>
+                      <div className="flex space-x-2">
+                        <p>N300,000</p> <span>•</span>  <p className=''> Gbagaga, Lagos</p>
+                      </div>
                     </div>
+                    <Button variant='outlined' color='white' className='ml-auto' >View</Button>
                   </div>
                 </div>
-                <div>
-                  N300,000
-                </div>
               </div>
-            </div> */}
+            </div>
+
+
+            <div>
+              <h3 class="text-xl font-medium mb-8 px-1 border-b pb-6">Inspection Details</h3>
+            </div>
           </div>
         )}
       </div>
