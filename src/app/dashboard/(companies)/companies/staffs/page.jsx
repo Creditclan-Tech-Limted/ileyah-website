@@ -12,19 +12,20 @@ import axios from 'axios'
 import { STAFF } from '@/api/companies'
 import UserInfor from '@/api/UserInfor'
 import { useToast } from '@/lib/use-toast'
+import { useGetStaff } from '@/api/action'
 
 
 const Page = () => {
+  let companyId = UserInfor().userId
   const { data, updateData } = useSignupStore((state) => state)
   const [openAddNewStaff, setOpenAddNewStaff] = useState(false)
   const [getStaff, setgetStaff] = useState([])
+  const { data: staffData, isLoading: loading } = useGetStaff(companyId)
     const toast = useToast()
-
   const [staff, setStaff] = useState({
     open: false,
     staff: '',
   })
-  let companyId = UserInfor().userId
   let companyName = UserInfor().userName
 
   const handleClose = async () => {
@@ -37,9 +38,7 @@ const Page = () => {
 
   const handleStaff = async () => {
     try {
-      const res = await axios.post(STAFF.GET_ALL_STAFF(), {
-        companyId: companyId,
-      })
+      const res = await fetchStaff()
       if (res?.data?.status) {
         setgetStaff(res?.data?.data)
       }
@@ -47,12 +46,18 @@ const Page = () => {
       toast.error(error?.response?.data?.message)
       console.log(error?.response?.data?.message)
     }
+    // try {
+    //   const res = await axios.post(STAFF.GET_ALL_STAFF(), {
+    //     companyId: companyId,
+    //   })
+    //   if (res?.data?.status) {
+    //     setgetStaff(res?.data?.data)
+    //   }
+    // } catch (error) {
+    //   toast.error(error?.response?.data?.message)
+    //   console.log(error?.response?.data?.message)
+    // }
   }
-
-
-  useEffect(() => {
-    handleStaff()
-  })
 
 
   return (
@@ -105,7 +110,21 @@ const Page = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {getStaff?.map((item, i) => (
+                  {loading && (
+                    <tr>
+                     
+                      <div role='status' class='max-wsm animate-pulse'>
+                        <div class='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 '></div>
+                        <span class='sr-only'>Loading...</span>
+                      </div>
+                    </tr>
+                  )}
+                  {staffData?.data?.data?.map((item, i) => (
                     <tr
                       className='hover:bg-gray-50 cursor-pointer select-none border-b'
                       key={i}
