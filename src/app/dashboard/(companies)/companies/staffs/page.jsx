@@ -7,9 +7,7 @@ import {
   IconPlus,
 } from '@tabler/icons-react'
 import AddNewStaff from './modals/AddNewStaff'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { STAFF } from '@/api/companies'
+import { useState } from 'react'
 import UserInfor from '@/api/UserInfor'
 import { useToast } from '@/lib/use-toast'
 import { useGetStaff } from '@/api/action'
@@ -19,7 +17,6 @@ const Page = () => {
   let companyId = UserInfor().userId
   const { data, updateData } = useSignupStore((state) => state)
   const [openAddNewStaff, setOpenAddNewStaff] = useState(false)
-  const [getStaff, setgetStaff] = useState([])
   const { data: staffData, isLoading: loading } = useGetStaff(companyId)
     const toast = useToast()
   const [staff, setStaff] = useState({
@@ -34,29 +31,6 @@ const Page = () => {
     } catch (error) {
       console.log({ error })
     }
-  }
-
-  const handleStaff = async () => {
-    try {
-      const res = await fetchStaff()
-      if (res?.data?.status) {
-        setgetStaff(res?.data?.data)
-      }
-    } catch (error) {
-      toast.error(error?.response?.data?.message)
-      console.log(error?.response?.data?.message)
-    }
-    // try {
-    //   const res = await axios.post(STAFF.GET_ALL_STAFF(), {
-    //     companyId: companyId,
-    //   })
-    //   if (res?.data?.status) {
-    //     setgetStaff(res?.data?.data)
-    //   }
-    // } catch (error) {
-    //   toast.error(error?.response?.data?.message)
-    //   console.log(error?.response?.data?.message)
-    // }
   }
 
 
