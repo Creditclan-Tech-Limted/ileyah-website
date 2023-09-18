@@ -113,7 +113,7 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
       <Drawer isOpen={isOpen} onClose={onClose}>
         <form onSubmit={handleSubmit(onSubmit)}>
           {views === 'form' && (
-            <div className='space-y-8'>
+            <div className=''>
               <div className='flex items-center justify-between mb-10'>
                 <h3 className='text-xl font-semibold'>Add new Property</h3>
                 <Button
@@ -127,87 +127,136 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
                   <IconX />{' '}
                 </Button>
               </div>
-              <Input
-                label='Property Name'
-                bordered
-                {...register('name', {
-                  required: {
-                    value: true,
-                    message: ' Name is required',
-                  },
-                })}
-                error={errors?.name?.message}
-              />
-              <TextArea
-                label='House Address'
-                {...register('address', {
-                  required: {
-                    value: true,
-                    message: ' Address is required',
-                  },
-                })}
-                error={errors?.address?.message}
-              />
-              <Input
-                type='number'
-                label='House Number'
-                bordered
-                {...register('house_no', {
-                  required: {
-                    value: true,
-                    message: 'House Number is required',
-                  },
-                })}
-                error={errors?.number?.message}
-              />
+              <p>Property Details</p>
+              <div className='border border-gray-500 border-dashed rounded p-5 space-y-8 mt-2'>
+                <Input
+                  label='Property Name'
+                  bordered
+                  {...register('name', {
+                    required: {
+                      value: true,
+                      message: ' Name is required',
+                    },
+                  })}
+                  error={errors?.name?.message}
+                />
+                <TextArea
+                  label='House Address'
+                  {...register('address', {
+                    required: {
+                      value: true,
+                      message: ' Address is required',
+                    },
+                  })}
+                  error={errors?.address?.message}
+                />
+                <Input
+                  type='number'
+                  label='House Number'
+                  bordered
+                  {...register('house_no', {
+                    required: {
+                      value: true,
+                      message: 'House Number is required',
+                    },
+                  })}
+                  error={errors?.number?.message}
+                />
+                <TextArea
+                  label='Descriptions'
+                  {...register('description', {
+                    required: {
+                      value: true,
+                      message: ' description is required',
+                    },
+                  })}
+                  error={errors?.description?.message}
+                />
+              </div>
+              <p className='mt-5'>Location</p>
+              <div className='border border-gray-500 border-dashed rounded p-5 space-y-8 mt-2'>
+                <div className='mb-4'>
+                  <Select
+                    options={areas}
+                    label='Area'
+                    name='Area'
+                    {...register('Area', {
+                      required: {
+                        value: true,
+                        message: 'Area is required',
+                      },
+                    })}
+                    error={errors?.Area?.message}
+                  />
+                </div>
+                <div className='mb-4'>
+                  <Select
+                    options={lgas}
+                    label='L.G.A'
+                    name='LGA'
+                    {...register('LGA', {
+                      required: {
+                        value: true,
+                        message: 'LGA is required',
+                      },
+                    })}
+                    error={errors?.LGA?.message}
+                  />
+                </div>
+              </div>
 
-              <Input
-                type='number'
-                label='Amount'
-                bordered
-                {...register('amount', {
-                  required: {
-                    value: true,
-                    message: ' Amount is required',
-                  },
-                })}
-                error={errors?.amount?.message}
-              />
-
-              <Input
-                label='Area'
-                bordered
-                {...register('Area', {
-                  required: {
-                    value: true,
-                    message: 'Area is required',
-                  },
-                })}
-                error={errors?.area?.message}
-              />
-              
-              <Input
-                label='Agent Phone Number'
-                bordered
-                {...register('agent_no', {
-                  required: {
-                    value: true,
-                    message: 'Agent No is required',
-                  },
-                })}
-                error={errors?.area?.message}
-              />
-
-              <TextArea
-                label='Descriptions'
-                {...register('description', {
-                  required: {
-                    value: true,
-                    message: ' description is required',
-                  },
-                })}
-                error={errors?.description?.message}
-              />
+              <p className='mt-5'>Rent</p>
+              <div className='border border-gray-500 border-dashed rounded p-5 space-y-8 mt-2'>
+                <Input
+                  type='number'
+                  label='1st Year Rent'
+                  bordered
+                  {...register('first_year_rent', {
+                    required: {
+                      value: true,
+                      message: 'First year rent is required',
+                    },
+                  })}
+                  error={errors?.first_year_rent?.message}
+                />
+                <Input
+                  type='number'
+                  label='Renewal Rent'
+                  bordered
+                  {...register('renewal_rent', {
+                    required: {
+                      value: true,
+                      message: 'Renewal Rent is required',
+                    },
+                  })}
+                  error={errors?.renewal_rent?.message}
+                />
+                <Input
+                  type='number'
+                  label='Annual Service Charge'
+                  bordered
+                  {...register('annual_service_charge', {
+                    required: {
+                      value: true,
+                      message: 'Annual Service Charge is required',
+                    },
+                  })}
+                  error={errors?.annual_service_charge?.message}
+                />
+              </div>
+              <div className='mt-10'>
+                <Input
+                  label='Agent Phone Number'
+                  bordered
+                  {...register('agent_no', {
+                    required: {
+                      value: true,
+                      message: 'Agent No is required',
+                    },
+                  })}
+                  error={errors?.area?.message}
+                />
+              </div>
 
               <Button
                 type='submit'

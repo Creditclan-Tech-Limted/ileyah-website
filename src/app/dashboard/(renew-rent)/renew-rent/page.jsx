@@ -76,15 +76,16 @@ const Page = () => {
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (values) => {
     const payload = {
       ...data,
       source: 1,
       process_type: 'renew',
       picture: '',
-      full_name: 'Praise',
-      phone: '09039719011',
-      email: 'oluwadhammiee@gmail.com'
+      full_name: data?.user?.name,
+      phone: data?.user?.phone,
+      email: data?.user?.email,
+      ...values
     }
     const res = await send(payload);
     if (res.data.status) {

@@ -1924,6 +1924,17 @@ a:focus {
   }
 }
 
+.btn-w {
+  background: transparent !important;
+  border: 1px solid #fb8627 !important;
+  color: #fb8627 !important;
+
+  &:hover {
+    background: #fb8627 !important;
+    color: #fff !important;
+  }
+}
+
 .alt-plan {
   // text-decoration: underline;
   background: transparent !important;

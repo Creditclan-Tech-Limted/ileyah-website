@@ -32,13 +32,17 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
-      setLoading(true)
+      setLoading(true);
+
+      // if(data.user_type === '')
+
       const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
         ...data,
         user_type: 'users',
       })
-      if (res.data.status === true) {
-        toast.success(response.data.message)
+      console.log(res?.data);
+      if (res.data.status) {
+        toast.success(res.data.message)
         router.push('/login');
         setLoading(false)
       }

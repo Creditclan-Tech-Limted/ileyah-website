@@ -36,6 +36,13 @@ const Page = () => {
   const onSubmit = async (data) => {
     try {
       setLoading(true)
+      // if (activeTab === 'tenants') {
+      //   const res = await send(data);
+      //   console.log(res.data?.message);
+      //   router.push('/dashboard');
+      //   updateData({ user: res?.data?.message })
+      // }
+
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
         ...data,
         user_type: activeTab,
@@ -59,6 +66,7 @@ const Page = () => {
       }
       setLoading(false)
     } catch (error) {
+      setLoading(false)
       console.log(error)
       setError({ status: true, message: error?.response?.data?.message })
       toast.error(error?.res?.data?.message)
@@ -95,31 +103,28 @@ const Page = () => {
                   <div className=''>
                     <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${
-                          activeTab === 'tenants'
+                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
                             : ''
-                        }`}
+                          }`}
                         onClick={() => handleTabClick('tenants')}
                       >
                         Tenants
                       </button>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${
-                          activeTab === 'agents/landlords'
+                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'agents/landlords'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
                             : ''
-                        }`}
+                          }`}
                         onClick={() => handleTabClick('agents/landlords')}
                       >
                         Agents
                       </button>
                       <button
-                        className={`py-2 px-4 rounded-t-lg ${
-                          activeTab === 'companies'
+                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'companies'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
                             : ''
-                        }`}
+                          }`}
                         onClick={() => handleTabClick('companies')}
                       >
                         Company
