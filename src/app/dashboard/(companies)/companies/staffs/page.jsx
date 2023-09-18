@@ -79,6 +79,18 @@ const Page = () => {
 
         <div className='w-screen md:w-full'>
           <div className='mt-10 w-screen md:w-full'>
+              {loading ? (
+                <div role='status' class='max-wsm animate-pulse'>
+                  <div class='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 '></div>
+                  <span class='sr-only'>Loading...</span>
+                </div>
+              ): 
+              <>
             <div className='bg-white shadow border rounded-[1.2rem] transition-all duration-300 relative overflow-x-auto'>
               <table className='w-full text-[.95rem] text-left'>
                 <thead className='text-gray-500 border-b border-slate-200'>
@@ -110,20 +122,6 @@ const Page = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {loading && (
-                    <tr>
-                     
-                      <div role='status' class='max-wsm animate-pulse'>
-                        <div class='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
-                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
-                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
-                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
-                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
-                        <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 '></div>
-                        <span class='sr-only'>Loading...</span>
-                      </div>
-                    </tr>
-                  )}
                   {staffData?.data?.data?.map((item, i) => (
                     <tr
                       className='hover:bg-gray-50 cursor-pointer select-none border-b'
@@ -246,6 +244,8 @@ const Page = () => {
                 </div>
               </div>
             </div>
+              </>
+              }
           </div>
         </div>
       </div>
