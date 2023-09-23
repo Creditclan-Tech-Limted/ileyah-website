@@ -19,7 +19,7 @@ const Details = ({ property, onClose, onNext }) => {
           return onNext();
         }
         updateData({ user: ileyah_token, property })
-        return router.push(`/dashboard/inspections`);
+        return router.push(`/dashboard/`);
       } else {
         return router.push(`/login/`)
       }
