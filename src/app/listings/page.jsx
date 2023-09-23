@@ -63,7 +63,7 @@ const Page = () => {
 
   const getPorperties = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/agents/properties')
+      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
       // const res = await axios.get('http://localhost:2020/get_properties');
       console.log(res?.data?.data);
       setProperties(res?.data?.data)
