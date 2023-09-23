@@ -20,10 +20,6 @@ const Page = () => {
     reset,
     formState: { errors },
   } = useForm()
-  const [error, setError] = useState({
-    status: false,
-    message: '',
-  })
   const [loading, setLoading] = useState(false)
   const { data, updateData } = useSignupStore((state) => state)
   const { mutateAsync: send, isLoading } = useLoginMutation()
@@ -67,9 +63,7 @@ const Page = () => {
       setLoading(false)
     } catch (error) {
       setLoading(false)
-      console.log(error)
-      setError({ status: true, message: error?.response?.data?.message })
-      toast.error(error?.res?.data?.message)
+      toast.error(error?.response?.data?.message)
       reset()
     }
   }
