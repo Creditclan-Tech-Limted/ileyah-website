@@ -89,24 +89,6 @@ const Page = () => {
       {/* <Navbar /> */}
       <div className='grid gap-10 container'>
         <div className=''>
-          {/* <div className='flex items-center mb-4'>
-            <div className='flex gap-4'>
-              <IconLayoutGrid
-                size={35}
-                onClick={toggleView}
-                className={isGridView ? 'text-blue-700' : 'text-black'}
-              />
-              <IconLayoutList
-                size={35}
-                onClick={toggleView}
-                className={!isGridView ? 'text-blue-700' : 'text-black'}
-              />
-            </div>
-            <div className='flex gap-4 px-4'>
-              <DropdownSearch options='Sort by new arrivals' />
-              <DropdownSearch options='Per page:' />
-            </div>
-          </div> */}
           <SearchBar placeholder='Search your key word...' />
           {isLoading && (
             <>

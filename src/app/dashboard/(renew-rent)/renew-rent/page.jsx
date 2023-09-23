@@ -16,6 +16,7 @@ import RequestDetails from './RequestDetails'
 import Success from './Success'
 import { useSearchParams } from 'next/navigation'
 import Drawer from '@/components/Drawer'
+import { useToast } from '@/lib/use-toast'
 
 const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
   const [views, setViews] = useState('request')
@@ -28,6 +29,7 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [userRequest, setUserRequest] = useState();
   const cropperRef = useRef();
+  const toast = useToast();
 
   const { mutateAsync: send, isLoading } = useCreateRentRequestMutation();
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -89,8 +91,9 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
     }
     const res = await send(payload);
     if (res.data.status) {
+      toast.success(res.data.message || "Request Successfully Created");
       setUserRequest(res.data.rent_id);
-      setViews('success')
+      setViews('request-details')
     }
   }
 
@@ -100,11 +103,6 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
         {
           views === 'request' && (
             <>
-              {/* <Link href="/dashboard">
-                <Button variant="outlined" color="black" leftIcon={<IconArrowLeft />} className="mb-10">
-                  Renew rent
-                </Button>
-              </Link> */}
               <h3 className="text-xl max-w-sm font-medium mb-10 flex">
                 <IconChevronLeft onClick={onClose} className='border border-black rounded-full mb-3 mr-3 cursor-pointer' />
                 Please provide the following information to proceed

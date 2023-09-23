@@ -55,7 +55,7 @@ const RequestDetails = () => {
         !isRentRequestLoading && (
           <>
             <div className="text-xl font-medium mb-10">Request summary</div>
-            <div className="grid grid-cols-[2fr_1fr] gap-10">
+            <div className="">
               <div className='space-y-10'>
                 <div className='border border-gray-300 rounded-xl p-8'>
                   <div className="flex justify-between">
@@ -84,22 +84,24 @@ const RequestDetails = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-10">
+                <div className="gap-10">
                   <div className="border rounded-xl p-8 border-gray-300">
-                    <p className='text-sm inline-flex'>House Address <IconHelp size={10} className='mt-1 mx-1' /></p>
-                    <p>{request?.address || 'N/A'}</p>
-                  </div>
-                  <div className="border rounded-xl p-8 border-gray-300">
-                    <p className='text-sm inline-flex'>Type of House <IconHelp size={10} className='mt-1 mx-1' /></p>
-                    <p>{request?.house_type || 'N/A'}</p>
-                  </div>
-                  <div className="border rounded-xl p-8 border-gray-300">
-                    <p className='text-sm inline-flex'>Landlord No. <IconHelp size={10} className='mt-1 mx-1' /></p>
-                    <p>{request?.landlord_phone || 'N/A'}</p>
+                    <div className="flex justify-between">
+                      <p className='text-sm inline-flex'>House Address <IconHelp size={10} className='mt-1 mx-1' /></p>
+                      <p>{request?.address || 'N/A'}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className='text-sm inline-flex'>Type of House <IconHelp size={10} className='mt-1 mx-1' /></p>
+                      <p>{request?.house_type || 'N/A'}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className='text-sm inline-flex'>Landlord No. <IconHelp size={10} className='mt-1 mx-1' /></p>
+                      <p>{request?.landlord_phone || 'N/A'}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className='hidden md:block'>
+              {/* <div className='hidden md:block'>
                 <div className='bg-blue-600 rounded-xl p-4 inline-flex w-full'>
                   <IconHome2 color='white' />
                   <p className='text-white mx-5'>
@@ -110,7 +112,7 @@ const RequestDetails = () => {
                   <p className='text-4xl font-medium'>
                     Providing freedom to <span className='text-primary-600'>tenants</span> across Africa.{' '}
                   </p>
-                  {/* <div className='flex mt-5 font-bold'>
+                  <div className='flex mt-5 font-bold'>
                     <Button
                       className='inline-flex'
                       variant='outlined'
@@ -120,14 +122,14 @@ const RequestDetails = () => {
                     >
                       Get Started{' '}
                     </Button>
-                  </div> */}
+                  </div>
                   <img
                     src='/assets/images/house-svg.png'
                     alt='Image'
                     className='absolute bottom-0 right-0 w-32 h-32'
                   />
                 </div>
-              </div>
+              </div> */}
             </div>
           </>
         )

@@ -61,8 +61,8 @@ const Details = ({ property, onClose, onNext }) => {
         </div>
         <hr />
         <div className="flex space-x-5">
-          <Button block onClick={scheduleInspections} variant='outlined' color='black'> Schedule Inspection </Button>
-          <Button block onClick={scheduleInspections}> I want this </Button>
+          <Button block onClick={scheduleInspections} variant='outlined' color='green'> Schedule Inspection </Button>
+          <Button block> I want this </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">  <a target="_blank" href={property?.link} rel="noopener noreferrer"> Check Property Source</a> </p>
         <div className="border p-5 rounded">

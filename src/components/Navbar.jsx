@@ -73,24 +73,26 @@ const Navbar = () => {
                               >
                                 {
                                   products.map(product => (
-                                    <div
-                                      key={product.name}
-                                      className="rounded-2xl flex items-center hover:bg-gray-200/70 p-4 transition-all cursor-pointer"
-                                    >
-                                      <div className="mr-4">
-                                        <div
-                                          className={classNames('w-10 h-10 rounded-full flex items-center justify-center ', product.backgroundColor)}
-                                        >
-                                          {createElement(product.icon)}
+                                    <a href={product?.homeLink}>
+                                      <div
+                                        key={product.name}
+                                        className="rounded-2xl flex items-center hover:bg-gray-200/70 p-4 transition-all cursor-pointer"
+                                      >
+                                        <div className="mr-4">
+                                          <div
+                                            className={classNames('w-10 h-10 rounded-full flex items-center justify-center ', product.backgroundColor)}
+                                          >
+                                            {createElement(product.icon)}
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <h4 className="font-medium">{product.name}</h4>
+                                          <p className="text-sm opacity-80 leading-tight mt-1">
+                                            {product.description}
+                                          </p>
                                         </div>
                                       </div>
-                                      <div>
-                                        <h4 className="font-medium">{product.name}</h4>
-                                        <p className="text-sm opacity-80 leading-tight mt-1">
-                                          {product.description}
-                                        </p>
-                                      </div>
-                                    </div>
+                                    </a>
                                   ))
                                 }
                               </motion.div>

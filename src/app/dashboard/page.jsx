@@ -53,8 +53,6 @@ const Page = ({ className }) => {
   const getInspectionsDetails = async () => {
     try {
       const res = await getInspections({ landlordAgentId: data?.user?.id })
-      // const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/getInspections', { landlordAgentId: data?.user?.id });
-      console.log(res);
       setInspections(res?.data?.data)
     } catch (error) {
       console.log({ error });
@@ -159,25 +157,37 @@ const Page = ({ className }) => {
                         )}
                       </div>
                       <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 mt-20">Pending Inspections</h3>
-                      <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
-                        {inspections?.map((m, i) => (
-                          <>
-                            <div className="flex py-4 px-8">
-                              <div className="flex">
-                                <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
-                                <div>
-                                  <p>{m?.ileyah_property?.description}</p>
-                                  <p>{formatCurrency(m?.ileyah_property?.price)}</p>
+                      {inspections && (
+                        <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
+                          {inspections?.map((m, i) => (
+                            <>
+                              <div className="flex py-4 px-8">
+                                <div className="flex">
+                                  <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
+                                  <div>
+                                    <p>{m?.ileyah_property?.description}</p>
+                                    <p>{formatCurrency(m?.ileyah_property?.price)}</p>
+                                  </div>
                                 </div>
+                                <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
+                                  setCurrent(m);
+                                  setopenViewInspections(true)
+                                }}>View</Button>
                               </div>
-                              <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
-                                setCurrent(m);
-                                setopenViewInspections(true)
-                              }}>View</Button>
+                            </>
+                          ))}
+                        </div>
+                      )}
+                      {!inspections && (
+                        <>
+                          <div className='border p-10 rounded-xl'>
+                            <div className="flex flex-col">
+                              <IconExclamationCircle className='mx-auto my-auto' />
+                              <p className='text-center mt-5'>No Pending Inspections </p>
                             </div>
-                          </>
-                        ))}
-                      </div>
+                          </div>
+                        </>
+                      )}
                     </div>
                     <div>
                       <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6">Products</h3>
