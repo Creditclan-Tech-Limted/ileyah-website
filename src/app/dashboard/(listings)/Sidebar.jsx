@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation'
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard',
+    link: '/dashboard/listings/',
     icon: <IconApps />,
     name: 'Dashboard',
   },
@@ -24,12 +24,12 @@ const navLinks = [
   //   icon: <IconListDetails />,
   //   name: 'Listings',
   // },
-  {
-    id: 3,
-    link: '/dashboard/landlords/profile/',
-    icon: <IconUser />,
-    name: 'Profile',
-  },
+  // {
+  //   id: 3,
+  //   link: '/dashboard/landlords/profile/',
+  //   icon: <IconUser />,
+  //   name: 'Profile',
+  // },
   // {
   //   id: 4,
   //   link: '/dashboard/landlords/profile',

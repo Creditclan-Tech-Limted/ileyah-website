@@ -13,7 +13,7 @@ import { useToast } from '@/lib/use-toast'
 
 const Page = () => {
   const router = useRouter()
-  const toast = useToast()
+  const toast = useToast();
   const {
     register,
     handleSubmit,
@@ -101,7 +101,7 @@ const Page = () => {
                   </div>
 
                   <div className=''>
-                    <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
+                    {/* <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
                             ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
@@ -129,7 +129,7 @@ const Page = () => {
                       >
                         Company
                       </button>
-                    </div>
+                    </div> */}
                     <div className=' p-4  rounded-b-lg'>
                       {activeTab === 'tenants' && (
                         <div>

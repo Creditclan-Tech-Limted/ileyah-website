@@ -1,22 +1,17 @@
 'use client'
 import IndexPage from '@/components/listings/CheckBox'
-import ListingFlex from '@/components/listings/ListingFlex'
-import ListingsGrid from '@/components/listings/ListingsGrid'
 import SearchBar from '@/components/listings/SearchBar'
 import React, { useEffect, useState } from 'react'
-import DropdownSearch from '../../components/listings/DropdownSearch'
+// import DropdownSearch from '../../components/listings/DropdownSearch'
 import PriceRangeSlider from '@/components/listings/RangeSlider'
 import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
-import Navbar from '@/components/Navbar'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
-import { IconLayoutGrid, IconLayoutList } from '@tabler/icons-react'
 import Footer from '@/components/Footer'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import ProDetails from '@/components/listings/modals/property_details'
-import useSignupStore from '@/store/signup'
+import ListingsGrid from './ListingsGrid'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -25,11 +20,7 @@ const Page = () => {
   const [scrollTop, setScrollTop] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [call, setCall] = useState(false)
-  const [properties, setProperties] = useState([]);
-  const [current, setCurrent] = useState()
-  const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
-  const { data: signupData, updateData } = useSignupStore((state) => state);
-
+  const [properties, setProperties] = useState([])
 
   const handleScroll = ((event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
@@ -44,14 +35,6 @@ const Page = () => {
       setShowModal(true);
     }
   });
-
-  const handleClose = async () => {
-    try {
-      setOpenPropertyDetails(false)
-    } catch (error) {
-      console.log({ error });
-    }
-  }
 
   const handleScrollTop = () => {
     window.scrollTo({
@@ -74,6 +57,7 @@ const Page = () => {
   }
 
   const { data, isLoading, error } = useQuery(['properties'], getPorperties);
+  console.log({ isLoading, data });
   useEffect(() => {
     // getPorperties()
     window.addEventListener("scroll", handleScroll);
@@ -99,30 +83,13 @@ const Page = () => {
     // Perform your desired action here
   }
 
-
-  const checkLegacyRoute = async () => {
-    try {
-      console.log({signupData});
-      if (signupData?.property) {
-        setCurrent(signupData?.property)
-        setOpenPropertyDetails(true)
-      }
-    } catch (error) {
-      console.log({ error });
-    }
-  }
-
-  useEffect(() => {
-    console.log('hello');
-    checkLegacyRoute()
-  }, [])
   return (
     <div>
       <ScrollToTop />
-      <Navbar />
-      <div className='grid gap-10 container mt-[150px]'>
+      {/* <Navbar /> */}
+      <div className='grid gap-10 container'>
         <div className=''>
-          <div className='flex items-center mb-4'>
+          {/* <div className='flex items-center mb-4'>
             <div className='flex gap-4'>
               <IconLayoutGrid
                 size={35}
@@ -139,7 +106,7 @@ const Page = () => {
               <DropdownSearch options='Sort by new arrivals' />
               <DropdownSearch options='Per page:' />
             </div>
-          </div>
+          </div> */}
           <SearchBar placeholder='Search your key word...' />
           {isLoading && (
             <>
@@ -235,61 +202,30 @@ const Page = () => {
               </div>
             </>
           )}
-          {isGridView ? (
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
-              {properties.map((m, i) => (
-                <div key={i}>
-                  <ListingsGrid
-                    key={i}
-                    houseImg={m.image}
-                    heading='For Rent'
-                    price='240,900/Month'
-                    title={m?.description}
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location={m?.address}
-                    lengthNum='3450'
-                    bedNum={m?.beds}
-                    bathNum={m?.baths}
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                    property={m}
-                    onClick={() => {
-                      setCurrent(m)
-                      setOpenPropertyDetails(true)
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className=''>
-              {[0, 1, 2, 3, 4, 5].map((m, i) => (
-                <div key={i}>
-                  <ListingFlex
-                    key={i}
-                    houseImg={m.image}
-                    heading='For Rent'
-                    price='240,900/Month'
-                    title={m?.title}
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location={m?.address}
-                    lengthNum='3450'
-                    bedNum='3'
-                    bathNum='2'
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                    property={m}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
+            {properties.map((m, i) => (
+              <div key={i}>
+                <ListingsGrid
+                  key={i}
+                  houseImg={m.image}
+                  heading='For Rent'
+                  price='240,900/Month'
+                  title={m?.description}
+                  avatar={imageAvatar}
+                  name='Jonathan Reinink'
+                  role='Estate Agents'
+                  location={m?.address}
+                  lengthNum='3450'
+                  bedNum={m?.beds}
+                  bathNum={m?.baths}
+                  bed='Bed'
+                  bath='Bath'
+                  length='Square Ft'
+                  property={m}
+                />
+              </div>
+            ))}
+          </div>
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
@@ -302,7 +238,6 @@ const Page = () => {
         <Footer />
       </div>
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
-      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
     </div>
   )
 }

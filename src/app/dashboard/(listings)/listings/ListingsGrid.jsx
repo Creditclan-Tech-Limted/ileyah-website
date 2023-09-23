@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { IconMapPinFilled } from '@tabler/icons-react'
-import ProDetails from './modals/property_details'
-import { useRouter } from 'next/navigation'
-import useSignupStore from '@/store/signup';
+import ProDetails from './modals/ProDetails'
+// import ProDetails from './modals/property_details'
 
 export default function ListingsGrid({
   heading,
@@ -20,13 +19,22 @@ export default function ListingsGrid({
   role,
   avatar,
   url,
-  property,
-  onClick
+  property
 }) {
+
+  const [openPropertyDetails, setOpenPropertyDetails] = useState(false)
+
+  const handleClose = async () => {
+    try {
+      setOpenPropertyDetails(false)
+    } catch (error) {
+      console.log({ error });
+    }
+  }
 
   return (
     <>
-      <div className='max-w-md rounded relative overflow-hidden shadow m-auto mt-4 cursor-pointer flex flex-col bg-white' onClick={onClick}>
+      <div className='max-w-md rounded relative overflow-hidden shadow m-auto mt-4 cursor-pointer h-[400px] flex flex-col' onClick={() => setOpenPropertyDetails(true)}>
         <div>
           <img
             className='w-full hover:scale-110 transition duration-500 cursor-pointer h-[200px] object-cover'
@@ -36,8 +44,8 @@ export default function ListingsGrid({
           <div className='absolute z-[9] top-3 left-3 bg-green-600 text-white rounded px-4 py-1'>
             Rent
           </div>
-          <div className='px-8 py-6 space-y-2'>
-            <div className='text-gray-900 font-medium text-xl hover:text-blue-700 cursor-pointer'>
+          <div className='p-4 space-y-3'>
+            <div className='text-gray-900 font-bold text-2xl hover:text-blue-700 cursor-pointer'>
               {title}
             </div>
             <div className='flex gap-2 items-center'>
@@ -46,13 +54,15 @@ export default function ListingsGrid({
                 {location}
               </p>
             </div>
-            <div className="flex">
-              <p className='text-lg font-bold'>{price}</p>
-              {/* <p className='ml-auto'>  {property?.createdAt?.slice(0, 10)}</p> */}
-            </div>
+            <p>{property?.area} - {property?.createdAt?.slice(0, 10)} </p>
           </div>
         </div>
+        <div className='border-t-2 my-auto'>
+          <p className='text-lg px-8 font-bold'>{price}</p>
+        </div>
       </div>
+
+      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={property} />
     </>
   )
 }

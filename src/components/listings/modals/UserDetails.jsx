@@ -1,12 +1,17 @@
-import { useCheckRentRequestMutation } from '@/api/rent';
-import FormInput from '@/global/FormInput';
+import Button from '@/components/global/Button';
 import Input from '@/global/Input';
 import useSignupStore from '@/store/signup';
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
+import { useToast } from '@/lib/use-toast'
+import { IconChevronLeft } from '@tabler/icons-react';
 
-const UserDetails = () => {
+
+const UserDetails = ({ onBack }) => {
   const { data, updateData } = useSignupStore((state) => state);
+  const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   const {
     register,
@@ -16,71 +21,54 @@ const UserDetails = () => {
     defaultValues: { ...data?.user },
   });
 
-  const {
-    mutateAsync: checkRentRequest,
-    isLoading: ischeckRentRequestLoading,
-  } = useCheckRentRequestMutation();
-
   const submit = async (values) => {
     try {
-      console.log({ values });
+      setLoading(true);
+      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createInspections', {
+        date: "23-10-2000",
+        time: "12:00",
+        landlordAgentId: data?.user?.id,
+        ileyahPropertyId: data?.property?.id
+      })
+      updateData({ property: null });
+      setLoading(false)
+      toast.success('Submitted')
     } catch (error) {
-
+      console.log({ error });
     }
   }
   return (
     <>
       <div className="pb-3">
-        <p className="text-cc-dark font-17">
+        <p className="text-cc-dark font-17 flex">
+          <div className="border rounded-full mr-3 h-8 w-8 flex items-center border-black cursor-pointer" onClick={onBack} >
+            <IconChevronLeft />
+          </div>
           Please provide the following information to proceed
         </p>
       </div>
-      <form onSubmit={handleSubmit(submit)} className="mt-10">
-        <FormInput
-          type="text"
-          label="Full name"
-          {...register("full_name", { required: true })}
-        />
-        <p
-          className={`bg-danger error-text font-17 pb-0 ${errors?.phone?.message?.length ? "block" : "hidden"
-            }`}
-        >
-          {errors.phone?.message}
-        </p>{" "}
-        <FormInput
-          type="tel"
-          label="Phone number"
-          {...register("phone", {
-            required: true,
-            pattern: {
-              value: /(^0[789]\d{9}$)/,
-              message: "Please enter a valid phone number",
+      <form onSubmit={handleSubmit(submit)} className="mt-10 space-y-10">
+        <Input label='Date' type='date'
+          bordered
+          {...register('date', {
+            required: {
+              value: true,
+              message: 'Date is required',
             },
           })}
-        />
-        <FormInput
-          type="email"
-          label="Email address"
-          {...register("email", { required: true })}
-        />
+          error={errors?.date?.message} />
 
-        <Input bordered />
-        <div className="flex">
-          <button
-            type="submit"
-            className="font-17 flex call-number btn btn-blue"
-            disabled={ischeckRentRequestLoading}
-          >
-            {ischeckRentRequestLoading ? "Please wait" : "Proceed"}
-            {ischeckRentRequestLoading ? (
-              <span className="ml-3 spin">
-                <i className="fa-solid fa-spinner"></i>
-              </span>
-            ) : (
-              <></>
-            )}
-          </button>
-        </div>
+        <Input label='Time' type='time'
+          bordered
+          {...register('time', {
+            required: {
+              value: true,
+              message: 'Time is required',
+            },
+          })}
+          error={errors?.time?.message} />
+
+        <Button type='submit' loading={loading} >Submit</Button>
       </form>
     </>
   )

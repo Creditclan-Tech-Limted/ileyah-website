@@ -10,6 +10,15 @@ export const useSignUpMutation = () => {
   return { mutate, mutateAsync, isLoading };
 }
 
+export const useGetInspectionDetails = () => {
+  const { mutate, mutateAsync, isLoading } = useMutation(payload => {
+    return http.post('https://kuda-creditclan-api.herokuapp.com/agents/getInspections', payload);
+  });
+  return { mutate, mutateAsync, isLoading };
+}
+
+
+
 export const useLoginMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
     return http.post('https://wema.creditclan.com/api/v3/rent/login', payload);

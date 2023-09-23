@@ -77,7 +77,6 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
                 },
               }
             )
-            console.log(response.data.data)
             return response.data.data.filename
           } catch (error) {
             console.error('Error with Axios request:', error)

@@ -14,13 +14,12 @@ const ProDetails = ({ isOpen, onClose, property }) => {
     <>
       {views === 'details' && (
         <Drawer isOpen={isOpen} onClose={onClose} padding={false}>
-
           <Details property={property} onClose={onClose} onNext={() => setViews('user_details')} />
         </Drawer>
       )}
       {views === 'user_details' && (
         <Drawer isOpen={isOpen} onClose={onClose} title='Bio information' >
-          <UserDetails />
+          <UserDetails onBack={() => setViews('details')} />
         </Drawer>
       )}
     </>

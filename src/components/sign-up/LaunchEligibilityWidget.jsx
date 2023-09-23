@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from "react";
-
+import { useEffect, useRef } from "react";
 
 const LaunchEligibilityWidget = ({
   children,
@@ -11,7 +10,7 @@ const LaunchEligibilityWidget = ({
   className,
 }) => {
   const widget = useRef();
-  
+
   useEffect(() => {
     const CcEligibilityWidget = window.CcEligibilityWidget;
     widget.current = CcEligibilityWidget.init({

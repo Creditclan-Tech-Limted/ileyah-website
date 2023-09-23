@@ -21,11 +21,11 @@ const Hero = () => {
               <p className="max-w-xl font-light text-xl text-gray-500 mt-4 md:text-lg text-primary">
                 We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
               </p>
-              <Link href='/register'>
-                <Button rightIcon={<IconArrowRight />} size="lg" className="mt-12">
+              {/* <Link href='/register'> */}
+                <Button onClick={toggleIsSignupOpen} rightIcon={<IconArrowRight />} size="lg" className="mt-12">
                   Get started
                 </Button>
-              </Link>
+              {/* </Link> */}
             </div>
             <div className="col-span-6">
               <div className="relative">
