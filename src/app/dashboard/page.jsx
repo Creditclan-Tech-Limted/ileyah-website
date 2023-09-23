@@ -52,8 +52,12 @@ const Page = ({ className }) => {
 
   const getInspectionsDetails = async () => {
     try {
-      const res = await getInspections({ landlordAgentId: data?.user?.id })
-      setInspections(res?.data?.data)
+      const res = await getInspections({ landlordAgentId: data?.user?.id });
+      if (res?.data?.data.length) {
+        setInspections(res?.data?.data)
+      } else {
+        setInspections(null)
+      }
     } catch (error) {
       console.log({ error });
     }
