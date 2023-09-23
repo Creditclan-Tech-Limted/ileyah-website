@@ -46,7 +46,7 @@ export default function InspectionScheduler() {
             className='block min-w-[300px] max-w-lg p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500'
           />
         </div>
-        <button className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none' onClick={scheduleInspections}>
+        <button className='px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none'>
           Schedule Inspection
         </button>
       </div>
