@@ -14,6 +14,7 @@ import Whatsapp from '@/components/Whatsapp'
 import Testimonials from '@/components/Testimonials'
 import WeCall from '@/components/WeCall'
 import classNames from 'classnames'
+import Listings from '@/components/Listings'
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -58,7 +59,8 @@ const LandingPage = () => {
       <ScrollToTop />
       <Navbar />
       <Hero />
-      <Products />
+      <Products call={() => setShowModal(true)} />
+      <Listings />
       <Whatsapp />
       <WhyUs />
       <Artisans />

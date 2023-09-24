@@ -1,7 +1,7 @@
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { IconChevronRight, IconHomeHand, IconHomeSearch, IconRotate2, IconSearch } from "@tabler/icons-react";
+import { IconChevronRight, IconHeadset, IconHomeHand, IconHomeSearch, IconRotate2, IconSearch } from "@tabler/icons-react";
 import Link from "next/link";
 
 function MenuView({ onNext, handleToggle }) {
@@ -23,7 +23,7 @@ function MenuView({ onNext, handleToggle }) {
         </button>
       </div>
       <div className="pt-70">
-        <p className="font-bold text-3xl text-primary leading-[1.1]">
+        <p className="font-bold text-3xl text-deep-blue leading-[1.1]">
           Welcome. <br /> Pay your rent monthly forever.
         </p>
         <p className="text-cc-dark mt-2">
@@ -103,13 +103,12 @@ function MenuView({ onNext, handleToggle }) {
         >
           <div>
             <div className="w-10 h-10 rounded-full bg-green-600 text-white grid place-items-center">
-              <IconHomeSearch
-                size="20" />
+              <IconHeadset size="20" />
             </div>
           </div>
           <div className="px-6">
             <p className="text-lg font-medium text-left">
-              Find me a house
+              Talk to an advisor
             </p>
             <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
               Renew your house rent on a monthly basis while we handle the full payment

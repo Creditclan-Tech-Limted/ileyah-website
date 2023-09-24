@@ -41,7 +41,7 @@ const Navbar = () => {
     <>
       <header className={classNames(
         'fixed top-0 inset-x-0 z-50 h-28 transition-all bg-white',
-        { 'bg-white/90 backdrop-blur-lg text-neutral-900 shadow !h-24': scrolled },
+        { 'bg-white text-neutral-900 shadow !h-24': scrolled },
         { 'text-neutral-900 shadow': !scrolled },
       )}>
         <div className="container h-full">
@@ -72,7 +72,7 @@ const Navbar = () => {
                                 )}
                               >
                                 {
-                                  products.map((product, i ) => (
+                                  products.map((product, i) => (
                                     <a href={product?.homeLink} key={i}>
                                       <div
                                         key={product.name}
@@ -119,7 +119,9 @@ const Navbar = () => {
             </div>
             <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">
               <div className="hidden lg:block space-x-4">
-                <Button onClick={toggleIsSignupOpen}>Get started</Button>
+                <Link href='/login'>
+                  <Button>Sign In</Button>
+                </Link>
               </div>
               <div className="-mr-1 lg:hidden">
                 <button
