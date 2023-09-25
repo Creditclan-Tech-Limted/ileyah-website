@@ -17,8 +17,6 @@ export const useGetInspectionDetails = () => {
   return { mutate, mutateAsync, isLoading };
 }
 
-
-
 export const useLoginMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
     return http.post('https://wema.creditclan.com/api/v3/rent/login', payload);

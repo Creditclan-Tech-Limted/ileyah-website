@@ -23,7 +23,7 @@ const Products = ({ call }) => {
       // Destroy Typed instance during cleanup to stop animation
       typed.destroy();
     };
-  }, [])
+  }, []);
 
   return (
     <>

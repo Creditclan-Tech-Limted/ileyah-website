@@ -1,15 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { formatCurrency } from "@/lib/utils";
 import Button from "@/components/global/Button";
 import IconButton from "@/global/IconButton";
 import { IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import useSignupStore from "@/store/signup";
+import WantThis from "./WantThis";
 
 const Details = ({ property, onClose, onNext }) => {
   const swiperRef = useRef(null);
   const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state)
+  const [openWantThis, setOpenWantThis] = useState(false)
 
   const scheduleInspections = async () => {
     try {
@@ -19,10 +21,20 @@ const Details = ({ property, onClose, onNext }) => {
           return onNext();
         }
         updateData({ user: ileyah_token, property })
-        return router.push(`/dashboard/`);
+        return router.push(`/dashboard`);
       } else {
-        return router.push(`/login/`)
+        return router.push(`/login`)
       }
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  const chooseProperty = async () => {
+    try {
+      updateData({ ...data, user: { ...data?.user }, want_property: property });
+      setOpenWantThis(true);
+      // return router.push(`/dashboard`);
     } catch (error) {
       console.log({ error });
     }
@@ -47,8 +59,6 @@ const Details = ({ property, onClose, onNext }) => {
             <img src={property?.image} alt="" className="h-[500px] w-full object-cover" />
             <IconButton icon={<IconX />} rounded color='red' className="absolute z-[999] right-5 top-5" onClick={onClose} />
           </swiper-slide>
-          {/* {property?.images.map((img, i) => (
-          ))} */}
         </swiper-container>
       </div>
       <div className="space-y-5 p-8 flex flex-col">
@@ -61,15 +71,21 @@ const Details = ({ property, onClose, onNext }) => {
         </div>
         <hr />
         <div className="flex space-x-5">
-          <Button block onClick={scheduleInspections}> Schedule Inspection </Button>
-          {/* <Button block> I want this </Button> */}
+          <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button>
+          <Button block onClick={chooseProperty} > I want this </Button>
         </div>
-        <p className="ml-auto text-blue-600 underline">  <a target="_blank" href={property?.link} rel="noopener noreferrer"> Check Property Source</a> </p>
+        <p className="ml-auto text-blue-600 underline">
+          <a target="_blank" href={property?.link} rel="noopener noreferrer"> Check Property Source</a>
+        </p>
         <div className="border p-5 rounded">
           <p className="mb-3">Description</p>
           {property?.description}
         </div>
       </div>
+
+      {openWantThis && (
+        <WantThis onClose={() => setOpenWantThis(false)} />
+      )}
     </>
   )
 }

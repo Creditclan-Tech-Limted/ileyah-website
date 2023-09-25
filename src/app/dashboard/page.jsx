@@ -21,10 +21,13 @@ import { formatCurrency } from '@/lib/utils';
 import InspectionDetails from './modals/InspectionDetails';
 import RenewRentDashboard from './(renew-rent)/renew-rent/page';
 import CheckOffers from './(inspections)/inspections/page';
+import FoundHouseDashboard from './find-me-a-house/page';
+import WantThis from './modals/WantThis';
 
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
+  console.log({data});
   const router = useRouter();
   const [pendingRequest, setPendingRequest] = useState(null);
   const [openViewProperty, setOpenViewProperty] = useState(false);
@@ -32,6 +35,7 @@ const Page = ({ className }) => {
   const [inspections, setInspections] = useState();
   const [current, setCurrent] = useState();
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const [isOpenFoundHouse, setIsOpenFoundHouse] = useState(false)
   const [openCheckOffers, setOpenCheckOffers] = useState(false)
 
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
@@ -43,7 +47,6 @@ const Page = ({ className }) => {
       if (res.data.status) {
         setPendingRequest(res.data.request)
         updateData({ request: res.data.request })
-        // router.push('/dashboard/renew-rent?status=pending')
       }
     } catch (e) {
       console.log({ e });
@@ -130,7 +133,7 @@ const Page = ({ className }) => {
                     <div>Loading...</div>
                   </>
                 ) :
-                  <div className="grid grid-cols-[500px_1fr] gap-10 items-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-10 items-start">
                     <div>
                       <div>
                         <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6">Pending Rent Request</h3>
@@ -196,7 +199,6 @@ const Page = ({ className }) => {
                     <div>
                       <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6">Products</h3>
                       <div className='space-y-6'>
-                        {/* <Link href='/dashboard/renew-rent'> */}
                         <div
                           className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
                           onClick={() => setIsOpenDrawer(true)}
@@ -216,9 +218,9 @@ const Page = ({ className }) => {
                             <IconChevronRight className="text-black" size="20" />
                           </div>
                         </div>
-                        {/* </Link> */}
                         <div
                           className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                          onClick={() => setIsOpenFoundHouse(true)}
                         >
                           <div className="text-blue-600 grid place-items-center mt-1">
                             <IconHomeHand size="32" />
@@ -267,6 +269,10 @@ const Page = ({ className }) => {
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />
       <RenewRentDashboard isOpenDrawer={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} />
       <CheckOffers isOpen={openCheckOffers} onClose={() => setOpenCheckOffers(false)} />
+      <FoundHouseDashboard isOpenDrawer={isOpenFoundHouse} onClose={() => setIsOpenFoundHouse(false)} />
+      {data?.user?.want_this && (
+        <WantThis />
+      )}
     </>
   )
 }

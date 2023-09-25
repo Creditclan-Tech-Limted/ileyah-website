@@ -1,12 +1,41 @@
+import ClientOnly from '@/components/ClientOnly';
 import Drawer from '@/components/Drawer';
+import Button from '@/components/global/Button';
+import LaunchEligibilityWidget from '@/components/sign-up/LaunchEligibilityWidget';
 import { capitalizeFirstLetter, formatCurrency } from '@/lib/utils';
 import React from 'react'
 
 const ViewPropertyDetails = ({ isOpen, onClose, property, request }) => {
-  return (
+  const handleEligibilityCancelled = async () => {
+    if (!request?.creditclan_request_id) return await refetchRentRequest();
+    await refetchLoanDetails();
+  };
+
+  const handleEligibilityCompleted = async () => {
+    if (!request?.creditclan_request_id) return await refetchRentRequest();
+    await refetchLoanDetails();
+  }; return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose} title='Property Details'>
-        <div className="font-17 border border-gray-300 rounded-xl">
+      <Drawer isOpen={isOpen} onClose={onClose} title='Request Details'>
+        {!request?.eligibility_link && !request?.creditclan_request_id && (
+          <>
+            <p> You have an on-going request. <br /> Click on <b className='font-bold'>Continue</b> to proceed with your application. </p>
+            <p>Contact us on our support lines if you require any assistance.</p>
+          </>
+
+        )}
+        {request?.eligibility_link && !request?.creditclan_request_id && (
+          <>
+            <p> You have an on-going request. <br /> Click on <b>Continue</b> to proceed with your application. </p>
+            <p>Contact us on our support lines if you require any assistance.</p>
+          </>
+        )}
+
+        {request?.eligibility_link && request?.creditclan_request_id && (
+          <p className=''>You have a pending request that is under review. <br /> Contact us on our support lines if you require any assistance.</p>
+        )}
+
+        <div className="font-17 border border-gray-300 rounded-xl mt-5">
           <ul className="">
             <li className="flex justify-between items-center border-b p-3">
               Rent amount:
@@ -34,6 +63,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, property, request }) => {
             </li>
           </ul>
         </div>
+        <div className='mt-10'>
+          <div>
+            <ClientOnly>
+              <LaunchEligibilityWidget
+                onReady={() => setLoading("false")}
+                request={request}
+                onCancel={handleEligibilityCancelled}
+                onCompleted={handleEligibilityCompleted}
+                className="w-100"
+              >
+                <Button>Get funded</Button>
+              </LaunchEligibilityWidget>
+            </ClientOnly>
+          </div>
+        </div>
+
         {/* Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem ad amet tempore incidunt, voluptatum, architecto quia quis possimus, repellat at voluptatem accusantium necessitatibus aut et pariatur tempora repellendus dolores? Voluptas! */}
       </Drawer>
     </>

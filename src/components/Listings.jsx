@@ -6,36 +6,54 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { HousesData } from "@/utils/houseData";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Button from "@/components/global/Button";
+import Typed from "typed.js";
 
 const Listings = () => {
   SwiperCore.use([Autoplay]);
+  const el = useRef(null)
+
 
   useEffect(() => {
     AOS.init();
   }, []);
 
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Monthly', 'Weekly'],
+      typeSpeed: 100,
+      backSpeed: 10,
+      backDelay: 2000,
+      loop: true,
+      showCursor: false
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <div className="bg-[#edeef0] hidden md:block">
       <div className="container py-20 md:py-32">
-        <div className="grid md:grid-cols-2 gap-8 items-center justify-between">
-          <div>
+        <div className="grid md:grid-cols-3 gap-8 items-center justify-between">
+          <div className="col-span-1">
             <h5 className="uppercase md:text-sm text-sm mb-3.5 text-primary tracking-wider text-center md:text-left">
               Browse our wide range of products
             </h5>
             <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-            Explore our extensive catalog of high-quality items available for rent.
-              {/* Quality apartments. <br className="md:hidden" /> Trusted by millions of renters. */}
+              Explore our rent listing, Pay <span ref={el} />
             </h2>
             <Button className="mt-8">
               Get Started
             </Button>
           </div>
-          <div>
+          <div className="col-span-2">
             <Swiper
               loop
-              slidesPerView={1.5}
+              slidesPerView={2.2}
               spaceBetween={40}
               speed={10000}
               autoplay={{
@@ -44,15 +62,15 @@ const Listings = () => {
               }}
               breakpoints={{
                 470: {
-                  slidesPerView: 1.5,
+                  slidesPerView: 2.2,
                   spaceBetween: 20
                 },
                 760: {
-                  slidesPerView: 1.5,
+                  slidesPerView: 2.2,
                   spaceBetween: 20
                 },
                 1100: {
-                  slidesPerView: 1.5,
+                  slidesPerView: 2.2,
                   spaceBetween: 20
                 }
               }}

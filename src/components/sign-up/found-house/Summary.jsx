@@ -4,9 +4,6 @@ import useSignupStore from "@/store/signup";
 
 function Summary({ onBack, onNext }) {
   const data = useSignupStore((state) => state.data);
-
-  console.log({data});
-
   const { data: plans, isLoading: isPlansLoading } = useGetPlansQuery({
     price: data?.foundHouse?.amount,
   });

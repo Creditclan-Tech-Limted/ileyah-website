@@ -1,32 +1,26 @@
 'use client'
-import ListingFlex from '@/components/listings/ListingFlex'
-import ListingsGrid from '@/components/listings/ListingsGrid'
+import IndexPage from '@/components/listings/CheckBox'
 import SearchBar from '@/components/listings/SearchBar'
 import React, { useEffect, useState } from 'react'
+// import DropdownSearch from '../../components/listings/DropdownSearch'
+import PriceRangeSlider from '@/components/listings/RangeSlider'
+import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
-import Navbar from '@/components/Navbar'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
-import { IconChevronDown, IconLogout } from '@tabler/icons-react'
+import Footer from '@/components/Footer'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import ProDetails from '@/components/listings/modals/property_details'
-import useSignupStore from '@/store/signup'
-import SimpleDropdown from '@/global/SimpleDropdown'
-import classNames from 'classnames'
+import ListingsGrid from './ListingsGrid'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
-const Page = ({ className }) => {
+const Page = () => {
   const [isGridView, setIsGridView] = useState(true)
   const [scrollTop, setScrollTop] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [call, setCall] = useState(false)
-  const [properties, setProperties] = useState([]);
-  const [current, setCurrent] = useState()
-  const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
-  const { data: signupData, updateData } = useSignupStore((state) => state);
-
+  const [properties, setProperties] = useState([])
 
   const handleScroll = ((event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
@@ -42,18 +36,6 @@ const Page = ({ className }) => {
     }
   });
 
-  const handleClose = async () => {
-    try {
-      setOpenPropertyDetails(false)
-    } catch (error) {
-      console.log({ error });
-    }
-  }
-
-  const handleLogout = () => {
-    router.push('/login')
-  };
-
   const handleScrollTop = () => {
     window.scrollTo({
       top: 0,
@@ -65,6 +47,8 @@ const Page = ({ className }) => {
   const getPorperties = async () => {
     try {
       const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
+      // const res = await axios.get('http://localhost:2020/get_properties');
+      console.log(res?.data?.data);
       setProperties(res?.data?.data)
       return res?.data?.data
     } catch (error) {
@@ -73,8 +57,9 @@ const Page = ({ className }) => {
   }
 
   const { data, isLoading, error } = useQuery(['properties'], getPorperties);
+  console.log({ isLoading, data });
   useEffect(() => {
-    getPorperties()
+    // getPorperties()
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -86,56 +71,23 @@ const Page = ({ className }) => {
   }
 
   const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = 5
+  const totalPages = 5 // Replace with the total number of pages
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber)
+    // You can perform additional actions here, like fetching data for the selected page.
   }
 
   const handleClick = () => {
     console.log('Button clicked!')
+    // Perform your desired action here
   }
 
-
-  const checkLegacyRoute = async () => {
-    try {
-      console.log({ signupData });
-      if (signupData?.property) {
-        setCurrent(signupData?.property)
-        setOpenPropertyDetails(true)
-      }
-    } catch (error) {
-      console.log({ error });
-    }
-  }
-  
   return (
-    <div className='mt-[50px]'>
+    <div>
       <ScrollToTop />
-      <div className="flex mx-8">
-        <div>
-          <p className='text-2xl'>Market Place </p>
-        </div>
-        <div className='ml-auto'>
-          <SimpleDropdown
-            trigger={
-              <div className="flex items-center">
-                <img
-                  src={`https://ui-avatars.com/api/?name=${signupData?.user?.name} ${signupData?.user?.name?.split(' ')[1]}`}
-                  className={classNames('w-8 h-8 rounded-full', className)}
-                  alt={`${signupData?.user?.firstName} ${signupData?.user?.lastName}`}
-                />
-                <IconChevronDown size="18" className="ml-3" />
-              </div>
-            }
-            items={[
-              { text: 'Logout', icon: <IconLogout size="18" />, onClick: handleLogout }
-            ]}
-          />
-        </div>
-      </div>
       {/* <Navbar /> */}
-      <div className='grid gap-10 container mt-[50px]'>
+      <div className='grid gap-10 container'>
         <div className=''>
           <SearchBar placeholder='Search your key word...' />
           {isLoading && (
@@ -232,70 +184,32 @@ const Page = ({ className }) => {
               </div>
             </>
           )}
-          {isGridView ? (
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
-              {properties.map((m, i) => (
-                <div key={i}>
-                  <ListingsGrid
-                    key={i}
-                    houseImg={m.image}
-                    heading='For Rent'
-                    price='240,900/Month'
-                    title={m?.description}
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location={m?.address}
-                    lengthNum='3450'
-                    bedNum={m?.beds}
-                    bathNum={m?.baths}
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                    property={m}
-                    onClick={() => {
-                      setCurrent(m)
-                      setOpenPropertyDetails(true)
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className=''>
-              {[0, 1, 2, 3, 4, 5].map((m, i) => (
-                <div key={i}>
-                  <ListingFlex
-                    key={i}
-                    houseImg={m.image}
-                    heading='For Rent'
-                    price='240,900/Month'
-                    title={m?.title}
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location={m?.address}
-                    lengthNum='3450'
-                    bedNum='3'
-                    bathNum='2'
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                    property={m}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
+            {properties.map((m, i) => (
+              <div key={i}>
+                <ListingsGrid
+                  key={i}
+                  houseImg={m.image}
+                  heading='For Rent'
+                  price='240,900/Month'
+                  title={m?.description}
+                  avatar={imageAvatar}
+                  name='Jonathan Reinink'
+                  role='Estate Agents'
+                  location={m?.address}
+                  lengthNum='3450'
+                  bedNum={m?.beds}
+                  bathNum={m?.baths}
+                  bed='Bed'
+                  bath='Bath'
+                  length='Square Ft'
+                  property={m}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
-      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
     </div>
   )
 }

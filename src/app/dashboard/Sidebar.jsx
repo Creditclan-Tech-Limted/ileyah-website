@@ -18,12 +18,12 @@ const navLinks = [
     icon: <IconApps />,
     name: 'Dashboard',
   },
-  // {
-  //   id: 2,
-  //   link: '/dashboard/landlords/listings/',
-  //   icon: <IconListDetails />,
-  //   name: 'Listings',
-  // },
+  {
+    id: 2,
+    link: '/dashboard/listings',
+    icon: <IconListDetails />,
+    name: 'Market Place',
+  },
   {
     id: 3,
     link: '/dashboard/landlords/profile/',

@@ -17,7 +17,7 @@ import { useSearchParams } from 'next/navigation'
 import Drawer from '@/components/Drawer'
 import { useToast } from '@/lib/use-toast'
 
-const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
+const FoundHouseDashboard = ({ isOpenDrawer, onClose }) => {
   const [views, setViews] = useState('request')
   const searchParams = useSearchParams()
   const status = searchParams.get('status')
@@ -81,7 +81,7 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
     const payload = {
       ...data,
       source: 1,
-      process_type: 'renew',
+      process_type: 'foundHouse',
       picture: '',
       full_name: data?.user?.name,
       phone: data?.user?.phone,
@@ -95,10 +95,9 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
       setViews('request-details')
     }
   }
-
   return (
     <>
-      <Drawer isOpen={isOpenDrawer} onClose={onClose} title='Renew Rent'>
+      <Drawer isOpen={isOpenDrawer} onClose={onClose} title='Fine me a House'>
         {
           views === 'request' && (
             <>
@@ -221,8 +220,7 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
           )
         }
       </Drawer>
-    </>
-  )
-};
+    </>)
+}
 
-export default RenewRentDashboard;
+export default FoundHouseDashboard;
