@@ -1,11 +1,28 @@
+import { useCancelCcRequestMutation, useCancelRequestMutation } from '@/api/rent';
 import ClientOnly from '@/components/ClientOnly';
-import Drawer from '@/components/Drawer';
 import Button from '@/components/global/Button';
 import LaunchEligibilityWidget from '@/components/sign-up/LaunchEligibilityWidget';
 import { capitalizeFirstLetter, formatCurrency } from '@/lib/utils';
+import useSignupStore from '@/store/signup';
 
 const ViewPropertyDetails = ({ isOpen, onClose, property, request }) => {
-  console.log({ request });
+  const { data, updateData } = useSignupStore((state) => state);
+  const { mutateAsync: cancelRequest, isLoading: isCancelRequestLoading } = useCancelRequestMutation();
+  const { mutateAsync: cancelCcRequest, isLoading: isCancelCcRequestLoading } = useCancelCcRequestMutation();
+
+  const handleCancelRequest = async () => {
+    try {
+      await cancelRequest(data.user.phone);
+      if (request?.creditclan_request_id) {
+        await cancelCcRequest(request.creditclan_request_id);
+      }
+      // onDone();
+      await queryClient.clear();
+    } catch (e) {
+      console.log({ e });
+    }
+  };
+
   const handleEligibilityCancelled = async () => {
     if (!request?.creditclan_request_id) return await refetchRentRequest();
     await refetchLoanDetails();
@@ -14,26 +31,29 @@ const ViewPropertyDetails = ({ isOpen, onClose, property, request }) => {
   const handleEligibilityCompleted = async () => {
     if (!request?.creditclan_request_id) return await refetchRentRequest();
     await refetchLoanDetails();
-  }; return (
+  };
+
+
+  return (
     <>
       {/* <Drawer isOpen={isOpen} onClose={onClose} title='Request Details'> */}
-      {!request?.eligibility_link && !request?.creditclan_request_id && (
-        <>
-          <p> You have an on-going request. <br /> Click on <b className='font-bold'>Continue</b> to proceed with your application. </p>
-          <p>Contact us on our support lines if you require any assistance.</p>
-        </>
+      {/* {!request?.eligibility_link && !request?.creditclan_request_id && (
+          )} */}
+      <>
+        <p> You have an on-going request. <br /> Click on <b className='font-bold'>Continue</b> to proceed with your application. </p>
+        <p>Contact us on our support lines if you require any assistance.</p>
+      </>
 
-      )}
-      {request?.eligibility_link && !request?.creditclan_request_id && (
+      {/* {request?.eligibility_link && !request?.creditclan_request_id && (
         <>
           <p> You have an on-going request. <br /> Click on <b>Continue</b> to proceed with your application. </p>
           <p>Contact us on our support lines if you require any assistance.</p>
         </>
-      )}
+      )} */}
 
-      {request?.eligibility_link && request?.creditclan_request_id && (
+      {/* {request?.eligibility_link && request?.creditclan_request_id && (
         <p className=''>You have a pending request that is under review. <br /> Contact us on our support lines if you require any assistance.</p>
-      )}
+      )} */}
 
       <div className="font-17 border border-gray-300 rounded-xl mt-5">
         <ul className="">
@@ -77,6 +97,9 @@ const ViewPropertyDetails = ({ isOpen, onClose, property, request }) => {
             </LaunchEligibilityWidget>
           </ClientOnly>
         </div>
+        {!request?.creditclan_request_id && (
+          <Button onClick={handleCancelRequest} loading={isCancelRequestLoading} ></Button>
+        )}
       </div>
       {/* </Drawer> */}
     </>

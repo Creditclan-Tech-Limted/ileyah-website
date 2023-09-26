@@ -3,15 +3,15 @@ import {
   IconChevronDown,
   IconChevronRight,
   IconExclamationCircle,
+  IconHeadset,
   IconHomeHand,
   IconHomeSearch,
   IconLogout,
-  IconRotate2
 } from '@tabler/icons-react';
 import React, { useEffect, useState } from 'react'
 import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
-import { useCheckRentRequestMutation, useGetInspectionDetails } from "@/api/rent";
+import { useCheckRentRequestMutation, useGetInspectionDetails, useGetLoanDetailsQuery } from "@/api/rent";
 import { useRouter } from 'next/navigation';
 import Button from '@/components/global/Button';
 import ViewPropertyDetails from './modals/ViewPropertyDetails';
@@ -41,7 +41,6 @@ const Page = ({ className }) => {
   const [openCheckOffers, setOpenCheckOffers] = useState(false)
   const [properties, setProperties] = useState([]);
 
-
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
   const { mutateAsync: getInspections, isLoading: isGetInspectionsLoading } = useGetInspectionDetails();
 
@@ -57,10 +56,18 @@ const Page = ({ className }) => {
     }
   };
 
+  const {
+    data: loan,
+    isLoading: isGetLoanDetailsLoading,
+  } = useGetLoanDetailsQuery({
+    email: data?.user?.email,
+    phone: data?.user?.phone,
+    request_id: pendingRequest?.creditclan_request_id,
+  });
+
   const getPorperties = async () => {
     try {
       const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
-      console.log(res?.data?.data);
       setProperties(res?.data?.data)
       return res?.data?.data
     } catch (error) {
@@ -180,7 +187,7 @@ const Page = ({ className }) => {
                             </>
                           )}
                         </div>
-                        <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 mt-20">Pending Inspections</h3>
+                        <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 mt-10">Pending Inspections</h3>
                         {inspections && (
                           <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
                             {inspections?.map((m, i) => (
@@ -218,14 +225,13 @@ const Page = ({ className }) => {
                         <div className='space-y-6'>
                           <div
                             className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
-                            onClick={() => setIsOpenDrawer(true)}
                           >
                             <div className="text-red-600 grid place-items-center mt-1">
-                              <IconRotate2 size="32" />
+                              <IconHomeSearch size="32" />
                             </div>
                             <div className="px-6">
                               <p className="text-lg font-medium text-left">
-                                Renew rent
+                                Browse Listings
                               </p>
                               <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
                                 Renew your house rent on a monthly basis while we handle the full payment
@@ -237,8 +243,11 @@ const Page = ({ className }) => {
                           </div>
                           <div
                             className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
-                            onClick={() => setIsOpenFoundHouse(true)}
-                          >
+                            onClick={() => {
+                              if (pendingRequest) {
+                                setOpenViewProperty(true)
+                              }
+                            }}                          >
                             <div className="text-blue-600 grid place-items-center mt-1">
                               <IconHomeHand size="32" />
                             </div>
@@ -256,13 +265,17 @@ const Page = ({ className }) => {
                           </div>
                           <div
                             className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
-                          >
+                            onClick={() => {
+                              if (pendingRequest) {
+                                setOpenViewProperty(true)
+                              }
+                            }}                          >
                             <div className="text-green-600 grid place-items-center mt-1">
-                              <IconHomeSearch size="32" />
+                              <IconHeadset size="32" />
                             </div>
                             <div className="px-6">
                               <p className="text-lg font-medium text-left">
-                                Find me a house
+                                Talk to Advisor
                               </p>
                               <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
                                 Renew your house rent on a monthly basis while we handle the full payment
@@ -275,8 +288,8 @@ const Page = ({ className }) => {
                         </div>
                       </div>
                     </div>
-                    <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 my-20">Market Place</h3>
 
+                    <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 my-20">Market Place</h3>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
                       {properties.splice(0, 6).map((m, i) => (
                         <div key={i}>
@@ -312,7 +325,7 @@ const Page = ({ className }) => {
           </>
         )}
       </div>
-      <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} >
+      <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} title='Pending Request'>
         <ViewPropertyDetails request={pendingRequest} />
       </Drawer>
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />

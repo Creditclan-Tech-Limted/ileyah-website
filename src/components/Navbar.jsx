@@ -112,9 +112,9 @@ const Navbar = () => {
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/companies">
                   For Company
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/find-artisans">
+                {/* <Link className="inline-flex items-center rounded-full py-1 px-4" href="/find-artisans">
                   Find Artisans
-                </Link>
+                </Link> */}
               </div>
             </div>
             <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">

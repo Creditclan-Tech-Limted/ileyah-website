@@ -7,6 +7,7 @@ import { useToast } from '@/lib/use-toast';
 import RequestDetails from '@/app/dashboard/find-me-a-house/RequestDetails';
 import axios from 'axios';
 import ViewPropertyDetails from '@/app/dashboard/modals/ViewPropertyDetails';
+import { parseJsonString } from '@/lib/utils';
 
 const WantThis = ({ onClose }) => {
   const toast = useToast();
@@ -19,8 +20,13 @@ const WantThis = ({ onClose }) => {
   const checkPendingReq = async () => {
     try {
       const res = await axios.post('https://wema.creditclan.com/rent/pending/request', { phone: data?.user?.phone })
-      setProperty(res?.data?.request);
-      return res?.data
+      if (res?.data?.status) {
+        const request = res?.data?.request ?? null;
+        if (request) request.payload = parseJsonString(request.payload) || request.payload;
+        console.log(request);
+        setProperty(request);
+        return res?.data
+      }
     } catch (error) {
       console.log({ error });
     }

@@ -9,6 +9,7 @@ const LaunchEligibilityWidget = ({
   onCompleted,
   className,
 }) => {
+  console.log({ request });
   const widget = useRef();
 
   useEffect(() => {
@@ -25,9 +26,9 @@ const LaunchEligibilityWidget = ({
           tenor_type: 2,
         },
         profile: {
-          full_name: request.payload.full_name,
-          email: request.payload.email,
-          phone: request.payload.phone,
+          full_name: request.payload.full_name || request.full_name,
+          email: request.payload.email || request.email,
+          phone: request.payload.phone || request.phone,
           date_of_birth: null,
           gender: null,
         },
