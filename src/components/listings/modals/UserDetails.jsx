@@ -7,7 +7,6 @@ import { useForm } from 'react-hook-form';
 import { useToast } from '@/lib/use-toast'
 import { IconChevronLeft } from '@tabler/icons-react';
 
-
 const UserDetails = ({ onBack }) => {
   const { data, updateData } = useSignupStore((state) => state);
   const [loading, setLoading] = useState(false);

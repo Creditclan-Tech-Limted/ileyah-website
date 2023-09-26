@@ -53,7 +53,7 @@ const Listings = () => {
           <div className="col-span-2">
             <Swiper
               loop
-              slidesPerView={2.2}
+              slidesPerView={2.7}
               spaceBetween={40}
               speed={10000}
               autoplay={{
@@ -62,15 +62,15 @@ const Listings = () => {
               }}
               breakpoints={{
                 470: {
-                  slidesPerView: 2.2,
+                  slidesPerView: 2.7,
                   spaceBetween: 20
                 },
                 760: {
-                  slidesPerView: 2.2,
+                  slidesPerView: 2.7,
                   spaceBetween: 20
                 },
                 1100: {
-                  slidesPerView: 2.2,
+                  slidesPerView: 2.7,
                   spaceBetween: 20
                 }
               }}

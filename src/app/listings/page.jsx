@@ -5,7 +5,6 @@ import ListingsGrid from '@/components/listings/ListingsGrid'
 import SearchBar from '@/components/listings/SearchBar'
 import React, { useEffect, useState } from 'react'
 import DropdownSearch from '../../components/listings/DropdownSearch'
-import PriceRangeSlider from '@/components/listings/RangeSlider'
 import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
 import Navbar from '@/components/Navbar'
@@ -102,7 +101,6 @@ const Page = () => {
 
   const checkLegacyRoute = async () => {
     try {
-      console.log({signupData});
       if (signupData?.property) {
         setCurrent(signupData?.property)
         setOpenPropertyDetails(true)
@@ -113,7 +111,6 @@ const Page = () => {
   }
 
   useEffect(() => {
-    console.log('hello');
     checkLegacyRoute()
   }, [])
   return (

@@ -15,7 +15,7 @@ function StepOne({ onNext, onBack }) {
         </p>
       </div>
       <div className=' text-left mt-10 space-y-5'>
-        <div className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+        <div className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={onNext}>
           <div>
             <div className="w-10 h-10 rounded-full bg-blue-600 text-white grid place-items-center">
               <IconCurrencyNaira size="20" />
@@ -34,7 +34,7 @@ function StepOne({ onNext, onBack }) {
           </div>
         </div>
 
-        <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+        <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={onNext}>
           <div className="flex">
             <div className="flex">
               <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
@@ -56,7 +56,7 @@ function StepOne({ onNext, onBack }) {
           </div>
         </div>
 
-        <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+        <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={onNext}>
           <div className="flex">
             <div className="flex">
               <div className="w-10 h-10 rounded-full bg-green-600 text-white grid place-items-center my-auto">
@@ -77,7 +77,7 @@ function StepOne({ onNext, onBack }) {
           </div>
         </div>
 
-        <Button onClick={onNext}>Renwe my rent</Button>
+        {/* <Button onClick={onNext}>Renwe my rent</Button> */}
       </div>
     </>
   )

@@ -55,13 +55,13 @@ const Sidebar = () => {
           className='opacity-0 inset-0 w-full h-full'
           onClick='sidebarHandler(false)'
         ></div>
-        <div className='w-[320px] absolute left-0 z-40 top-0 shadow flex-col justify-between transition duration-150 ease-in-out h-full'>
+        <div className='w-[320px] absolute left-0 z-40 top-0 flex-col justify-between transition duration-150 ease-in-out h-full bg-[#00000f] text-white shadow-xl'>
           <div className='flex flex-col justify-between h-full'>
             <div className='px-6 pt-4 overflow-y-auto'>
               <div className='flex items-center justify-between'>
                 <div aria-label='Home' role='img' className='flex items-center'>
                   <img
-                    src='/assets/images/ileyah-logo.png'
+                    src='/assets/images/ileyah logo white.png'
                     alt='logo'
                     className='w-3/5 pl-5 pt-5'
                   />

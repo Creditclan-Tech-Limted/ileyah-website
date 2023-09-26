@@ -6,17 +6,20 @@ import { useState } from 'react';
 import { useToast } from '@/lib/use-toast';
 import RequestDetails from '@/app/dashboard/find-me-a-house/RequestDetails';
 import axios from 'axios';
+import ViewPropertyDetails from '@/app/dashboard/modals/ViewPropertyDetails';
 
 const WantThis = ({ onClose }) => {
   const toast = useToast();
   const { data, updateData } = useSignupStore((state) => state);
   const { mutateAsync: send, isLoading } = useCreateRentRequestMutation();
   const [views, setViews] = useState('summary');
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [property, setProperty] = useState()
 
   const checkPendingReq = async () => {
     try {
       const res = await axios.post('https://wema.creditclan.com/rent/pending/request', { phone: data?.user?.phone })
+      setProperty(res?.data?.request);
       return res?.data
     } catch (error) {
       console.log({ error });
@@ -28,7 +31,7 @@ const WantThis = ({ onClose }) => {
       setLoading(true)
       const res = await checkPendingReq()
       if (res?.status) {
-        toast.error(res?.message)
+        toast.error(res?.message);
         setViews('request-details')
       } else {
         const payload = {
@@ -92,7 +95,8 @@ const WantThis = ({ onClose }) => {
         )}
         {
           views === 'request-details' && (
-            <RequestDetails />
+            <ViewPropertyDetails request={property} onClose={onClose} />
+            // <RequestDetails />
           )
         }
       </Drawer>
