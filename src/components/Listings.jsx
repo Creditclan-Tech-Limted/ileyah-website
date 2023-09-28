@@ -9,6 +9,7 @@ import { HousesData } from "@/utils/houseData";
 import { useEffect, useRef } from "react";
 import Button from "@/components/global/Button";
 import Typed from "typed.js";
+import Link from "next/link";
 
 const Listings = () => {
   SwiperCore.use([Autoplay]);

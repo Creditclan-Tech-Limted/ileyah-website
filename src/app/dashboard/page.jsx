@@ -29,6 +29,7 @@ import Drawer from '@/components/Drawer';
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
+  console.log({ data });
   const router = useRouter();
   const [pendingRequest, setPendingRequest] = useState(null);
   const [openViewProperty, setOpenViewProperty] = useState(false);
@@ -139,16 +140,20 @@ const Page = ({ className }) => {
                   />
                 </div>
               </div>
-              <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-                <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                </svg>
-                <span class="sr-only">Info</span>
-                <div>
-                  <span class="font-medium">Hello!</span> Please check your credit limit here.
-                </div>
-                <Button variant='outlined' color='red' className='ml-auto' onClick={() => setOpenCheckOffers(true)}>Check</Button>
-              </div>
+              {
+                !data?.user?.credit_score && (
+                  <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                    <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                    </svg>
+                    <span class="sr-only">Info</span>
+                    <div>
+                      <span class="font-medium">Hello!</span> Please check your credit limit here.
+                    </div>
+                    <Button variant='outlined' color='red' className='ml-auto' onClick={() => setOpenCheckOffers(true)}>Check</Button>
+                  </div>
+                )
+              }
               <div>
                 {isGetInspectionsLoading ? (
                   <>
@@ -158,22 +163,22 @@ const Page = ({ className }) => {
                   </>
                 ) :
                   <>
-                    <div className="grid grid-cols-1 lg:grid-cols-[500px_1fr] gap-10 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-[550px_1fr] gap-10 items-start">
                       <div>
                         <div>
-                          <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6">Pending Rent Request</h3>
+                          <h3 className="text-xl font-medium mb-8 px-1">Pending Rent Request</h3>
                           {pendingRequest && (
                             <div className='grid'>
-                              <div className="flex p-5  rounded-xl items-center bg-red-500 text-white">
+                              <div className="flex p-5  rounded-xl items-center border border-gray-300 ">
                                 <div className='my-auto'> <IconHomeSearch size={50} /> </div>
                                 <div className='px-5'>
-                                  <p className='text-xl '>{pendingRequest?.address}</p>
+                                  <p className='text-xl truncate ...'>{pendingRequest?.address}</p>
                                   <div className="">
                                     <p className=''> Gbagaga, Lagos</p>
                                     <p>{formatCurrency(pendingRequest?.amount)}</p>
                                   </div>
                                 </div>
-                                <Button variant='outlined' color='white' className='ml-auto' onClick={() => setOpenViewProperty(true)}>View</Button>
+                                <Button className='ml-auto' onClick={() => setOpenViewProperty(true)}>View</Button>
                               </div>
                             </div>
                           )}
@@ -188,8 +193,10 @@ const Page = ({ className }) => {
                             </>
                           )}
                         </div>
-                        <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 mt-10">Pending Inspections</h3>
+                        <h3 className="text-xl font-medium mb-8 px-1 mt-16">Pending Inspections</h3>
                         {inspections && (
+                          <>
+                          
                           <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
                             {inspections?.map((m, i) => (
                               <>
@@ -209,6 +216,8 @@ const Page = ({ className }) => {
                               </>
                             ))}
                           </div>
+                            <div className="underline text-blue-500 mt-5 cursor-pointer">View More</div>
+                            </>
                         )}
                         {!inspections && (
                           <>
@@ -222,10 +231,26 @@ const Page = ({ className }) => {
                         )}
                       </div>
                       <div>
-                        <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6">Products</h3>
-                        <div className='space-y-6'>
+                        {
+                          data?.user?.credit_score && (
+                            <div>
+                              <div className="border bg-blue-100 border-blue-200  p-8  rounded-2xl ml-auto">
+                              <h3 className="text-lg font-medium mb-5 px-1">Your Credit Limit</h3>
+                                <div className="flex justify-between">
+                                  <p>Monthly Rent Limit</p>
+                                  <p>{formatCurrency(data?.user?.credit_score)}</p>
+                                </div>
+                                <div className="flex justify-between">
+                                  <p>Max Duration</p>
+                                  <p>12 month(s)</p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        {/* <h3 className="text-xl font-medium mb-8 px-1 mt-10">Products</h3> */}
+                        <div className='mt-3'>
                           <div
-                            className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                            className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                           >
                             <div className="text-red-600 grid place-items-center mt-1">
                               <IconHomeSearch size="32" />
@@ -243,7 +268,7 @@ const Page = ({ className }) => {
                             </div>
                           </div>
                           <div
-                            className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                            className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                             onClick={() => {
                               if (pendingRequest) {
                                 setOpenViewProperty(true)
@@ -265,7 +290,7 @@ const Page = ({ className }) => {
                             </div>
                           </div>
                           <div
-                            className="rounded-2xl flex items-start border border-gray-300 px-7 py-7 cursor-pointer hover:bg-gray-100"
+                            className="rounded-2xl flex items-start border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                             onClick={() => {
                               if (pendingRequest) {
                                 setOpenViewProperty(true)
@@ -290,7 +315,7 @@ const Page = ({ className }) => {
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-medium mb-8 px-1 border-b pb-6 my-20">Market Place</h3>
+                    <h3 className="text-xl font-medium mb-8 px-1 my-20">Market Place</h3>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
                       {properties.splice(0, 6).map((m, i) => (
                         <div key={i}>

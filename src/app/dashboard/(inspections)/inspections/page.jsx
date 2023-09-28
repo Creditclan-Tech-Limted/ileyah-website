@@ -59,7 +59,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
       setLoading(false);
       setViews('view-result');
       setIsOfferLoading('show-offer-done');
-      router.push('/listings')
+      router.push('/dashboard')
       await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateAgents', { id: data?.user?.id, analysis_step: 'completed', credit_score: res?.data?.payload.repayment_amount?.toFixed(2) })
     } catch (error) {
       setLoading(false)
