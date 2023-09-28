@@ -140,20 +140,6 @@ const Page = ({ className }) => {
                   />
                 </div>
               </div>
-              {
-                !data?.user?.credit_score && (
-                  <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-                    <svg class="flex-shrink-0 inline w-4 h-4 mr-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-                    </svg>
-                    <span class="sr-only">Info</span>
-                    <div>
-                      <span class="font-medium">Hello!</span> Please check your credit limit here.
-                    </div>
-                    <Button variant='outlined' color='red' className='ml-auto' onClick={() => setOpenCheckOffers(true)}>Check</Button>
-                  </div>
-                )
-              }
               <div>
                 {isGetInspectionsLoading ? (
                   <>
@@ -168,8 +154,8 @@ const Page = ({ className }) => {
                         <div>
                           <h3 className="text-xl font-medium mb-8 px-1">Pending Rent Request</h3>
                           {pendingRequest && (
-                            <div className='grid'>
-                              <div className="flex p-5  rounded-xl items-center border border-gray-300 ">
+                            <div className='grid border border-gray-300 rounded-xl'>
+                              <div className="flex p-5  items-center ">
                                 <div className='my-auto'> <IconHomeSearch size={50} /> </div>
                                 <div className='px-5'>
                                   <p className='text-xl truncate ...'>{pendingRequest?.address}</p>
@@ -180,7 +166,13 @@ const Page = ({ className }) => {
                                 </div>
                                 <Button className='ml-auto' onClick={() => setOpenViewProperty(true)}>View</Button>
                               </div>
+                              <div>
+                                <div className="w-full bg-gray-200 rounded-full">
+                                  <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full w-[33%]" > Stage 1 / 3</div>
+                                </div>
+                              </div>
                             </div>
+
                           )}
                           {!pendingRequest && (
                             <>
@@ -196,28 +188,28 @@ const Page = ({ className }) => {
                         <h3 className="text-xl font-medium mb-8 px-1 mt-16">Pending Inspections</h3>
                         {inspections && (
                           <>
-                          
-                          <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
-                            {inspections?.map((m, i) => (
-                              <>
-                                <div className="flex py-4 px-8">
-                                  <div className="flex">
-                                    <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
-                                    <div>
-                                      <p>{m?.ileyah_property?.description}</p>
-                                      <p>{formatCurrency(m?.ileyah_property?.price)}</p>
+
+                            <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
+                              {inspections?.map((m, i) => (
+                                <>
+                                  <div className="flex py-4 px-8">
+                                    <div className="flex">
+                                      <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
+                                      <div>
+                                        <p>{m?.ileyah_property?.description}</p>
+                                        <p>{formatCurrency(m?.ileyah_property?.price)}</p>
+                                      </div>
                                     </div>
+                                    <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
+                                      setCurrent(m);
+                                      setopenViewInspections(true)
+                                    }}>View</Button>
                                   </div>
-                                  <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
-                                    setCurrent(m);
-                                    setopenViewInspections(true)
-                                  }}>View</Button>
-                                </div>
-                              </>
-                            ))}
-                          </div>
+                                </>
+                              ))}
+                            </div>
                             <div className="underline text-blue-500 mt-5 cursor-pointer">View More</div>
-                            </>
+                          </>
                         )}
                         {!inspections && (
                           <>
@@ -235,7 +227,7 @@ const Page = ({ className }) => {
                           data?.user?.credit_score && (
                             <div>
                               <div className="border bg-blue-100 border-blue-200  p-8  rounded-2xl ml-auto">
-                              <h3 className="text-lg font-medium mb-5 px-1">Your Credit Limit</h3>
+                                <h3 className="text-lg font-medium mb-5 px-1">Your Credit Limit</h3>
                                 <div className="flex justify-between">
                                   <p>Monthly Rent Limit</p>
                                   <p>{formatCurrency(data?.user?.credit_score)}</p>
@@ -247,7 +239,6 @@ const Page = ({ className }) => {
                               </div>
                             </div>
                           )}
-                        {/* <h3 className="text-xl font-medium mb-8 px-1 mt-10">Products</h3> */}
                         <div className='mt-3'>
                           <div
                             className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
