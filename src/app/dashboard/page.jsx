@@ -223,11 +223,11 @@ const Page = ({ className }) => {
                         )}
                       </div>
                       <div>
-                        {
-                          data?.user?.credit_score && (
-                            <div>
-                              <div className="border bg-blue-100 border-blue-200  p-8  rounded-2xl ml-auto">
-                                <h3 className="text-lg font-medium mb-5 px-1">Your Credit Limit</h3>
+                        <div>
+                          <div className="border bg-blue-100 border-blue-200  p-8  rounded-2xl ml-auto">
+                            <h3 className="text-lg font-medium mb-5 px-1">Your Credit Limit</h3>
+                            {data?.user?.credit_score ?
+                              <>
                                 <div className="flex justify-between">
                                   <p>Monthly Rent Limit</p>
                                   <p>{formatCurrency(data?.user?.credit_score)}</p>
@@ -236,9 +236,19 @@ const Page = ({ className }) => {
                                   <p>Max Duration</p>
                                   <p>12 month(s)</p>
                                 </div>
-                              </div>
-                            </div>
-                          )}
+                              </> :
+                              <>
+                                <div className="flex justify-between">
+                                  <div>
+                                    <p>Please check your credit limit</p>
+                                    <p>Click the button to proceed</p>
+                                  </div>
+                                  <Button className='my-auto' variant='outlined' color='black'>Check</Button>
+                                </div>
+                              </>
+                            }
+                          </div>
+                        </div>
                         <div className='mt-3'>
                           <div
                             className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
