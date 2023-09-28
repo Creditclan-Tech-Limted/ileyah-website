@@ -8,7 +8,7 @@ import {
   IconHomeSearch,
   IconLogout,
 } from '@tabler/icons-react';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
 import { useCheckRentRequestMutation, useGetInspectionDetails, useGetLoanDetailsQuery } from "@/api/rent";
@@ -17,7 +17,7 @@ import Button from '@/components/global/Button';
 import ViewPropertyDetails from './modals/ViewPropertyDetails';
 import SimpleDropdown from '@/global/SimpleDropdown';
 import classNames from 'classnames';
-import { formatCurrency } from '@/lib/utils';
+import { formatCurrency, parseJsonString } from '@/lib/utils';
 import InspectionDetails from './modals/InspectionDetails';
 import RenewRentDashboard from './(renew-rent)/renew-rent/page';
 import CheckOffers from './(inspections)/inspections/page';
@@ -26,7 +26,6 @@ import WantThis from './modals/WantThis';
 import axios from 'axios';
 import ListingsGrid from '@/components/listings/ListingsGrid';
 import Drawer from '@/components/Drawer';
-
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -48,6 +47,8 @@ const Page = ({ className }) => {
     try {
       const res = await checkUser(data?.user?.phone);
       if (res.data.status) {
+        const request = res?.data?.request ?? null;
+        if (request) request.payload = parseJsonString(request.payload) || request.payload;
         setPendingRequest(res.data.request)
         updateData({ request: res.data.request })
       }
@@ -101,7 +102,7 @@ const Page = ({ className }) => {
   return (
     <>
       <div className="h-screen flex">
-        {isCheckUserLoading && (
+        {isGetLoanDetailsLoading && (
           <div className='my-auto mx-auto relative'>
             <div role="status" className="space-y-2.5 animate-pulse max-w-lg relative">
               <div className="relative flex items-center w-full space-x-2">
@@ -113,7 +114,7 @@ const Page = ({ className }) => {
             <Loader text='Loading...' />
           </div>
         )}
-        {!isCheckUserLoading && (
+        {!isGetLoanDetailsLoading && (
           <>
             <div className='p-10 space-y-10'>
               <div className="flex">
@@ -326,7 +327,7 @@ const Page = ({ className }) => {
         )}
       </div>
       <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} title='Pending Request'>
-        <ViewPropertyDetails request={pendingRequest} />
+        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} />
       </Drawer>
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />
       <RenewRentDashboard isOpenDrawer={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} />

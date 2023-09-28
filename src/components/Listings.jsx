@@ -46,9 +46,11 @@ const Listings = () => {
             <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
               Explore our rent listing, Pay <span ref={el} />
             </h2>
-            <Button className="mt-8">
-              Get Started
-            </Button>
+            <Link href='/listings' >
+              <Button className="mt-8">
+                Get Started
+              </Button>
+            </Link>
           </div>
           <div className="col-span-2">
             <Swiper

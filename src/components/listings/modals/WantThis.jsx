@@ -1,4 +1,4 @@
-import { useCreateRentRequestMutation } from '@/api/rent';
+import { useCreateRentRequestMutation, useGetLoanDetailsQuery } from '@/api/rent';
 import Drawer from '@/components/Drawer'
 import Button from '@/components/global/Button';
 import useSignupStore from '@/store/signup';
@@ -15,7 +15,8 @@ const WantThis = ({ onClose }) => {
   const { mutateAsync: send, isLoading } = useCreateRentRequestMutation();
   const [views, setViews] = useState('summary');
   const [loading, setLoading] = useState(false);
-  const [property, setProperty] = useState()
+  const [property, setProperty] = useState();
+  const [loan, setLoan] = useState()
 
   const checkPendingReq = async () => {
     try {
@@ -23,14 +24,44 @@ const WantThis = ({ onClose }) => {
       if (res?.data?.status) {
         const request = res?.data?.request ?? null;
         if (request) request.payload = parseJsonString(request.payload) || request.payload;
-        console.log(request);
         setProperty(request);
+        if (request?.creditclan_request_id) {
+          await gertLoanDetails(request)
+        }
         return res?.data
       }
     } catch (error) {
       console.log({ error });
     }
   }
+
+  const gertLoanDetails = async (request) => {
+    const { email, phone } = data?.user
+    try {
+      const { data } = await axios.post('https://mobile.creditclan.com/api/v3/customer/check/details', { email, phone }, {
+        headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' }
+      });
+      const { token } = data;
+      console.log({ property });
+      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/details', { token, request_id: request?.creditclan_request_id }, {
+        headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' }
+      });
+      setLoan(res.data.data)
+      return res.data.data;
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+
+  // const {
+  //   data: loan,
+  //   isLoading: isGetLoanDetailsLoading,
+  // } = useGetLoanDetailsQuery({
+  //   email: data?.user?.email,
+  //   phone: data?.user?.phone,
+  //   request_id: pendingRequest?.creditclan_request_id,
+  // });
 
   const Submit = async () => {
     try {
@@ -54,6 +85,7 @@ const WantThis = ({ onClose }) => {
         }
         const res = await send(payload);
         if (res.data.status) {
+          await checkPendingReq()
           toast.success(res.data.message || "Request Successfully Created");
           setViews('request-details');
           // updateData({ ...data, user: { ...data?.user, want_this: false } })
@@ -101,7 +133,7 @@ const WantThis = ({ onClose }) => {
         )}
         {
           views === 'request-details' && (
-            <ViewPropertyDetails request={property} onClose={onClose} />
+            <ViewPropertyDetails request={property} loan={loan} onClose={onClose} />
             // <RequestDetails />
           )
         }

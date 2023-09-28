@@ -1,7 +1,5 @@
-import { useCheckRentRequestMutation } from '@/api/rent';
-import FormInput from '@/global/FormInput'
 import useSignupStore from '@/store/signup';
-import { IconPhoneCall } from '@tabler/icons-react';
+import { IconChevronRight, IconHeadset, IconListNumbers } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 
 const WeCall = ({ onNext, handleToggle }) => {
@@ -15,22 +13,8 @@ const WeCall = ({ onNext, handleToggle }) => {
     defaultValues: { ...data?.user },
   });
 
-  const {
-    mutateAsync: checkRentRequest,
-    isLoading: ischeckRentRequestLoading,
-  } = useCheckRentRequestMutation();
-
   const submit = async (values) => {
     handleToggle()
-    // updateData({ user: { ...values } });
-    // try {
-    //   const res = await checkRentRequest(values.phone);
-    //   if (!res.data.status) return onNext("step-two");
-    //   updateData({ request: res.data.request });
-    //   onNext("mini-summary");
-    // } catch (e) {
-    //   console.log({ e });
-    // }
   };
   return (
     <>
@@ -52,13 +36,60 @@ const WeCall = ({ onNext, handleToggle }) => {
         </div>
         <div className="pt-70">
           <p className="font-bold text-3xl text-primary leading-[1.1]">
-            Let's call you 🥳  <br />
+            Hello 🥳  <br />
           </p>
           <p className="text-cc-dark font-17">
-            Please provide the following information.
+            Please select from the options below?.
           </p>
         </div>
-        <form onSubmit={handleSubmit(submit)} className="mt-10">
+
+        <div className='mt-10 space-y-10'>
+          <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+            <div className="flex">
+              <div className="flex">
+                <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
+                  <IconListNumbers size="20" />
+                </div>
+              </div>
+              <div className="px-6">
+                <p className="text-lg font-medium text-left">
+                  Join our Waitlist
+                </p>
+                <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                  - Lorem ipsum dolor sit amet consectetur. <br />
+                  - We'll revert with response in less than 48hrs.
+                </p>
+              </div>
+            </div>
+            <div>
+              <IconChevronRight className="text-black ml-auto" size="20" />
+            </div>
+          </div>
+
+          <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+            <div className="flex">
+              <div className="flex">
+                <div className="w-10 h-10 rounded-full bg-blue-600 text-white grid place-items-center my-auto">
+                  <IconHeadset size="20" />
+                </div>
+              </div>
+              <div className="px-6">
+                <p className="text-lg font-medium text-left">
+                  Talk to an Advisor
+                </p>
+                <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                  - Lorem ipsum dolor sit amet consectetur. <br />
+                  - We'll revert with response in less than 48hrs.
+                </p>
+              </div>
+            </div>
+            <div>
+              <IconChevronRight className="text-black ml-auto" size="20" />
+            </div>
+          </div>
+        </div>
+        
+        {/* <form onSubmit={handleSubmit(submit)} className="mt-10">
           <FormInput
             type="text"
             label="Full name"
@@ -102,7 +133,7 @@ const WeCall = ({ onNext, handleToggle }) => {
               )}
             </button>
           </div>
-        </form>
+        </form> */}
         <div style={{ right: "-6rem" }} className="illustration-image">
           <img src="/assets/images/phone-in-hand.png" width="100%" alt="" />
         </div>

@@ -16,7 +16,7 @@ const LaunchEligibilityWidget = ({
     const CcEligibilityWidget = window.CcEligibilityWidget;
     widget.current = CcEligibilityWidget.init({
       data: {
-        plans: [JSON.parse(request.plan)],
+        // plans: [JSON.parse(request.plan)],
         intro: "Happy to fund your house rent",
         banner:
           "https://i.ibb.co/pr1BLgq/house-in-hand.jpg",
@@ -41,6 +41,7 @@ const LaunchEligibilityWidget = ({
           show_profile: true,
           show_offers: true,
           show_nok: true,
+          remember_last_application_date: false
         },
         extra: {
           rent_id: request.id,

@@ -240,7 +240,7 @@ const Page = () => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price='240,900/Month'
+                    price={m?.price}
                     title={m?.description}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'
