@@ -26,6 +26,7 @@ import WantThis from './modals/WantThis';
 import axios from 'axios';
 import ListingsGrid from '@/components/listings/ListingsGrid';
 import Drawer from '@/components/Drawer';
+import ProDetails from '@/components/listings/modals/property_details';
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -37,9 +38,10 @@ const Page = ({ className }) => {
   const [inspections, setInspections] = useState();
   const [current, setCurrent] = useState();
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
-  const [isOpenFoundHouse, setIsOpenFoundHouse] = useState(false)
-  const [openCheckOffers, setOpenCheckOffers] = useState(false)
+  const [isOpenFoundHouse, setIsOpenFoundHouse] = useState(false);
+  const [openCheckOffers, setOpenCheckOffers] = useState(false);
   const [properties, setProperties] = useState([]);
+  const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
 
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
   const { mutateAsync: getInspections, isLoading: isGetInspectionsLoading } = useGetInspectionDetails();
@@ -57,6 +59,14 @@ const Page = ({ className }) => {
       console.log({ e });
     }
   };
+
+  const handleClose = async () => {
+    try {
+      setOpenPropertyDetails(false)
+    } catch (error) {
+      console.log({ error });
+    }
+  }
 
   const {
     data: loan,
@@ -167,8 +177,18 @@ const Page = ({ className }) => {
                                 <Button className='ml-auto' onClick={() => setOpenViewProperty(true)}>View</Button>
                               </div>
                               <div>
-                                <div className="w-full bg-gray-200 rounded-full">
-                                  <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full w-[33%]" > Stage 1 / 3</div>
+                                <div className="w-full bg-gray-200 rounded-b-xl">
+                                  {!pendingRequest?.creditclan_request_id && (
+                                    <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl" > Stage 1 / 3</div>
+                                  )}
+                                  {
+                                    pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && (
+                                      <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl" > Stage 2 / 3</div>
+                                    )
+                                  }
+                                  {/* {
+                                    <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[100%] rounded-b-xl" > Stage 3 / 3</div>
+                                  } */}
                                 </div>
                               </div>
                             </div>
@@ -208,7 +228,7 @@ const Page = ({ className }) => {
                                 </>
                               ))}
                             </div>
-                            <div className="underline text-blue-500 mt-5 cursor-pointer">View More</div>
+                            <div className="underline text-blue-500 mt-5 cursor-pointer text-right">See all Bookings</div>
                           </>
                         )}
                         {!inspections && (
@@ -243,7 +263,7 @@ const Page = ({ className }) => {
                                     <p>Please check your credit limit</p>
                                     <p>Click the button to proceed</p>
                                   </div>
-                                  <Button className='my-auto' variant='outlined' color='black'>Check</Button>
+                                  <Button className='my-auto' variant='outlined' color='black' onClick={() => setOpenCheckOffers(true)} >Check</Button>
                                 </div>
                               </>
                             }
@@ -324,9 +344,8 @@ const Page = ({ className }) => {
                             key={i}
                             houseImg={m.image}
                             heading='For Rent'
-                            price='240,900/Month'
+                            price='240,900'
                             title={m?.description}
-                            // avatar={imageAvatar}
                             name='Jonathan Reinink'
                             role='Estate Agents'
                             location={m?.address}
@@ -337,10 +356,10 @@ const Page = ({ className }) => {
                             bath='Bath'
                             length='Square Ft'
                             property={m}
-                          // onClick={() => {
-                          //   setCurrent(m)
-                          //   setOpenPropertyDetails(true)
-                          // }}
+                            // onClick={() => {
+                            //   setCurrent(m)
+                            //   setOpenPropertyDetails(true)
+                            // }}
                           />
                         </div>
                       ))}
@@ -362,6 +381,8 @@ const Page = ({ className }) => {
       {data?.user?.want_this && (
         <WantThis />
       )}
+      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
+
     </>
   )
 }

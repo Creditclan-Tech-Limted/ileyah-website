@@ -44,7 +44,6 @@ const Page = ({ className }) => {
 
   const handleClose = async () => {
     try {
-      console.log('entrer');
       setOpenPropertyDetails(false)
     } catch (error) {
       console.log({ error });
@@ -270,7 +269,7 @@ const Page = ({ className }) => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price='240,900/Month'
+                    price='240,900'
                     title={m?.title}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'

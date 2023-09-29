@@ -33,15 +33,12 @@ export default function ListingsGrid({
             src={houseImg}
             alt='Sunset in the mountains'
           />
-          <div className='absolute z-[9] top-3 left-3 bg-green-600 text-white rounded px-4 py-1'>
-            Rent
-          </div>
           <div className='px-8 py-6 space-y-2'>
             <div className='text-gray-900 font-medium text-xl hover:text-blue-700 cursor-pointer'>
               {title}
             </div>
             <div className='flex gap-2 items-center'>
-              <IconMapPinFilled size="15" />
+              {/* <IconMapPinFilled size="15" /> */}
               <p className='text-gray-700 text-base hover:text-blue-700 cursor-pointer'>
                 {location}
               </p>
