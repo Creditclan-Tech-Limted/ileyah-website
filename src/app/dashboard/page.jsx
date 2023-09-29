@@ -132,7 +132,7 @@ const Page = ({ className }) => {
                 <div>
                   <p className='text-2xl'>Welcome <span className='font-semibold'>{data?.user?.name}</span> 🥳</p>
                 </div>
-                <div className='ml-auto'>
+                {/* <div className='ml-auto'>
                   <SimpleDropdown
                     trigger={
                       <div className="flex items-center">
@@ -148,7 +148,7 @@ const Page = ({ className }) => {
                       { text: 'Logout', icon: <IconLogout size="18" />, onClick: handleLogout }
                     ]}
                   />
-                </div>
+                </div> */}
               </div>
               <div>
                 {isGetInspectionsLoading ? (
@@ -183,7 +183,7 @@ const Page = ({ className }) => {
                                   )}
                                   {
                                     pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && (
-                                      <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl" > Stage 2 / 3</div>
+                                      <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
                                     )
                                   }
                                   {/* {
@@ -205,7 +205,7 @@ const Page = ({ className }) => {
                             </>
                           )}
                         </div>
-                        <h3 className="text-xl font-medium mb-8 px-1 mt-16">Pending Inspections</h3>
+                        <h3 className="text-xl font-medium mb-8 px-1 mt-16"> Inspection Bookings </h3>
                         {inspections && (
                           <>
 
@@ -381,7 +381,7 @@ const Page = ({ className }) => {
       {data?.user?.want_this && (
         <WantThis />
       )}
-      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
+      {/* <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} /> */}
 
     </>
   )

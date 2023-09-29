@@ -240,7 +240,7 @@ const Page = ({ className }) => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price='240,900/Month'
+                    price='240,900'
                     title={m?.description}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'
