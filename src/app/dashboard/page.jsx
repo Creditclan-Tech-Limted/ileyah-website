@@ -1,22 +1,17 @@
 'use client'
 import {
-  IconChevronDown,
   IconChevronRight,
   IconExclamationCircle,
   IconHeadset,
   IconHomeHand,
   IconHomeSearch,
-  IconLogout,
 } from '@tabler/icons-react';
 import { useEffect, useState } from 'react'
 import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
 import { useCheckRentRequestMutation, useGetInspectionDetails, useGetLoanDetailsQuery } from "@/api/rent";
-import { useRouter } from 'next/navigation';
 import Button from '@/components/global/Button';
 import ViewPropertyDetails from './modals/ViewPropertyDetails';
-import SimpleDropdown from '@/global/SimpleDropdown';
-import classNames from 'classnames';
 import { formatCurrency, parseJsonString } from '@/lib/utils';
 import InspectionDetails from './modals/InspectionDetails';
 import RenewRentDashboard from './(renew-rent)/renew-rent/page';
@@ -26,12 +21,9 @@ import WantThis from './modals/WantThis';
 import axios from 'axios';
 import ListingsGrid from '@/components/listings/ListingsGrid';
 import Drawer from '@/components/Drawer';
-import ProDetails from '@/components/listings/modals/property_details';
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
-  console.log({ data });
-  const router = useRouter();
   const [pendingRequest, setPendingRequest] = useState(null);
   const [openViewProperty, setOpenViewProperty] = useState(false);
   const [openViewInspections, setopenViewInspections] = useState(false);
@@ -99,10 +91,6 @@ const Page = ({ className }) => {
       console.log({ error });
     }
   }
-
-  const handleLogout = () => {
-    router.push('/login')
-  };
 
   useEffect(() => {
     getUser();
@@ -356,10 +344,10 @@ const Page = ({ className }) => {
                             bath='Bath'
                             length='Square Ft'
                             property={m}
-                            // onClick={() => {
-                            //   setCurrent(m)
-                            //   setOpenPropertyDetails(true)
-                            // }}
+                          // onClick={() => {
+                          //   setCurrent(m)
+                          //   setOpenPropertyDetails(true)
+                          // }}
                           />
                         </div>
                       ))}

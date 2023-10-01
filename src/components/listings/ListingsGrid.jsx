@@ -1,9 +1,3 @@
-import { useEffect, useState } from 'react'
-import { IconMapPinFilled } from '@tabler/icons-react'
-import ProDetails from './modals/property_details'
-import { useRouter } from 'next/navigation'
-import useSignupStore from '@/store/signup';
-
 export default function ListingsGrid({
   heading,
   price,
@@ -26,26 +20,24 @@ export default function ListingsGrid({
 
   return (
     <>
-      <div className='max-w-md rounded relative overflow-hidden shadow m-auto mt-4 cursor-pointer flex flex-col bg-white' onClick={onClick}>
-        <div>
+      <div className='max-w-md rounded-2xl relative overflow-hidden m-auto mt-4 cursor-pointer flex flex-col border border-gray-200' onClick={onClick}>
+        <div className='p-5 bg-white'>
           <img
-            className='w-full hover:scale-110 transition duration-500 cursor-pointer h-[200px] object-cover'
+            className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
             src={houseImg}
             alt='Sunset in the mountains'
           />
-          <div className='px-8 py-6 space-y-2'>
-            <div className='text-gray-900 font-medium text-xl hover:text-blue-700 cursor-pointer truncate ...'>
+          <div className='mt-5'>
+            <div className='text-gray-900 font-medium text-xl cursor-pointer truncate ...'>
               {title}
             </div>
-            <div className='flex gap-2 items-center'>
-              {/* <IconMapPinFilled size="15" /> */}
-              <p className='text-gray-700 text-base hover:text-blue-700 cursor-pointer'>
+            <div className='flex gap-2 items-center my-2 divide-y'>
+              <p className='text-gray-700 text-base cursor-pointer'>
                 {location}
               </p>
             </div>
             <div className="flex">
-              <p className='text-lg font-bold'>{  price} <span className='text-sm text-gray-400'>monthly</span> </p>
-              {/* <p className='ml-auto'>  {property?.createdAt?.slice(0, 10)}</p> */}
+              <p className='text-lg font-bold'>{price} <span className='text-sm text-gray-400'>monthly</span> </p>
             </div>
           </div>
         </div>

@@ -2,14 +2,13 @@
 import useSignupStore from '@/store/signup'
 import {
   IconApps,
-  IconGitPullRequest,
   IconListDetails,
-  IconSettings2,
+  IconLogout,
   IconUser,
 } from '@tabler/icons-react'
 import classNames from 'classnames'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const navLinks = [
   {
@@ -26,27 +25,20 @@ const navLinks = [
   },
   {
     id: 3,
-    link: '/dashboard/landlords/profile/',
+    link: '/dashboard/profile',
     icon: <IconUser />,
     name: 'Profile',
-  },
-  // {
-  //   id: 4,
-  //   link: '/dashboard/landlords/profile',
-  //   icon: <IconGitPullRequest />,
-  //   name: 'Request',
-  // },
-  {
-    id: 5,
-    link: '/dashboard/landlords/profile',
-    icon: <IconSettings2 />,
-    name: 'Settings',
   },
 ]
 
 const Sidebar = () => {
   const query = usePathname();
+  const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state);
+
+  const handleLogout = () => {
+    router.push('/login')
+  };
 
   return (
     <>
@@ -94,15 +86,10 @@ const Sidebar = () => {
             <div className='w-full'>
               <div className='border-t border-gray-300'>
                 <div className='w-full flex items-center justify-between px-6 pt-1'>
-                  <div className='flex items-center'>
-                    <img
-                      alt='display avatar'
-                      role='img'
-                      src='https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png'
-                      className='w-8 h-8 rounded-md'
-                    />
+                  <div className='flex items-center cursor-pointer' onClick={handleLogout}>
+                    <IconLogout />
                     <p className='text-white text-base leading-4 ml-2'>
-                      O Praise
+                      Logout
                     </p>
                   </div>
                   <ul className='flex'>
@@ -150,4 +137,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebar;
