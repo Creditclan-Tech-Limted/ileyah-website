@@ -40,9 +40,9 @@ const Navbar = () => {
   return (
     <>
       <header className={classNames(
-        'fixed top-0 inset-x-0 z-50 h-100 py-[30px] transition-all bg-black',
-        { 'bg-black text-white shadow !h-100 py-[30px]': scrolled },
-        { 'text-white shadow': !scrolled },
+        'top-0 inset-x-0 z-50 h-100 py-[30px] transition-all navbar_bg !bg-gray-900',
+        { 'bg-black text-white shadow !h-100 py-[30px] navbar_bg': scrolled },
+        { 'text-white shadow navbar_bg': !scrolled },
       )}>
         <div className="container h-full flex flex-col">
           <div className='my-auto'>

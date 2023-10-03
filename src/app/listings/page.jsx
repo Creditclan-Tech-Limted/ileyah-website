@@ -114,7 +114,7 @@ const Page = () => {
     <div className='bg-gray-100'>
       <ScrollToTop />
       <Navbar />
-      <div className='grid gap-10 container mt-[300px]'>
+      <div className='grid gap-10 container mt-[10px]'>
         <div className=''>
           {isLoading && (
             <>
@@ -239,47 +239,50 @@ const Page = () => {
                 </div>
               ))}
             </div>
-            <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10'>
-              <div>
-                <p>House Type</p>
-                <div class="flex items-center my-4">
-                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                  <label for="default-checkbox" class="ml-2 text-base">Office</label>
+            <div>
+              <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10 sticky top-[50px]'>
+                <div>
+                  <p>House Type</p>
+                  <div class="flex items-center my-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                    <label for="default-checkbox" class="ml-2 text-base">Office</label>
+                  </div>
+                  <div class="flex items-center my-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                    <label for="default-checkbox" class="ml-2 text-base">Studio</label>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                    <label for="default-checkbox" class="ml-2 text-base">One Bedroom</label>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                    <label for="default-checkbox" class="ml-2 text-base">Two Bedroom</label>
+                  </div>
+                  <div class="flex items-center mb-4">
+                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                    <label for="default-checkbox" class="ml-2 text-base">Three Bedroom</label>
+                  </div>
                 </div>
-                <div class="flex items-center my-4">
-                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                  <label for="default-checkbox" class="ml-2 text-base">Studio</label>
-                </div>
-                <div class="flex items-center mb-4">
-                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                  <label for="default-checkbox" class="ml-2 text-base">One Bedroom</label>
-                </div>
-                <div class="flex items-center mb-4">
-                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                  <label for="default-checkbox" class="ml-2 text-base">Two Bedroom</label>
-                </div>
-                <div class="flex items-center mb-4">
-                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                  <label for="default-checkbox" class="ml-2 text-base">Three Bedroom</label>
-                </div>
-              </div>
 
-              <div>
-                <p>Amount</p>
-                <div className="w-full my-4">
-                  <Select options={[1, 2, 3, 4, 5, 6]} />
+                <div>
+                  <p>Amount</p>
+                  <div className="w-full my-4">
+                    <Select options={[1, 2, 3, 4, 5, 6]} />
+                  </div>
                 </div>
-              </div>
 
-              <div>
-                <p>Location</p>
-                <div className="w-full my-4">
-                  <Select options={[1, 2, 3, 4, 5, 6]} />
+                <div>
+                  <p>Location</p>
+                  <div className="w-full my-4">
+                    <Select options={[1, 2, 3, 4, 5, 6]} />
+                  </div>
                 </div>
-              </div>
 
-              <Button>Apply Filter</Button>
+                <Button>Apply Filter</Button>
+              </div>
             </div>
+
           </div>
           <Pagination
             currentPage={currentPage}
