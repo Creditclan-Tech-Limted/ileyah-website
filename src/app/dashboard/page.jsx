@@ -58,7 +58,7 @@ const Page = ({ className }) => {
     } catch (error) {
       console.log({ error });
     }
-  }
+  }//////
 
   const {
     data: loan,

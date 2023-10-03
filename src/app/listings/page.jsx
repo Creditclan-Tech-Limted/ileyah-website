@@ -1,26 +1,23 @@
 'use client'
-import IndexPage from '@/components/listings/CheckBox'
 import ListingFlex from '@/components/listings/ListingFlex'
-import ListingsGrid from '@/components/listings/ListingsGrid'
-import SearchBar from '@/components/listings/SearchBar'
 import React, { useEffect, useState } from 'react'
-import DropdownSearch from '../../components/listings/DropdownSearch'
 import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
-import Navbar from '@/components/Navbar'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
-import { IconLayoutGrid, IconLayoutList } from '@tabler/icons-react'
 import Footer from '@/components/Footer'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import ProDetails from '@/components/listings/modals/property_details'
 import useSignupStore from '@/store/signup'
+import Select from '@/global/Select'
+import Button from '@/components/global/Button'
+import Navbar from './components/Navbar'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
 const Page = () => {
-  const [isGridView, setIsGridView] = useState(true)
+  const [isGridView, setIsGridView] = useState(false)
   const [scrollTop, setScrollTop] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [call, setCall] = useState(false)
@@ -114,30 +111,11 @@ const Page = () => {
     checkLegacyRoute()
   }, [])
   return (
-    <div>
+    <div className='bg-gray-100'>
       <ScrollToTop />
       <Navbar />
-      <div className='grid gap-10 container mt-[150px]'>
+      <div className='grid gap-10 container mt-[300px]'>
         <div className=''>
-          <div className='flex items-center mb-4'>
-            <div className='flex gap-4'>
-              <IconLayoutGrid
-                size={35}
-                onClick={toggleView}
-                className={isGridView ? 'text-blue-700' : 'text-black'}
-              />
-              <IconLayoutList
-                size={35}
-                onClick={toggleView}
-                className={!isGridView ? 'text-blue-700' : 'text-black'}
-              />
-            </div>
-            <div className='flex gap-4 px-4'>
-              <DropdownSearch options='Sort by new arrivals' />
-              <DropdownSearch options='Per page:' />
-            </div>
-          </div>
-          <SearchBar placeholder='Search your key word...' />
           {isLoading && (
             <>
               <div className='grid grid-cols-3 gap-10'>
@@ -232,11 +210,11 @@ const Page = () => {
               </div>
             </>
           )}
-          {isGridView ? (
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
+          <div className="grid grid-cols-[1fr_300px] gap-10">
+            <div className=''>
               {properties.map((m, i) => (
                 <div key={i}>
-                  <ListingsGrid
+                  <ListingFlex
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
@@ -261,32 +239,48 @@ const Page = () => {
                 </div>
               ))}
             </div>
-          ) : (
-            <div className=''>
-              {[0, 1, 2, 3, 4, 5].map((m, i) => (
-                <div key={i}>
-                  <ListingFlex
-                    key={i}
-                    houseImg={m.image}
-                    heading='For Rent'
-                    price='240,900/Month'
-                    title={m?.title}
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location={m?.address}
-                    lengthNum='3450'
-                    bedNum='3'
-                    bathNum='2'
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                    property={m}
-                  />
+            <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10'>
+              <div>
+                <p>House Type</p>
+                <div class="flex items-center my-4">
+                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                  <label for="default-checkbox" class="ml-2 text-base">Office</label>
                 </div>
-              ))}
+                <div class="flex items-center my-4">
+                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                  <label for="default-checkbox" class="ml-2 text-base">Studio</label>
+                </div>
+                <div class="flex items-center mb-4">
+                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                  <label for="default-checkbox" class="ml-2 text-base">One Bedroom</label>
+                </div>
+                <div class="flex items-center mb-4">
+                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                  <label for="default-checkbox" class="ml-2 text-base">Two Bedroom</label>
+                </div>
+                <div class="flex items-center mb-4">
+                  <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
+                  <label for="default-checkbox" class="ml-2 text-base">Three Bedroom</label>
+                </div>
+              </div>
+
+              <div>
+                <p>Amount</p>
+                <div className="w-full my-4">
+                  <Select options={[1, 2, 3, 4, 5, 6]} />
+                </div>
+              </div>
+
+              <div>
+                <p>Location</p>
+                <div className="w-full my-4">
+                  <Select options={[1, 2, 3, 4, 5, 6]} />
+                </div>
+              </div>
+
+              <Button>Apply Filter</Button>
             </div>
-          )}
+          </div>
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

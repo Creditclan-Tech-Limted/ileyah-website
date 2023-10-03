@@ -8,7 +8,7 @@ const layout = ({ children }) => {
         <div className='h-screen overflow-y-auto'>
           <Sidebar />
         </div>
-        <div className="p-8 h-screen overflow-y-auto">
+        <div className="p-8 h-screen overflow-y-auto bg-gray-50">
           <div className='max-w-7xl mx-auto pb-[100px]'>
             {children}
           </div>
