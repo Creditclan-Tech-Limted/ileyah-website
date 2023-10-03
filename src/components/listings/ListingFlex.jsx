@@ -1,9 +1,9 @@
 import { formatCurrency } from '@/lib/utils';
 import { IconBath, IconBed, IconHeart, IconMapPin, IconMapPinFilled, IconMapPins } from '@tabler/icons-react'
 
-const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNum, bedNum, bathNum, bed, bath, length, role, avatar }) => {
+const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNum, bedNum, bathNum, bed, bath, length, role, avatar, onClick }) => {
   return (
-    <div>
+    <div onClick={onClick}>
       <div className='max-w-sm w-full relative bg-white lg:max-w-4xl lg:flex lg:gap-4 p-4 shadow mt-4 rounded-2xl'>
         <div
           className='h-48 lg:h-64 lg:w-80 flex-none bg-cover rounded-2xl text-center overflow-hidden cursor-pointer'
@@ -49,47 +49,10 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
               </div>
             </div>
             <div className='font-bold'>
-              {formatCurrency(price)} / mo
+              {formatCurrency(price / 12)} / mo
             </div>
           </div>
         </div>
-        {/* <div className='bg-white w-full rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between'>
-          <div>
-            <div className='text-xl cursor-pointer'>
-              {title}
-            </div>
-            <div className=' flex gap-2 items-center'>
-              <IconMapPinFilled size='20' />
-              <p className='text-base cursor-pointer'>
-                {location}
-              </p>
-            </div>
-            <div className=' flex items-center gap-2 text-gray-500'>
-              <p>
-                <span>{bedNum} </span> {bed}
-              </p>
-              <p>
-                <span>{bathNum} </span>{' '}
-                {bath}
-              </p>
-              <p>
-                <span>{lengthNum}</span>{' '}
-                {length}
-              </p>
-            </div>
-          </div>
-          <div className='lg:flex items-center gap-4 justify-between'>
-            <div className=' flex items-center justify-between'>
-              <div className='text-sm'>
-                <p className='leading-none'>{name}</p>
-                <p>{role}</p>
-              </div>
-            </div>
-            <div>
-              <p className='text-lg'>{price} </p>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   )

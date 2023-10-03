@@ -240,7 +240,7 @@ const Page = () => {
               ))}
             </div>
             <div>
-              <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10 sticky top-[50px]'>
+              <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10 sticky top-[30px]'>
                 <div>
                   <p>House Type</p>
                   <div class="flex items-center my-4">

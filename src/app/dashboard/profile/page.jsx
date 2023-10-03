@@ -7,7 +7,7 @@ import useSignupStore from "@/store/signup";
 import { IconAddressBook, IconLock, IconUser, IconUserEdit } from "@tabler/icons-react";
 import { useState } from "react";
 
-const page = () => {
+const Profile = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const [views, setViews] = useState('bio-info');
 
@@ -133,4 +133,4 @@ const page = () => {
   )
 }
 
-export default page;
+export default Profile;
