@@ -14,12 +14,12 @@ import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
 import Button from '@/components/global/Button'
 import Navbar from './components/Navbar'
-import { IconGridDots, IconGridPattern, IconList, IconListCheck, IconListDetails } from '@tabler/icons-react'
+import { IconGridDots, IconGridPattern, IconLayoutGrid, IconLayoutList, IconList, IconListCheck, IconListDetails } from '@tabler/icons-react'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
 const Page = () => {
-  const [isGridView, setIsGridView] = useState(false)
+  const [isGridView, setIsGridView] = useState(true)
   const [scrollTop, setScrollTop] = useState(0)
   const [showModal, setShowModal] = useState(false)
   const [call, setCall] = useState(false)
@@ -63,11 +63,18 @@ const Page = () => {
       const res = await axios.get(
         'https://kuda-creditclan-api.herokuapp.com/get_properties'
       )
-      // const res = await axios.get('http://localhost:2020/get_properties');
-      console.log(res?.data?.data)
-      setProperties(res?.data?.data)
-      return res?.data?.data
-    } catch (error) {}
+
+      let array = res?.data?.data
+
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      setProperties(array)
+    } catch (error) {
+
+      console.log({ error });
+    }
   }
 
   const { data, isLoading, error } = useQuery(['properties'], getPorperties)
@@ -271,72 +278,15 @@ const Page = () => {
             </>
           )}
 
-          <div className="flex">
-            <IconGridDots />
-            <IconListDetails />
+          <div className="flex space-x-5 cursor-pointer">
+            <IconLayoutGrid size={30} onClick={() => setIsGridView(true)} />
+            <IconLayoutList size={30} onClick={() => setIsGridView(false)} />
           </div>
-
-          {/* <div className='flex items-center justify-end mb-4 gap-10'>
-            <button
-              onClick={() => setIsGridView(true)}
-              className={`px-4 py-2 text-white bg-blue-500 rounded-full ${
-                isGridView ? 'bg-opacity-100' : 'bg-opacity-50'
-              } hover:bg-opacity-75 focus:bg-opacity-75`}
-            >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                class='icon icon-tabler icon-tabler-grid-dots'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                stroke-width='2'
-                stroke='currentColor'
-                fill='none'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              >
-                <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-                <path d='M5 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M19 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-                <path d='M19 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
-              </svg>
-            </button>
-            <button
-              onClick={() => setIsGridView(false)}
-              className={`px-4 py-2 text-white bg-blue-500 rounded-full ${
-                isGridView ? 'bg-opacity-100' : 'bg-opacity-50'
-              } hover:bg-opacity-75 focus:bg-opacity-75`}
-            >
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                class='icon icon-tabler icon-tabler-layout-sidebar'
-                width='24'
-                height='24'
-                viewBox='0 0 24 24'
-                stroke-width='2'
-                stroke='currentColor'
-                fill='none'
-                stroke-linecap='round'
-                stroke-linejoin='round'
-              >
-                <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
-                <path d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z'></path>
-                <path d='M9 4l0 16'></path>
-              </svg>
-            </button>
-          </div> */}
           <div className={`grid grid-cols-[1fr_300px] gap-10`}>
             {isGridView ? (
               <div className=' grid grid-cols-2 gap-10'>
                 {properties.map((m, i) => (
                   <div key={i}>
-                    {/* Your grid item content */}
                     <ListingsGrid
                       key={i}
                       houseImg={m.image}

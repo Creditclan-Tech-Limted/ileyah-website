@@ -72,14 +72,14 @@ export default function ListingsGrid({
                   {' '}
                   <IconBed />{' '}
                 </p>
-                <p>4</p>
+                <p>{bedNum || '1'}</p>
               </div>
               <div className='flex space-x-3'>
                 <p>
                   {' '}
                   <IconBath />{' '}
                 </p>
-                <p>4</p>
+                <p>{bathNum || '1'}</p>
               </div>
               <div className='flex space-x-3'>
                 <p>
