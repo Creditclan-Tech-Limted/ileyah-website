@@ -20,6 +20,14 @@ export default function ListingsGrid({
   property,
   onClick,
 }) {
+  const [isImageBroken, setImageBroken] = useState(false);
+
+  console.log(isImageBroken);
+
+  const handleImageError = () => {
+    console.log('error');
+    setImageBroken(true);
+  };
   return (
     <>
       <div
@@ -27,11 +35,20 @@ export default function ListingsGrid({
         onClick={onClick}
       >
         <div className=' bg-white'>
-          <img
-            className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
-            src={houseImg}
-            alt='Sunset in the mountains'
-          />
+
+          {
+            isImageBroken ? <img
+              className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
+              src='https://creativelayers.net/themes/homez-html/images/listings/g1-2.jpg'
+              alt='Sunset in the mountains'
+            /> :
+              <img
+                className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
+                src={houseImg}
+                alt='Sunset in the mountains'
+                onError={handleImageError}
+              />
+          }
           <div className='mt-5 p-5 '>
             <div className='text-gray-900 font-medium text-xl cursor-pointer truncate ...'>
               {title}
