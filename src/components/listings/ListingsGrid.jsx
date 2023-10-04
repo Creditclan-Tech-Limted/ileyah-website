@@ -1,3 +1,6 @@
+import { IconBath, IconHeart, IconPlus } from "@tabler/icons-react";
+import { IconBed } from "@tabler/icons-react";
+
 export default function ListingsGrid({
   heading,
   price,
@@ -39,9 +42,59 @@ export default function ListingsGrid({
               </p>
             </div>
             <div className='flex'>
-              <p className='text-lg font-bold bg-white absolute bottom-40 rounded-lg p-2 '>
+              <p className='text-lg font-bold bg-white absolute bottom-60 rounded-lg p-2 '>
                 {price} <span className='text-sm text-gray-400'>monthly</span>{' '}
               </p>
+            </div>
+
+            <div className='flex items-center pb-1 space-x-4'>
+              <div className='flex space-x-3'>
+                <p>
+                  {' '}
+                  <IconBed />{' '}
+                </p>
+                <p>4</p>
+              </div>
+              <div className='flex space-x-3'>
+                <p>
+                  {' '}
+                  <IconBath />{' '}
+                </p>
+                <p>4</p>
+              </div>
+              <div className='flex space-x-3'>
+                <p>
+                  {' '}
+                  <IconBath />{' '}
+                </p>
+                <p>1200 sqft</p>
+              </div>
+            </div>
+
+            <div className='flex items-center justify-between space-x-4 border-t-2 py-2 '>
+              <div className='rounded-full py-1  text-sm'>For rent</div>
+              <div className=' rounded-full  py-1  text-sm'>
+                <div className='flex space-x-4'>
+                  <div className='flex space-x-3'>
+                    <p>
+                      {' '}
+                      <IconBed />{' '}
+                    </p>
+                  </div>
+                  <div className='flex space-x-3'>
+                    <p>
+                      {' '}
+                      <IconPlus />{' '}
+                    </p>
+                  </div>
+                  <div className='flex space-x-3'>
+                    <p>
+                      {' '}
+                      <IconHeart />{' '}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
