@@ -1,5 +1,7 @@
+import { formatCurrency } from "@/lib/utils";
 import { IconBath, IconHeart, IconPlus } from "@tabler/icons-react";
 import { IconBed } from "@tabler/icons-react";
+import { useState } from "react";
 
 export default function ListingsGrid({
   heading,
@@ -60,7 +62,7 @@ export default function ListingsGrid({
             </div>
             <div className='flex'>
               <p className='text-lg font-bold bg-white absolute bottom-60 rounded-lg p-2 '>
-                {price} <span className='text-sm text-gray-400'>monthly</span>{' '}
+                {formatCurrency(price / 12)} <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>
 
@@ -88,26 +90,26 @@ export default function ListingsGrid({
               </div>
             </div>
 
-            <div className='flex items-center justify-between space-x-4 border-t py-2 '>
-              <div className='rounded-full py-1  text-sm'>For rent</div>
-              <div className=' rounded-full  py-1  text-sm'>
+            <div className='flex items-center justify-between space-x-4 border-t py-2'>
+              <div className='rounded-full pt-2'>For rent</div>
+              <div className=' rounded-full  py-1 text-sm'>
                 <div className='flex space-x-4'>
                   <div className='flex space-x-3'>
                     <p>
                       {' '}
-                      <IconBed />{' '}
+                      <IconBed size={20} />{' '}
                     </p>
                   </div>
                   <div className='flex space-x-3'>
                     <p>
                       {' '}
-                      <IconPlus />{' '}
+                      <IconPlus size={20} />{' '}
                     </p>
                   </div>
                   <div className='flex space-x-3'>
                     <p>
                       {' '}
-                      <IconHeart />{' '}
+                      <IconHeart size={20} />{' '}
                     </p>
                   </div>
                 </div>

@@ -14,6 +14,7 @@ import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
 import Button from '@/components/global/Button'
 import Navbar from './components/Navbar'
+import { IconGridDots, IconGridPattern, IconList, IconListCheck, IconListDetails } from '@tabler/icons-react'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -269,9 +270,14 @@ const Page = () => {
               </div>
             </>
           )}
-          <div className='flex items-center justify-end mb-4 gap-10'>
+
+          <div className="flex">
+            <IconGridDots />
+            <IconListDetails />
+          </div>
+
+          {/* <div className='flex items-center justify-end mb-4 gap-10'>
             <button
-              // onClick={toggleView}
               onClick={() => setIsGridView(true)}
               className={`px-4 py-2 text-white bg-blue-500 rounded-full ${
                 isGridView ? 'bg-opacity-100' : 'bg-opacity-50'
@@ -302,7 +308,6 @@ const Page = () => {
               </svg>
             </button>
             <button
-              // onClick={toggleView}
               onClick={() => setIsGridView(false)}
               className={`px-4 py-2 text-white bg-blue-500 rounded-full ${
                 isGridView ? 'bg-opacity-100' : 'bg-opacity-50'
@@ -325,7 +330,7 @@ const Page = () => {
                 <path d='M9 4l0 16'></path>
               </svg>
             </button>
-          </div>
+          </div> */}
           <div className={`grid grid-cols-[1fr_300px] gap-10`}>
             {isGridView ? (
               <div className=' grid grid-cols-2 gap-10'>
