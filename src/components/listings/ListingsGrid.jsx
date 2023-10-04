@@ -15,19 +15,21 @@ export default function ListingsGrid({
   avatar,
   url,
   property,
-  onClick
+  onClick,
 }) {
-
   return (
     <>
-      <div className='max-w-md rounded-2xl relative overflow-hidden m-auto mt-4 cursor-pointer flex flex-col border border-gray-200' onClick={onClick}>
-        <div className='p-5 bg-white'>
+      <div
+        className='max-w-md rounded-2xl relative overflow-hidden m-auto mt-4 cursor-pointer flex flex-col border border-gray-200'
+        onClick={onClick}
+      >
+        <div className=' bg-white'>
           <img
             className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
             src={houseImg}
             alt='Sunset in the mountains'
           />
-          <div className='mt-5'>
+          <div className='mt-5 p-5 '>
             <div className='text-gray-900 font-medium text-xl cursor-pointer truncate ...'>
               {title}
             </div>
@@ -36,8 +38,10 @@ export default function ListingsGrid({
                 {location}
               </p>
             </div>
-            <div className="flex">
-              <p className='text-lg font-bold'>{price} <span className='text-sm text-gray-400'>monthly</span> </p>
+            <div className='flex'>
+              <p className='text-lg font-bold bg-white absolute bottom-40 rounded-lg p-2 '>
+                {price} <span className='text-sm text-gray-400'>monthly</span>{' '}
+              </p>
             </div>
           </div>
         </div>

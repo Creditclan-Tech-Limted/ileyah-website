@@ -1,5 +1,6 @@
 'use client'
 import ListingFlex from '@/components/listings/ListingFlex'
+import ListingsGrid from '@/components/listings/ListingsGrid'
 import React, { useEffect, useState } from 'react'
 import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
@@ -18,34 +19,33 @@ const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d1
 
 const Page = () => {
   const [isGridView, setIsGridView] = useState(false)
-  const [scrollTop, setScrollTop] = useState(0);
-  const [showModal, setShowModal] = useState(false);
+  const [scrollTop, setScrollTop] = useState(0)
+  const [showModal, setShowModal] = useState(false)
   const [call, setCall] = useState(false)
-  const [properties, setProperties] = useState([]);
+  const [properties, setProperties] = useState([])
   const [current, setCurrent] = useState()
-  const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
-  const { data: signupData, updateData } = useSignupStore((state) => state);
+  const [openPropertyDetails, setOpenPropertyDetails] = useState(false)
+  const { data: signupData, updateData } = useSignupStore((state) => state)
 
+  const handleScroll = (event) => {
+    const scrollPosition = window.innerHeight + window.scrollY
+    const pageHeight = document.body.offsetHeight
+    const middleOfPage = pageHeight / 2
 
-  const handleScroll = ((event) => {
-    const scrollPosition = window.innerHeight + window.scrollY;
-    const pageHeight = document.body.offsetHeight;
-    const middleOfPage = pageHeight / 2;
-
-    setScrollTop(event.target.scrollingElement.scrollTop);
+    setScrollTop(event.target.scrollingElement.scrollTop)
 
     if (scrollPosition >= middleOfPage) {
       if (call) return
-      setCall(true);
-      setShowModal(true);
+      setCall(true)
+      setShowModal(true)
     }
-  });
+  }
 
   const handleClose = async () => {
     try {
       setOpenPropertyDetails(false)
     } catch (error) {
-      console.log({ error });
+      console.log({ error })
     }
   }
 
@@ -53,30 +53,30 @@ const Page = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
-    });
-  };
+      behavior: 'smooth',
+    })
+  }
 
   const getPorperties = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
+      const res = await axios.get(
+        'https://kuda-creditclan-api.herokuapp.com/get_properties'
+      )
       // const res = await axios.get('http://localhost:2020/get_properties');
-      console.log(res?.data?.data);
+      console.log(res?.data?.data)
       setProperties(res?.data?.data)
       return res?.data?.data
-    } catch (error) {
-
-    }
+    } catch (error) {}
   }
 
-  const { data, isLoading, error } = useQuery(['properties'], getPorperties);
+  const { data, isLoading, error } = useQuery(['properties'], getPorperties)
   useEffect(() => {
     // getPorperties()
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [call, setCall]);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [call, setCall])
 
   const toggleView = () => {
     setIsGridView((prev) => !prev)
@@ -95,7 +95,6 @@ const Page = () => {
     // Perform your desired action here
   }
 
-
   const checkLegacyRoute = async () => {
     try {
       if (signupData?.property) {
@@ -103,7 +102,7 @@ const Page = () => {
         setOpenPropertyDetails(true)
       }
     } catch (error) {
-      console.log({ error });
+      console.log({ error })
     }
   }
 
@@ -119,162 +118,347 @@ const Page = () => {
           {isLoading && (
             <>
               <div className='grid grid-cols-3 gap-10'>
-                <div role="status" className="max-w-sm p-4  rounded shadow animate-pulse md:p-6">
-                  <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                      <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                      <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                <div
+                  role='status'
+                  className='max-w-sm p-4  rounded shadow animate-pulse md:p-6'
+                >
+                  <div className='flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-600'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 16 20'
+                    >
+                      <path d='M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z' />
+                      <path d='M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z' />
                     </svg>
                   </div>
-                  <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                  <div className="flex items-center mt-4 space-x-3">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                  <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  <div className='flex items-center mt-4 space-x-3'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-700'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path d='M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z' />
                     </svg>
                     <div>
-                      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
-                      <div className="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                      <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2'></div>
+                      <div className='w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                     </div>
                   </div>
-                  <span className="sr-only">Loading...</span>
+                  <span className='sr-only'>Loading...</span>
                 </div>
-                <div role="status" className="max-w-sm p-4  rounded shadow animate-pulse md:p-6">
-                  <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                      <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                      <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                <div
+                  role='status'
+                  className='max-w-sm p-4  rounded shadow animate-pulse md:p-6'
+                >
+                  <div className='flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-600'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 16 20'
+                    >
+                      <path d='M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z' />
+                      <path d='M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z' />
                     </svg>
                   </div>
-                  <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                  <div className="flex items-center mt-4 space-x-3">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                  <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  <div className='flex items-center mt-4 space-x-3'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-700'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path d='M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z' />
                     </svg>
                     <div>
-                      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
-                      <div className="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                      <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2'></div>
+                      <div className='w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                     </div>
                   </div>
-                  <span className="sr-only">Loading...</span>
+                  <span className='sr-only'>Loading...</span>
                 </div>
-                <div role="status" className="max-w-sm p-4  rounded shadow animate-pulse md:p-6">
-                  <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                      <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                      <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                <div
+                  role='status'
+                  className='max-w-sm p-4  rounded shadow animate-pulse md:p-6'
+                >
+                  <div className='flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-600'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 16 20'
+                    >
+                      <path d='M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z' />
+                      <path d='M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z' />
                     </svg>
                   </div>
-                  <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                  <div className="flex items-center mt-4 space-x-3">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                  <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  <div className='flex items-center mt-4 space-x-3'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-700'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path d='M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z' />
                     </svg>
                     <div>
-                      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
-                      <div className="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                      <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2'></div>
+                      <div className='w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                     </div>
                   </div>
-                  <span className="sr-only">Loading...</span>
+                  <span className='sr-only'>Loading...</span>
                 </div>
-                <div role="status" className="max-w-sm p-4  rounded shadow animate-pulse md:p-6">
-                  <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 20">
-                      <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                      <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
+                <div
+                  role='status'
+                  className='max-w-sm p-4  rounded shadow animate-pulse md:p-6'
+                >
+                  <div className='flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-600'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 16 20'
+                    >
+                      <path d='M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z' />
+                      <path d='M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z' />
                     </svg>
                   </div>
-                  <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-                  <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
-                  <div className="flex items-center mt-4 space-x-3">
-                    <svg className="w-10 h-10 text-gray-200 dark:text-gray-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
+                  <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
+                  <div className='flex items-center mt-4 space-x-3'>
+                    <svg
+                      className='w-10 h-10 text-gray-200 dark:text-gray-700'
+                      aria-hidden='true'
+                      xmlns='http://www.w3.org/2000/svg'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                    >
+                      <path d='M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z' />
                     </svg>
                     <div>
-                      <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
-                      <div className="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                      <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2'></div>
+                      <div className='w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700'></div>
                     </div>
                   </div>
-                  <span className="sr-only">Loading...</span>
+                  <span className='sr-only'>Loading...</span>
                 </div>
               </div>
             </>
           )}
-          <div className="grid grid-cols-[1fr_300px] gap-10">
-            <div className=''>
-              {properties.map((m, i) => (
-                <div key={i}>
-                  <ListingFlex
-                    key={i}
-                    houseImg={m.image}
-                    heading='For Rent'
-                    price={m?.price}
-                    title={m?.description}
-                    avatar={imageAvatar}
-                    name='Jonathan Reinink'
-                    role='Estate Agents'
-                    location={m?.address}
-                    lengthNum='3450'
-                    bedNum={m?.beds}
-                    bathNum={m?.baths}
-                    bed='Bed'
-                    bath='Bath'
-                    length='Square Ft'
-                    property={m}
-                    onClick={() => {
-                      setCurrent(m)
-                      setOpenPropertyDetails(true)
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
+          <div className='flex items-center justify-end mb-4 gap-10'>
+            <button
+              // onClick={toggleView}
+              onClick={() => setIsGridView(true)}
+              className={`px-4 py-2 text-white bg-blue-500 rounded-full ${
+                isGridView ? 'bg-opacity-100' : 'bg-opacity-50'
+              } hover:bg-opacity-75 focus:bg-opacity-75`}
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                class='icon icon-tabler icon-tabler-grid-dots'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke-width='2'
+                stroke='currentColor'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+                <path d='M5 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M19 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M5 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+                <path d='M19 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0'></path>
+              </svg>
+            </button>
+            <button
+              // onClick={toggleView}
+              onClick={() => setIsGridView(false)}
+              className={`px-4 py-2 text-white bg-blue-500 rounded-full ${
+                isGridView ? 'bg-opacity-100' : 'bg-opacity-50'
+              } hover:bg-opacity-75 focus:bg-opacity-75`}
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                class='icon icon-tabler icon-tabler-layout-sidebar'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke-width='2'
+                stroke='currentColor'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+              >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+                <path d='M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z'></path>
+                <path d='M9 4l0 16'></path>
+              </svg>
+            </button>
+          </div>
+          <div className={`grid grid-cols-[1fr_300px] gap-10`}>
+            {isGridView ? (
+              <div className=' grid grid-cols-2 gap-10'>
+                {properties.map((m, i) => (
+                  <div key={i}>
+                    {/* Your grid item content */}
+                    <ListingsGrid
+                      key={i}
+                      houseImg={m.image}
+                      heading='For Rent'
+                      price={m?.price}
+                      title={m?.description}
+                      avatar={imageAvatar}
+                      name='Jonathan Reinink'
+                      role='Estate Agents'
+                      location={m?.address}
+                      lengthNum='3450'
+                      bedNum={m?.beds}
+                      bathNum={m?.baths}
+                      bed='Bed'
+                      bath='Bath'
+                      length='Square Ft'
+                      property={m}
+                      onClick={() => {
+                        setCurrent(m)
+                        setOpenPropertyDetails(true)
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className=''>
+                {properties.map((m, i) => (
+                  <div key={i}>
+                    <ListingFlex
+                      key={i}
+                      houseImg={m.image}
+                      heading='For Rent'
+                      price={m?.price}
+                      title={m?.description}
+                      avatar={imageAvatar}
+                      name='Jonathan Reinink'
+                      role='Estate Agents'
+                      location={m?.address}
+                      lengthNum='3450'
+                      bedNum={m?.beds}
+                      bathNum={m?.baths}
+                      bed='Bed'
+                      bath='Bath'
+                      length='Square Ft'
+                      property={m}
+                      onClick={() => {
+                        setCurrent(m)
+                        setOpenPropertyDetails(true)
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
             <div>
               <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10 sticky top-[30px]'>
                 <div>
                   <p>House Type</p>
-                  <div class="flex items-center my-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                    <label for="default-checkbox" class="ml-2 text-base">Office</label>
+                  <div class='flex items-center my-4'>
+                    <input
+                      id='default-checkbox'
+                      type='checkbox'
+                      value=''
+                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                    />
+                    <label for='default-checkbox' class='ml-2 text-base'>
+                      Office
+                    </label>
                   </div>
-                  <div class="flex items-center my-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                    <label for="default-checkbox" class="ml-2 text-base">Studio</label>
+                  <div class='flex items-center my-4'>
+                    <input
+                      id='default-checkbox'
+                      type='checkbox'
+                      value=''
+                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                    />
+                    <label for='default-checkbox' class='ml-2 text-base'>
+                      Studio
+                    </label>
                   </div>
-                  <div class="flex items-center mb-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                    <label for="default-checkbox" class="ml-2 text-base">One Bedroom</label>
+                  <div class='flex items-center mb-4'>
+                    <input
+                      id='default-checkbox'
+                      type='checkbox'
+                      value=''
+                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                    />
+                    <label for='default-checkbox' class='ml-2 text-base'>
+                      One Bedroom
+                    </label>
                   </div>
-                  <div class="flex items-center mb-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                    <label for="default-checkbox" class="ml-2 text-base">Two Bedroom</label>
+                  <div class='flex items-center mb-4'>
+                    <input
+                      id='default-checkbox'
+                      type='checkbox'
+                      value=''
+                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                    />
+                    <label for='default-checkbox' class='ml-2 text-base'>
+                      Two Bedroom
+                    </label>
                   </div>
-                  <div class="flex items-center mb-4">
-                    <input id="default-checkbox" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2" />
-                    <label for="default-checkbox" class="ml-2 text-base">Three Bedroom</label>
+                  <div class='flex items-center mb-4'>
+                    <input
+                      id='default-checkbox'
+                      type='checkbox'
+                      value=''
+                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                    />
+                    <label for='default-checkbox' class='ml-2 text-base'>
+                      Three Bedroom
+                    </label>
                   </div>
                 </div>
 
                 <div>
                   <p>Amount</p>
-                  <div className="w-full my-4">
+                  <div className='w-full my-4'>
                     <Select options={[1, 2, 3, 4, 5, 6]} />
                   </div>
                 </div>
 
                 <div>
                   <p>Location</p>
-                  <div className="w-full my-4">
+                  <div className='w-full my-4'>
                     <Select options={[1, 2, 3, 4, 5, 6]} />
                   </div>
                 </div>
@@ -282,7 +466,6 @@ const Page = () => {
                 <Button>Apply Filter</Button>
               </div>
             </div>
-
           </div>
           <Pagination
             currentPage={currentPage}
@@ -296,9 +479,13 @@ const Page = () => {
         <Footer />
       </div>
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
-      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
+      <ProDetails
+        isOpen={openPropertyDetails}
+        onClose={handleClose}
+        property={current}
+      />
     </div>
   )
 }
 
-export default Page;
+export default Page
