@@ -47,7 +47,7 @@ export default function ListingsGrid({
               </p>
             </div>
 
-            <div className='flex items-center pb-1 space-x-4'>
+            <div className='flex items-center pb-1 space-x-4 my-2'>
               <div className='flex space-x-3'>
                 <p>
                   {' '}
@@ -71,7 +71,7 @@ export default function ListingsGrid({
               </div>
             </div>
 
-            <div className='flex items-center justify-between space-x-4 border-t-2 py-2 '>
+            <div className='flex items-center justify-between space-x-4 border-t py-2 '>
               <div className='rounded-full py-1  text-sm'>For rent</div>
               <div className=' rounded-full  py-1  text-sm'>
                 <div className='flex space-x-4'>
