@@ -14,7 +14,8 @@ import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
 import Button from '@/components/global/Button'
 import Navbar from './components/Navbar'
-import { IconGridDots, IconGridPattern, IconLayoutGrid, IconLayoutList, IconList, IconListCheck, IconListDetails } from '@tabler/icons-react'
+import { IconChevronRight, IconLayoutGrid, IconLayoutList, IconListNumbers, IconSearch } from '@tabler/icons-react'
+import WeCall from '@/components/WeCall'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -27,6 +28,7 @@ const Page = () => {
   const [current, setCurrent] = useState()
   const [openPropertyDetails, setOpenPropertyDetails] = useState(false)
   const { data: signupData, updateData } = useSignupStore((state) => state)
+
 
   const handleScroll = (event) => {
     const scrollPosition = window.innerHeight + window.scrollY
@@ -63,16 +65,13 @@ const Page = () => {
       const res = await axios.get(
         'https://kuda-creditclan-api.herokuapp.com/get_properties'
       )
-
       let array = res?.data?.data
-
       for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
       setProperties(array)
     } catch (error) {
-
       console.log({ error });
     }
   }
@@ -278,16 +277,17 @@ const Page = () => {
             </>
           )}
 
-          <div className="flex space-x-5 cursor-pointer">
+          <div className="flex space-x-5 cursor-pointer py-6">
             <IconLayoutGrid size={30} onClick={() => setIsGridView(true)} />
             <IconLayoutList size={30} onClick={() => setIsGridView(false)} />
           </div>
-          <div className={`grid grid-cols-[1fr_300px] gap-10`}>
+          <div className={`grid grid-cols-[1fr_350px] gap-10`}>
             {isGridView ? (
               <div className=' grid grid-cols-2 gap-10'>
                 {properties.map((m, i) => (
                   <div key={i}>
                     <ListingsGrid
+                      index={i}
                       key={i}
                       houseImg={m.image}
                       heading='For Rent'
@@ -318,6 +318,7 @@ const Page = () => {
                   <div key={i}>
                     <ListingFlex
                       key={i}
+                      index={i}
                       houseImg={m.image}
                       heading='For Rent'
                       price={m?.price}
@@ -344,7 +345,7 @@ const Page = () => {
             )}
 
             <div>
-              <div className='bg-white rounded-2xl p-10 max-h-[630px] space-y-10 sticky top-[30px]'>
+              <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px]'>
                 <div>
                   <p>House Type</p>
                   <div class='flex items-center my-4'>
@@ -418,7 +419,28 @@ const Page = () => {
                   </div>
                 </div>
 
-                <Button>Apply Filter</Button>
+                <Button leftIcon={<IconSearch />}  >Apply Filter</Button>
+
+                <div>
+                  <p className='mb-3 italic'>Didn't find your choice property</p>
+                  <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setShowModal(true)}>
+                    <div className="flex">
+                      <div className="flex">
+                        <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
+                          <IconListNumbers size="20" />
+                        </div>
+                      </div>
+                      <div className="px-5 my-auto">
+                        <p className="text-lg font-medium text-left">
+                          Join our waitlist
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <IconChevronRight className="text-black ml-auto" size="20" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -434,11 +456,9 @@ const Page = () => {
         <Footer />
       </div>
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
-      <ProDetails
-        isOpen={openPropertyDetails}
-        onClose={handleClose}
-        property={current}
-      />
+      <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
+      {showModal && (<WeCa
+      ll handleToggle={() => setShowModal(false)} />)}
     </div>
   )
 }

@@ -65,7 +65,7 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="text-xl">{property?.description} ▪️ {property?.area} </p>
         <hr />
         <div>
-          <p className="font-semibold text-2xl text-gray-500"> {formatCurrency(property?.price)} / mo </p>
+          <p className="font-semibold text-2xl text-gray-500"> {formatCurrency(property?.price / 12)} / mo </p>
           <p>12 month(s) installments </p>
           <p>{property?.createdAt?.slice(0, 10)}</p>
         </div>

@@ -120,23 +120,6 @@ const Page = ({ className }) => {
                 <div>
                   <p className='text-2xl'>Welcome <span className='font-semibold'>{data?.user?.name}</span> 🥳</p>
                 </div>
-                {/* <div className='ml-auto'>
-                  <SimpleDropdown
-                    trigger={
-                      <div className="flex items-center">
-                        <img
-                          src={`https://ui-avatars.com/api/?name=${data?.user?.name} ${data?.user?.name?.split(' ')[1]}`}
-                          className={classNames('w-8 h-8 rounded-full', className)}
-                          alt={`${data?.user?.firstName} ${data?.user?.lastName}`}
-                        />
-                        <IconChevronDown size="18" className="ml-3" />
-                      </div>
-                    }
-                    items={[
-                      { text: 'Logout', icon: <IconLogout size="18" />, onClick: handleLogout }
-                    ]}
-                  />
-                </div> */}
               </div>
               <div>
                 {isGetInspectionsLoading ? (
@@ -174,9 +157,6 @@ const Page = ({ className }) => {
                                       <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
                                     )
                                   }
-                                  {/* {
-                                    <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[100%] rounded-b-xl" > Stage 3 / 3</div>
-                                  } */}
                                 </div>
                               </div>
                             </div>
@@ -196,7 +176,6 @@ const Page = ({ className }) => {
                         <h3 className="text-xl font-medium mb-8 px-1 mt-16"> Inspection Bookings </h3>
                         {inspections && (
                           <>
-
                             <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
                               {inspections?.map((m, i) => (
                                 <>
@@ -332,7 +311,7 @@ const Page = ({ className }) => {
                             key={i}
                             houseImg={m.image}
                             heading='For Rent'
-                            price='240,900'
+                            price={m?.price}
                             title={m?.description}
                             name='Jonathan Reinink'
                             role='Estate Agents'

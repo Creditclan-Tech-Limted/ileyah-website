@@ -34,7 +34,7 @@ const WeCall = ({ onNext, handleToggle }) => {
             </span>
           </button>
         </div>
-        <div className="pt-70">
+        <div className="pt-5">
           <p className="font-bold text-3xl text-primary leading-[1.1]">
             Hello 🥳  <br />
           </p>

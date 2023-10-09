@@ -108,7 +108,7 @@ const Page = ({ className }) => {
       console.log({ error });
     }
   }
-  
+
   return (
     <div className='mt-[50px]'>
       <ScrollToTop />
@@ -240,7 +240,7 @@ const Page = ({ className }) => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price='240,900'
+                    price={m?.price}
                     title={m?.description}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'
@@ -269,7 +269,7 @@ const Page = ({ className }) => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price='240,900'
+                    price={m?.price}
                     title={m?.title}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'
