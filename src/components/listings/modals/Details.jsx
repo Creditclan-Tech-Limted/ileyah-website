@@ -2,16 +2,18 @@ import { useEffect, useRef, useState } from "react";
 import { formatCurrency } from "@/lib/utils";
 import Button from "@/components/global/Button";
 import IconButton from "@/global/IconButton";
-import { IconX } from "@tabler/icons-react";
+import { IconBoxMultiple, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import useSignupStore from "@/store/signup";
 import WantThis from "./WantThis";
+import Plans from "./Plans";
 
 const Details = ({ property, onClose, onNext }) => {
   const swiperRef = useRef(null);
   const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state)
-  const [openWantThis, setOpenWantThis] = useState(false)
+  const [openWantThis, setOpenWantThis] = useState(false);
+  const [openViewPlans, setopenViewPlans] = useState(false)
 
   const scheduleInspections = async () => {
     try {
@@ -35,6 +37,15 @@ const Details = ({ property, onClose, onNext }) => {
       updateData({ ...data, user: { ...data?.user }, want_property: property });
       setOpenWantThis(true);
       // return router.push(`/dashboard`);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  const viewPlans = async () => {
+    try {
+      updateData({ ...data, user: { ...data?.user }, signUpAndCreate: property });
+      setopenViewPlans(true)
     } catch (error) {
       console.log({ error });
     }
@@ -72,7 +83,8 @@ const Details = ({ property, onClose, onNext }) => {
         <hr />
         <div className="flex space-x-5">
           <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button>
-          <Button block onClick={chooseProperty} > I want this... </Button>
+          {/* <Button block onClick={chooseProperty}> I want this </Button> */}
+          <Button block onClick={viewPlans} > View Plans </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">
           <a target="_blank" href={property?.link} rel="noopener noreferrer"> Check Property Source</a>
@@ -86,6 +98,7 @@ const Details = ({ property, onClose, onNext }) => {
       {openWantThis && (
         <WantThis onClose={() => setOpenWantThis(false)} />
       )}
+      <Plans isOpen={openViewPlans} onClose={() => setopenViewPlans(false)} />
     </>
   )
 }

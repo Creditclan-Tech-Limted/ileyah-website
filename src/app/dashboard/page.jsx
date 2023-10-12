@@ -34,6 +34,7 @@ const Page = ({ className }) => {
   const [openCheckOffers, setOpenCheckOffers] = useState(false);
   const [properties, setProperties] = useState([]);
   const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
+  const [globalLoading, setglobalLoading] = useState(true)
 
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
   const { mutateAsync: getInspections, isLoading: isGetInspectionsLoading } = useGetInspectionDetails();
@@ -58,7 +59,7 @@ const Page = ({ className }) => {
     } catch (error) {
       console.log({ error });
     }
-  }//////
+  }
 
   const {
     data: loan,
@@ -69,13 +70,15 @@ const Page = ({ className }) => {
     request_id: pendingRequest?.creditclan_request_id,
   });
 
+  console.log({ isGetLoanDetailsLoading });
+
   const getPorperties = async () => {
     try {
       const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
       setProperties(res?.data?.data)
       return res?.data?.data
     } catch (error) {
-
+      console.log(error);
     }
   }
 
@@ -92,16 +95,27 @@ const Page = ({ className }) => {
     }
   }
 
+  const getUpfrontStatus = async () => {
+    try {
+      const res = await axios.post('https://wema.creditclan.com/api/v3/wema/getUpfrontStatus', { request_id: 310655 })
+      console.log(res?.data?.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   useEffect(() => {
     getUser();
+    getUpfrontStatus();
     getInspectionsDetails();
     getPorperties();
+    setglobalLoading(false)
   }, [])
 
   return (
     <>
       <div className="h-screen flex">
-        {isGetLoanDetailsLoading && (
+        {globalLoading && (
           <div className='my-auto mx-auto relative'>
             <div role="status" className="space-y-2.5 animate-pulse max-w-lg relative">
               <div className="relative flex items-center w-full space-x-2">
@@ -113,7 +127,7 @@ const Page = ({ className }) => {
             <Loader text='Loading...' />
           </div>
         )}
-        {!isGetLoanDetailsLoading && (
+        {!globalLoading && (
           <>
             <div className='p-10 space-y-10'>
               <div className="flex">
@@ -150,7 +164,7 @@ const Page = ({ className }) => {
                               <div>
                                 <div className="w-full bg-gray-200 rounded-b-xl">
                                   {!pendingRequest?.creditclan_request_id && (
-                                    <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl" > Stage 1 / 3</div>
+                                    <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
                                   )}
                                   {
                                     pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && (
@@ -160,7 +174,6 @@ const Page = ({ className }) => {
                                 </div>
                               </div>
                             </div>
-
                           )}
                           {!pendingRequest && (
                             <>

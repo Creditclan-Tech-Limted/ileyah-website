@@ -181,7 +181,8 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
 
   const updateUserRecord = async (res, resi, values) => {
     try {
-      const response = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateAgents', { lend_user_id: res?.user_id, lend_token: res?.token, lend_loan_id: resi?.dd, id: data?.user?.id, analysed: true, analysis_step: 'processing' })
+      updateData({ ...data, user: { ...data?.user, lend_user_id: res?.user_id, lend_token: res?.token, lend_loan_id: resi?.dd, id: data?.user?.id, analysed: true, analysis_step: 'processing' } });
+      await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateAgents', { lend_user_id: res?.user_id, lend_token: res?.token, lend_loan_id: resi?.dd, id: data?.user?.id, analysed: true, analysis_step: 'processing' })
     } catch (error) {
       console.log({ error });
     }
@@ -214,11 +215,11 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
       <Drawer title='Credit Check' isOpen={isOpen} onClose={onClose}>
         {views === 'view-result' && (
           <>
-            <div className="border rounded-xl bg-primary-600 p-10 mt-[50px] text-white">
+            <div className="border rounded-xl bg-primary-600 p-10 text-white">
               <div className="flex justify-between">
                 <div className='space-y-2'>
                   <p className='text-sm'> Status</p>
-                  <p className='text-3xl'> 'Analysing...'</p>
+                  <p className='text-3xl'> Analysing</p>
                 </div>
                 <div className='my-auto'>
                   <Button color='white' variant='outlined' loading={loading} onClick={checkOffers} > Check </Button>
@@ -247,16 +248,16 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
             <div className="border rounded-xl p-10 mt-[50px] border-gray-300">
               <div className="flex justify-between">
                 <div className='space-y-2'>
-                  <p className='text-2xl'>Offer</p>
+                  <p className='text-2xl'>Offer:</p>
                 </div>
                 <div className='my-auto'>
                   <p className='text-2xl'> {offers?.repayment_amount?.toFixed(2)} / mo</p>
                 </div>
               </div>
             </div>
+            <Button className='mt-10' onClick={onClose}> Continue </Button>
           </div>
         )}
-
         <>
           {views === 'inspections' && (
             <>
@@ -264,7 +265,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
                 <p className='text-2xl font-semibold'>Why Check your Credit Score?</p>
                 <div className='mt-5'>
                   <div className='space-y-4'>
-                    <li>Lorem ipsum ddivor sit, amet consectetur adipisicing elit. Facere, quia vdivuptate nesciunt iste veritatis ddivorum maiores praesentium provident ndivla quis!</li>
+                    Monitoring your credit score helps you stay informed about your creditworthiness. It provides insights into your financial health and whether you're in a good position to borrow money or make significant financial decisions.
                   </div>
                 </div>
               </div>

@@ -31,14 +31,7 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
-      setLoading(true)
-      // if (activeTab === 'tenants') {
-      //   const res = await send(data);
-      //   console.log(res.data?.message);
-      //   router.push('/dashboard');
-      //   updateData({ user: res?.data?.message })
-      // }
-
+      setLoading(true);
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
         ...data,
         user_type: activeTab,

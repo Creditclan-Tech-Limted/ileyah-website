@@ -40,7 +40,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request }) => {
     await refetchLoanDetails();
   };
 
-
   return (
     <>
       {loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 ? (

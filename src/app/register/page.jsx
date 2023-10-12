@@ -1,6 +1,6 @@
 'use client'
 import { AUTH_ENDPOINT } from '@/api/landlord'
-import { useSignUpMutation } from '@/api/rent'
+import { useCreateRentRequestMutation, useSignUpMutation } from '@/api/rent'
 import Button from '@/components/global/Button'
 import Input from '@/global/Input'
 import Select from '@/global/Select'
@@ -16,7 +16,9 @@ import { useForm } from 'react-hook-form'
 const Page = () => {
   const router = useRouter();
   const toast = useToast();
-  const { mutateAsync: send, isLoading } = useSignUpMutation()
+  const { mutateAsync: send, isLoading } = useSignUpMutation();
+  const { mutateAsync: sendRentRequest, isLoadingRentRequest } = useCreateRentRequestMutation();
+
   const { data, updateData } = useSignupStore((state) => state)
   const {
     register,
@@ -30,23 +32,25 @@ const Page = () => {
   })
   const [loading, setLoading] = useState(false)
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (values) => {
     try {
       setLoading(true);
-
-      // if(data.user_type === '')
-
       const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
-        ...data,
+        ...values,
         user_type: 'users',
       })
-      console.log(res?.data);
+      console.log({data});
+      if (data?.signUpAndCreate) {
+        console.log('yes');
+        await signUpAndCreate(values)
+      }
       if (res.data.status) {
         toast.success(res.data.message)
         router.push('/login');
         setLoading(false)
       }
     } catch (error) {
+      console.log({error});
       if (
         !error?.response?.data?.status &&
         error?.response?.data?.message.includes('User already exist')
@@ -67,6 +71,36 @@ const Page = () => {
       }
     }
   }
+
+  const signUpAndCreate = async (values) => {
+    try {
+      const payload = {
+        source: 1,
+        process_type: 'foundHouse',
+        picture: '',
+        full_name: values?.name,
+        phone: values?.phone,
+        email: values?.email,
+        information_source: "Ileyah Representative",
+        amount: data?.signUpAndCreate?.price,
+        house_type: "2 Bedroom Flat",
+        address: data?.signUpAndCreate?.address,
+        landlord_phone: '09055552255',
+        picture: data?.signUpAndCreate?.image,
+      }
+      await sendRentRequest(payload);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  //   {
+  //     "amount": "781000",
+  //     "house_type": "duplex",
+  //     "address": "372 Deini Way lorem ipsum way",
+  //     "landlord_phone": "09039719017",
+  //     "picture": "https://dataupload.creditclan.com/pub/attachments/7b9c3ae767335288b50f00c9731fd5f1.png",
+  // }
 
   return (
     <>
