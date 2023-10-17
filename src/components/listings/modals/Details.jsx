@@ -87,7 +87,7 @@ const Details = ({ property, onClose, onNext }) => {
           <Button block onClick={viewPlans} > View Plans </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">
-          <a target="_blank" href={property?.link} rel="noopener noreferrer"> Check Property Source</a>
+          <a target="_blank" href={`https://${property?.link}`} rel="noopener noreferrer"> Check Property Source...</a>
         </p>
         <div className="border p-5 rounded">
           <p className="mb-3">Description</p>

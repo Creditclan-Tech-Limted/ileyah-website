@@ -27,7 +27,8 @@ const Page = () => {
   const [properties, setProperties] = useState([])
   const [current, setCurrent] = useState()
   const [openPropertyDetails, setOpenPropertyDetails] = useState(false)
-  const { data: signupData, updateData } = useSignupStore((state) => state)
+  const { data: signupData, updateData } = useSignupStore((state) => state);
+  const [loading, setLoading] = useState(true)
 
 
   const handleScroll = (event) => {
@@ -71,12 +72,13 @@ const Page = () => {
         [array[i], array[j]] = [array[j], array[i]];
       }
       setProperties(array)
+      setLoading(false)
     } catch (error) {
       console.log({ error });
     }
   }
 
-  const { data, isLoading, error } = useQuery(['properties'], getPorperties)
+  // const { data, isLoading, error } = useQuery(['properties'], getPorperties)
   useEffect(() => {
     // getPorperties()
     window.addEventListener('scroll', handleScroll)
@@ -114,7 +116,8 @@ const Page = () => {
   }
 
   useEffect(() => {
-    checkLegacyRoute()
+    getPorperties()
+    // checkLegacyRoute()
   }, [])
   return (
     <div className='bg-gray-100'>
@@ -122,7 +125,7 @@ const Page = () => {
       <Navbar />
       <div className='grid gap-10 container mt-[10px]'>
         <div className=''>
-          {isLoading && (
+          {loading && (
             <>
               <div className='grid grid-cols-3 gap-10'>
                 <div

@@ -9,7 +9,7 @@ import classNames from 'classnames'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 
-const page = ({ className }) => {
+const Page = ({ className }) => {
   const router = useRouter();
   const [properties, setProperties] = useState([]);
 
@@ -146,4 +146,4 @@ const page = ({ className }) => {
   )
 }
 
-export default page;
+export default Page;
