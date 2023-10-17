@@ -28,10 +28,16 @@ const navLinks = [
     id: 2,
     link: '/admin/properties',
     icon: <IconApps />,
-    name: 'Properties',
+    name: 'Tenants',
   },
   {
     id: 3,
+    link: '/admin/dueloans',
+    icon: <IconApps />,
+    name: 'Due Loans',
+  },
+  {
+    id: 4,
     link: '/admin/transactions',
     icon: <IconFile />,
     name: 'Transactions',

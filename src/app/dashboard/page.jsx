@@ -70,8 +70,6 @@ const Page = ({ className }) => {
     request_id: pendingRequest?.creditclan_request_id,
   });
 
-  console.log({ isGetLoanDetailsLoading });
-
   const getPorperties = async () => {
     try {
       const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')

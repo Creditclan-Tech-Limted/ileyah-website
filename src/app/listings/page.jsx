@@ -457,7 +457,7 @@ const Page = () => {
       </div>
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
       <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
-      {showModal && (<WeCa
+      {showModal && (<WeCall
       ll handleToggle={() => setShowModal(false)} />)}
     </div>
   )

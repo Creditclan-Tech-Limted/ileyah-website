@@ -89,7 +89,7 @@ const Plans = ({ isOpen, onClose }) => {
         <p>Please select the subs you want to add to your plans</p>
         <div className='mt-5 space-y-5'>
           {artisans.map((item, index) => (
-            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" key={index}>
               <div className="flex">
                 <div className="flex">
                   <div className={classNames("w-10 h-10 rounded-full text-white grid place-items-center my-auto", item?.bg_color)}>

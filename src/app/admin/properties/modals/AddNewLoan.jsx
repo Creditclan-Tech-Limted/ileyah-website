@@ -2,12 +2,15 @@ import { useCreateIleyahLoan } from '@/api/rent';
 import Drawer from '@/components/Drawer';
 import Button from '@/components/global/Button';
 import Input from '@/global/Input';
+import { useToast } from '@/lib/use-toast';
 import { IconPlus } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 
 const AddNewLoan = ({ isOpen, onClose }) => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const { mutateAsync: send, isLoading } = useCreateIleyahLoan();
+  const toast = useToast();
+
 
   const onSubmit = async (values) => {
     try {
@@ -15,7 +18,7 @@ const AddNewLoan = ({ isOpen, onClose }) => {
       console.log(res?.data);
       if (res.data.status) {
         toast.success(res.data.message || "Request Successfully Created");
-        reset()
+        reset();
       }
     } catch (error) {
       console.log({ error });

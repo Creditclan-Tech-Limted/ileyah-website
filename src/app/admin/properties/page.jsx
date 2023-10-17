@@ -10,7 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import LoanDetails from './modals/LoanDetails';
 
-const page = ({ className }) => {
+const Page = ({ className }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [properties, setProperties] = useState([]);
   const [openLoanDetails, setOpenLoanDetails] = useState(false);
@@ -37,7 +37,7 @@ const page = ({ className }) => {
       <>
         <div className="flex">
           <div>
-            <p className='text-2xl font-semibold'>Properties</p>
+            <p className='text-2xl font-semibold'>Tenants</p>
           </div>
           <div className='ml-auto'>
             <SimpleDropdown
@@ -174,7 +174,7 @@ const page = ({ className }) => {
                   </a>
                   <a
                     href='#'
-                    aria-current='page'
+                    aria-current='Page'
                     className='relative z-10 inline-flex items-center bg-primary-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600'
                   >
                     1
@@ -229,9 +229,13 @@ const page = ({ className }) => {
         </div>
       </>
       <AddNewLoan isOpen={openDrawer} onClose={() => setOpenDrawer(false)} />
-      <LoanDetails isOpen={openLoanDetails} onClose={() => setOpenLoanDetails(false)} details={current} />
+      {
+        openLoanDetails && (
+          <LoanDetails isOpen={openLoanDetails} onClose={() => setOpenLoanDetails(false)} details={current} />
+        )
+      }
     </>
   )
 }
 
-export default page;
+export default Page;
