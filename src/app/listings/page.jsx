@@ -71,6 +71,7 @@ const Page = () => {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       }
+      console.log({ array });
       setProperties(array)
       setLoading(false)
     } catch (error) {
@@ -78,9 +79,7 @@ const Page = () => {
     }
   }
 
-  // const { data, isLoading, error } = useQuery(['properties'], getPorperties)
   useEffect(() => {
-    // getPorperties()
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
@@ -461,7 +460,7 @@ const Page = () => {
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
       <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
       {showModal && (<WeCall
-      ll handleToggle={() => setShowModal(false)} />)}
+        ll handleToggle={() => setShowModal(false)} />)}
     </div>
   )
 }

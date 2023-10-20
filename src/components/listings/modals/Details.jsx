@@ -66,10 +66,12 @@ const Details = ({ property, onClose, onNext }) => {
     <>
       <div className="relative">
         <swiper-container slides-per-view="1" speed="500" loop="true" css-mode="true" navigation='true' pagination='true'>
-          <swiper-slide >
-            <img src={property?.image} alt="" className="h-[500px] w-full object-cover" />
-            <IconButton icon={<IconX />} rounded color='red' className="absolute z-[999] right-5 top-5" onClick={onClose} />
-          </swiper-slide>
+          {property?.image.map((img, i) => (
+            <swiper-slide key={i}>
+              <img src={img} alt="" className="h-[500px] w-full object-cover" />
+              <IconButton icon={<IconX />} rounded color='red' className="absolute z-[999] right-5 top-5" onClick={onClose} />
+            </swiper-slide>
+          ))}
         </swiper-container>
       </div>
       <div className="space-y-5 p-8 flex flex-col">
@@ -87,11 +89,18 @@ const Details = ({ property, onClose, onNext }) => {
           <Button block onClick={viewPlans} > View Plans </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">
-          <a target="_blank" href={`https://${property?.link}`} rel="noopener noreferrer"> Check Property Source...</a>
+          {/* <a target="_blank" href={`https://${property?.link}`} rel="noopener noreferrer"> Check Property Source...</a> */}
         </p>
         <div className="border p-5 rounded">
           <p className="mb-3">Description</p>
           {property?.description}
+        </div>
+        <div className="mt-5 border p-5 rounded flex justify-between">
+          <p className="mb-3 my-auto">Property Source</p>
+          <div className="bg-purple-700 p-3 rounded-full">
+            <img src="https://www.propertypro.ng/assets/assets/img/home/15b021aacebfb607b0032708293cb00f-logo.svg" width={100} alt="" />
+          </div>
+          {/* {property?.source || 'Nigeria Property Center'} */}
         </div>
       </div>
 

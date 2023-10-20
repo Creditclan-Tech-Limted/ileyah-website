@@ -34,7 +34,8 @@ const Page = ({ className }) => {
   const [openCheckOffers, setOpenCheckOffers] = useState(false);
   const [properties, setProperties] = useState([]);
   const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
-  const [globalLoading, setglobalLoading] = useState(true)
+  const [globalLoading, setglobalLoading] = useState(true);
+  const [upfront, setUpfront] = useState()
 
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
   const { mutateAsync: getInspections, isLoading: isGetInspectionsLoading } = useGetInspectionDetails();
@@ -65,10 +66,18 @@ const Page = ({ className }) => {
     data: loan,
     isLoading: isGetLoanDetailsLoading,
   } = useGetLoanDetailsQuery({
-    email: data?.user?.email,
-    phone: data?.user?.phone,
-    request_id: pendingRequest?.creditclan_request_id,
+    email: 'proteckvision@gmail.com',
+    phone: '08165437237',
+    request_id: '310655',
   });
+  // const {
+  //   data: loan,
+  //   isLoading: isGetLoanDetailsLoading,
+  // } = useGetLoanDetailsQuery({
+  //   email: data?.user?.email,
+  //   phone: data?.user?.phone,
+  //   request_id: pendingRequest?.creditclan_request_id,
+  // });
 
   const getPorperties = async () => {
     try {
@@ -96,7 +105,7 @@ const Page = ({ className }) => {
   const getUpfrontStatus = async () => {
     try {
       const res = await axios.post('https://wema.creditclan.com/api/v3/wema/getUpfrontStatus', { request_id: 310655 })
-      console.log(res?.data?.data);
+      setUpfront(res?.data?.data)
     } catch (error) {
       console.log({ error });
     }
@@ -113,7 +122,7 @@ const Page = ({ className }) => {
   return (
     <>
       <div className="h-screen flex">
-        {globalLoading && (
+        {isGetLoanDetailsLoading && (
           <div className='my-auto mx-auto relative'>
             <div role="status" className="space-y-2.5 animate-pulse max-w-lg relative">
               <div className="relative flex items-center w-full space-x-2">
@@ -125,7 +134,7 @@ const Page = ({ className }) => {
             <Loader text='Loading...' />
           </div>
         )}
-        {!globalLoading && (
+        {!isGetLoanDetailsLoading && (
           <>
             <div className='p-10 space-y-10'>
               <div className="flex">
@@ -165,8 +174,13 @@ const Page = ({ className }) => {
                                     <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
                                   )}
                                   {
-                                    pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && (
+                                    pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
                                       <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
+                                    )
+                                  }
+                                  {
+                                    pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
+                                      <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
                                     )
                                   }
                                 </div>
@@ -313,7 +327,6 @@ const Page = ({ className }) => {
                         </div>
                       </div>
                     </div>
-
                     <h3 className="text-xl font-medium mb-8 px-1 my-20">Market Place</h3>
                     <div className='grid grid-cols-1 md:grid-cols-3 gap-10'>
                       {properties.splice(0, 6).map((m, i) => (
@@ -349,8 +362,8 @@ const Page = ({ className }) => {
           </>
         )}
       </div>
-      <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} title='Pending Request'>
-        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} />
+      <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} title='Pending Request' longer={true}>
+        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} upfront={upfront} />
       </Drawer>
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />
       <RenewRentDashboard isOpenDrawer={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} />

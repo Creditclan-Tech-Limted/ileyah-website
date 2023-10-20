@@ -1,5 +1,6 @@
 import { formatCurrency } from "@/lib/utils";
-import { IconBath, IconHeart, IconPlus } from "@tabler/icons-react";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { IconBath, IconChevronCompactDown, IconChevronCompactLeft, IconHeart, IconPlus } from "@tabler/icons-react";
 import { IconBed } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 
@@ -34,15 +35,26 @@ export default function ListingsGrid({
   onClick,
   index
 }) {
-
   // const randomIndex = Math.floor(Math.random() * images.length);
   const [isImageBroken, setImageBroken] = useState(false);
   const handleImageError = () => {
     setImageBroken(true);
   };
+  const randomIndex = useMemo(() => Math.floor(Math.random() * images.length), []);
 
-  const randomIndex = useMemo(() => Math.floor(Math.random() * images.length), [])
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex < houseImg.length - 1 ? prevIndex + 1 : 0
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex > 0 ? prevIndex - 1 : houseImg.length - 1
+    );
+  };
 
   return (
     <>
@@ -50,21 +62,39 @@ export default function ListingsGrid({
         className='max-w-md rounded-2xl relative overflow-hidden m-auto mt-4 cursor-pointer flex flex-col border border-gray-200'
         onClick={onClick}
       >
-        <div className=' bg-white'>
-
-          {
-            isImageBroken ? <img
-              className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
-              src={images[randomIndex]}
-              alt='Sunset in the mountains'
-            /> :
-              <img
-                className='w-full transition duration-500 cursor-pointer h-[300px] object-cover rounded-2xl'
-                src={houseImg}
+        <div className='relative bg-white'>
+          <div>
+            {
+              isImageBroken ? <img
+                className='w-full transition duration-500 cursor-pointer h-[350px] object-cover rounded-2xl'
+                src={images[randomIndex]}
                 alt='Sunset in the mountains'
-                onError={handleImageError}
-              />
-          }
+              /> :
+                <img
+                  className='w-full transition duration-500 cursor-pointer h-[350px] object-cover rounded-2xl'
+                  src={houseImg[currentImageIndex]}
+                  alt='Sunset in the mountains'
+                  onError={handleImageError}
+                />
+            }
+            <div className="absolute top-1 right-0 m-2 flex space-x-2">
+              {/* Previous Image Arrow */}
+              <button
+                onClick={prevImage}
+                className="bg-white w-8 h-8 p-2 rounded-full text-gray-600 hover:text-gray-900"
+              >
+                <IconChevronLeft size={15} />
+              </button>
+
+              {/* Next Image Arrow */}
+              <button
+                onClick={nextImage}
+                className="bg-white w-8 h-8 p-2 rounded-full text-gray-600 hover:text-gray-900"
+              >
+                <IconChevronRight size={15} />
+              </button>
+            </div>
+          </div>
           <div className='mt-5 p-5 '>
             <div className='text-gray-900 font-medium text-xl cursor-pointer truncate ...'>
               {title}
