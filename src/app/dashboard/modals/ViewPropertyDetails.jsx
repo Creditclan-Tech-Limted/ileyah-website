@@ -16,7 +16,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
   const [schedules, setSchedules] = useState();
   const [recovery, setRecovery] = useState([]);
 
-
   const toast = useToast();
 
   const handleCancelRequest = async () => {
@@ -77,11 +76,11 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
 
                       <hr className='mt-5' />
 
-                      <div className="grid grid-cols-5 gap-10 mt-5">
+                      <div className="grid grid-cols-4 gap-10 mt-5">
                         <div className={views === 'bio' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('bio')}>Details</div>
                         <div className={views === 'schedules' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('schedules')} >Schedules</div>
                         <div className={views === 'payments' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('payments')}  >Payments</div>
-                        <div className={views === 'upfront' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('upfront')} >Upfront</div>
+                        {/* <div className={views === 'upfront' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('upfront')} >Upfront</div> */}
                         <div className={views === 'repay-info' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('repay-info')} >Repay. Info</div>
                       </div>
 
@@ -147,10 +146,10 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                             <div class="my-5">
                               <div class="text-center items-center justify-center">
                                 <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                  <p class="flex justify-between p-3">
+                                  {/* <p class="flex justify-between p-3">
                                     <div>Name:</div>
                                     <div>{(request?.payload?.full_name)}</div>
-                                  </p>
+                                  </p> */}
                                   <div class="flex justify-between p-3">
                                     <div>Account Number:</div>
                                     <div>{recovery?.customer?.account_number}</div>
@@ -197,7 +196,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                                         {(+item.how_much_remaining || 0).toFixed(2)}
                                       </td>
                                     </tr>
-
                                   ))
                                 }
                               </table>
@@ -246,42 +244,88 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                     </>
                     :
                     <>
-                      <p>
-                        You have a pending request with an offer, <br /> Please check details below
-                      </p>
-                      <div class="my-5">
-                        <div class="text-center items-center justify-center">
-                          <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                            <p class="flex justify-between p-3">
-                              <div>Rent:</div>
-                              <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                      {
+                        upfront ?
+                          <>
+                            <p>
+                              You have a pending request that currently under review, <br />
+                              <span className='font-bold'>Upfront</span> Has been made
+                              <br /> Please check details below
                             </p>
-                            <div class="flex justify-between p-3">
-                              <div>Upfront:</div>
-                              <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                            <div class="my-5">
+                              <div class="text-center items-center justify-center">
+                                <div class="border-gray-300 rounded-2xl border-2 divide-y">
+                                  <p class="flex justify-between p-3">
+                                    <div>Rent:</div>
+                                    <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                                  </p>
+                                  <div class="flex justify-between p-3">
+                                    <div>Upfront:</div>
+                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                                  </div>
+                                  <div class="flex justify-between p-3">
+                                    <div>Monthly Repayments:</div>
+                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                                  </div>
+                                  <div class="flex justify-between p-3">
+                                    <div>Duration:</div>
+                                    <div v-if="loan_details">12 Month(s)</div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="flex justify-between p-3">
-                              <div>Monthly Repayments:</div>
-                              <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                            {/* <ClientOnly>
+                              <LaunchEligibilityWidget
+                                onReady={() => setLoading("false")}
+                                request={request}
+                                onCancel={handleEligibilityCancelled}
+                                onCompleted={handleEligibilityCompleted}
+                                className="w-100"
+                              >
+                                <Button>Get funded</Button>
+                              </LaunchEligibilityWidget>
+                            </ClientOnly> */}
+                          </>
+                          :
+                          <>
+                            <p>
+                              You have a pending request with an offer, <br /> Please check details below
+                            </p>
+                            <div class="my-5">
+                              <div class="text-center items-center justify-center">
+                                <div class="border-gray-300 rounded-2xl border-2 divide-y">
+                                  <p class="flex justify-between p-3">
+                                    <div>Rent:</div>
+                                    <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                                  </p>
+                                  <div class="flex justify-between p-3">
+                                    <div>Upfront:</div>
+                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                                  </div>
+                                  <div class="flex justify-between p-3">
+                                    <div>Monthly Repayments:</div>
+                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                                  </div>
+                                  <div class="flex justify-between p-3">
+                                    <div>Duration:</div>
+                                    <div v-if="loan_details">12 Month(s)</div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="flex justify-between p-3">
-                              <div>Duration:</div>
-                              <div v-if="loan_details">12 Month(s)</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <ClientOnly>
-                        <LaunchEligibilityWidget
-                          onReady={() => setLoading("false")}
-                          request={request}
-                          onCancel={handleEligibilityCancelled}
-                          onCompleted={handleEligibilityCompleted}
-                          className="w-100"
-                        >
-                          <Button>Get funded</Button>
-                        </LaunchEligibilityWidget>
-                      </ClientOnly>
+                            <ClientOnly>
+                              <LaunchEligibilityWidget
+                                onReady={() => setLoading("false")}
+                                request={request}
+                                onCancel={handleEligibilityCancelled}
+                                onCompleted={handleEligibilityCompleted}
+                                className="w-100"
+                              >
+                                <Button>Get funded</Button>
+                              </LaunchEligibilityWidget>
+                            </ClientOnly>
+                          </>
+                      }
                     </>
                 }
               </>

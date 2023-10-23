@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { formatCurrency } from "@/lib/utils";
 import Button from "@/components/global/Button";
 import IconButton from "@/global/IconButton";
-import { IconBoxMultiple, IconX } from "@tabler/icons-react";
+import { IconBookmark, IconBoxMultiple, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 import useSignupStore from "@/store/signup";
 import WantThis from "./WantThis";
@@ -77,10 +77,11 @@ const Details = ({ property, onClose, onNext }) => {
       <div className="space-y-5 p-8 flex flex-col">
         <p className="text-xl">{property?.description} ▪️ {property?.area} </p>
         <hr />
-        <div>
+        <div className="flex justify-between">
           <p className="font-semibold text-2xl text-gray-500"> {formatCurrency(property?.price / 12)} / mo </p>
-          <p>12 month(s) installments </p>
-          <p>{property?.createdAt?.slice(0, 10)}</p>
+          <IconBookmark className="cursor-pointer" />
+          {/* <p>12 month(s) installments </p>
+          <p>{property?.createdAt?.slice(0, 10)}</p> */}
         </div>
         <hr />
         <div className="flex space-x-5">

@@ -48,9 +48,9 @@ const Drawer = (
               animate="visible"
               exit="exit"
               className={classNames(
-                "fixed right-0 bottom-0 top-0 w-full h-full sm:max-w-xl overflow-hidden flex flex-col justify-end z-[999]",
+                "fixed right-0 bottom-0 top-0 w-full h-full overflow-hidden flex flex-col justify-end z-[999]",
                 "md:p-4 pointer-events-none",
-                longer ? 'sm:max-w-4xl' : 'sm:max-w-xl'
+                longer ? 'sm:max-w-3xl' : 'sm:max-w-2xl'
               )}
             >
               <div

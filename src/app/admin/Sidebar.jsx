@@ -19,6 +19,12 @@ const navLinks = [
     name: 'Users',
   },
   {
+    id: 2,
+    link: '/admin/assets',
+    icon: <IconUsers />,
+    name: 'Assets',
+  },
+  {
     id: 3,
     link: '/admin/companies',
     icon: <IconHomeDot />,

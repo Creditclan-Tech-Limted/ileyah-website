@@ -44,6 +44,7 @@ const Page = ({ className }) => {
     try {
       const res = await checkUser(data?.user?.phone);
       if (res.data.status) {
+        await getUpfrontStatus(res?.data?.request?.creditclan_request_id);
         const request = res?.data?.request ?? null;
         if (request) request.payload = parseJsonString(request.payload) || request.payload;
         setPendingRequest(res.data.request)
@@ -62,22 +63,32 @@ const Page = ({ className }) => {
     }
   }
 
-  const {
-    data: loan,
-    isLoading: isGetLoanDetailsLoading,
-  } = useGetLoanDetailsQuery({
-    email: 'proteckvision@gmail.com',
-    phone: '08165437237',
-    request_id: '310655',
-  });
   // const {
   //   data: loan,
   //   isLoading: isGetLoanDetailsLoading,
   // } = useGetLoanDetailsQuery({
-  //   email: data?.user?.email,
-  //   phone: data?.user?.phone,
-  //   request_id: pendingRequest?.creditclan_request_id,
+  //   email: 'talk2asaphorlar@gmail.com',
+  //   phone: '07065252120',
+  //   request_id: '312189',
   // });
+
+  // const {
+  //   data: loan,
+  //   isLoading: isGetLoanDetailsLoading,
+  // } = useGetLoanDetailsQuery({
+  //   email: 'proteckvision@gmail.com',
+  //   phone: '08165437237',
+  //   request_id: '310655',
+  // });
+
+  const {
+    data: loan,
+    isLoading: isGetLoanDetailsLoading,
+  } = useGetLoanDetailsQuery({
+    email: data?.user?.email,
+    phone: data?.user?.phone,
+    request_id: pendingRequest?.creditclan_request_id,
+  });
 
   const getPorperties = async () => {
     try {
@@ -91,7 +102,7 @@ const Page = ({ className }) => {
 
   const getInspectionsDetails = async () => {
     try {
-      const res = await getInspections({ landlordAgentId: data?.user?.id });
+      const res = await getInspections({ landlordAgentId: '27ebe5f4-05d5-42f8-bff9-e96929ff4ee0' });
       if (res?.data?.data.length) {
         setInspections(res?.data?.data)
       } else {
@@ -102,9 +113,10 @@ const Page = ({ className }) => {
     }
   }
 
-  const getUpfrontStatus = async () => {
+  const getUpfrontStatus = async (creditclan_request_id) => {
+    console.log();
     try {
-      const res = await axios.post('https://wema.creditclan.com/api/v3/wema/getUpfrontStatus', { request_id: 310655 })
+      const res = await axios.post('https://wema.creditclan.com/api/v3/wema/getUpfrontStatus', { request_id: creditclan_request_id })
       setUpfront(res?.data?.data)
     } catch (error) {
       console.log({ error });
@@ -113,7 +125,6 @@ const Page = ({ className }) => {
 
   useEffect(() => {
     getUser();
-    getUpfrontStatus();
     getInspectionsDetails();
     getPorperties();
     setglobalLoading(false)
@@ -156,11 +167,11 @@ const Page = ({ className }) => {
                         <div>
                           <h3 className="text-xl font-medium mb-8 px-1">Pending Rent Request</h3>
                           {pendingRequest && (
-                            <div className='grid border border-gray-300 rounded-xl'>
+                            <div className='grid border border-gray-300 rounded-xl overflow-hidden'>
                               <div className="flex p-5  items-center ">
                                 <div className='my-auto'> <IconHomeSearch size={50} /> </div>
-                                <div className='px-5'>
-                                  <p className='text-xl truncate ...'>{pendingRequest?.address}</p>
+                                <div className='px-5 overflow-hidden'>
+                                  <p className='text-xl'>{pendingRequest?.address}</p>
                                   <div className="">
                                     <p className=''> Gbagaga, Lagos</p>
                                     <p>{formatCurrency(pendingRequest?.amount)}</p>

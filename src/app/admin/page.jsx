@@ -5,7 +5,6 @@ import SimpleDropdown from '@/global/SimpleDropdown'
 import { IconChevronDown, IconChevronDownLeft, IconChevronRight, IconLogout, IconPlus } from '@tabler/icons-react'
 import classNames from 'classnames'
 import { useRouter } from 'next/navigation'
-import React from 'react'
 
 
 const Admin = ({ className }) => {

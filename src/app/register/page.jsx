@@ -39,18 +39,17 @@ const Page = () => {
         ...values,
         user_type: 'users',
       })
-      console.log({data});
       if (data?.signUpAndCreate) {
         console.log('yes');
         await signUpAndCreate(values)
       }
       if (res.data.status) {
         toast.success(res.data.message)
-        router.push('/login');
+        router.push('/dashboard');
         setLoading(false)
       }
     } catch (error) {
-      console.log({error});
+      console.log({ error });
       if (
         !error?.response?.data?.status &&
         error?.response?.data?.message.includes('User already exist')
