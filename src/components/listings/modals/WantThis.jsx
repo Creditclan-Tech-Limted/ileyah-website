@@ -42,7 +42,6 @@ const WantThis = ({ onClose }) => {
         headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' }
       });
       const { token } = data;
-      console.log({ property });
       const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/details', { token, request_id: request?.creditclan_request_id }, {
         headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' }
       });

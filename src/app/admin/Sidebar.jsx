@@ -1,6 +1,6 @@
 'use client'
 import useSignupStore from '@/store/signup'
-import { IconApps, IconFile, IconHome, IconHomeDot, IconLogout, IconUsers } from '@tabler/icons-react'
+import { IconApps, IconFile, IconHome, IconHomeDot, IconHomeInfinity, IconLogout, IconUsers } from '@tabler/icons-react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -21,7 +21,7 @@ const navLinks = [
   {
     id: 2,
     link: '/admin/assets',
-    icon: <IconUsers />,
+    icon: <IconHomeInfinity />,
     name: 'Assets',
   },
   {

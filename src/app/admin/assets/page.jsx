@@ -5,10 +5,17 @@ import { IconChevronDown, IconLogout, IconPlus } from '@tabler/icons-react';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import NewAssets from './modals/NewAssets';
+import LoanDetails from '../properties/modals/LoanDetails';
+import Assets from './modals/Assets';
 
 const Page = ({ className }) => {
   const router = useRouter();
   const [properties, setProperties] = useState([]);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openLoanDetails, setOpenLoanDetails] = useState(false);
+  const [openAssetmodal, setOpenAssetmodal] = useState(false);
+  const [current, setCurrent] = useState()
 
   const handleLogout = () => {
     router.push('/login')
@@ -52,7 +59,7 @@ const Page = ({ className }) => {
             </div>
           </div>
           <div>
-            <Button leftIcon={<IconPlus />} onClick={() => setOpenDrawer(true)} >New Property</Button>
+            <Button leftIcon={<IconPlus />} onClick={() => setOpenDrawer(true)} >New Asset</Button>
           </div>
         </div>
 
@@ -87,7 +94,7 @@ const Page = ({ className }) => {
               {[1, 2, 3, 4, 5]?.map((item, i) => (
                 <tr
                   className='hover:bg-gray-50 cursor-pointer select-none border-b'
-                // key={i}
+                  key={i}
                 >
                   <td scope='row' className='px-6 py-4 whitespace-nowrap'>
                     {/* {item?.name} */}
@@ -119,12 +126,12 @@ const Page = ({ className }) => {
                       {' '}
                       <Button size='xs' variant='outlined' onClick={() => {
                         setCurrent(item)
-                        setOpenLoanDetails(true)
+                        setOpenAssetmodal(true)
                       }}>
                         {' '}
                         Asset{' '}
                       </Button>{' '}
-                      <Button size='xs'>Tenants</Button>
+                      <Button size='xs' onClick={() => setOpenLoanDetails(true)} >Tenants</Button>
                     </div>
                   </td>
                 </tr>
@@ -133,6 +140,14 @@ const Page = ({ className }) => {
           </table>
         </div>
       </div>
+
+      <NewAssets isOpen={openDrawer} onClose={() => setOpenDrawer(false)} />
+      <Assets isOpen={openAssetmodal} onClose={() => setOpenAssetmodal(false)} item={current} />
+      {
+        openLoanDetails && (
+          <LoanDetails isOpen={openLoanDetails} onClose={() => setOpenLoanDetails(false)} details={{ phone: '09035894210', }} />
+        )
+      }
     </>
   )
 }

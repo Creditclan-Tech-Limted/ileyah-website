@@ -38,7 +38,6 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
   const handleChange = async (e) => {
     try {
       const files = Array.from(e.target.files)
-      console.log({ files })
       setSelectedFiles(files)
     } catch (error) {
       console.log(error)

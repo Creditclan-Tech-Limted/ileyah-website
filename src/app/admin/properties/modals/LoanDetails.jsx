@@ -14,7 +14,7 @@ const LoanDetails = ({ isOpen, onClose, details }) => {
   const getUser = async () => {
     try {
       setloading(true)
-      const res = await axios.post('https://wema.creditclan.com/rent/pending/request', { phone: details?.phone });
+      const res = await axios.post('https://wema.creditclan.com/rent/pending/request', { phone: details?.phone || 'N/A' });
       if (res.data.status) {
         const request = res?.data?.request ?? null;
         if (request) request.payload = parseJsonString(request.payload) || request.payload;
@@ -79,15 +79,15 @@ const LoanDetails = ({ isOpen, onClose, details }) => {
                   <div className='mt-5 divide-y border rounded-xl'>
                     <div className="flex justify-between p-4">
                       <p>Name</p>
-                      <p>{details?.name}</p>
+                      <p>{details?.name || 'N/A'}</p>
                     </div>
                     <div className="flex justify-between p-4">
                       <p>Phone</p>
-                      <p>{details?.phone}</p>
+                      <p>{details?.phone || 'N/A'}</p>
                     </div>
                     <div className="flex justify-between p-4">
                       <p>Email</p>
-                      <p>{details?.email}</p>
+                      <p>{details?.email || 'N/A'}</p>
                     </div>
                     <div className="flex justify-between p-4">
                       <p>Address</p>

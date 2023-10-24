@@ -92,19 +92,19 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                                 <div class="border-gray-300 rounded-2xl border-2 divide-y">
                                   <p class="flex justify-between p-3">
                                     <div>Amount:</div>
-                                    <div v-if="loan_details">{formatCurrency(upfront?.transaction_payload?.amount)}</div>
+                                    <div>{formatCurrency(upfront?.transaction_payload?.amount)}</div>
                                   </p>
                                   <div class="flex justify-between p-3">
                                     <div>Customer Name:</div>
-                                    <div v-if="loan_details">{upfront?.transaction_payload?.originatorname}</div>
+                                    <div>{upfront?.transaction_payload?.originatorname}</div>
                                   </div>
                                   <div class="flex justify-between p-3">
                                     <div>Customer Account  Number:</div>
-                                    <div v-if="loan_details">{upfront?.transaction_payload.originatoraccountnumber}</div>
+                                    <div>{upfront?.transaction_payload.originatoraccountnumber}</div>
                                   </div>
                                   <div class="flex justify-between p-3">
                                     <div>Ileyah Account:</div>
-                                    <div v-if="loan_details">{upfront?.transaction_payload?.craccount}</div>
+                                    <div>{upfront?.transaction_payload?.craccount}</div>
                                   </div>
                                 </div>
                               </div>
@@ -120,19 +120,19 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                               <div class="border-gray-300 rounded-2xl border-2 divide-y">
                                 <p class="flex justify-between p-3">
                                   <div>Rent:</div>
-                                  <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                                  <div>{formatCurrency(request?.amount)}</div>
                                 </p>
                                 <div class="flex justify-between p-3">
                                   <div>Upfront:</div>
-                                  <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                                  <div>{loan?.loan?.offers[0]?.upfront}</div>
                                 </div>
                                 <div class="flex justify-between p-3">
                                   <div>Monthly Repayments:</div>
-                                  <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                                  <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                                 </div>
                                 <div class="flex justify-between p-3">
                                   <div>Duration:</div>
-                                  <div v-if="loan_details">12 Month(s)</div>
+                                  <div>12 Month(s)</div>
                                 </div>
                               </div>
                             </div>
@@ -257,19 +257,19 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                                 <div class="border-gray-300 rounded-2xl border-2 divide-y">
                                   <p class="flex justify-between p-3">
                                     <div>Rent:</div>
-                                    <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                                    <div>{formatCurrency(request?.amount)}</div>
                                   </p>
                                   <div class="flex justify-between p-3">
                                     <div>Upfront:</div>
-                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                                    <div>{loan?.loan?.offers[0]?.upfront}</div>
                                   </div>
                                   <div class="flex justify-between p-3">
                                     <div>Monthly Repayments:</div>
-                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                                    <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                                   </div>
                                   <div class="flex justify-between p-3">
                                     <div>Duration:</div>
-                                    <div v-if="loan_details">12 Month(s)</div>
+                                    <div>12 Month(s)</div>
                                   </div>
                                 </div>
                               </div>
@@ -296,19 +296,19 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                                 <div class="border-gray-300 rounded-2xl border-2 divide-y">
                                   <p class="flex justify-between p-3">
                                     <div>Rent:</div>
-                                    <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                                    <div>{formatCurrency(request?.amount)}</div>
                                   </p>
                                   <div class="flex justify-between p-3">
                                     <div>Upfront:</div>
-                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                                    <div>{loan?.loan?.offers[0]?.upfront}</div>
                                   </div>
                                   <div class="flex justify-between p-3">
                                     <div>Monthly Repayments:</div>
-                                    <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                                    <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                                   </div>
                                   <div class="flex justify-between p-3">
                                     <div>Duration:</div>
-                                    <div v-if="loan_details">12 Month(s)</div>
+                                    <div>12 Month(s)</div>
                                   </div>
                                 </div>
                               </div>
@@ -341,19 +341,19 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                     <div class="border-gray-300 rounded-2xl border-2 divide-y">
                       <p class="flex justify-between p-3">
                         <div>Rent:</div>
-                        <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                        <div>{formatCurrency(request?.amount)}</div>
                       </p>
                       <div class="flex justify-between p-3">
                         <div>Upfront:</div>
-                        <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                        <div>{loan?.loan?.offers[0]?.upfront}</div>
                       </div>
                       <div class="flex justify-between p-3">
                         <div>Monthly Repayments:</div>
-                        <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                        <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                       </div>
                       <div class="flex justify-between p-3">
                         <div>Duration:</div>
-                        <div v-if="loan_details">12 Month(s)</div>
+                        <div>12 Month(s)</div>
                       </div>
                     </div>
                   </div>
@@ -430,19 +430,19 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
               <div class="border-gray-300 rounded-2xl border-2 divide-y">
                 <p class="flex justify-between p-3">
                   <div>Rent:</div>
-                  <div v-if="loan_details">{formatCurrency(request?.amount)}</div>
+                  <div>{formatCurrency(request?.amount)}</div>
                 </p>
                 <div class="flex justify-between p-3">
                   <div>Upfront:</div>
-                  <div v-if="loan_details">{loan?.loan?.offers[0]?.upfront}</div>
+                  <div>{loan?.loan?.offers[0]?.upfront}</div>
                 </div>
                 <div class="flex justify-between p-3">
                   <div>Monthly Repayments:</div>
-                  <div v-if="loan_details">{loan?.loan?.offers[0]?.monthly_repayment}</div>
+                  <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                 </div>
                 <div class="flex justify-between p-3">
                   <div>Duration:</div>
-                  <div v-if="loan_details">12 Month(s)</div>
+                  <div>12 Month(s)</div>
                 </div>
               </div>
             </div>
