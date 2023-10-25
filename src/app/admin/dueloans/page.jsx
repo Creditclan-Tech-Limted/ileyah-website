@@ -25,9 +25,6 @@ const Page = ({ className }) => {
   }
 
   const { data, isLoading, error } = useQuery(['due-loans'], getPorperties);
-
-  console.log({ data });
-
   const handleLogout = () => {
     router.push('/login')
   };
