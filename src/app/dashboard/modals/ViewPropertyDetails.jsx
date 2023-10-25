@@ -5,6 +5,7 @@ import LaunchEligibilityWidget from '@/components/sign-up/LaunchEligibilityWidge
 import { useToast } from '@/lib/use-toast';
 import { capitalizeFirstLetter, formatCurrency } from '@/lib/utils';
 import useSignupStore from '@/store/signup';
+import { IconX } from '@tabler/icons-react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -70,17 +71,18 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                 {
                   loan?.loan?.loan_status === '3' ?
                     <>
-                      <p>
-                        You have an active request
-                      </p>
-
+                      <div className="flex items-center justify-between mb-10">
+                        <h3 className="text-xl font-semibold">Active Request</h3>
+                        <Button
+                          onClick={onClose} rounded icon={<IconX size="20" />}
+                          size="sm" color="red" variant="outlined"
+                        > <IconX /> </Button>
+                      </div>
                       <hr className='mt-5' />
-
                       <div className="grid grid-cols-4 gap-10 mt-5">
                         <div className={views === 'bio' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('bio')}>Details</div>
                         <div className={views === 'schedules' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('schedules')} >Schedules</div>
                         <div className={views === 'payments' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('payments')}  >Payments</div>
-                        {/* <div className={views === 'upfront' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('upfront')} >Upfront</div> */}
                         <div className={views === 'repay-info' ? 'rounded-full px-4 py-2 bg-black text-white text-center cursor-pointer' : 'rounded-full px-4 py-2 text-center cursor-pointer'} onClick={() => setViews('repay-info')} >Repay. Info</div>
                       </div>
 
@@ -146,10 +148,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                             <div class="my-5">
                               <div class="text-center items-center justify-center">
                                 <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                  {/* <p class="flex justify-between p-3">
-                                    <div>Name:</div>
-                                    <div>{(request?.payload?.full_name)}</div>
-                                  </p> */}
                                   <div class="flex justify-between p-3">
                                     <div>Account Number:</div>
                                     <div>{recovery?.customer?.account_number}</div>
@@ -247,10 +245,15 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                       {
                         upfront ?
                           <>
+                            <div className="flex items-center justify-between mb-10">
+                              <h3 className="text-xl font-semibold">Under Review</h3>
+                              <Button
+                                onClick={onClose} rounded icon={<IconX size="20" />}
+                                size="sm" color="red" variant="outlined"
+                              > <IconX /> </Button>
+                            </div>
                             <p>
-                              You have a pending request that currently under review, <br />
-                              <span className='font-bold'>Upfront</span> Has been made
-                              <br /> Please check details below
+                              You application is under review, <br />
                             </p>
                             <div class="my-5">
                               <div class="text-center items-center justify-center">
@@ -274,22 +277,18 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                                 </div>
                               </div>
                             </div>
-                            {/* <ClientOnly>
-                              <LaunchEligibilityWidget
-                                onReady={() => setLoading("false")}
-                                request={request}
-                                onCancel={handleEligibilityCancelled}
-                                onCompleted={handleEligibilityCompleted}
-                                className="w-100"
-                              >
-                                <Button>Get funded</Button>
-                              </LaunchEligibilityWidget>
-                            </ClientOnly> */}
                           </>
                           :
                           <>
+                            <div className="flex items-center justify-between mb-10">
+                              <h3 className="text-xl font-semibold">Offer</h3>
+                              <Button
+                                onClick={onClose} rounded icon={<IconX size="20" />}
+                                size="sm" color="red" variant="outlined"
+                              > <IconX /> </Button>
+                            </div>
                             <p>
-                              You have a pending request with an offer, <br /> Please check details below
+                              We have an offer for you. Find the details below.
                             </p>
                             <div class="my-5">
                               <div class="text-center items-center justify-center">
@@ -366,10 +365,15 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
       {
         !loan && (
           <div>
+            <div className="flex items-center justify-between mb-10">
+              <h3 className="text-xl font-semibold">Ongoing Request</h3>
+              <Button
+                onClick={onClose} rounded icon={<IconX size="20" />}
+                size="sm" color="red" variant="outlined"
+              > <IconX /> </Button>
+            </div>
             <>
-              <p> You have an on-going request. <br />
-                Click on <b className='font-bold'>Continue</b> to proceed with your application. </p>
-              <p>Contact us on our support lines if you require any assistance.</p>
+              <p> You have an on-going request. Find details below</p>
             </>
             <div className="font-17 border border-gray-300 rounded-xl mt-5">
               <ul className="">

@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const page = ({ className }) => {
+const Page = ({ className }) => {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true)
@@ -67,7 +67,7 @@ const page = ({ className }) => {
       <div className="grid grid-cols-2 gap-10 mt-10">
         {
           !loading && users?.map((user, i) => (
-            <div className='bg-white shadow flex rounded-2xl p-3'>
+            <div className='bg-white shadow flex rounded-2xl p-3' key={i}>
               <div className='my-auto'>
                 <img src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg" alt="" width={100} />
               </div>
@@ -89,4 +89,4 @@ const page = ({ className }) => {
   )
 }
 
-export default page;
+export default Page;

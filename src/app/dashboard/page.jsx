@@ -373,7 +373,7 @@ const Page = ({ className }) => {
           </>
         )}
       </div>
-      <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} title='Pending Request' longer={true}>
+      <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} longer={true}>
         <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} upfront={upfront} />
       </Drawer>
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />
