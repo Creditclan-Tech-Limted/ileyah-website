@@ -1,9 +1,16 @@
 import Drawer from "@/components/Drawer"
 import Button from "@/components/global/Button";
 import { useToast } from "@/lib/use-toast";
-import { IconBath, IconBulb, IconBus, IconChevronRight, IconHeadset, IconListNumbers, IconPaint, IconPalette, IconPlus, IconTriangleInverted } from "@tabler/icons-react";
+import { HousesData } from "@/utils/houseData";
+import { IconBath, IconBulb, IconBus, IconCheck, IconHeart, IconPaint, IconPalette, IconPlus, IconStar, IconTriangleInverted, IconX } from "@tabler/icons-react";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { register } from 'swiper/element/bundle';
+import { useEffect, useRef } from "react";
+import { formatCurrency } from "@/lib/utils";
+import Collapsible from "@/components/global/Collapsible";
+register();
 
 const artisans = [
   {
@@ -29,12 +36,6 @@ const artisans = [
     icon: <IconBulb size="20" />,
     desc: 'Electricians can install or repair electrical fixtures, outlets, and wiring to ensure safety and functionality.',
     bg_color: 'bg-purple-600'
-  },
-  {
-    name: 'Moving Services',
-    icon: <IconBus size="20" />,
-    desc: 'Professional movers can help with packing, loading, transportation, and unpacking your belongings..',
-    bg_color: 'bg-yellow-600'
   },
   {
     name: 'Carpentry Services',
@@ -82,11 +83,151 @@ const Plans = ({ isOpen, onClose }) => {
       console.log({ error });
     }
   }
-  
+
+  // const swiperElRef = useRef(null);
+
+  // useEffect(() => {
+  //   const swiperParams = {
+  //     speed: 10000,
+  //     spaceBetween: 20,
+  //     slidesPerView: 1.7
+  //   };
+  //   Object?.assign(swiperElRef.current, swiperParams);
+  //   swiperElRef.current.initialize();
+  // }, []);
+
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose} title='Subscriptions Plans'>
-        <p>Please select the subs you want to add to your plans</p>
+      <Drawer isOpen={isOpen} onClose={onClose} title='Subscriptions Plans' smLonger={true}>
+
+        <p className="mt-10">Please select the subs you want to add to your plans</p>
+        <div className="border border-slate-300 rounded-xl">
+          <Collapsible
+            header={(
+              <h5 className="md:text-lg font-medium inline-flex">
+                <span className="w-12 h-10 rounded-full text-white grid place-items-center my-auto bg-primary-600">
+                  <IconBus size={20} />
+                </span>
+                <div className="my-auto ml-6">
+                  <span>
+                    Move in Service
+                  </span>
+                  <p className="opacity-75 text-[.95rem] leading-snug">
+                    - Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolor alias corporis harum.
+                  </p>
+                </div>
+              </h5>
+            )}
+            content={(
+              <div className="opacity-80 pb-6 px-6">
+                <swiper-container slides-per-view='1.7' space-between='20' >
+                  <swiper-slide>
+                    <div className="flex">
+                      <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3">
+                        <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
+                        <p className="font-bold">Basic</p>
+                        <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
+                        <p className="text-4xl font-bold">5,000</p>
+                        <p className="font-bold text-sm">What's included:</p>
+                        <div>
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p>
+                          <p className="inline-flex">
+                            <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                        </div>
+                        <div className="mt-10">
+                          <Button block className='mt-10'>Choose Plan</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div className="flex">
+                      <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
+                        <IconStar size={26} color="blue" className="bg-gray-200 p-1 rounded-full" />
+                        <p className="font-bold">Starter</p>
+                        <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
+                        <p className="text-4xl font-bold">10,000</p>
+                        <p className="font-bold text-sm">What's included:</p>
+                        <div className="text-white">
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p>
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p>
+                        </div>
+                        <div className="mt-10">
+                          <Button block className='mt-10'>Choose Plan</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div className="flex">
+                      <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3">
+                        <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
+                        <p className="font-bold">Starter</p>
+                        <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
+                        <p className="text-4xl font-bold">5000</p>
+                        <p className="font-bold text-sm">What's included:</p>
+                        <div>
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p>
+                          <p className="inline-flex">
+                            <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                        </div>
+                        <div className="mt-10">
+                          <Button block className='mt-10'>Choose Plan</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </swiper-slide>
+                </swiper-container>
+              </div>
+            )}
+          />
+        </div>
         <div className='mt-5 space-y-5'>
           {artisans.map((item, index) => (
             <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" key={index}>

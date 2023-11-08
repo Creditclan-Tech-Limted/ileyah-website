@@ -9,6 +9,7 @@ import WantThis from "./WantThis";
 import Plans from "./Plans";
 
 const Details = ({ property, onClose, onNext }) => {
+  console.log({property});
   const swiperRef = useRef(null);
   const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state)
@@ -75,7 +76,7 @@ const Details = ({ property, onClose, onNext }) => {
         </swiper-container>
       </div>
       <div className="space-y-5 p-8 flex flex-col">
-        <p className="text-xl">{property?.description} ▪️ {property?.area} </p>
+        <p className="text-xl">{property?.description} ▪️ {property?.area || property?.Area} </p>
         <hr />
         <div className="flex justify-between">
           <p className="font-semibold text-2xl text-gray-500"> {formatCurrency(property?.price / 12)} / mo </p>
@@ -97,9 +98,9 @@ const Details = ({ property, onClose, onNext }) => {
           {property?.description}
         </div>
         <div className="mt-5 border p-5 rounded flex justify-between">
-          <p className="mb-3 my-auto">Property Source</p>
-          <div className="bg-purple-700 p-3 rounded-full">
-            <img src="https://www.propertypro.ng/assets/assets/img/home/15b021aacebfb607b0032708293cb00f-logo.svg" width={100} alt="" />
+          <p className="mb-3 mt-5">Property Source</p>
+          <div className=" p-3 rounded-full">
+            <img src="https://static.wixstatic.com/media/af4a76_170dbc341f2d462884c99fcebf247880~mv2.png" width={100} alt="" />
           </div>
           {/* {property?.source || 'Nigeria Property Center'} */}
         </div>

@@ -5,13 +5,13 @@ import { IconBed } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 
 const images = [
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1942248/0651d4239ac1e6-luxury-4-bedroom-terrace-duplex-terraced-duplexes-for-sale-lekki-lagos.jpeg',
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1930496/065112d46eb232-mini-flat-24ht-light-lekki-phase-1-mini-flats-for-rent-lekki-phase-1-lekki-lagos.jpg',
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1898318/064f5f66074a65-spacious-2bedroom-flat-upstairs-with-visitors-toilets-for-rent-ajah-lagos.jpg',
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1941994/0651d22cb0f1ff-serviced-luxury-23-bedroom-apartment-in-a-serene-for-rent-lekki-phase-1-lekki-lagos.jpg',
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1941970/0651d1f1d504e4-2bedroom-flat-bq-for-rent-galadimawa-abuja.jpg',
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1940148/0651b314bb84b2-very-spacious-room-and-parlor-mini-flats-for-rent-ajah-lagos.jpg',
-  'https://images.nigeriapropertycentre.com/properties/images/thumbs/1942029/0651d2867b9d13-standard-one-bedroom-apartment-mini-flats-for-rent-ajah-lagos.jpeg',
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1942248/0651d4239ac1e6-luxury-4-bedroom-terrace-duplex-terraced-duplexes-for-sale-lekki-lagos.jpeg",
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1930496/065112d46eb232-mini-flat-24ht-light-lekki-phase-1-mini-flats-for-rent-lekki-phase-1-lekki-lagos.jpg",
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1898318/064f5f66074a65-spacious-2bedroom-flat-upstairs-with-visitors-toilets-for-rent-ajah-lagos.jpg",
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1941994/0651d22cb0f1ff-serviced-luxury-23-bedroom-apartment-in-a-serene-for-rent-lekki-phase-1-lekki-lagos.jpg",
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1941970/0651d1f1d504e4-2bedroom-flat-bq-for-rent-galadimawa-abuja.jpg",
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1940148/0651b314bb84b2-very-spacious-room-and-parlor-mini-flats-for-rent-ajah-lagos.jpg",
+  "https://images.nigeriapropertycentre.com/properties/images/thumbs/1942029/0651d2867b9d13-standard-one-bedroom-apartment-mini-flats-for-rent-ajah-lagos.jpeg",
   "https://images.nigeriapropertycentre.com/properties/images/thumbs/1941982/0651d2073115ef-brand-new-mini-flat-at-abule-egba-mini-flats-for-rent-abule-egba-agege-lagos.jpg"
 ]
 
@@ -106,7 +106,9 @@ export default function ListingsGrid({
             </div>
             <div className='flex'>
               <p className='text-lg font-bold bg-white absolute bottom-60 rounded-lg p-2 '>
-                {formatCurrency(price / 12)} <span className='text-sm text-gray-400'> / mo </span>{' '}
+                {/* {formatCurrency(price / 12)}  */}
+                {(price)} 
+                <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>
 

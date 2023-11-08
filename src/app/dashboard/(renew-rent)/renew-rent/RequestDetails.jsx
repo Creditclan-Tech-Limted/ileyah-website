@@ -57,7 +57,7 @@ const RequestDetails = () => {
                 <div className='border border-gray-300 rounded-xl p-8'>
                   <div className="flex justify-between">
                     <div>
-                      <p className='inline-flex'>Rent Amount <IconHelp size={10} className='mt-2 mx-1' /> </p>
+                      <p className='inline-flex'>Rent  <IconHelp size={10} className='mt-2 mx-1' /> </p>
                       <p className='text-3xl font-medium'>{formatCurrency(request?.amount)}</p>
                     </div>
                     <div>

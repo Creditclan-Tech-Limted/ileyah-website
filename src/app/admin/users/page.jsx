@@ -6,11 +6,13 @@ import axios from 'axios';
 import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import Comments from './modal/Comments';
 
 const Page = ({ className }) => {
   const router = useRouter();
   const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [openComments, setOpenComments] = useState(false)
 
   const handleLogout = () => {
     router.push('/login')
@@ -19,7 +21,6 @@ const Page = ({ className }) => {
   const getAllUser = async () => {
     try {
       const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/agents/agents');
-      console.log(res?.data?.data);
       setUsers(res?.data?.data)
       setLoading(false)
     } catch (error) {
@@ -78,13 +79,13 @@ const Page = ({ className }) => {
                 <p>{user?.createdAt.slice(0, 10)}</p>
               </div>
               <div className='my-auto ml-auto'>
-              <Button variant='outlined' size='xs' className='mt-3'>Actions</Button>
+                <Button variant='outlined' size='xs' className='mt-3' onClick={() => setOpenComments(true)}>Comments</Button>
               </div>
             </div>
           ))
         }
       </div>
-
+      <Comments isOpen={openComments} onClose={() => setOpenComments(false)} />
     </>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 import useSignupStore from '@/store/signup'
-import { IconApps, IconFile, IconHome, IconHomeDot, IconHomeInfinity, IconLogout, IconUsers } from '@tabler/icons-react'
+import { IconApps, IconFile, IconHome, IconHomeDot, IconHomeInfinity, IconHomeSearch, IconLogout, IconUsers } from '@tabler/icons-react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -19,31 +19,37 @@ const navLinks = [
     name: 'Users',
   },
   {
-    id: 2,
+    id: 3,
+    link: '/admin/find-house',
+    icon: <IconHomeSearch />,
+    name: 'Find Me A House',
+  },
+  {
+    id: 4,
     link: '/admin/assets',
     icon: <IconHomeInfinity />,
     name: 'Assets',
   },
   {
-    id: 3,
+    id: 5,
     link: '/admin/companies',
     icon: <IconHomeDot />,
     name: 'Companies',
   },
   {
-    id: 2,
+    id: 6,
     link: '/admin/properties',
     icon: <IconApps />,
     name: 'Tenants',
   },
   {
-    id: 3,
+    id: 7,
     link: '/admin/dueloans',
     icon: <IconApps />,
     name: 'Due Loans',
   },
   {
-    id: 4,
+    id: 8,
     link: '/admin/transactions',
     icon: <IconFile />,
     name: 'Transactions',

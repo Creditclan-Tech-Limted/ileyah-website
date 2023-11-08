@@ -90,7 +90,7 @@ const RequestDetails = ({ onNext }) => {
                   <div className="font-17 border border-black my-10 rounded p-5">
                     <ul className=" space-y-6">
                       <li className="flex justify-between items-center">
-                        Rent amount:
+                        Rent :
                         <span className=" text-right">
                           {formatCurrency(request.amount ?? 0)}
                         </span>

@@ -20,7 +20,7 @@ import { useForm } from 'react-hook-form';
 import { useToast } from '@/lib/use-toast'
 
 
-const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
+const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
   const toast = useToast();
   const userId = UserInfor().userId
   const router = useRouter()
@@ -88,11 +88,15 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
         const response = await axios.post(ADD_NEW_PROPERTY.ADD(), {
           ...data,
           images: img,
-          landlordAgentId: userId,
-          staff_phone: refferal_code,
+          landlordAgentId: '27ebe5f4-05d5-42f8-bff9-e96929ff4ee0',
+          staff_phone: '09039719017',
         })
         setLoading(true)
-        console.log(response?.data)
+
+        const resd = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateFindHouse', {
+          request_id: current?.id, property_found_id: response?.data?.data?.id
+        })
+        console.log(response?.data, resd?.id)
         if (response.data.status === true) {
           toast.success(response.data.message)
           onClose()
@@ -209,13 +213,13 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code }) => {
                   type='number'
                   label='1st Year Rent'
                   bordered
-                  {...register('first_year_rent', {
+                  {...register('amount', {
                     required: {
                       value: true,
                       message: 'First year rent is required',
                     },
                   })}
-                  error={errors?.first_year_rent?.message}
+                  error={errors?.amount?.message}
                 />
                 <Input
                   type='number'

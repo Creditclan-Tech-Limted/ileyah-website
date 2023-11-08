@@ -30,7 +30,7 @@ function MiniSummary({ onBack, onNext, onPending}) {
       <div className="font-17">
         <ul className="list-group space-y-6">
           <li className="list-group-item flex justify-between items-center">
-            Rent amount:
+            Rent :
             <span className=" text-right">
               {formatCurrency(data?.request.amount ?? 0)}
             </span>

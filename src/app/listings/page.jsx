@@ -14,8 +14,9 @@ import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
 import Button from '@/components/global/Button'
 import Navbar from './components/Navbar'
-import { IconChevronRight, IconLayoutGrid, IconLayoutList, IconListNumbers, IconSearch } from '@tabler/icons-react'
+import { IconChevronRight, IconLayoutGrid, IconLayoutList, IconListNumbers, IconMoodCry, IconSearch } from '@tabler/icons-react'
 import WeCall from '@/components/WeCall'
+import PostRequest from './modals/PostRequest'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -28,7 +29,8 @@ const Page = () => {
   const [current, setCurrent] = useState()
   const [openPropertyDetails, setOpenPropertyDetails] = useState(false)
   const { data: signupData, updateData } = useSignupStore((state) => state);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [openFindHouse, setOpenFindHouse] = useState(false)
 
 
   const handleScroll = (event) => {
@@ -279,11 +281,11 @@ const Page = () => {
             </>
           )}
 
-          <div className="flex space-x-5 cursor-pointer py-6">
+          {/* <div className="flex space-x-5 cursor-pointer py-6">
             <IconLayoutGrid size={30} onClick={() => setIsGridView(true)} />
             <IconLayoutList size={30} onClick={() => setIsGridView(false)} />
-          </div>
-          <div className={`grid grid-cols-[1fr_350px] gap-10`}>
+          </div> */}
+          <div className={`grid grid-cols-[1fr_350px] gap-10 mt-10`}>
             {isGridView ? (
               <div className=' grid grid-cols-2 gap-10'>
                 {properties.map((m, i) => (
@@ -298,7 +300,7 @@ const Page = () => {
                       avatar={imageAvatar}
                       name='Jonathan Reinink'
                       role='Estate Agents'
-                      location={m?.address}
+                      location={m?.area}
                       lengthNum='3450'
                       bedNum={m?.beds}
                       bathNum={m?.baths}
@@ -347,7 +349,15 @@ const Page = () => {
             )}
 
             <div>
-              <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px]'>
+              <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2">
+                <p className='inline-flex'>
+                  <IconMoodCry className='mr-2' />
+                  Didn't find what you're looking for?
+                </p>
+
+                <Button color='white' size='sm' onClick={() => setOpenFindHouse(true)} >Post a Request</Button>
+              </div>
+              <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
                 <div>
                   <p>House Type</p>
                   <div class='flex items-center my-4'>
@@ -459,8 +469,8 @@ const Page = () => {
       </div>
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
       <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
-      {showModal && (<WeCall
-        ll handleToggle={() => setShowModal(false)} />)}
+      {showModal && (<WeCall handleToggle={() => setShowModal(false)} />)}
+      <PostRequest isOpen={openFindHouse} onClose={() => setOpenFindHouse(false)} />
     </div>
   )
 }

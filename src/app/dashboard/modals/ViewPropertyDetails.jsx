@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
+  console.log({request});
   const { data, updateData } = useSignupStore((state) => state);
   const { mutateAsync: cancelRequest, isLoading: isCancelRequestLoading } = useCancelRequestMutation();
   const { mutateAsync: cancelCcRequest, isLoading: isCancelCcRequestLoading } = useCancelCcRequestMutation();
@@ -36,7 +37,7 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
 
   const getRecoveryInfo = async (creditclan_request_id) => {
     try {
-      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '310655' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
+      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: request.creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       setSchedules(res?.data?.data?.currentLoan[0]?.schedules)
       setRecovery(res?.data?.data)
       console.log(recovery);
@@ -208,7 +209,7 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                           <>
                             <div className="mt-5">
                               <table v-if="response?.payments?.length" className="w-full text-sm text-left text-gray-500 shadow-md">
-                                {!recovery?.payments.length && (
+                                {recovery?.payments.length === 0 && (
                                   <>
                                     <div className='text-cemter flex justify-center p-10 w-full'>
                                       No Payment yet
@@ -378,7 +379,7 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
             <div className="font-17 border border-gray-300 rounded-xl mt-5">
               <ul className="">
                 <li className="flex justify-between items-center border-b p-3">
-                  Rent amount:
+                  Rent :
                   <span className=" text-right">
                     {formatCurrency(request?.amount) || 'N/A'}
                   </span>

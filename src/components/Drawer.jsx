@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 import { IconX } from "@tabler/icons-react";
 
 const Drawer = (
-  { isOpen, title, padding = true, onClose, children, longer = false }
+  { isOpen, title, padding = true, onClose, children, longer = false, smLonger = false }
 ) => {
   const isMobile = useMediaQuery({ maxWidth: 640 })
 
@@ -50,7 +50,8 @@ const Drawer = (
               className={classNames(
                 "fixed right-0 bottom-0 top-0 w-full h-full overflow-hidden flex flex-col justify-end z-[999]",
                 "md:p-4 pointer-events-none",
-                longer ? 'sm:max-w-4xl' : 'sm:max-w-2xl'
+                longer ? 'sm:max-w-4xl' : 'sm:max-w-2xl',
+                smLonger ? 'sm:max-w-3xl' : 'sm:max-w-2xl'
               )}
             >
               <div

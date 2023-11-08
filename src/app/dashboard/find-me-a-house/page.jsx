@@ -136,7 +136,7 @@ const FoundHouseDashboard = ({ isOpenDrawer, onClose }) => {
                   <div className="space-y-6">
                     <div className="grid grid-cols-2 gap-6">
                       <Input
-                        bordered label='Rent Amount' block
+                        bordered label='Rent ' block
                         {...register("amount", {
                           required: {
                             value: true,

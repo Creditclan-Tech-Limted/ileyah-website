@@ -7,7 +7,7 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
       <div className='max-w-sm w-full relative bg-white lg:max-w-4xl lg:flex lg:gap-4 p-4 shadow mt-4 rounded-2xl'>
         <div
           className='h-48 lg:h-64 lg:w-80 flex-none bg-cover rounded-2xl text-center overflow-hidden cursor-pointer'
-          style={{ backgroundImage: `url(${houseImg}) ` }}
+          style={{ backgroundImage: `url(${houseImg[0]}) ` }}
           title='a house'
         ></div>
         <div className='w-full space-y-2 mt-6'>
@@ -41,11 +41,11 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
             <div className='flex space-x-4'>
               <div className='flex space-x-3'>
                 <p> <IconBed /> </p>
-                <p>4</p>
+                <p>{bedNum}</p>
               </div>
               <div className='flex space-x-3'>
                 <p> <IconBath /> </p>
-                <p>4</p>
+                <p>{bathNum}</p>
               </div>
             </div>
             <div className='font-bold'>

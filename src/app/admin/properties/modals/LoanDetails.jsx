@@ -28,9 +28,9 @@ const LoanDetails = ({ isOpen, onClose, details }) => {
     }
   };
 
-  const getRecoveryInfo = async () => {
+  const getRecoveryInfo = async (creditclan_request_id) => {
     try {
-      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '310655' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
+      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       setSchedules(res?.data?.data?.currentLoan[0]?.schedules)
       setRecovery(res?.data?.data)
       console.log(recovery);

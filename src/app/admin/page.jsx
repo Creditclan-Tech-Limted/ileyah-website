@@ -41,4 +41,4 @@ const Admin = ({ className }) => {
   )
 }
 
-export default Admin
+export default Admin;

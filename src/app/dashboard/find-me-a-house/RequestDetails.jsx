@@ -132,7 +132,7 @@ const RequestDetails = () => {
                         <p>{data?.want_property?.price}</p>
                       </div>
                       <div className="flex justify-between p-3">
-                        <p>Rent Amount:</p>
+                        <p>Rent :</p>
                         <p>{formatCurrency(data?.want_property?.price)}</p>
 
                       </div>
