@@ -9,7 +9,6 @@ import WantThis from "./WantThis";
 import Plans from "./Plans";
 
 const Details = ({ property, onClose, onNext }) => {
-  console.log({property});
   const swiperRef = useRef(null);
   const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state)
@@ -23,8 +22,8 @@ const Details = ({ property, onClose, onNext }) => {
         if (data?.user?.credit_score) {
           return onNext();
         }
-        updateData({ user: ileyah_token, property })
-        return router.push(`/dashboard`);
+        // updateData({ user: ileyah_token, property })
+        // return router.push(`/dashboard`);
       } else {
         return router.push(`/login`)
       }
@@ -79,11 +78,10 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="text-xl">{property?.description} ▪️ {property?.area || property?.Area} </p>
         <hr />
         <div className="flex justify-between">
-          <p className="font-semibold text-2xl text-gray-500"> {formatCurrency(property?.price / 12)} / mo </p>
+          <p className="font-semibold text-2xl text-gray-500"> {(property?.price)} / mo </p>
           <IconBookmark className="cursor-pointer" />
-          {/* <p>12 month(s) installments </p>
-          <p>{property?.createdAt?.slice(0, 10)}</p> */}
         </div>
+        <p className="-pt-10">{property?.createdAt?.slice(0, 10)}</p>
         <hr />
         <div className="flex space-x-5">
           <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button>

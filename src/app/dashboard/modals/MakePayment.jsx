@@ -2,30 +2,48 @@ import Drawer from '@/components/Drawer'
 import Button from '@/components/global/Button'
 import Checkbox from '@/global/Checkbox'
 import { formatCurrency } from '@/lib/utils'
-import { IconHomeSearch } from '@tabler/icons-react'
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const MakePayment = ({ isOpen, onClose, recoveryFilter, recovery }) => {
-  const [pay, setPay] = useState(recoveryFilter?.nextPayment.toFixed(2))
-  const [nextPayment, setNextPayment] = useState(false)
+  const [pay, setPay] = useState('')
+  const [nextPayment, setNextPayment] = useState(false);
+  const [clearLoan, setClearLoan] = useState(false)
 
-  const setPayment = async (amount) => {
+  const setPayment = async (amount, source) => {
     try {
-      if (!nextPayment) {
-        let newAmount = +pay + +amount;
-        setPay(newAmount)
-        setNextPayment(true)
+      if (source === 'clear') {
+        if (!clearLoan) {
+          let newAmount = +pay + +amount;
+          setPay(newAmount)
+          setClearLoan(true);
+          setNextPayment(false)
+        } else {
+          let newAmount = +pay - +amount;
+          setPay(newAmount)
+          setClearLoan(false)
+          setNextPayment(false)
+        }
       } else {
-        let newAmount = +pay - +amount;
-        setPay(newAmount)
-        setNextPayment(false)
+        if (!nextPayment) {
+          let newAmount = +pay + +amount;
+          setPay(newAmount)
+          setNextPayment(true)
+        } else {
+          let newAmount = +pay - +amount;
+          setPay(newAmount)
+          setNextPayment(false)
+        }
       }
-      // console.log({ amount, newAmount });
     } catch (error) {
       console.log({ error });
     }
   }
 
+  useEffect(() => {
+    setPay(+recoveryFilter?.nextPayment.toFixed(2))
+  }, [])
+
+  console.log({pay});
 
   return (
     <>
@@ -42,11 +60,11 @@ const MakePayment = ({ isOpen, onClose, recoveryFilter, recovery }) => {
                   <div>{formatCurrency(recoveryFilter?.nextPayment)}</div>
                 </div>
                 <div className="flex justify-between">
-                  <Checkbox checked={nextPayment} onChange={() => setPayment(recoveryFilter?.nextMonth?.how_much_remaining)} children={`Next Payment`} />
+                  <Checkbox checked={nextPayment} onChange={() => setPayment(recoveryFilter?.nextMonth?.how_much_remaining, 'normal')} children={`Next Payment`} />
                   <div>{formatCurrency(recoveryFilter?.nextMonth?.how_much_remaining)}</div>
                 </div>
                 <div className="flex justify-between">
-                  <Checkbox label='Gym' children={`Clear Loan`} />
+                  <Checkbox checked={clearLoan} children={`Clear Loan`} onChange={() => setPayment(recoveryFilter?.nextTillEndTotal, 'clear')} />
                   <div>{formatCurrency(recoveryFilter?.nextTillEndTotal)}</div>
                 </div>
               </div>
@@ -65,7 +83,7 @@ const MakePayment = ({ isOpen, onClose, recoveryFilter, recovery }) => {
                 </p>
               </div>
               <div className='mt-5 space-x-5'>
-                <Button> Pay {formatCurrency(pay)}</Button>
+                <Button> Pay {formatCurrency(pay) || recoveryFilter?.nextPayment }</Button>
                 <Button variant='outlined'> Clear Loan</Button>
               </div>
             </>

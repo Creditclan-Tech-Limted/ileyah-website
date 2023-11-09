@@ -77,7 +77,7 @@ const Page = ({ className }) => {
       <div className="mt-10 space-y-10 w-2/3">
         {
           !loading && foundHouse?.map((f, i) => (
-            <div className='bg-white shadow border flex rounded-2xl p-3' >
+            <div className='bg-white shadow border flex rounded-2xl p-3' key={i}>
               <div className='my-auto mr-6'>
                 <IconHomeSearch size={80} />
                 {/* <img src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg" alt="" width={100} /> */}
@@ -100,7 +100,11 @@ const Page = ({ className }) => {
                   setcurrent(f)
                   setOpenComments(true)
                 }}>Add Property</Button>
-                <Button size='sm' leftIcon={<IconCopy />} variant='outlined' onClick={() => copyLink(f?.id)} >Copy Link</Button>
+                {
+                  f.property_found.length > 0 && (
+                    <Button size='sm' leftIcon={<IconCopy />} variant='outlined' onClick={() => copyLink(f?.id)} >Copy Link</Button>
+                  )
+                }
               </div>
             </div>
           ))

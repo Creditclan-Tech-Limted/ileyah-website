@@ -225,7 +225,7 @@ const Page = ({ className }) => {
                                   {
                                     recoveryFilter?.overdueBalances.length > 0 ?
                                       <>
-                                        <div className='grid text-whote bg-red-500 rounded-xl overflow-hidden text-white'>
+                                        <div className='grid border border-gray-300 rounded-xl overflow-hidden'>
                                           <div className="flex p-5  items-center ">
                                             <div className='my-auto'> <IconHomeSearch size={50} /> </div>
                                             <div className='px-5 overflow-hidden'>
@@ -236,15 +236,14 @@ const Page = ({ className }) => {
                                             </div>
                                           </div>
                                           <div className='my-5 ml-20 flex space-x-5'>
-                                            <Button color='white' onClick={() => setOpenMakePayment(true)}>Make Payment</Button>
-                                            {/* <Button variant='outlined' color='white'>Clear Loan </Button> */}
-                                            <Button variant='outlined' color='white' onClick={() => setOpenViewProperty(true)} >View Request</Button>
+                                            <Button onClick={() => setOpenMakePayment(true)}>Make Payment</Button>
+                                            <Button variant='outlined' onClick={() => setOpenViewProperty(true)} >View Request</Button>
                                           </div>
                                         </div>
                                       </>
                                       :
                                       <>
-                                        <div className='grid text-whote bg-blue-400 rounded-xl overflow-hidden'>
+                                        <div className='grid  border border-gray-300 rounded-xl overflow-hidden'>
                                           <div className="flex p-5  items-center ">
                                             <div className='my-auto'> <IconHomeSearch size={50} /> </div>
                                             <div className='px-5 overflow-hidden'>
@@ -323,8 +322,8 @@ const Page = ({ className }) => {
                                     <div className="flex">
                                       <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
                                       <div>
-                                        <p>{m?.ileyah_property?.description}</p>
-                                        <p>{formatCurrency(m?.ileyah_property?.price)}</p>
+                                        <p>{m?.property?.description}</p>
+                                        <p>{(m?.property?.price)}</p>
                                       </div>
                                     </div>
                                     <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {

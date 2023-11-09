@@ -1,21 +1,25 @@
 'use client'
 import Navbar from '@/app/listings/components/Navbar'
 import ScrollToTop from '@/components/ScrollToTop'
+import Button from '@/components/global/Button';
 import ListingFlex from '@/components/listings/ListingFlex';
 import ProDetails from '@/components/listings/modals/property_details';
+import { IconChevronRight, IconHome2 } from '@tabler/icons-react';
 import axios from 'axios';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useIsomorphicLayoutEffect } from 'react-use';
+import Typed from 'typed.js';
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const query = usePathname();
   const [listings, setListings] = useState([])
   const [scrolled, setScrolled] = useState(false);
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
   const [current, setCurrent] = useState()
-  const [openPropertyDetails, setOpenPropertyDetails] = useState(false)
+  const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
+  const el = useRef(null)
 
   useIsomorphicLayoutEffect(() => {
     if (isMobileNavVisible) document.scrollingElement.style.overflowY = 'hidden';
@@ -56,6 +60,21 @@ const page = () => {
   useEffect(() => {
     getHouses()
   }, [])
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Monthly', 'Weekly'],
+      typeSpeed: 100,
+      backSpeed: 10,
+      backDelay: 2000,
+      loop: true,
+      showCursor: false
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
   return (
     <>
       <div className='bg-gray-100'>
@@ -91,8 +110,25 @@ const page = () => {
                 </div>
               ))}
             </div>
-            <div>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis illum, animi quis quos odit quae illo, deleniti in ducimus aut aliquid provident numquam nostrum natus iure neque, rerum cupiditate quidem.
+            <div className='mt-5'>
+              <div className='hidden md:block'>
+                <div className='bg-blue-600 rounded-xl p-4 inline-flex w-full'>
+                  <IconHome2 color='white' />
+                  <p className='text-white mx-5'>
+                    Claim Your <span className='font-bold'>SIGNUP</span> Bonus{' '}
+                  </p>
+                </div>
+                <div className='mt-3 bg-white shadow rounded-lg pl-10 pr-10 pt-10 text-xl h-[350px] relative border'>
+                  <p className='text-4xl font-medium'>
+                    Experience peace. Pay your rent <span className="text-primary-600" ref={el} /> forever.{' '}
+                  </p>
+                  <img
+                    src='/assets/images/house-svg.png'
+                    alt='Image'
+                    className='absolute bottom-0 right-0 w-32 h-32'
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -103,4 +139,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page;

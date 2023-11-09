@@ -349,12 +349,11 @@ const Page = () => {
             )}
 
             <div>
-              <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2">
+              <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
                   <IconMoodCry className='mr-2' />
                   Didn't find what you're looking for?
                 </p>
-
                 <Button color='white' size='sm' onClick={() => setOpenFindHouse(true)} >Post a Request</Button>
               </div>
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
