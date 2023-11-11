@@ -48,8 +48,8 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
             </p>
           </div>
 
-          <div className='mt-10 space-y-10' onClick={() => setopenFindHouse(true)}>
-            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+          <div className='mt-10 space-y-10'>
+            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setopenFindHouse(true)}>
               <div className="flex">
                 <div className="flex">
                   <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
@@ -71,7 +71,7 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100">
+            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setopenFindHouse(true)}>
               <div className="flex">
                 <div className="flex">
                   <div className="w-10 h-10 rounded-full bg-blue-600 text-white grid place-items-center my-auto">
