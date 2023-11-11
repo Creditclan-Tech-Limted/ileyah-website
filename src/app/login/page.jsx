@@ -10,6 +10,7 @@ import useSignupStore from '@/store/signup'
 import axios from 'axios'
 import { AUTH_ENDPOINT } from '@/api/landlord'
 import { useToast } from '@/lib/use-toast'
+import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 
 const Page = () => {
   const router = useRouter()
@@ -21,6 +22,8 @@ const Page = () => {
     formState: { errors },
   } = useForm()
   const [loading, setLoading] = useState(false)
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false)
+
   const { data, updateData } = useSignupStore((state) => state)
   const { mutateAsync: send, isLoading } = useLoginMutation()
   const [activeTab, setActiveTab] = useState('tenants')
@@ -77,7 +80,7 @@ const Page = () => {
                 </div>
               </div>
               <div className='px-4 md:px-0 lg:w-8/12 md:my-auto mt-20 text-left mx-auto'>
-                <div className='md:p-12 max-w-xl mx-auto space-y-6'>
+                <div className='md:p-12 px-4 max-w-xl mx-auto space-y-6'>
                   <div className=''>
                     <img
                       className='w-48'
@@ -117,7 +120,7 @@ const Page = () => {
                         Company
                       </button>
                     </div> */}
-                    <div className=' p-4  rounded-b-lg'>
+                    <div className=' py-4  rounded-b-lg'>
                       {activeTab === 'tenants' && (
                         <div>
                           {/* Tenants Login Form */}
@@ -146,7 +149,9 @@ const Page = () => {
                               <Input
                                 label='Passsword'
                                 name='password'
-                                type='password'
+                                type={isVisiblePassword ? 'text'  : 'password'}
+                              togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                              rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
                                 bordered
                                 {...register('password', {
                                   required: {
@@ -162,7 +167,10 @@ const Page = () => {
                                 {' '}
                                 {loading ? 'Loading...' : 'Log in'}{' '}
                               </Button>
-                              <div className='mt-2'>Forgot password?</div>
+                              {/* <div className='mt-2 cursor-pointer'>Forgot password?</div> */}
+                              <Link href='/forgot-password'>
+                                <p>Forgot password?</p>
+                              </Link>
                             </div>
                             <div className='flex items-center pb-6'>
                               <p className='mb-0 mr-2'>
@@ -203,7 +211,10 @@ const Page = () => {
                               <Input
                                 label='Passsword'
                                 name='password'
-                                type='password'
+                                type={isVisiblePassword ? 'text'  : 'password'}
+                                togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                                rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+
                                 bordered
                                 {...register('password', {
                                   required: {
@@ -260,7 +271,10 @@ const Page = () => {
                               <Input
                                 label='Passsword'
                                 name='password'
-                                type='password'
+                                type={isVisiblePassword ? 'text'  : 'password'}
+                                togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                                rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+
                                 bordered
                                 {...register('password', {
                                   required: {

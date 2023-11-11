@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useToast } from '@/lib/use-toast'
+import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 
 const Page = () => {
   const router = useRouter()
@@ -29,6 +30,7 @@ const Page = () => {
     message: '',
   })
   const [loading, setLoading] = useState(false)
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false)
 
   const onSubmit = async (data) => {
     try {
@@ -66,7 +68,7 @@ const Page = () => {
   return (
     <>
       <div className='g-6 flex flex-wrap justify-center dark:text-neutral-200 h-screen items-stretch text-black'>
-        <div className='px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto'>
+        <div className='px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto  w-full'>
           <div className='md:p-12 max-w-xl mx-auto'>
             <div className=''>
               <img
@@ -123,8 +125,10 @@ const Page = () => {
               <div className='relative mb-4' data-te-input-wrapper-init>
                 <Input
                   label='Passsword'
-                  type='password'
                   name='passsword'
+                  type={isVisiblePassword ? 'text'  : 'password'}
+                  togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                  rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
                   bordered
                   {...register('password', {
                     required: {
@@ -169,7 +173,7 @@ const Page = () => {
                 <Button type='submit' loading={isLoading}>
                   {loading ? 'Loading...' : 'Sign Up'}{' '}
                 </Button>
-                <div className='mt-2'>Forgot password?</div>
+               
               </div>
 
               <div className='flex items-center pb-6'>
