@@ -21,7 +21,6 @@ const Page = ({ className }) => {
   const copyLink = async (id) => {
     navigator.clipboard.writeText(`localhost:3000/property-found/${id}`)
     toast.success(`Copied`)
-    // console.log('testing');
   }
 
   const getAllFoundHouse = async () => {
@@ -40,7 +39,6 @@ const Page = ({ className }) => {
     getAllFoundHouse()
   }, [])
 
-  console.log(foundHouse);
   return (
     <>
       <div className="flex">
@@ -102,7 +100,7 @@ const Page = ({ className }) => {
                 }}>Add Property</Button>
                 {
                   f.property_found.length > 0 && (
-                    <Button size='sm' leftIcon={<IconCopy />} variant='outlined' onClick={() => copyLink(f?.id)} >Copy Link</Button>
+                    <Button size='sm' leftIcon={<IconCopy />} variant='outlined' onClick={() => copyLink(f?.id)}>Copy Link  </Button>
                   )
                 }
               </div>

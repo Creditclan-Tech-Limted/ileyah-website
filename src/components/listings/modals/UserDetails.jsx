@@ -2,7 +2,7 @@ import Button from '@/components/global/Button';
 import Input from '@/global/Input';
 import useSignupStore from '@/store/signup';
 import axios from 'axios';
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useToast } from '@/lib/use-toast'
 import { IconChevronLeft } from '@tabler/icons-react';

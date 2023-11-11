@@ -20,6 +20,7 @@ const Page = () => {
   const { mutateAsync: sendRentRequest, isLoadingRentRequest } = useCreateRentRequestMutation();
 
   const { data, updateData } = useSignupStore((state) => state)
+  console.log({ data });
   const {
     register,
     handleSubmit,
@@ -40,14 +41,17 @@ const Page = () => {
         user_type: 'users',
       })
       if (data?.signUpAndCreate) {
-        console.log('yes');
         await signUpAndCreate(values)
+      }
+      if (data?.createPostRequest) {
+        await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...data?.createPostRequest, landlordAgentId: res?.data?.data?.id });
       }
       if (res.data.status) {
         toast.success(res.data.message)
         router.push('/dashboard');
         setLoading(false)
       }
+      updateData({ user: res?.data?.data })
     } catch (error) {
       console.log({ error });
       if (
@@ -93,14 +97,6 @@ const Page = () => {
     }
   }
 
-  //   {
-  //     "amount": "781000",
-  //     "house_type": "duplex",
-  //     "address": "372 Deini Way lorem ipsum way",
-  //     "landlord_phone": "09039719017",
-  //     "picture": "https://dataupload.creditclan.com/pub/attachments/7b9c3ae767335288b50f00c9731fd5f1.png",
-  // }
-
   return (
     <>
       <div className='g-6 flex flex-wrap justify-center  dark:text-neutral-200 h-screen items-stretch text-black'>
@@ -112,7 +108,11 @@ const Page = () => {
                 src='/assets/images/ileyah-logo.png'
                 alt='logo'
               />
-              <h4 className='mb-12 mt-1 pb-1'>Sign up to continue</h4>
+              {
+                data?.createPostRequest ?
+                  <div className='mb-12 mt-2 pb-1 text-2xl'>Sign up to submit request</div> :
+                  <h4 className='mb-12 mt-1 pb-1'>Sign up to continue</h4>
+              }
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className='relative mb-2' data-te-input-wrapper-init>

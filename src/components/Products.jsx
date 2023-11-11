@@ -1,4 +1,4 @@
-import { IconHeadset, IconHomeHand, IconHomeSearch, IconListSearch, IconRotate2 } from "@tabler/icons-react";
+import { IconHeadset, IconListSearch, IconRotate2 } from "@tabler/icons-react";
 import Button from "./global/Button";
 import useGlobalStore from "@/store/global";
 import Link from "next/link";

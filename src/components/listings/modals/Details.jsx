@@ -19,9 +19,9 @@ const Details = ({ property, onClose, onNext }) => {
     try {
       const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
       if (ileyah_token) {
-        if (data?.user?.credit_score) {
-          return onNext();
-        }
+        // if (data?.user?.credit_score) {
+        //   return onNext();
+        // }
         // updateData({ user: ileyah_token, property })
         // return router.push(`/dashboard`);
       } else {
@@ -78,7 +78,7 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="text-xl">{property?.description} ▪️ {property?.area || property?.Area} </p>
         <hr />
         <div className="flex justify-between">
-          <p className="font-semibold text-2xl text-gray-500"> {(property?.price)} / mo </p>
+          <p className="font-semibold text-2xl text-gray-500"> {(property?.price)}<span className="text-sm text-black">/mo</span> </p>
           <IconBookmark className="cursor-pointer" />
         </div>
         <p className="-pt-10">{property?.createdAt?.slice(0, 10)}</p>

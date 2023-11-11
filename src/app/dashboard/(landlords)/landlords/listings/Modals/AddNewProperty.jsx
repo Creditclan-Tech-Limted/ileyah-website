@@ -7,8 +7,10 @@ import TextArea from '@/global/TextArea'
 import { areas, lgas } from '@/lib/utils'
 import {
   IconChevronLeft,
+  IconChevronRight,
   IconCircleCheckFilled,
   IconCircleChevronRight,
+  IconCopy,
   IconPlus,
   IconTrash,
   IconX,
@@ -32,7 +34,7 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
   const [views, setViews] = useState('form')
   const [selectedFiles, setSelectedFiles] = useState([])
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState('form')
+  const [step, setStep] = useState('form');
 
   const handleChange = async (e) => {
     try {
@@ -58,6 +60,11 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
       reader.readAsDataURL(file)
     })
   })
+
+  const copyLink = async (id) => {
+    navigator.clipboard.writeText(`localhost:3000/property-found/${id}`)
+    toast.success(`Copied`)
+  }
 
   const onSubmit = async (data) => {
     try {
@@ -92,17 +99,14 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
         })
         setLoading(true)
 
-        const resd = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateFindHouse', {
+        await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateFindHouse', {
           request_id: current?.id, property_found_id: response?.data?.data?.id
         })
-
-        console.log(response?.data, resd?.id)
 
         if (response.data.status === true) {
           setStep('success')
           toast.success(response.data.message);
           onClose();
-          // router.push('dashboard/landlords')
         }
       })
     } catch (error) {
@@ -114,9 +118,9 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
 
   return (
     <>
-      {
-        step === 'form' && (
-          <Drawer isOpen={isOpen} onClose={onClose}>
+      <Drawer isOpen={isOpen} onClose={onClose}>
+        {
+          step === 'form' && (
             <form onSubmit={handleSubmit(onSubmit)}>
               {views === 'form' && (
                 <div className=''>
@@ -346,24 +350,27 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
                 </div>
               )}
             </form>
-          </Drawer>
-        )
-      }
-      {
-        step === 'success' && (
-          <>
-            <div className="flex h-screen">
-              <div className="mx-auto text-center my-auto">
-                <IconCircleCheckFilled className='mx-auto text-green-600' color='green' size={100} />
-                <p className='mt-5 font-bold text-xl'>Request successful</p>
-                <p> We'll revert in the next 24 - 48 hours.</p>
-                <p>Thank You.</p>
-                <Button className='mt-10' variant='outlined' color='green' onClick={onClose}>Continue</Button>
+          )
+        }
+        {
+          step === 'success' && (
+            <>
+              <div className="flex h-screen">
+                <div className="mx-auto text-center my-auto">
+                  <IconCircleCheckFilled className='mx-auto text-green-600' color='green' size={100} />
+                  <p className='mt-5 font-bold text-xl'>Request successful</p>
+                  <p> We'll revert in the next 24 - 48 hours.</p>
+                  <p>Thank You.</p>
+                  <div className="space-x-4 mt-10">
+                    <Button variant='outlined' color='green' onClick={onClose}>Continue</Button>
+                    <Button variant='outlined' color='green' onClick={() => copyLink(current?.id)} leftIcon={<IconCopy size={15} />} >Copy Link</Button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </>
-        )
-      }
+            </>
+          )
+        }
+      </Drawer>
     </>
   )
 }
