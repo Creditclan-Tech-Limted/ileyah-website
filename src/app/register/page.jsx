@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 
 const Page = () => {
   const router = useRouter();
@@ -32,6 +33,8 @@ const Page = () => {
     message: '',
   })
   const [loading, setLoading] = useState(false)
+
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false)
 
   const onSubmit = async (values) => {
     try {
@@ -100,8 +103,9 @@ const Page = () => {
   return (
     <>
       <div className='g-6 flex flex-wrap justify-center  dark:text-neutral-200 h-screen items-stretch text-black'>
-        <div className='px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto'>
-          <div className='md:p-12 max-w-xl mx-auto'>
+
+        <div className='px-4 md:px-0 md:w-8/12 my-auto text-left mx-auto w-full'>
+          <div className='md:p-12 px-4 md:px-0 max-w-xl mx-auto '>
             <div className=''>
               <img
                 className='w-48'
@@ -160,8 +164,10 @@ const Page = () => {
               <div className='relative mb-4' data-te-input-wrapper-init>
                 <Input
                   label='Passsword'
-                  type='password'
+                  type={isVisiblePassword ? 'text'  : 'password'}
                   name='passsword'
+                  togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                  rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
                   bordered
                   {...register('password', {
                     required: {
@@ -209,7 +215,7 @@ const Page = () => {
                 <Button type='submit' loading={loading}>
                   {loading ? 'Loading...' : 'Sign Up'}{' '}
                 </Button>
-                <div className='mt-2'>Forgot password?</div>
+               
               </div>
 
               <div className='flex items-center pb-6'>
@@ -221,11 +227,13 @@ const Page = () => {
             </form>
           </div>
         </div>
+
+
         <div
-          className='flex items-center hidden sm:block rounded-b-lg lg:w-4/12 bg-cover bg-[70%]'
+          className='items-center hidden md:block  rounded-b-lg lg:w-4/12 bg-cover bg-[62%]'
           style={{
             backgroundImage:
-              'url(/assets/images/register.jpeg)',
+              'url(/assets/images/register-new.jpeg)',
           }}
         >
           <div className='px-4 py-6  md:mx-6 md:p-12'>

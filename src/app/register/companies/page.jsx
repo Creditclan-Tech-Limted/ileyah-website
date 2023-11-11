@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 // import { toast } from 'react-toastify'
 import { useToast } from '@/lib/use-toast'
+import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
 
 const Page = () => {
   const router = useRouter()
@@ -30,6 +31,7 @@ const Page = () => {
     message: '',
   })
   const [loading, setLoading] = useState(false)
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false)
 
   const onSubmit = async (data) => {
     console.log(data, 'data')
@@ -65,7 +67,7 @@ const Page = () => {
   return (
     <>
       <div className='g-6 flex flex-wrap justify-center dark:text-neutral-200 h-screen items-stretch text-black'>
-        <div className='px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto'>
+        <div className='px-4 md:px-0 lg:w-8/12 my-auto text-left mx-auto w-full'>
           <div className='md:p-12 max-w-xl mx-auto'>
             <div className=''>
               <img
@@ -119,14 +121,24 @@ const Page = () => {
                 error={errors?.staff_strength?.message}
               />
 
-              <Input type='password' label='Password' bordered {...register('password', {
+              <Input 
+                label='Password' 
+                type={isVisiblePassword ? 'text'  : 'password'} 
+                togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+                bordered {...register('password', {
                 required: {
                   value: true,
                   message: 'Password is required'
                 }
               })} error={errors?.password?.message} />
 
-              <Input type='password' label='Confirm Password' bordered {...register('confirm_password', {
+              <Input 
+                type={isVisiblePassword ? 'text'  : 'password'} 
+                togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
+                rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye} 
+                label='Confirm Password' 
+                bordered {...register('confirm_password', {
                 required: {
                   value: true,
                   message: 'Confirm Password is required'

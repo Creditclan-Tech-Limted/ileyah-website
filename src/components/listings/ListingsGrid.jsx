@@ -106,8 +106,7 @@ export default function ListingsGrid({
             </div>
             <div className='flex'>
               <p className='text-lg font-bold bg-white absolute bottom-[300px] md:bottom-[280px] rounded-lg p-2 '>
-                {/* {formatCurrency(price / 12)}  */}
-                {(price)}
+                {formatCurrency(price / 12)} 
                 <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>
