@@ -1,6 +1,8 @@
 import { useCheckRentRequestMutation } from "@/api/rent";
 import FormInput from "@/global/FormInput";
 import OtpPinInput from "@/global/OtpPinInput";
+import domains from "@/lib/domains";
+import { useToast } from "@/lib/use-toast";
 import useSignupStore from "@/store/signup";
 import axios from "axios";
 import { useRef } from "react";
@@ -14,6 +16,8 @@ const CompanyEmail = ({ onBack, onNext }) => {
   const [otpLoading, setOtpLoading] = useState(false);
   const [verifyOtp, setVerifyOtp] = useState(false);
   const [email, setEmail] = useState('')
+  const toast = useToast();
+
   const {
     register,
     handleSubmit,
@@ -29,25 +33,25 @@ const CompanyEmail = ({ onBack, onNext }) => {
 
   const submit = async (values) => {
     try {
-      setOtpLoading(true);
-      setEmail(values?.email)
-      const otp = Math.floor(100000 + Math.random() * 900000)
-      await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/sendToken', { email: values?.email, otp })
-      await axios.post('https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual', { vertical: "Ileya", otp, email: values?.email });
-      setOtpLoading(false)
-      setViews('otp');
+      const domain = values?.email.split('@')[1];
+      const isValidEmail = !domains.some((d) => d === domain)
+
+      if (isValidEmail) {
+        setOtpLoading(true);
+        setEmail(values?.email)
+        const otp = Math.floor(100000 + Math.random() * 900000)
+        await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/sendToken', { email: values?.email, otp })
+        await axios.post('https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual', { vertical: "Ileya", otp, email: values?.email });
+        setOtpLoading(false)
+        setViews('otp');
+      } else {
+        toast.error('Invalid Work Email');
+        console.log('error');
+      }
+
     } catch (error) {
       console.log({ error });
     }
-    // updateData({ user: { ...values } });
-    // try {
-    //   const res = await checkRentRequest(values.phone);
-    //   if (!res.data.status) return onNext("step-two");
-    //   updateData({ request: res.data.request });
-    //   onNext("mini-summary");
-    // } catch (e) {
-    //   console.log({ e });
-    // }
   };
 
   const handlePinDone = async (values) => {

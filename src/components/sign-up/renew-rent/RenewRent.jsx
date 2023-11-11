@@ -24,7 +24,7 @@ function RenewRent({ onBack, onDone, noRequest, onPending }) {
       {view === 'step-one' && (
         <StepOne
           onBack={onBack}
-          onNext={() => setView("request-details")}
+          onNext={() => setView("step-one-b")}
         />
       )}
 

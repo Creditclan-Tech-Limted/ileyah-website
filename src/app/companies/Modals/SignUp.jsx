@@ -11,11 +11,8 @@ const SignUp = ({ isOpen, isClosed }) => {
   const { register, handleSubmit, reset, formState: { errors }, } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data, 'data')
     try {
-      console.log({ data });
-      const response = await axios.post(AUTH_ENDPOINT.REGISTER(), {data})
-      console.log(response, 'response')
+      const response = await axios.post(AUTH_ENDPOINT.REGISTER(), { data })
     } catch (error) {
       console.log({ error });
     }

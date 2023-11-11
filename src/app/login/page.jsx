@@ -12,7 +12,7 @@ import { AUTH_ENDPOINT } from '@/api/landlord'
 import { useToast } from '@/lib/use-toast'
 
 const Page = () => {
-  const router = useRouter();
+  const router = useRouter()
   const toast = useToast();
   const {
     register,
@@ -20,14 +20,9 @@ const Page = () => {
     reset,
     formState: { errors },
   } = useForm()
-  const [error, setError] = useState({
-    status: false,
-    message: '',
-  })
   const [loading, setLoading] = useState(false)
   const { data, updateData } = useSignupStore((state) => state)
   const { mutateAsync: send, isLoading } = useLoginMutation()
-
   const [activeTab, setActiveTab] = useState('tenants')
 
   const handleTabClick = (tab) => {
@@ -36,19 +31,21 @@ const Page = () => {
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
       const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
         ...data,
         user_type: activeTab,
       })
-      setLoading(true)
       if (res.data.status) {
-        console.log(res.data.data)
         updateData({ user: res?.data?.data })
-        localStorage.setItem('ileyah_token', res?.data?.token)
+        localStorage.setItem('ileyah_token', JSON.stringify(res?.data?.data))
         localStorage.setItem('userId', res?.data?.data?.id)
+        localStorage.setItem('userName', res?.data?.data?.name)
         if (res?.data?.data?.user_type === 'agents/landlords') {
           toast.success(res.data.message)
-          return router.push(`/dashboard/landlords/listings?r=${res?.data?.data?.phone}`)
+          return router.push(
+            `/dashboard/landlords/listings?r=${res?.data?.data?.phone}`
+          )
         } else if (res?.data?.data?.user_type === 'companies') {
           toast.success(res.data.message)
           router.push('/dashboard/companies')
@@ -58,9 +55,8 @@ const Page = () => {
       }
       setLoading(false)
     } catch (error) {
-      console.log(error)
-      setError({ status: true, message: error?.response?.data?.message })
-      toast.error(error?.res?.data?.message)
+      setLoading(false)
+      toast.error(error?.response?.data?.message)
       reset()
     }
   }
@@ -92,11 +88,11 @@ const Page = () => {
                   </div>
 
                   <div className=''>
-                    <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
+                    {/* <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
-                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                          : ''
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
                           }`}
                         onClick={() => handleTabClick('tenants')}
                       >
@@ -104,8 +100,8 @@ const Page = () => {
                       </button>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'agents/landlords'
-                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                          : ''
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
                           }`}
                         onClick={() => handleTabClick('agents/landlords')}
                       >
@@ -113,14 +109,14 @@ const Page = () => {
                       </button>
                       <button
                         className={`py-2 px-4 rounded-t-lg ${activeTab === 'companies'
-                          ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                          : ''
+                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
+                            : ''
                           }`}
                         onClick={() => handleTabClick('companies')}
                       >
                         Company
                       </button>
-                    </div>
+                    </div> */}
                     <div className=' p-4  rounded-b-lg'>
                       {activeTab === 'tenants' && (
                         <div>
@@ -277,8 +273,7 @@ const Page = () => {
                             </div>
                             <div className='mb-12 pb-1 pt-1 flex justify-between'>
                               <Button type='submit' loading={loading}>
-                                {' '}
-                                {loading ? 'Loading...' : 'Log in'}{' '}
+                                Log in
                               </Button>
                               <div className='mt-2'>Forgot password?</div>
                             </div>

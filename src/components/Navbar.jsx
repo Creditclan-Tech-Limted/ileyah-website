@@ -41,7 +41,7 @@ const Navbar = () => {
     <>
       <header className={classNames(
         'fixed top-0 inset-x-0 z-50 h-28 transition-all bg-white',
-        { 'bg-white/90 backdrop-blur-lg text-neutral-900 shadow !h-24': scrolled },
+        { 'bg-white text-neutral-900 shadow !h-24': scrolled },
         { 'text-neutral-900 shadow': !scrolled },
       )}>
         <div className="container h-full">
@@ -72,25 +72,27 @@ const Navbar = () => {
                                 )}
                               >
                                 {
-                                  products.map(product => (
-                                    <div
-                                      key={product.name}
-                                      className="rounded-2xl flex items-center hover:bg-gray-200/70 p-4 transition-all cursor-pointer"
-                                    >
-                                      <div className="mr-4">
-                                        <div
-                                          className={classNames('w-10 h-10 rounded-full flex items-center justify-center ', product.backgroundColor)}
-                                        >
-                                          {createElement(product.icon)}
+                                  products.map((product, i) => (
+                                    <a href={product?.homeLink} key={i}>
+                                      <div
+                                        key={product.name}
+                                        className="rounded-2xl flex items-center hover:bg-gray-200/70 p-4 transition-all cursor-pointer"
+                                      >
+                                        <div className="mr-4">
+                                          <div
+                                            className={classNames('w-10 h-10 rounded-full flex items-center justify-center ', product.backgroundColor)}
+                                          >
+                                            {createElement(product.icon)}
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <h4 className="font-medium">{product.name}</h4>
+                                          <p className="text-sm opacity-80 leading-tight mt-1">
+                                            {product.description}
+                                          </p>
                                         </div>
                                       </div>
-                                      <div>
-                                        <h4 className="font-medium">{product.name}</h4>
-                                        <p className="text-sm opacity-80 leading-tight mt-1">
-                                          {product.description}
-                                        </p>
-                                      </div>
-                                    </div>
+                                    </a>
                                   ))
                                 }
                               </motion.div>
@@ -110,14 +112,13 @@ const Navbar = () => {
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/companies">
                   For Company
                 </Link>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/find-artisans">
-                  Find Artisans
-                </Link>
               </div>
             </div>
             <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">
               <div className="hidden lg:block space-x-4">
-                <Button onClick={toggleIsSignupOpen}>Get started</Button>
+                <Link href='/login'>
+                  <Button>Sign In</Button>
+                </Link>
               </div>
               <div className="-mr-1 lg:hidden">
                 <button

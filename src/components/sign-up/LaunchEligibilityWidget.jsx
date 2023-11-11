@@ -1,6 +1,5 @@
 'use client'
-import React, { useEffect, useRef } from "react";
-
+import { useEffect, useRef } from "react";
 
 const LaunchEligibilityWidget = ({
   children,
@@ -10,13 +9,14 @@ const LaunchEligibilityWidget = ({
   onCompleted,
   className,
 }) => {
+  console.log({ request });
   const widget = useRef();
-  
+
   useEffect(() => {
     const CcEligibilityWidget = window.CcEligibilityWidget;
     widget.current = CcEligibilityWidget.init({
       data: {
-        plans: [JSON.parse(request.plan)],
+        // plans: [JSON.parse(request.plan)],
         intro: "Happy to fund your house rent",
         banner:
           "https://i.ibb.co/pr1BLgq/house-in-hand.jpg",
@@ -26,9 +26,9 @@ const LaunchEligibilityWidget = ({
           tenor_type: 2,
         },
         profile: {
-          full_name: request.payload.full_name,
-          email: request.payload.email,
-          phone: request.payload.phone,
+          full_name: request.payload.full_name || request.full_name,
+          email: request.payload.email || request.email,
+          phone: request.payload.phone || request.phone,
           date_of_birth: null,
           gender: null,
         },
@@ -41,6 +41,7 @@ const LaunchEligibilityWidget = ({
           show_profile: true,
           show_offers: true,
           show_nok: true,
+          remember_last_application_date: false
         },
         extra: {
           rent_id: request.id,

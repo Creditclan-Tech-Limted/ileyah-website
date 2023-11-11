@@ -5,9 +5,7 @@ import LaunchEligibilityWidget from '@/components/sign-up/LaunchEligibilityWidge
 import Loader from '@/global/Loader'
 import { formatCurrency } from '@/lib/utils';
 import useSignupStore from '@/store/signup';
-import { IconExclamationCircle } from "@tabler/icons-react";
-import DashNav from '../../DashNav';
-import Sidebar from '../../Sidebar';
+import { IconHelp } from "@tabler/icons-react";
 
 const RequestDetails = () => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -16,7 +14,7 @@ const RequestDetails = () => {
     request,
     isLoading: isRentRequestLoading,
     refetch: refetchRentRequest,
-  } = useCheckRentRequestQuery(data?.user?.phone || '09039719017', (data, err) => {
+  } = useCheckRentRequestQuery(data?.user?.phone, (data, err) => {
     if (data?.data?.request) {
       updateData({ ...data });
     }
@@ -45,90 +43,61 @@ const RequestDetails = () => {
   };
   return (
     <>
-    {/* <Sidebar mn   /> */}
       {
         isRentRequestLoading && (
-          <Loader text='Please wait...'/>
+          <Loader text='Please wait...' />
         )
       }
       {
         !isRentRequestLoading && (
           <>
             <div className="text-xl font-medium mb-10">Request summary</div>
-            {
-              loan ? (
-                <>
-                  {
-                    loan.loan.stage === 'completed' && (
-                      <div
-                        className="flex items-center p-4 mb-4 text-green-800 rounded-2xl bg-green-100" role="alert"
-                      >
-                        <IconExclamationCircle className="mr-2"/>
-                        <div>Your request is under review.</div>
-                      </div>
-                    )
-                  }
-                  {
-                    loan.loan.stage !== "completed" && (
-                      <div
-                        className="flex items-center p-4 mb-4 text-black rounded-2xl bg-orange-100" role="alert"
-                      >
-                        <IconExclamationCircle className="mr-2"/>
-                        <div>Eligibility Pending...</div>
-                      </div>
-                    )
-                  }
-                </>
-              ) : (
-                <div className="flex p-4 mb-4 text-red-800 rounded-lg bg-red-100" role="alert">
-                  <IconExclamationCircle className="mr-2"/>
-                  <div>Eligibility not done!</div>
+            <div className="">
+              <div className='space-y-10'>
+                <div className='border border-gray-300 rounded-xl p-8'>
+                  <div className="flex justify-between">
+                    <div>
+                      <p className='inline-flex'>Rent  <IconHelp size={10} className='mt-2 mx-1' /> </p>
+                      <p className='text-3xl font-medium'>{formatCurrency(request?.amount)}</p>
+                    </div>
+                    <div>
+                      {
+                        loan?.loan?.stage !== "completed" && (
+                          <ClientOnly>
+                            <LaunchEligibilityWidget
+                              onReady={() => setLoading("false")}
+                              request={request}
+                              onCancel={handleEligibilityCancelled}
+                              onCompleted={handleEligibilityCompleted}
+                              className="w-100"
+                            >
+                              <Button>Get funded</Button>
+                            </LaunchEligibilityWidget>
+                          </ClientOnly>
+                        )
+                      }
+                    </div>
+                  </div>
                 </div>
-              )
-            }
-            <div className="border border-gray-300 divide-y divide-gray-300 rounded-xl mt-8">
-              <div className="flex justify-between items-center px-5 py-2">
-                <p>Rent Amount:</p>
-                <p> { formatCurrency(request?.amount) }</p>
-              </div>
-              <div className="flex justify-between items-center px-5 py-2">
-                <p>House Address:</p>
-                <p>{ request?.address }</p>
-              </div>
-              <div className="flex justify-between items-center px-5 py-2">
-                <p>Type of House:</p>
-                <p>{ request?.house_type || 'N/A' }</p>
-              </div>
-              <div className="flex justify-between items-center px-5 py-2">
-                <p>Landlord phone number:</p>
-                <p>{ request?.landlord_phone || 'N/A' }</p>
+
+                <div className="gap-10">
+                  <div className="border rounded-xl p-8 border-gray-300">
+                    <div className="flex justify-between">
+                      <p className='text-sm inline-flex'>House Address <IconHelp size={10} className='mt-1 mx-1' /></p>
+                      <p>{request?.address || 'N/A'}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className='text-sm inline-flex'>Type of House <IconHelp size={10} className='mt-1 mx-1' /></p>
+                      <p>{request?.house_type || 'N/A'}</p>
+                    </div>
+                    <div className="flex justify-between">
+                      <p className='text-sm inline-flex'>Landlord No. <IconHelp size={10} className='mt-1 mx-1' /></p>
+                      <p>{request?.landlord_phone || 'N/A'}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex items-center space-x-4 mt-10">
-              {
-                loan?.loan?.stage !== "completed" && (
-                  <ClientOnly>
-                    <LaunchEligibilityWidget
-                      onReady={ () => setLoading("false") }
-                      request={ request }
-                      onCancel={ handleEligibilityCancelled }
-                      onCompleted={ handleEligibilityCompleted }
-                      className="w-100"
-                    >
-                      <Button>Get funded</Button>
-                    </LaunchEligibilityWidget>
-                  </ClientOnly>
-                )
-              }
-              {
-                request?.approval_step === "0" && (
-                  <Button color="red" variant="outlined">Cancel Request</Button>
-                )
-              }
-            </div>
-            {/* <div className='flex w-screen'>
-              <img src="/assets/images/happy.png" alt="" className='bottom-0 absolute mx-[100px]' />
-            </div> */}
           </>
         )
       }

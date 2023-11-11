@@ -52,6 +52,18 @@ const classes = {
       subtle: 'bg-orange-500',
     }
   },
+  blue: {
+    filled: 'bg-blue-300 hover:bg-blue-400 text-black focus:ring-4 focus:ring-blue-600 focus:ring-opacity-20',
+    outlined: 'border border-blue-600 text-blue-600 hover:bg-blue-500 hover:text-white focus:ring-4 focus:ring-blue-600 focus:ring-opacity-20',
+    subtle: 'bg-blue-500 bg-opacity-10 text-blue-600 hover:bg-opacity-20',
+    text: 'bg-blue-500 bg-opacity-0 text-blue-600 hover:bg-opacity-10',
+    loader: {
+      filled: 'bg-white',
+      outlined: 'bg-blue-500',
+      text: 'bg-blue-500',
+      subtle: 'bg-blue-500',
+    }
+  },
   white: {
     filled: 'bg-slate-100 hover:bg-slate-200 text-gray-800 focus:ring-4 focus:ring-slate-100 focus:ring-opacity-20',
     outlined: 'border border-slate-100 text-slate-100 hover:bg-slate-200 hover:text-gray-800 focus:ring-4 focus:ring-slate-100 focus:ring-opacity-20',
@@ -112,29 +124,29 @@ const Button = forwardRef((
   );
   return (
     <button
-      onClick={ (!disabled && !loading) ? onClick : null } type={ type } className={ _className }
-      disabled={ disabled || loading } ref={ ref }
+      onClick={(!disabled && !loading) ? onClick : null} type={type} className={_className}
+      disabled={disabled || loading} ref={ref}
     >
       {
         loading
           ? (
             <span className="mx-auto">
-              <Loader size="sm" className={ classNames(classes[color].loader[variant]) }/>
+              <Loader size="sm" className={classNames(classes[color].loader[variant])} />
             </span>
           ) : (
             <>
               {
                 !!leftIcon && (
                   <>
-                    <span className="mr-3">{ leftIcon }</span>
+                    <span className="mr-3">{leftIcon}</span>
                   </>
                 )
               }
-              <span className="flex-1">{ children }</span>
+              <span className="flex-1">{children}</span>
               {
                 !!rightIcon && (
                   <>
-                    <span className="ml-3">{ rightIcon }</span>
+                    <span className="ml-3">{rightIcon}</span>
                   </>
                 )
               }
@@ -149,7 +161,7 @@ Button.displayName = 'Button';
 
 Button.propTypes = {
   variant: PropTypes.oneOf(['filled', 'outlined', 'subtle', 'text']),
-  color: PropTypes.oneOf(['primary', 'accent', 'white', 'black', 'green', 'red']),
+  color: PropTypes.oneOf(['primary', 'accent', 'white', 'black', 'green', 'red', 'blue']),
   size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   type: PropTypes.oneOf(['button', 'submit']),
   disabled: PropTypes.bool,

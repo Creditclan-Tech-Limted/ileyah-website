@@ -1,4 +1,4 @@
-import { IconDatabase, IconDoorEnter, IconFileText, IconHome, IconHome2, IconHomeBolt, IconMessageChatbot, IconUserCheck } from "@tabler/icons-react";
+import { IconDoorEnter, IconHome, IconHomeBolt, IconListSearch } from "@tabler/icons-react";
 
 export default [
   {
@@ -7,8 +7,8 @@ export default [
     backgroundColor: 'bg-blue-500',
     textColor: 'text-blue-500',
     icon: IconHome,
-    homeLink: '/sensii',
-    dashboardLink: '/dashboard/sensii',
+    homeLink: '/',
+    dashboardLink: '/',
   },
   {
     name: 'Rent to Own(Beta)',
@@ -16,8 +16,8 @@ export default [
     backgroundColor: 'bg-yellow-600',
     textColor: 'text-red-500',
     icon: IconHomeBolt,
-    homeLink: '/betrue',
-    dashboardLink: '/dashboard/betrue',
+    homeLink: '/',
+    dashboardLink: '/',
   },
   {
     name: 'Shortlet(Beta)',
@@ -25,16 +25,16 @@ export default [
     backgroundColor: 'bg-teal-500',
     textColor: 'text-teal-500',
     icon: IconDoorEnter,
-    homeLink: '/statement',
-    dashboardLink: '/dashboard/statement',
+    homeLink: '/',
+    dashboardLink: '/',
   },
-  // {
-  //     name: 'MineMe',
-  //     description: `A bespoke customer data analyzed for businesses`,
-  //     backgroundColor: 'bg-orange-500',
-  //     textColor: 'text-orange-500',
-  //     icon: IconDatabase,
-  //     homeLink: '/mineme',
-  //     dashboardLink: '/dashboard/mineme',
-  // }
+  {
+    name: 'Listings',
+    description: `Browse our well curated listings of over 100k+ properties`,
+    backgroundColor: 'bg-orange-500',
+    textColor: 'text-orange-500',
+    icon: IconListSearch,
+    homeLink: '/listings',
+    dashboardLink: '/listings',
+  }
 ];

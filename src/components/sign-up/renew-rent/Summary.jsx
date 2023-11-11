@@ -69,7 +69,7 @@ function Summary({ onBack, onNext }) {
           <div className="font-17">
             <ul className="list-group space-y-5">
               <li className="list-group-item flex justify-between items-center">
-                Rent amount:
+                Rent :
                 <span className="text-right">
                   {formatCurrency(data?.renew.amount ?? 0)}
                 </span>

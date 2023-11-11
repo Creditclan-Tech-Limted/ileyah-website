@@ -9,36 +9,35 @@ import {
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import React from 'react'
 
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard/companies',
+    link: '/dashboard/companies/',
     icon: <IconApps />,
     name: 'Dashboard',
   },
   {
     id: 2,
-    link: '/dashboard/companies/staffs',
+    link: '/dashboard/companies/staffs/',
     icon: <IconListDetails />,
     name: 'Staffs',
   },
   {
     id: 3,
-    link: '/dashboard/companies/profile',
+    link: '/dashboard/companies/profile/',
     icon: <IconUser />,
     name: 'Profile',
   },
   {
     id: 4,
-    link: '/dashboard/companies/profile',
+    link: '/dashboard/companies/profile/',
     icon: <IconGitPullRequest />,
     name: 'Request',
   },
   {
     id: 5,
-    link: '/dashboard/companies/profile',
+    link: '/dashboard/companies/profile/',
     icon: <IconSettings2 />,
     name: 'Settings',
   },

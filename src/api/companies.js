@@ -11,10 +11,12 @@ export const AUTH_ENDPOINT = {
   RESET_PASSWORD: () => '',
 }
 
-// export const UPLOAD_IMAGE = {
-//   UPLOAD: () =>
-//     'https://mobile.creditclan.com/webapi/v1/upload/imagefilemerchant',
-// }
+export const STAFF = {
+  GET_ALL_STAFF: () =>
+    'https://kuda-creditclan-api.herokuapp.com/api/companies/getCompanyStaff',
+  ADD_STAFF: () =>
+    'https://kuda-creditclan-api.herokuapp.com/api/companies/addCompanyStaff',
+}
 
 // export const ADD_NEW_PROPERTY = {
 //   ADD: () =>

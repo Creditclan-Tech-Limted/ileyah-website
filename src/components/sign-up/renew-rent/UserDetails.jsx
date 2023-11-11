@@ -63,9 +63,8 @@ const UserDetails = ({ onBack, onNext }) => {
           {...register("full_name", { required: true })}
         />
         <p
-          className={`bg-danger error-text font-17 pb-0 ${
-            errors?.phone?.message?.length ? "block" : "hidden"
-          }`}
+          className={`bg-danger error-text font-17 pb-0 ${errors?.phone?.message?.length ? "block" : "hidden"
+            }`}
         >
           {errors.phone?.message}
         </p>{" "}

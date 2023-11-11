@@ -45,7 +45,7 @@ function StepTwo({ onBack, onNext }) {
       <form onSubmit={handleSubmit(submit)}>
         <FormInput
           type="number"
-          label="Rent amount"
+          label="Rent "
           {...register("amount", {
             required: true,
             min: {

@@ -1,6 +1,6 @@
 'use client'
 import { AUTH_ENDPOINT } from '@/api/landlord'
-import { useSignUpMutation } from '@/api/rent'
+import { useCreateRentRequestMutation, useSignUpMutation } from '@/api/rent'
 import Button from '@/components/global/Button'
 import Input from '@/global/Input'
 import Select from '@/global/Select'
@@ -16,8 +16,11 @@ import { useForm } from 'react-hook-form'
 const Page = () => {
   const router = useRouter();
   const toast = useToast();
-  const { mutateAsync: send, isLoading } = useSignUpMutation()
+  const { mutateAsync: send, isLoading } = useSignUpMutation();
+  const { mutateAsync: sendRentRequest, isLoadingRentRequest } = useCreateRentRequestMutation();
+
   const { data, updateData } = useSignupStore((state) => state)
+  console.log({ data });
   const {
     register,
     handleSubmit,
@@ -30,19 +33,27 @@ const Page = () => {
   })
   const [loading, setLoading] = useState(false)
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (values) => {
     try {
-      setLoading(true)
+      setLoading(true);
       const res = await axios.post(AUTH_ENDPOINT.REGISTER(), {
-        ...data,
+        ...values,
         user_type: 'users',
       })
-      if (res.data.status === true) {
-        toast.success(response.data.message)
-        router.push('/login');
+      if (data?.signUpAndCreate) {
+        await signUpAndCreate(values)
+      }
+      if (data?.createPostRequest) {
+        await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...data?.createPostRequest, landlordAgentId: res?.data?.data?.id });
+      }
+      if (res.data.status) {
+        toast.success(res.data.message)
+        router.push('/dashboard');
         setLoading(false)
       }
+      updateData({ user: res?.data?.data })
     } catch (error) {
+      console.log({ error });
       if (
         !error?.response?.data?.status &&
         error?.response?.data?.message.includes('User already exist')
@@ -64,6 +75,28 @@ const Page = () => {
     }
   }
 
+  const signUpAndCreate = async (values) => {
+    try {
+      const payload = {
+        source: 1,
+        process_type: 'foundHouse',
+        picture: '',
+        full_name: values?.name,
+        phone: values?.phone,
+        email: values?.email,
+        information_source: "Ileyah Representative",
+        amount: data?.signUpAndCreate?.price,
+        house_type: "2 Bedroom Flat",
+        address: data?.signUpAndCreate?.address,
+        landlord_phone: '09055552255',
+        picture: data?.signUpAndCreate?.image,
+      }
+      await sendRentRequest(payload);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   return (
     <>
       <div className='g-6 flex flex-wrap justify-center  dark:text-neutral-200 h-screen items-stretch text-black'>
@@ -75,7 +108,11 @@ const Page = () => {
                 src='/assets/images/ileyah-logo.png'
                 alt='logo'
               />
-              <h4 className='mb-12 mt-1 pb-1'>Sign up to continue</h4>
+              {
+                data?.createPostRequest ?
+                  <div className='mb-12 mt-2 pb-1 text-2xl'>Sign up to submit request</div> :
+                  <h4 className='mb-12 mt-1 pb-1'>Sign up to continue</h4>
+              }
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className='relative mb-2' data-te-input-wrapper-init>

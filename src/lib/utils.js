@@ -118,3 +118,264 @@ export const areas = [
   { text: 'Isolo', value: 'Isolo' }
 ];
 
+export const banks = [
+  {
+    id: '14',
+    value: '044',
+    text: 'Access Bank Nigeria Plc'
+  },
+  {
+    id: '16',
+    value: '063',
+    text: 'Access Bank(Diamond)'
+  },
+  {
+    id: '15',
+    value: '014',
+    text: 'Afribank Nigeria Plc'
+  },
+  {
+    id: '13',
+    value: '401',
+    text: 'Aso Savings and Loans Ltd'
+  },
+  {
+    id: '38',
+    value: '317\r\n',
+    text: 'Cellulant'
+  },
+  {
+    id: '58',
+    value: '50823',
+    text: 'CEMCS Microfinance Bank'
+  },
+  {
+    id: '37',
+    value: '303',
+    text: 'Chams Mobile'
+  },
+  {
+    id: '32',
+    value: '023',
+    text: 'Citibank Nigeria'
+  },
+  {
+    id: '36',
+    value: '302',
+    text: 'Eartholeum'
+  },
+  {
+    id: '17',
+    value: '050',
+    text: 'Ecobank Nigeria Plc'
+  },
+  {
+    id: '54',
+    value: '562',
+    text: 'Ekondo Microfinance Bank'
+  },
+  {
+    id: '18',
+    value: '084',
+    text: 'Enterprise Bank Plc'
+  },
+  {
+    id: '19',
+    value: '070',
+    text: 'Fidelity Bank Plc'
+  },
+  {
+    id: '8',
+    value: '309',
+    text: 'First Bank Nigeria Mobile'
+  },
+  {
+    id: '20',
+    value: '011',
+    text: 'First Bank Of Nigeria Plc'
+  },
+  {
+    id: '1',
+    value: '214',
+    text: 'First City Monument Bank Plc'
+  },
+  {
+    id: '53',
+    value: '00103',
+    text: 'Globus Bank'
+  },
+  {
+    id: '21',
+    value: '058',
+    text: 'Guaranty Trust Bank Plc'
+  },
+  {
+    id: '52',
+    value: '50383',
+    text: 'Hasal Microfinance Bank'
+  },
+  {
+    id: '22',
+    value: '030',
+    text: 'Heritage Bank'
+  },
+  {
+    id: '30',
+    value: '301',
+    text: 'Jaiz Bank Plc'
+  },
+  {
+    id: '23',
+    value: '082',
+    text: 'Keystone Bank Plc'
+  },
+  {
+    id: '49',
+    value: '50211',
+    text: 'Kuda Bank'
+  },
+  {
+    id: '33',
+    value: '014',
+    text: 'MainStreet Bank'
+  },
+  {
+    id: '48',
+    value: '565',
+    text: 'One Finance'
+  },
+  {
+    id: '47',
+    value: '526',
+    text: 'Parallex Bank'
+  },
+  {
+    id: '39',
+    value: '526',
+    text: 'Parallex Microfinance Bank'
+  },
+  {
+    id: '9',
+    value: '311',
+    text: 'Parkway'
+  },
+  {
+    id: '6',
+    value: '305',
+    text: 'Paycom'
+  },
+  {
+    id: '46',
+    value: '076',
+    text: 'Polaris Bank'
+  },
+  {
+    id: '31',
+    value: '101',
+    text: 'Providus Bank'
+  },
+  {
+    id: '45',
+    value: '125',
+    text: 'Rubies MFB'
+  },
+  {
+    id: '24',
+    value: '076',
+    text: 'Skye Bank Plc'
+  },
+  {
+    id: '44',
+    value: '51310',
+    text: 'Sparkle Microfinance Bank'
+  },
+  {
+    id: '3',
+    value: '221',
+    text: 'Stanbic - Ibtc Bank Plc'
+  },
+  {
+    id: '25',
+    value: '068',
+    text: 'Standard Chartered Bank'
+  },
+  {
+    id: '4',
+    value: '232',
+    text: 'Sterling Bank Plc'
+  },
+  {
+    id: '34',
+    value: '100',
+    text: 'Suntrust Bank Nigeria'
+  },
+  {
+    id: '43',
+    value: '302',
+    text: 'TAJ Bank'
+  },
+  {
+    id: '42',
+    value: '51211',
+    text: 'TCF MFB'
+  },
+  {
+    id: '41',
+    value: '102',
+    text: 'Titan Bank'
+  },
+  {
+    id: '26',
+    value: '032',
+    text: 'Union Bank Of Nigeria Plc'
+  },
+  {
+    id: '2',
+    value: '032',
+    text: 'Union Bank Plc'
+  },
+  {
+    id: '27',
+    value: '033',
+    text: 'United Bank for africa Plc'
+  },
+  {
+    id: '35',
+    value: '215',
+    text: 'Unity Bank Plc'
+  },
+  {
+    id: '40',
+    value: '566',
+    text: 'VFD'
+  },
+  {
+    id: '28',
+    value: '035',
+    text: 'Wema Bank Plc'
+  },
+  {
+    id: '11',
+    value: '322',
+    text: 'Zenith Bank Mobile'
+  },
+  {
+    id: '29',
+    value: '057',
+    text: 'Zenith Bank Plc'
+  },
+  {
+    id: '688',
+    value: '50515',
+    text: 'Moniepoint MFB'
+  },
+  {
+    id: '100004',
+    value: '100004',
+    text: 'Opay'
+  },
+].sort((a, b) => {
+  if (a.text < b.text) return -1;
+  if (a.text > b.text) return 1;
+  return 0;
+});
