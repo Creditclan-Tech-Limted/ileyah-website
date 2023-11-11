@@ -134,6 +134,7 @@ const Page = () => {
                     <div
                       role='status'
                       className='max-w-sm p-4  rounded shadow animate-pulse md:p-6'
+                      key={i}
                     >
                       <div className='flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-700'>
                         <svg
@@ -174,13 +175,24 @@ const Page = () => {
             </>
           )}
 
+          <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4 md:hidden">
+            <p className='inline-flex'>
+              <IconMoodCry className='mr-2' />
+              Didn't find what you're looking for?
+            </p>
+            <Button color='white' size='sm' onClick={() => (
+              setCall(true),
+              setShowModal(true)
+            )} >Post a Request</Button>
+          </div>
+
           {/* <div className="flex space-x-5 cursor-pointer py-6">
             <IconLayoutGrid size={30} onClick={() => setIsGridView(true)} />
             <IconLayoutList size={30} onClick={() => setIsGridView(false)} />
           </div> */}
-          <div className={`grid grid-cols-[1fr_350px] gap-10 mt-10`}>
+          <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
             {isGridView ? (
-              <div className=' grid grid-cols-2 gap-10'>
+              <div className=' grid md:grid-cols-2 gap-10'>
                 {properties.map((m, i) => (
                   <div key={i}>
                     <ListingsGrid
@@ -241,7 +253,7 @@ const Page = () => {
               </div>
             )}
 
-            <div>
+            <div className='hidden md:block'>
               <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
                   <IconMoodCry className='mr-2' />
@@ -364,13 +376,10 @@ const Page = () => {
       </div>
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
       <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
-      {showModal && (<WeCall handleToggle={() => (
-        setShowModal(false),
-        setOpenFindHouse(true)
-      )} />)}
+      <WeCall isOpen={showModal} onClose={() => setShowModal(false)} />
       <PostRequest isOpen={openFindHouse} onClose={() => setOpenFindHouse(false)} />
     </div>
   )
 }
 
-export default Page
+export default Page;

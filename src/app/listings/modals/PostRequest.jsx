@@ -25,7 +25,7 @@ const PostRequest = ({ isOpen, onClose }) => {
   const [enterArea, setEnterArea] = useState(data?.find_me_house?.area ? typeof data?.find_me_house?.area !== 'object' : false);
   const [area, setArea] = useState(typeof data?.find_me_house?.area === 'string' ? data?.find_me_house?.area : '');
   const [areas, setAreas] = useState(typeof data?.find_me_house?.area === 'object' ? data?.find_me_house?.area : []);
-  const [loggedIn, setLoggedIn] = useState(JSON.parse(localStorage.getItem('ileyah_token')));
+  const [loggedIn, setLoggedIn] = useState();
 
   const house_types = [
     { value: 'room-only', text: 'Room only' },
@@ -65,6 +65,11 @@ const PostRequest = ({ isOpen, onClose }) => {
     if (!enterArea && area.length) setArea('');
     // eslint-disable-next-line
   }, [enterArea, area.length, areas.length]);
+
+  useEffect(() => {
+    const ileyah_token = typeof window !== "undefined" ? localStorage?.getItem('ileyah_token') : false;
+    setLoggedIn(ileyah_token)
+  }, [])
 
   return (
     <>

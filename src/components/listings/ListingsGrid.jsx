@@ -96,7 +96,7 @@ export default function ListingsGrid({
             </div>
           </div>
           <div className='mt-5 p-5 '>
-            <div className='text-gray-900 font-medium text-xl cursor-pointer truncate ...'>
+            <div className='text-gray-900 font-medium text-xl cursor-pointer'>
               {title}
             </div>
             <div className='flex gap-2 items-center my-2 divide-y'>
@@ -105,9 +105,9 @@ export default function ListingsGrid({
               </p>
             </div>
             <div className='flex'>
-              <p className='text-lg font-bold bg-white absolute bottom-60 rounded-lg p-2 '>
+              <p className='text-lg font-bold bg-white absolute bottom-[300px] md:bottom-[280px] rounded-lg p-2 '>
                 {/* {formatCurrency(price / 12)}  */}
-                {(price)} 
+                {(price)}
                 <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>

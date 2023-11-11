@@ -133,7 +133,7 @@ const Navbar = () => {
               </div>
             </nav>
           </div>
-          <div className='mt-20 grid grid-cols-6 gap-5'>
+          <div className='mt-20 grid-cols-6 gap-5 hidden md:grid'>
             <div className='rounded px-10 py-6' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://fastly.picsum.photos/id/1021/200/303.jpg?hmac=qg2Q16h_k7J1-IykCJ5S4RDIf8sJ136v-aD6tK4NjBw')` }}>
               <p className='text-center'>Festac</p>
             </div>
