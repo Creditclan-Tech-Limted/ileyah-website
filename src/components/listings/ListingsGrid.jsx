@@ -35,7 +35,6 @@ export default function ListingsGrid({
   onClick,
   index
 }) {
-  // const randomIndex = Math.floor(Math.random() * images.length);
   const [isImageBroken, setImageBroken] = useState(false);
   const handleImageError = () => {
     setImageBroken(true);
@@ -103,7 +102,6 @@ export default function ListingsGrid({
             <div className='flex'>
               <p className='text-lg font-bold bg-white absolute bottom-[300px] md:bottom-[280px] rounded-lg p-2 '>
                 {formatCurrency(Number(price) / 12)} 
-                {/* {formatCurrency((Number(price.slice(1).replaceAll(',', ''))) / 12)} */}
                 <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>
