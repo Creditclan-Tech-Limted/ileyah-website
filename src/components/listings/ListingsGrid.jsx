@@ -41,9 +41,7 @@ export default function ListingsGrid({
     setImageBroken(true);
   };
   const randomIndex = useMemo(() => Math.floor(Math.random() * images.length), []);
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex < houseImg.length - 1 ? prevIndex + 1 : 0
@@ -78,7 +76,6 @@ export default function ListingsGrid({
                 />
             }
             <div className="absolute top-1 right-0 m-2 flex space-x-2">
-              {/* Previous Image Arrow */}
               <button
                 onClick={prevImage}
                 className="bg-white w-8 h-8 p-2 rounded-full text-gray-600 hover:text-gray-900"
@@ -86,7 +83,6 @@ export default function ListingsGrid({
                 <IconChevronLeft size={15} />
               </button>
 
-              {/* Next Image Arrow */}
               <button
                 onClick={nextImage}
                 className="bg-white w-8 h-8 p-2 rounded-full text-gray-600 hover:text-gray-900"
