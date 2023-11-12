@@ -1,14 +1,14 @@
 'use client'
 import ListingFlex from '@/components/listings/ListingFlex'
 import ListingsGrid from '@/components/listings/ListingsGrid'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import Footer from '@/components/Footer'
 import axios from 'axios'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
 import ProDetails from '@/components/listings/modals/property_details'
 import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
@@ -17,6 +17,7 @@ import Navbar from './components/Navbar'
 import { IconChevronRight, IconLayoutGrid, IconLayoutList, IconListNumbers, IconMoodCry, IconSearch } from '@tabler/icons-react'
 import WeCall from '@/components/WeCall'
 import PostRequest from './modals/PostRequest'
+import { usePropertyQuery } from '@/hooks/use-property-query'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -31,6 +32,29 @@ const Page = () => {
   const { data: signupData, updateData } = useSignupStore((state) => state);
   const [loading, setLoading] = useState(true);
   const [openFindHouse, setOpenFindHouse] = useState(false)
+
+  const containerRef = useRef(null)
+  const bottomRef = useRef(null)
+
+  const apiUrl = 'https://kuda-creditclan-api.herokuapp.com/get_properties'
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    status,
+  } = usePropertyQuery({
+    apiUrl,
+  });
+
+
+
+
+
+
+
+
+
 
 
   const handleScroll = (event) => {
@@ -80,6 +104,40 @@ const Page = () => {
       console.log({ error });
     }
   }
+  
+// infinite scroll
+  useEffect(() => {
+     const bottom = bottomRef?.current;
+
+     const handlePropScroll = ()=>{
+      const rect = bottom.getBoundingClientRect()
+      // console.log(rect.bottom, window.innerHeight, window.scrollY)
+
+      let isBottom = rect.bottom <= window.innerHeight + 2000;
+
+        if(isBottom){
+        
+          console.log(!isFetchingNextPage, hasNextPage, data)
+          if(!isFetchingNextPage && hasNextPage){ 
+            console.log('going for the next page')
+            fetchNextPage()
+          }
+        }
+     }
+    
+     window?.addEventListener("scroll", handlePropScroll)
+    return () => {
+      window?.removeEventListener("scroll", handlePropScroll);
+    }
+  }, [isFetchingNextPage, hasNextPage, bottomRef])
+  
+
+
+
+
+
+
+
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -192,7 +250,7 @@ const Page = () => {
           </div> */}
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
             {isGridView ? (
-              <div className=' grid md:grid-cols-2 gap-10'>
+              <div  className=' grid md:grid-cols-2 gap-10'>
                 {properties.map((m, i) => (
                   <div key={i}>
                     <ListingsGrid
@@ -220,6 +278,7 @@ const Page = () => {
                     />
                   </div>
                 ))}
+              <div ref={bottomRef} />
               </div>
             ) : (
               <div className=''>
@@ -362,6 +421,7 @@ const Page = () => {
                 </div>
               </div>
             </div>
+            
           </div>
           <Pagination
             currentPage={currentPage}
