@@ -18,10 +18,15 @@ import { IconChevronRight, IconLayoutGrid, IconLayoutList, IconListNumbers, Icon
 import WeCall from '@/components/WeCall'
 import PostRequest from './modals/PostRequest'
 import { usePropertyQuery } from '@/hooks/use-property-query'
+import Input from '@/global/Input'
+import { useForm } from 'react-hook-form'
+import { areas } from '@/lib/utils'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
 const Page = () => {
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
   const [isGridView, setIsGridView] = useState(true)
   const [scrollTop, setScrollTop] = useState(0)
   const [showModal, setShowModal] = useState(false)
@@ -33,16 +38,24 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [openFindHouse, setOpenFindHouse] = useState(false)
 
+  const [checkedInput, setCheckedInput] = useState(null)
+  const [loadingFilter, setLoadingFilter] = useState(false)
+  const [isFilterAboveMarkAction, setIsFilterAboveMarkAction] = useState(true)
+  const [isFiltering, setIsFiltering] = useState(false)
+  const [filterData, setFilterData] = useState([])
+
+
   const containerRef = useRef(null)
   const bottomRef = useRef(null)
 
-  const apiUrl = 'https://kuda-creditclan-api.herokuapp.com/get_properties'
+  const apiUrl = 'https://kuda-creditclan-api.herokuapp.com/'
   const {
     data,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
     status,
+    isFirstTry
   } = usePropertyQuery({
     apiUrl,
   });
@@ -87,39 +100,54 @@ const Page = () => {
     })
   }
 
-  const getPorperties = async () => {
+
+
+  const getPorperties = async (returnedData) => {
     try {
-      const res = await axios.get(
-        'https://kuda-creditclan-api.herokuapp.com/get_properties'
-      )
-      let array = res?.data?.data
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      console.log({ array });
-      setProperties(array)
-      setLoading(false)
+
+              let array = [...returnedData]
+              for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+              }
+              setProperties([...properties, ...array])
+      
+
     } catch (error) {
       console.log({ error });
     }
   }
   
+
+  useEffect(() => {
+
+    console.log(data, data?.pages[0]?.array)
+    if(data?.pages[0]?.array?.length){
+      getPorperties(data?.pages[0]?.array)
+    }
+
+    if(isFirstTry){
+      setLoading(false)
+    }
+  }, [data, isFirstTry])
+  
+
+
 // infinite scroll
   useEffect(() => {
      const bottom = bottomRef?.current;
 
      const handlePropScroll = ()=>{
+      // if(!isFilterAboveMarkAction) return
+
       const rect = bottom.getBoundingClientRect()
       // console.log(rect.bottom, window.innerHeight, window.scrollY)
 
       let isBottom = rect.bottom <= window.innerHeight + 2000;
 
         if(isBottom){
-        
-          console.log(!isFetchingNextPage, hasNextPage, data)
-          if(!isFetchingNextPage && hasNextPage){ 
-            console.log('going for the next page')
+          console.log('filter state  value', isFilterAboveMarkAction)
+          if(!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction){ 
             fetchNextPage()
           }
         }
@@ -129,8 +157,37 @@ const Page = () => {
     return () => {
       window?.removeEventListener("scroll", handlePropScroll);
     }
-  }, [isFetchingNextPage, hasNextPage, bottomRef])
+  }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction])
   
+
+
+
+
+
+// filter /filter_by_search_params?beds=1&area=lekki&price=850000
+  const onFilterProperty =  async (data)=>{
+    // console.log(data)
+      const {area, price} = data
+      try {
+        setLoadingFilter(true)
+        const res = await axios.get(`${apiUrl}filter_by_search_params?beds=${checkedInput}&area=${area}&price=${price}`)
+
+
+
+        // console.log(res.data, res.data.length)
+        setLoadingFilter(false)
+        setIsFiltering(true)
+        setFilterData([...res?.data])
+        if (res.data.length < 50) {
+          setIsFilterAboveMarkAction(false)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+  }
+
+
+
 
 
 
@@ -178,6 +235,18 @@ const Page = () => {
     getPorperties()
     // checkLegacyRoute()
   }, [])
+
+
+
+
+const cancelFilter = ()=>{
+  reset()
+  setCheckedInput(null)
+  setIsFiltering(false),
+  setIsFilterAboveMarkAction(true)
+}
+
+
   return (
     <div className='bg-gray-100'>
       <ScrollToTop />
@@ -249,9 +318,9 @@ const Page = () => {
             <IconLayoutList size={30} onClick={() => setIsGridView(false)} />
           </div> */}
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
-            {isGridView ? (
+            {   isGridView ? (
               <div  className=' grid md:grid-cols-2 gap-10'>
-                {properties.map((m, i) => (
+                {  (isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingsGrid
                       index={i}
@@ -323,81 +392,154 @@ const Page = () => {
                   setShowModal(true)
                 )} >Post a Request</Button>
               </div>
+              
+              {
+                  isFiltering && (
+
+                    <div className='flex justify-center mt-4'>
+                        <Button color='black' size='md' onClick={cancelFilter} >Clear Filter</Button>
+                    </div>
+
+                  )
+              }
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
-                <div>
-                  <p>House Type</p>
-                  <div class='flex items-center my-4'>
-                    <input
-                      id='default-checkbox'
-                      type='checkbox'
-                      value=''
-                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                    />
-                    <label for='default-checkbox' class='ml-2 text-base'>
-                      Office
-                    </label>
-                  </div>
-                  <div class='flex items-center my-4'>
-                    <input
-                      id='default-checkbox'
-                      type='checkbox'
-                      value=''
-                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                    />
-                    <label for='default-checkbox' class='ml-2 text-base'>
-                      Studio
-                    </label>
-                  </div>
-                  <div class='flex items-center mb-4'>
-                    <input
-                      id='default-checkbox'
-                      type='checkbox'
-                      value=''
-                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                    />
-                    <label for='default-checkbox' class='ml-2 text-base'>
-                      One Bedroom
-                    </label>
-                  </div>
-                  <div class='flex items-center mb-4'>
-                    <input
-                      id='default-checkbox'
-                      type='checkbox'
-                      value=''
-                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                    />
-                    <label for='default-checkbox' class='ml-2 text-base'>
-                      Two Bedroom
-                    </label>
-                  </div>
-                  <div class='flex items-center mb-4'>
-                    <input
-                      id='default-checkbox'
-                      type='checkbox'
-                      value=''
-                      class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                    />
-                    <label for='default-checkbox' class='ml-2 text-base'>
-                      Three Bedroom
-                    </label>
-                  </div>
-                </div>
 
-                <div>
-                  <p>Amount</p>
-                  <div className='w-full my-4'>
-                    <Select options={[1, 2, 3, 4, 5, 6]} />
-                  </div>
-                </div>
+                <form onSubmit={handleSubmit(onFilterProperty)}>
+                  <div>
+                    <p>House Type</p>
+                    {/* <div class='flex items-center my-4'>
+                      <input
+                        id='default-checkbox'
+                        type='checkbox'
+                        value=''
+                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                      />
+                      <label for='default-checkbox' class='ml-2 text-base'>
+                        Office
+                      </label>
+                    </div> */}
 
-                <div>
-                  <p>Location</p>
-                  <div className='w-full my-4'>
-                    <Select options={[1, 2, 3, 4, 5, 6]} />
-                  </div>
-                </div>
+                    {/* <div class='flex items-center my-4'>
+                      <input
+                        id='default-checkbox'
+                        type='checkbox'
+                        value=''
+                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                      />
+                      <label for='default-checkbox' class='ml-2 text-base'>
+                        Studio
+                      </label>
+                    </div> */}
 
-                <Button leftIcon={<IconSearch />}  >Apply Filter</Button>
+                    <div class='flex items-center mb-4'>
+                      <input
+                        id='default-checkbox1'
+                        type='checkbox'
+                        value='1'
+                        // name='beds'
+                        checked={ checkedInput === '1'}
+                        onChange={()=>setCheckedInput('1')}
+
+
+                        // {...register("beds", {
+                        //   required: {
+                        //     value: true,
+                        //     message: "bed is required"
+                        //   },})}
+                          
+                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                      />
+
+                      <label for='default-checkbox1' class='ml-2 text-base'>
+                        One Bedroom
+                      </label>
+                    </div>
+                    <div class='flex items-center mb-4'>
+                      <input
+                        id='default-checkbox2'
+                        type='checkbox'
+                        value='2'
+                        // name='beds'
+                        checked={checkedInput === '2'}
+                        onChange={()=>setCheckedInput('2')}
+                        // {...register("beds", {
+                        //   required: {
+                        //     value: true,
+                        //     message: "bed is required"
+                        //   },})}
+                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                      />
+                      <label for='default-checkbox2' class='ml-2 text-base'>
+                        Two Bedroom
+                      </label>
+                    </div>
+                    <div class='flex items-center mb-4'>
+                      <input
+                        id='default-checkbox3'
+                        type='checkbox'
+                        value='3'
+                        // name='beds'
+                        checked={checkedInput === '3'}
+                        onChange={()=>setCheckedInput('3')}
+                        
+                        // {...register("beds", {
+                        //   required: {
+                        //     value: true,
+                        //     message: "house type is required"
+                        //   },})}
+                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                      />
+                      <label for='default-checkbox3' class='ml-2 text-base'>
+                        Three Bedroom
+                      </label>
+                    </div>
+                    <span className='text-red-400'>{errors?.beds?.message}</span>
+                  </div>
+
+                  <div>
+                    <p>Amount</p>
+                    <div className='w-full my-4'>
+                      {/* <Select options={[1, 2, 3, 4, 5, 6]} /> */}
+                      <Input
+                        bordered label='Rent ' block 
+                      
+                        {...register("price", {
+                          required: {
+                            value: true,
+                            message: "amount is required"
+                          },
+                          min: {
+                            value: 300000,
+                            message: "Please provide an amount greater than ₦100,000",
+                          },
+                          max: {
+                            value: 3000000,
+                            message: "Please provide an amount less than ₦3million",
+                          },
+                        })} 
+                        error={errors?.price?.message}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <p>Location</p>
+                    <div className='w-full my-4'>
+                      <Select
+                       options={areas} 
+                       {...register("area", {
+                         required: {
+                           value: true,
+                           message: "location is required"
+                         },})}
+                         error={errors?.area?.message}
+                       />
+
+                    </div>
+                  </div>
+                <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
+                </form>
+
 
                 <div>
                   <p className='mb-3 italic'>Didn't find your choice property</p>
