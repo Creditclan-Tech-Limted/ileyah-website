@@ -78,7 +78,11 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="text-xl">{property?.description} ▪️ {property?.area || property?.Area} </p>
         <hr />
         <div className="flex justify-between">
-          <p className="font-semibold text-2xl text-gray-500"> {(property?.price)}<span className="text-sm text-black">/mo</span> </p>
+          <p className="font-semibold text-2xl text-gray-500"> 
+                     {/* {(property?.price)} */}
+                     {formatCurrency((Number(property?.price.slice(1).replaceAll(',', ''))) / 12)}
+                     <span className="text-sm text-black">/mo</span>  
+           </p>
           <IconBookmark className="cursor-pointer" />
         </div>
         <p className="-pt-10">{property?.createdAt?.slice(0, 10)}</p>

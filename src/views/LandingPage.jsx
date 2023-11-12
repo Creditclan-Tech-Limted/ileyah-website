@@ -21,6 +21,8 @@ const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [call, setCall] = useState(false)
 
+
+
   const handleScroll = ((event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
     const pageHeight = document.body.offsetHeight;
