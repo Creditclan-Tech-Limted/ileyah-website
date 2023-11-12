@@ -104,13 +104,14 @@ const Page = () => {
 
   const getPorperties = async (returnedData) => {
     try {
-
-              let array = [...returnedData]
-              for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-              }
-              setProperties([...properties, ...array])
+        if(returnedData){
+          let array = [...returnedData]
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          setProperties([...properties, ...array])
+        }
       
 
     } catch (error) {
@@ -122,7 +123,7 @@ const Page = () => {
   useEffect(() => {
 
     console.log(data, data?.pages[0]?.array)
-    if(data?.pages[0]?.array?.length){
+    if(data?.pages[0]?.array?.length > 0){
       getPorperties(data?.pages[0]?.array)
     }
 
@@ -231,10 +232,10 @@ const Page = () => {
     }
   }
 
-  useEffect(() => {
-    getPorperties()
-    // checkLegacyRoute()
-  }, [])
+  // useEffect(() => {
+  //   // getPorperties()
+  //   // checkLegacyRoute()
+  // }, [])
 
 
 
