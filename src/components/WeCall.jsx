@@ -4,10 +4,12 @@ import { IconChevronRight, IconHeadset, IconHomeSearch, IconListNumbers } from '
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Drawer from './Drawer';
+import Support from '@/app/listings/components/Support';
 
 const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
   const { data, updateData } = useSignupStore((state) => state);
   const [openFindHouse, setopenFindHouse] = useState(false)
+  const [openSupport, setOpenSupport] = useState(false)
 
   const {
     register,
@@ -71,7 +73,7 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setopenFindHouse(true)}>
+            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setOpenSupport(true)}>
               <div className="flex">
                 <div className="flex">
                   <div className="w-10 h-10 rounded-full bg-blue-600 text-white grid place-items-center my-auto">
@@ -99,6 +101,7 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
         </div>
       </Drawer>
       <PostRequest isOpen={openFindHouse} onClose={() => setopenFindHouse(false)} />
+      <Support isOpen={openSupport} onClose={() => setOpenSupport(false)} />
     </>
   )
 }

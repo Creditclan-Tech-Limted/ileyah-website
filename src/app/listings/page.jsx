@@ -37,14 +37,11 @@ const Page = () => {
   const { data: signupData, updateData } = useSignupStore((state) => state);
   const [loading, setLoading] = useState(true);
   const [openFindHouse, setOpenFindHouse] = useState(false)
-
   const [checkedInput, setCheckedInput] = useState(null)
   const [loadingFilter, setLoadingFilter] = useState(false)
   const [isFilterAboveMarkAction, setIsFilterAboveMarkAction] = useState(true)
   const [isFiltering, setIsFiltering] = useState(false)
   const [filterData, setFilterData] = useState([])
-
-
   const containerRef = useRef(null)
   const bottomRef = useRef(null)
 
@@ -59,16 +56,6 @@ const Page = () => {
   } = usePropertyQuery({
     apiUrl,
   });
-
-
-
-
-
-
-
-
-
-
 
   const handleScroll = (event) => {
     const scrollPosition = window.innerHeight + window.scrollY
@@ -100,102 +87,69 @@ const Page = () => {
     })
   }
 
-
-
   const getPorperties = async (returnedData) => {
     try {
-        if(returnedData){
-          let array = [...returnedData]
-          for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-          }
-          setProperties([...properties, ...array])
+      if (returnedData) {
+        let array = [...returnedData]
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
         }
-      
+        setProperties([...properties, ...array])
+      }
+
 
     } catch (error) {
       console.log({ error });
     }
   }
-  
 
   useEffect(() => {
-
-    console.log(data, data?.pages[0]?.array)
-    if(data?.pages[0]?.array?.length > 0){
+    if (data?.pages[0]?.array?.length > 0) {
       getPorperties(data?.pages[0]?.array)
     }
 
-    if(isFirstTry){
+    if (isFirstTry) {
       setLoading(false)
     }
   }, [data, isFirstTry])
-  
 
-
-// infinite scroll
   useEffect(() => {
-     const bottom = bottomRef?.current;
+    const bottom = bottomRef?.current;
 
-     const handlePropScroll = ()=>{
-      // if(!isFilterAboveMarkAction) return
-
+    const handlePropScroll = () => {
       const rect = bottom.getBoundingClientRect()
-      // console.log(rect.bottom, window.innerHeight, window.scrollY)
-
       let isBottom = rect.bottom <= window.innerHeight + 2000;
 
-        if(isBottom){
-          console.log('filter state  value', isFilterAboveMarkAction)
-          if(!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction){ 
-            fetchNextPage()
-          }
+      if (isBottom) {
+        console.log('filter state  value', isFilterAboveMarkAction)
+        if (!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction) {
+          fetchNextPage()
         }
-     }
-    
-     window?.addEventListener("scroll", handlePropScroll)
+      }
+    }
+
+    window?.addEventListener("scroll", handlePropScroll)
     return () => {
       window?.removeEventListener("scroll", handlePropScroll);
     }
   }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction])
-  
 
-
-
-
-
-// filter /filter_by_search_params?beds=1&area=lekki&price=850000
-  const onFilterProperty =  async (data)=>{
-    // console.log(data)
-      const {area, price} = data
-      try {
-        setLoadingFilter(true)
-        const res = await axios.get(`${apiUrl}filter_by_search_params?beds=${checkedInput}&area=${area}&price=${price}`)
-
-
-
-        // console.log(res.data, res.data.length)
-        setLoadingFilter(false)
-        setIsFiltering(true)
-        setFilterData([...res?.data])
-        if (res.data.length < 50) {
-          setIsFilterAboveMarkAction(false)
-        }
-      } catch (error) {
-        console.log(error)
+  const onFilterProperty = async (data) => {
+    const { area, price } = data
+    try {
+      setLoadingFilter(true)
+      const res = await axios.get(`${apiUrl}filter_by_search_params?beds=${checkedInput}&area=${area}&price=${price}`)
+      setLoadingFilter(false)
+      setIsFiltering(true)
+      setFilterData([...res?.data])
+      if (res.data.length < 50) {
+        setIsFilterAboveMarkAction(false)
       }
+    } catch (error) {
+      console.log(error)
+    }
   }
-
-
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
@@ -209,16 +163,14 @@ const Page = () => {
   }
 
   const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = 5 // Replace with the total number of pages
+  const totalPages = 5
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber)
-    // You can perform additional actions here, like fetching data for the selected page.
   }
 
   const handleClick = () => {
     console.log('Button clicked!')
-    // Perform your desired action here
   }
 
   const checkLegacyRoute = async () => {
@@ -232,21 +184,12 @@ const Page = () => {
     }
   }
 
-  // useEffect(() => {
-  //   // getPorperties()
-  //   // checkLegacyRoute()
-  // }, [])
-
-
-
-
-const cancelFilter = ()=>{
-  reset()
-  setCheckedInput(null)
-  setIsFiltering(false),
-  setIsFilterAboveMarkAction(true)
-}
-
+  const cancelFilter = () => {
+    reset()
+    setCheckedInput(null)
+    setIsFiltering(false),
+      setIsFilterAboveMarkAction(true)
+  }
 
   return (
     <div className='bg-gray-100'>
@@ -314,14 +257,10 @@ const cancelFilter = ()=>{
             )} >Post a Request</Button>
           </div>
 
-          {/* <div className="flex space-x-5 cursor-pointer py-6">
-            <IconLayoutGrid size={30} onClick={() => setIsGridView(true)} />
-            <IconLayoutList size={30} onClick={() => setIsGridView(false)} />
-          </div> */}
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
-            {   isGridView ? (
-              <div  className=' grid md:grid-cols-2 gap-10'>
-                {  (isFiltering ? filterData : properties)?.map((m, i) => (
+            {isGridView ? (
+              <div className=' grid md:grid-cols-2 gap-10'>
+                {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingsGrid
                       index={i}
@@ -348,7 +287,7 @@ const cancelFilter = ()=>{
                     />
                   </div>
                 ))}
-              <div ref={bottomRef} />
+                <div ref={bottomRef} />
               </div>
             ) : (
               <div className=''>
@@ -393,61 +332,28 @@ const cancelFilter = ()=>{
                   setShowModal(true)
                 )} >Post a Request</Button>
               </div>
-              
+
               {
-                  isFiltering && (
+                isFiltering && (
 
-                    <div className='flex justify-center mt-4'>
-                        <Button color='black' size='md' onClick={cancelFilter} >Clear Filter</Button>
-                    </div>
+                  <div className='flex justify-center mt-4'>
+                    <Button color='black' size='md' onClick={cancelFilter} >Clear Filter</Button>
+                  </div>
 
-                  )
+                )
               }
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
 
                 <form onSubmit={handleSubmit(onFilterProperty)}>
                   <div>
                     <p>House Type</p>
-                    {/* <div class='flex items-center my-4'>
-                      <input
-                        id='default-checkbox'
-                        type='checkbox'
-                        value=''
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                      />
-                      <label for='default-checkbox' class='ml-2 text-base'>
-                        Office
-                      </label>
-                    </div> */}
-
-                    {/* <div class='flex items-center my-4'>
-                      <input
-                        id='default-checkbox'
-                        type='checkbox'
-                        value=''
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
-                      />
-                      <label for='default-checkbox' class='ml-2 text-base'>
-                        Studio
-                      </label>
-                    </div> */}
-
                     <div class='flex items-center mb-4'>
                       <input
                         id='default-checkbox1'
                         type='checkbox'
                         value='1'
-                        // name='beds'
-                        checked={ checkedInput === '1'}
-                        onChange={()=>setCheckedInput('1')}
-
-
-                        // {...register("beds", {
-                        //   required: {
-                        //     value: true,
-                        //     message: "bed is required"
-                        //   },})}
-                          
+                        checked={checkedInput === '1'}
+                        onChange={() => setCheckedInput('1')}
                         class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
 
@@ -460,14 +366,8 @@ const cancelFilter = ()=>{
                         id='default-checkbox2'
                         type='checkbox'
                         value='2'
-                        // name='beds'
                         checked={checkedInput === '2'}
-                        onChange={()=>setCheckedInput('2')}
-                        // {...register("beds", {
-                        //   required: {
-                        //     value: true,
-                        //     message: "bed is required"
-                        //   },})}
+                        onChange={() => setCheckedInput('2')}
                         class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
                       <label for='default-checkbox2' class='ml-2 text-base'>
@@ -479,15 +379,8 @@ const cancelFilter = ()=>{
                         id='default-checkbox3'
                         type='checkbox'
                         value='3'
-                        // name='beds'
                         checked={checkedInput === '3'}
-                        onChange={()=>setCheckedInput('3')}
-                        
-                        // {...register("beds", {
-                        //   required: {
-                        //     value: true,
-                        //     message: "house type is required"
-                        //   },})}
+                        onChange={() => setCheckedInput('3')}
                         class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
                       <label for='default-checkbox3' class='ml-2 text-base'>
@@ -500,10 +393,9 @@ const cancelFilter = ()=>{
                   <div>
                     <p>Amount</p>
                     <div className='w-full my-4'>
-                      {/* <Select options={[1, 2, 3, 4, 5, 6]} /> */}
                       <Input
-                        bordered label='Rent ' block 
-                      
+                        bordered label='Rent ' block
+
                         {...register("price", {
                           required: {
                             value: true,
@@ -517,7 +409,7 @@ const cancelFilter = ()=>{
                             value: 3000000,
                             message: "Please provide an amount less than ₦3million",
                           },
-                        })} 
+                        })}
                         error={errors?.price?.message}
                       />
                     </div>
@@ -527,18 +419,19 @@ const cancelFilter = ()=>{
                     <p>Location</p>
                     <div className='w-full my-4'>
                       <Select
-                       options={areas} 
-                       {...register("area", {
-                         required: {
-                           value: true,
-                           message: "location is required"
-                         },})}
-                         error={errors?.area?.message}
-                       />
+                        options={areas}
+                        {...register("area", {
+                          required: {
+                            value: true,
+                            message: "location is required"
+                          },
+                        })}
+                        error={errors?.area?.message}
+                      />
 
                     </div>
                   </div>
-                <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
+                  <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
                 </form>
 
 
@@ -564,7 +457,7 @@ const cancelFilter = ()=>{
                 </div>
               </div>
             </div>
-            
+
           </div>
           <Pagination
             currentPage={currentPage}

@@ -25,12 +25,7 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
   const toast = useToast();
   const router = useRouter()
   const file = useRef(null)
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm()
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
   const [views, setViews] = useState('form')
   const [selectedFiles, setSelectedFiles] = useState([])
   const [loading, setLoading] = useState(false);
