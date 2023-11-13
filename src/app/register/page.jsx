@@ -2,6 +2,7 @@
 import { AUTH_ENDPOINT } from '@/api/landlord'
 import { useCreateRentRequestMutation, useSignUpMutation } from '@/api/rent'
 import Button from '@/components/global/Button'
+import AuthSocialButton from '@/components/sign-up/AuthSocialButton'
 import Input from '@/global/Input'
 import Select from '@/global/Select'
 import { useToast } from '@/lib/use-toast'
@@ -13,6 +14,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
+import { FcGoogle  } from 'react-icons/fc';
 
 const Page = () => {
   const router = useRouter();
@@ -98,6 +100,24 @@ const Page = () => {
     } catch (error) {
       console.log({ error });
     }
+  }
+
+
+  const socialAction = ()=>{
+    // setIsLoading(true)
+
+    // signIn(action, { redirect: false })
+    // .then((callback) => {
+    //   if (callback?.error) {
+    //     toast.error('Invalid credentials!');
+    //   }
+
+    //   if (callback?.ok  && !callback?.error) {
+    //     toast.success('Logged in!')
+    //     router.push('/users')
+    //   }
+    // })
+    // .finally(() => setIsLoading(false));
   }
 
   return (
@@ -211,12 +231,40 @@ const Page = () => {
                 </div>
               )}
 
-              <div className='mb-12 pb-1 pt-1 flex justify-between'>
+              <div className='mb-6 pb-1 pt-1 flex justify-between'>
                 <Button type='submit' loading={loading}>
                   {loading ? 'Loading...' : 'Sign Up'}{' '}
                 </Button>
                
               </div>
+            <div className="mt-1">
+              <div className="relative">
+                <div 
+                  className="
+                    absolute 
+                    inset-0 
+                    flex 
+                    items-center
+                  "
+                >
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="bg-neutral-50 px-2 text-gray-500">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+
+              <div className="my-6 flex gap-2 sm:gap-4">
+
+                  <AuthSocialButton
+                    icon={FcGoogle} 
+                    onClick={socialAction} 
+                  />
+                  
+              </div>
+            </div>
 
               <div className='flex items-center pb-6'>
                 <p className='mb-0 mr-2'>Already have an account?</p>

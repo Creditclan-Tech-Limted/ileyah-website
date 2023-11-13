@@ -155,7 +155,7 @@ const Loader = ({ text, size = 'md', className = 'bg-primary-600' }) => {
 
 Loader.propTypes = {
   text: PropTypes.string,
-  size: PropTypes.oneOf(['sm', 'lg']),
+  size: PropTypes.oneOf(['sm', 'lg', '2xl']),
   className: PropTypes.string,
 }
 

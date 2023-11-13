@@ -9,6 +9,12 @@
   font-family: 'DM Sans', sans-serif;
 }
 
+@layer base {
+  .otpButton {
+     @apply w-full h-full flex flex-col items-center justify-center text-center px-5 outline-none rounded-xl border border-gray-300 text-2xl bg-white focus:bg-gray-50 focus:ring-1 ring-blue-700
+    }
+}
+
 .bg-future {
   background: linear-gradient(rgb(49 31 60 / 60%), rgb(78 57 96 / 60%)), url("/assets/images/05.jpg");
 }
