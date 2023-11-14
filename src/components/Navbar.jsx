@@ -33,6 +33,7 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     logout();
     window.location.reload();
   };
@@ -103,9 +104,9 @@ const Navbar = () => {
                     )
                   }
                 </Hover>
-                <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
+                {/* <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
                   Tenants
-                </Link>
+                </Link> */}
                 <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                   Landlords
                 </Link>
@@ -158,12 +159,12 @@ const Navbar = () => {
                 >
                   Product
                 </Link>
-                <Link
+                {/* <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/tenants"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
                 >
                   Tenants
-                </Link>
+                </Link> */}
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/landlords"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"

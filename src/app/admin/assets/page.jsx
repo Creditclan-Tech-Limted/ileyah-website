@@ -18,6 +18,7 @@ const Page = ({ className }) => {
   const [current, setCurrent] = useState()
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
   return (

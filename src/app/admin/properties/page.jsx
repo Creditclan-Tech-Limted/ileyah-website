@@ -30,6 +30,7 @@ const Page = ({ className }) => {
   const { data, isLoading, error } = useQuery(['loans'], getPorperties);
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
   return (

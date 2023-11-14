@@ -75,7 +75,7 @@ const Page = () => {
                   <div className="w-full">
                     <h4 className="text-dark mb-1 text-xl font-bold">Our Location</h4>
                     <p className="text-body-color text-base">
-                      77, Samuel Adedoyin street, Victoria Island, Lagos.
+                      {/* 77, Samuel Adedoyin street, Victoria Island, Lagos. */}
                     </p>
                   </div>
                 </div>

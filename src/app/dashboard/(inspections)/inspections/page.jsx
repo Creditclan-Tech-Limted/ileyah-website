@@ -207,6 +207,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
   }
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
 

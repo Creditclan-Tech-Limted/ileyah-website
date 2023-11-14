@@ -12,6 +12,7 @@ const UserDropdown = ({ className }) => {
   const [user, setUser] = useState({ firstName: 'Oyegbile', lastName: 'Praise', email: '', password: '' })
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
 

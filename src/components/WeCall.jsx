@@ -85,8 +85,8 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
                     Talk to an Advisor
                   </p>
                   <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                    - Lorem ipsum dolor sit amet consectetur. <br />
-                    - We'll revert with response in less than 48hrs.
+                    - Speak with Our Expert Advisors Today. <br />
+                    - We'll respond immediately.
                   </p>
                 </div>
               </div>

@@ -100,7 +100,7 @@ const Plans = ({ isOpen, onClose }) => {
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title='Subscriptions Plans' smLonger={true}>
 
-        <p className="mt-10">Please select the subs you want to add to your plans</p>
+        <p className="mb-5">Please select the subs you want to add to your plans</p>
         <div className="border border-slate-300 rounded-xl">
           <Collapsible
             header={(
@@ -113,7 +113,8 @@ const Plans = ({ isOpen, onClose }) => {
                     Move in Service
                   </span>
                   <p className="opacity-75 text-[.95rem] leading-snug">
-                    - Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum dolor alias corporis harum.
+                    - Simplify Your Move-In Experience <br />
+                    - Seamless Transitions to Your New Home Await.
                   </p>
                 </div>
               </h5>

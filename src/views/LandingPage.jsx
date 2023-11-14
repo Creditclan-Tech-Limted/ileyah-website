@@ -21,8 +21,6 @@ const LandingPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [call, setCall] = useState(false)
 
-
-
   const handleScroll = ((event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
     const pageHeight = document.body.offsetHeight;
@@ -31,9 +29,9 @@ const LandingPage = () => {
     setScrollTop(event.target.scrollingElement.scrollTop);
 
     if (scrollPosition >= middleOfPage) {
-      if (call) return
-      setCall(true);
-      setShowModal(true);
+      // if (call) return
+      // setCall(true);
+      // setShowModal(true);
     }
   });
 

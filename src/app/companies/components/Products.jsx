@@ -1,6 +1,6 @@
 import React from 'react'
 import './Product.css'
-import { IconHomeHand, IconHomeSearch, IconRotate2 } from '@tabler/icons-react';
+import { IconHomeHand, IconHomeSearch, IconListSearch, IconRotate2 } from '@tabler/icons-react';
 import Button from '@/components/global/Button';
 
 const Products = () => {
@@ -15,15 +15,15 @@ const Products = () => {
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-blue-500 text-white">
-                  <IconHomeHand size="32" />
+                  <IconListSearch size="32" />
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Lorem Ipsum Dolor
+                Browse Listings
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Let's connect you with 10,000+ agents and landlords who fastrack your monthly tenancy.
-              </p>
+              </p> <br />
               <Button className="mt-8" variant="outlined" color='white'>
                 Get started
               </Button>
@@ -35,11 +35,12 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Lorem Ipsum Dolor             
+                Quality of Life  
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Rent due in a few days? We help you convert your current yearly tenancy into monthly tenancy forever.
+              Employees can choose residences that suites their preferences, contributing to an improved quality of life and overall well-being
               </p>
+
               <Button className="mt-8" variant="outlined" color='white'>
                 Get started
               </Button>
@@ -51,12 +52,11 @@ const Products = () => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Lorem Ipsum Dolor              
+                Subscription Services
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Our houses don't suit you? You can find your own dream house while we
-                partner with your landlord to pay monthly in monthly instalments.
-              </p>
+              Unlock a World of Convenience - Elevate Your Lifestyle with Our Subscription Services
+              </p> <br />
               <Button className="mt-8" variant="outlined" color='white'>
                 Get started
               </Button>

@@ -104,37 +104,37 @@ export const HousesData = [
   export const Artisan = [
     {
       name: "Electricians",
-      houseImgSrc: "/assets/images/artisans/elect.png",
+      houseImgSrc: "/assets/electrician.jpg",
       id: 1
     },
     {
       name: "Plumber",
-      houseImgSrc: "/assets/images/artisans/plumber.jpeg",
+      houseImgSrc: "/assets/plumber.jpg",
       id: 2
     },
     {
       name: "AC Repairs",
-      houseImgSrc: "/assets/images/artisans/ac.jpeg",
+      houseImgSrc: "/assets/ac.jpeg",
       id: 3
     },
     {
       name: "Carpenter",
-      houseImgSrc: "/assets/images/artisans/carpenter.jpeg",
+      houseImgSrc: "/assets/carpenter.jpg",
       id: 4
     },
     {
       name: "Painter",
-      houseImgSrc: "/assets/images/artisans/painter.png",
+      houseImgSrc: "/assets/painter.jpg",
       id: 6
     },
     {
       name: "Gardener",
-      houseImgSrc: "/assets/images/artisans/gardner.png",
+      houseImgSrc: "/assets/gardener.jpg",
       id: 7
     },
     {
       name: "Interior Design",
-      houseImgSrc: "/assets/images/artisans/interior.jpeg",
+      houseImgSrc: "/assets/interior.jpg",
       id: 8
     }
   ];
