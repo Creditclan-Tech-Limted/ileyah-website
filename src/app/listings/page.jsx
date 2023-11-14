@@ -332,22 +332,11 @@ const Page = () => {
                   setShowModal(true)
                 )} >Post a Request</Button>
               </div>
-
-              {
-                isFiltering && (
-
-                  <div className='flex justify-center mt-4'>
-                    <Button color='black' size='md' onClick={cancelFilter} >Clear Filter</Button>
-                  </div>
-
-                )
-              }
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
-
-                <form onSubmit={handleSubmit(onFilterProperty)}>
+                <form onSubmit={handleSubmit(onFilterProperty)} className='space-y-10'>
                   <div>
                     <p>House Type</p>
-                    <div class='flex items-center mb-4'>
+                    <div class='flex items-center my-5'>
                       <input
                         id='default-checkbox1'
                         type='checkbox'
@@ -391,7 +380,6 @@ const Page = () => {
                   </div>
 
                   <div>
-                    <p>Amount</p>
                     <div className='w-full my-4'>
                       <Input
                         bordered label='Rent ' block
@@ -431,7 +419,14 @@ const Page = () => {
 
                     </div>
                   </div>
-                  <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
+                  <div className="flex space-x-3">
+                    <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
+                    {
+                      isFiltering && (
+                        <Button variant='outlined' color='red' size='md' onClick={cancelFilter} >Clear Filter</Button>
+                      )
+                    }
+                  </div>
                 </form>
 
 
@@ -457,13 +452,7 @@ const Page = () => {
                 </div>
               </div>
             </div>
-
           </div>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
         </div>
       </div>
       <Explore />
