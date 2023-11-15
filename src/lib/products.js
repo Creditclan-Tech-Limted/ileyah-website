@@ -12,7 +12,7 @@ export default [
   },
   {
     name: 'Subscription Services',
-    description: `Unlock a World of Convenience - Elevate Your Lifestyle with Our Subscription Services.`,
+    description: `Unlock a World of Convenience.`,
     backgroundColor: 'bg-yellow-600',
     textColor: 'text-red-500',
     icon: IconHomeBolt,

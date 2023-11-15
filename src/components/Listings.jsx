@@ -45,7 +45,7 @@ const Listings = () => {
               Browse our wide range of products
             </h5>
             <h2 className="text-3xl md:text-6xl font-bold max-w-4xl">
-              Explore our rent listing, Pay <span ref={el} />
+              Explore our rent subscription listing, Pay <span ref={el} />
             </h2>
             <Link href='/listings' >
               <Button className="mt-8">

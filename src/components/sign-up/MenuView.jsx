@@ -24,7 +24,7 @@ function MenuView({ onNext, handleToggle }) {
       </div>
       <div className="pt-70">
         <p className="font-bold text-3xl text-deep-blue leading-[1.1]">
-          Welcome. <br /> Pay your rent monthly forever.
+          Pay your rent in monthly subscriptions forever.
         </p>
         <p className="text-cc-dark mt-2">
           Please choose a rent now pay later option
@@ -43,10 +43,10 @@ function MenuView({ onNext, handleToggle }) {
             </div>
             <div className="px-6">
               <p className="text-lg font-medium text-left">
-                Browse Rental Listings
+                Browse Rental Listings across your region
               </p>
               <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit fugiat.
+                Browse 1000+ subscription tenancy
                 {/* Renew your house rent on a monthly basis while we handle the full payment */}
               </p>
             </div>
@@ -119,13 +119,13 @@ function MenuView({ onNext, handleToggle }) {
           </div>
         </div>
       </div>
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <p className="font-medium cursor-pointer">
           Already have an account? <a onClick={() => onNext("user-details")} className='text-blue-500'>
             Check request
           </a>
         </p>
-      </div>
+      </div> */}
     </>
   );
 }

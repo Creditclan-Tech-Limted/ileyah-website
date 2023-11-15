@@ -249,7 +249,9 @@ const Page = () => {
           <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4 md:hidden">
             <p className='inline-flex'>
               <IconMoodCry className='mr-2' />
+              <span className=''>  
               Didn't find what you're looking for?
+              </span>
             </p>
             <Button color='white' size='sm' onClick={() => (
               setCall(true),
@@ -324,16 +326,18 @@ const Page = () => {
             <div className='hidden md:block'>
               <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
-                  <IconMoodCry className='mr-2' />
+                  <IconMoodCry size={30} className='mr-2' />
+                  <span className='text-3xl'>
                   Didn't find what you're looking for?
+                  </span>
                 </p>
-                <Button color='white' size='sm' onClick={() => (
+                <Button className='ml-6' color='white' size='sm' onClick={() => (
                   setCall(true),
                   setShowModal(true)
                 )} >Post a Request</Button>
               </div>
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
-                <form onSubmit={handleSubmit(onFilterProperty)} className='space-y-10'>
+                <form onSubmit={handleSubmit(onFilterProperty)} className='space-y-6'>
                   <div>
                     <p>House Type</p>
                     <div class='flex items-center my-5'>
@@ -385,10 +389,10 @@ const Page = () => {
                         bordered label='Maximum Rent Amount' block
 
                         {...register("price", {
-                          required: {
-                            value: true,
-                            message: "amount is required"
-                          },
+                          // required: {
+                          //   value: true,
+                          //   message: "amount is required"
+                          // },
                           min: {
                             value: 300000,
                             message: "Please provide an amount greater than ₦100,000",
@@ -409,10 +413,10 @@ const Page = () => {
                       <Select
                         options={areas}
                         {...register("area", {
-                          required: {
-                            value: true,
-                            message: "location is required"
-                          },
+                          // required: {
+                          //   value: true,
+                          //   message: "location is required"
+                          // },
                         })}
                         error={errors?.area?.message}
                       />
@@ -431,7 +435,7 @@ const Page = () => {
 
 
                 <div>
-                  <p className='mb-3 italic'>Didn't find your choice property</p>
+                  <p className='mb-3 italic '>Didn't find your choice property</p>
                   <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setShowModal(true)}>
                     <div className="flex">
                       <div className="flex">

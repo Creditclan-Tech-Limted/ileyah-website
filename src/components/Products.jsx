@@ -11,7 +11,7 @@ const Products = ({ call }) => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Monthly', 'Weekly'],
+      strings: ['Monthly Subscription', 'Weekly Subscription'],
       typeSpeed: 100,
       backSpeed: 10,
       backDelay: 2000,
@@ -29,7 +29,7 @@ const Products = ({ call }) => {
       <div className="mt-[600px] md:mt-0 py-20 md:py-32 w-full bg-gray-900 text-white">
         <div className="container">
           <h2 className="text-5xl md:text-6xl font-bold max-w-4xl">
-            Experience peace. Pay your rent <span className="text-primary-500" ref={el} /> forever.
+            Experience peace. Pay your rent in <span className="text-primary-500" ref={el} /> forever.
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-16">
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
