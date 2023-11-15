@@ -382,7 +382,7 @@ const Page = () => {
                   <div>
                     <div className='w-full my-4'>
                       <Input
-                        bordered label='Rent ' block
+                        bordered label='Maximum Rent Amount' block
 
                         {...register("price", {
                           required: {

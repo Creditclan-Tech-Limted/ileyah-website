@@ -45,7 +45,7 @@ const Footer = () => {
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    Rent to own(Beta)
+                    Subscription Services
                   </Link>
                 </div>
                 <div>
