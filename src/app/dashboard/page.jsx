@@ -72,45 +72,45 @@ const Page = ({ className }) => {
 
   const getRecoveryInfo = async (creditclan_request_id) => {
     try {
-      // const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
-      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '298315' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
+      const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
+      // const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '298315' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       // const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '298203' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
-
       setRecovery(res?.data?.data)
-
-      const schedule = res?.data?.data?.currentLoan[0].schedules;
-      let overdueBalances = [];
-      let nextPayment = null;
-      let nextPaymentDate = null;
-      let nextMonth = null;
-      let nextTillEnd = null;
-      let nextTillEndDate = null;
-      let nextTillEndTotal = null;
-      const hasFullyPaid = schedule.every(i => +i.how_much_remaining === 0)
-      console.log({ schedule, hasFullyPaid });
-      if (!hasFullyPaid) {
-        overdueBalances = schedule?.filter((i) => {
-          return isBefore(new Date(i.repayment_date), new Date()) && +i.how_much_remaining > 0;
-        })
-        if (overdueBalances.length > 0) {
-          nextPayment = overdueBalances.reduce((acc, cur) => acc + (+cur?.how_much_remaining), 0);
-          nextPaymentDate = overdueBalances[0]?.repayment_date
-          const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
-          nextTillEnd = schedule.filter((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
-          nextTillEndTotal = nextTillEnd.reduce((acc, cur) => acc + (+cur?.how_much_remaining), 0)
-          // console.log({ next, nextTillEnd, nextTillEndTotal });
-          nextMonth = next;
-        } else {
-          const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
-          console.log({ next });
-          nextPayment = +next.how_much_remaining;
-          nextPaymentDate = next?.repayment_date
+      if (res?.data?.data) {
+        const schedule = res?.data?.data?.currentLoan[0].schedules;
+        let overdueBalances = [];
+        let nextPayment = null;
+        let nextPaymentDate = null;
+        let nextMonth = null;
+        let nextTillEnd = null;
+        let nextTillEndDate = null;
+        let nextTillEndTotal = null;
+        const hasFullyPaid = schedule.every(i => +i.how_much_remaining === 0)
+        console.log({ schedule, hasFullyPaid });
+        if (!hasFullyPaid) {
+          overdueBalances = schedule?.filter((i) => {
+            return isBefore(new Date(i.repayment_date), new Date()) && +i.how_much_remaining > 0;
+          })
+          if (overdueBalances.length > 0) {
+            nextPayment = overdueBalances.reduce((acc, cur) => acc + (+cur?.how_much_remaining), 0);
+            nextPaymentDate = overdueBalances[0]?.repayment_date
+            const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
+            nextTillEnd = schedule.filter((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
+            nextTillEndTotal = nextTillEnd.reduce((acc, cur) => acc + (+cur?.how_much_remaining), 0)
+            // console.log({ next, nextTillEnd, nextTillEndTotal });
+            nextMonth = next;
+          } else {
+            const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
+            console.log({ next });
+            nextPayment = +next.how_much_remaining;
+            nextPaymentDate = next?.repayment_date
+          }
         }
-      }
 
-      setRecoveryFilter({
-        hasFullyPaid, overdueBalances, nextPayment, nextPaymentDate, nextMonth, nextTillEnd, nextTillEndTotal
-      })
+        setRecoveryFilter({
+          hasFullyPaid, overdueBalances, nextPayment, nextPaymentDate, nextMonth, nextTillEnd, nextTillEndTotal
+        })
+      }
     } catch (error) {
       console.log({ error });
     }
@@ -185,7 +185,7 @@ const Page = ({ className }) => {
   return (
     <>
       <div className="h-screen flex">
-        {isGetLoanDetailsLoading && (
+        {globalLoading && (
           <div className='my-auto mx-auto relative'>
             <div role="status" className="space-y-2.5 animate-pulse max-w-lg relative">
               <div className="relative flex items-center w-full space-x-2">
@@ -197,7 +197,7 @@ const Page = ({ className }) => {
             <Loader text='Loading...' />
           </div>
         )}
-        {!isGetLoanDetailsLoading && (
+        {!globalLoading && (
           <>
             <div className='p-10 space-y-10'>
               <div className="flex">
@@ -282,16 +282,16 @@ const Page = ({ className }) => {
                                       <div>
                                         <div className="w-full bg-gray-200 rounded-b-xl">
                                           {!pendingRequest?.creditclan_request_id && (
-                                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
+                                            <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
                                           )}
                                           {
                                             pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
-                                              <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
+                                              <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
                                             )
                                           }
                                           {
                                             pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
-                                              <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
+                                              <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
                                             )
                                           }
                                         </div>

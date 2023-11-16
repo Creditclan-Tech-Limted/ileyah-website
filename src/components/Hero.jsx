@@ -18,7 +18,7 @@ const Hero = () => {
                 Providing <br /> freedom to tenants <br /> across Africa
               </h1>
               <p className="max-w-xl font-light text-xl text-gray-500 mt-4 md:text-lg text-primary">
-                We are helping millions of tenants pay their rent in easy, monthly instalment across Africa.
+                We are helping millions of tenants pay their rent in easy, monthly subscriptions across Africa.
               </p>
               <Button rightIcon={<IconArrowRight />} onClick={toggleIsSignupOpen} size="lg" className="mt-12">
                 Get started

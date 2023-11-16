@@ -120,12 +120,12 @@ const Navbar = ({ name }) => {
                 >
                   Product
                 </Link>
-                <Link
+                {/* <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/tenants"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
                 >
                   Tenants
-                </Link>
+                </Link> */}
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/landlords"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"

@@ -18,13 +18,13 @@ const Future = () => {
             </div>
             <div className="text-center">
               <h2 className="text-5xl font-[900] text-primary-400">
-                <CountUp start={0} duration={5} end={10} />k+
+                <CountUp start={0} duration={5} end={20} />k+
               </h2>
               <p className="text-white">Properties</p>
             </div>
             <div className="text-center mt-10 md:mt-0">
               <h2 className="text-5xl font-[900] text-primary-400">
-                <CountUp start={0} duration={5} end={15} />K+
+                <CountUp start={0} duration={5} end={2} />K+
               </h2>
               <p className="text-white">Tenants</p>
             </div>

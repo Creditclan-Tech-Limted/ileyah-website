@@ -11,8 +11,8 @@ export default [
     dashboardLink: '/',
   },
   {
-    name: 'Rent to Own(Beta)',
-    description: `We are partnering with estate developers to support you.`,
+    name: 'Subscription Services',
+    description: `Unlock a World of Convenience.`,
     backgroundColor: 'bg-yellow-600',
     textColor: 'text-red-500',
     icon: IconHomeBolt,

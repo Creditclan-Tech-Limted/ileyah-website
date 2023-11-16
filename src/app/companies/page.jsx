@@ -56,7 +56,6 @@ const Page = () => {
       <FAW />
       <Footer />
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
-
     </div>
   )
 }

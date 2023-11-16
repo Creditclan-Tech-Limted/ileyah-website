@@ -33,6 +33,7 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     logout();
     window.location.reload();
   };
@@ -104,9 +105,9 @@ const Navbar = () => {
                       )
                     }
                   </Hover>
-                  <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
+                  {/* <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
                     Tenants
-                  </Link>
+                  </Link> */}
                   <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                     Landlords
                   </Link>

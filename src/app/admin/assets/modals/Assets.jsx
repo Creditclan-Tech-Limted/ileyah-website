@@ -24,29 +24,29 @@ const AssetsModal = ({ isOpen, onClose, item }) => {
 
         {
           views === 'bio' && (
-            <div class="mt-5">
-              <div class="border-gray-200 rounded-2xl border-2 divide-y">
-                <p class="flex justify-between p-3">
+            <div className="mt-5">
+              <div className="border-gray-200 rounded-2xl border-2 divide-y">
+                <p className="flex justify-between p-3">
                   <div>Name:</div>
                   <div>Ileyah 01</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Address:</div>
                   <div>Ileyah 01</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Acq Date:</div>
                   <div>Ileyah 01</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Status:</div>
                   <div>Ileyah 01</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Area:</div>
                   <div>Ileyah 01</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Lga:</div>
                   <div>Ileyah 01</div>
                 </p>
@@ -57,29 +57,29 @@ const AssetsModal = ({ isOpen, onClose, item }) => {
 
         {
           views == 'rent' && (
-            <div class="mt-5">
-              <div class="border-gray-200 rounded-2xl border-2 divide-y">
-                <p class="flex justify-between p-3">
+            <div className="mt-5">
+              <div className="border-gray-200 rounded-2xl border-2 divide-y">
+                <p className="flex justify-between p-3">
                   <div>Rent:</div>
                   <div>3,000,000.00</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>No of Years paid:</div>
                   <div>2 year(s)</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Service Charge:</div>
                   <div>2,000,000</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Agreement:</div>
                   <div>2,000,000</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Agency:</div>
                   <div>2,000,000</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Caution:</div>
                   <div>2,000,000</div>
                 </p>
@@ -90,25 +90,25 @@ const AssetsModal = ({ isOpen, onClose, item }) => {
 
         {
           views === 'l/agents' && (
-            <div class="mt-5">
-              <div class="border-gray-200 rounded-2xl border-2 divide-y">
-                <p class="flex justify-between p-3">
+            <div className="mt-5">
+              <div className="border-gray-200 rounded-2xl border-2 divide-y">
+                <p className="flex justify-between p-3">
                   <div>Name:</div>
                   <div>3,000,000.00</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Phone:</div>
                   <div>2 year(s)</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Address:</div>
                   <div>2,000,000</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Account Number:</div>
                   <div>2,000,000</div>
                 </p>
-                <p class="flex justify-between p-3">
+                <p className="flex justify-between p-3">
                   <div>Bank:</div>
                   <div>2,000,000</div>
                 </p>
@@ -146,7 +146,7 @@ const AssetsModal = ({ isOpen, onClose, item }) => {
 
         {
           views === 'comments' && (
-            <div class="border-black rounded-lg border divide-y divide-black mt-5">
+            <div className="border-black rounded-lg border divide-y divide-black mt-5">
               <div className="p-5">
                 <div className="flex justify-between">
                   <p className="inline-flex font-semibold"> <IconUserCircle size={15} className="mt-[5px] mr-1" /> Ileyah Admin</p>
@@ -176,27 +176,27 @@ const AssetsModal = ({ isOpen, onClose, item }) => {
                 <div className="mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, ex quo nulla nam, earum velit quas in omnis quibusdam culpa suscipit incidunt praesentium illum molestias mollitia commodi eaque corporis laborum!</div>
               </div>
 
-              {/* <p class="flex justify-between p-3">
+              {/* <p className="flex justify-between p-3">
                 <div>Name:</div>
                 <div>Ileyah 01</div>
               </p>
-              <p class="flex justify-between p-3">
+              <p className="flex justify-between p-3">
                 <div>Address:</div>
                 <div>Ileyah 01</div>
               </p>
-              <p class="flex justify-between p-3">
+              <p className="flex justify-between p-3">
                 <div>Acq Date:</div>
                 <div>Ileyah 01</div>
               </p>
-              <p class="flex justify-between p-3">
+              <p className="flex justify-between p-3">
                 <div>Status:</div>
                 <div>Ileyah 01</div>
               </p>
-              <p class="flex justify-between p-3">
+              <p className="flex justify-between p-3">
                 <div>Area:</div>
                 <div>Ileyah 01</div>
               </p>
-              <p class="flex justify-between p-3">
+              <p className="flex justify-between p-3">
                 <div>Lga:</div>
                 <div>Ileyah 01</div>
               </p> */}

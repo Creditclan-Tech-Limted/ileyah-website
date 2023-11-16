@@ -51,6 +51,7 @@ const Page = ({ className }) => {
   }
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
 

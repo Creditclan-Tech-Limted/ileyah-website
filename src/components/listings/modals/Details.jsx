@@ -91,7 +91,7 @@ const Details = ({ property, onClose, onNext }) => {
         <div className="flex space-x-5">
           <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button>
           {/* <Button block onClick={chooseProperty}> I want this </Button> */}
-          <Button block onClick={viewPlans} > View Plans </Button>
+          <Button block onClick={viewPlans} > View subscription </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">
           {/* <a target="_blank" href={`https://${property?.link}`} rel="noopener noreferrer"> Check Property Source...</a> */}
@@ -112,7 +112,7 @@ const Details = ({ property, onClose, onNext }) => {
       {openWantThis && (
         <WantThis onClose={() => setOpenWantThis(false)} />
       )}
-      <Plans isOpen={openViewPlans} onClose={() => setopenViewPlans(false)} />
+      <Plans isOpen={openViewPlans} onClose={() => setopenViewPlans(false)} property={property} />
     </>
   )
 }

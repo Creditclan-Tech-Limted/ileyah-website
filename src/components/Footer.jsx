@@ -45,7 +45,7 @@ const Footer = () => {
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    Rent to own(Beta)
+                    Subscription Services
                   </Link>
                 </div>
                 <div>
@@ -121,7 +121,7 @@ const Footer = () => {
                     support@ileyah.com
                   </Link>
                 </div>
-                <div>
+                {/* <div>
                   <Link
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
@@ -129,7 +129,7 @@ const Footer = () => {
                     <IconMapPin size={20} className='mr-5'/>
                     77, Samuel Adedoyin street, Victoria Island, Lagos.
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

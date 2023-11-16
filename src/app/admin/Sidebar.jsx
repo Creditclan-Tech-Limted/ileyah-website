@@ -62,6 +62,7 @@ const Sidebar = () => {
   const { data, updateData } = useSignupStore((state) => state);
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
 

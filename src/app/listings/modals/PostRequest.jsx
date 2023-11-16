@@ -15,6 +15,12 @@ import { MultiSelect } from 'react-multi-select-component';
 
 const options = LocationData;
 
+const optionss = [
+  { label: "Grapes 🍇", value: "grapes" },
+  { label: "Mango 🥭", value: "mango" },
+  { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+];
+
 const PostRequest = ({ isOpen, onClose }) => {
   const toast = useToast();
   const router = useRouter();
@@ -26,6 +32,7 @@ const PostRequest = ({ isOpen, onClose }) => {
   const [area, setArea] = useState(typeof data?.find_me_house?.area === 'string' ? data?.find_me_house?.area : '');
   const [areas, setAreas] = useState(typeof data?.find_me_house?.area === 'object' ? data?.find_me_house?.area : []);
   const [loggedIn, setLoggedIn] = useState();
+  const [selected, setSelected] = useState([]);
 
   const house_types = [
     { value: 'room-only', text: 'Room only' },
@@ -63,7 +70,6 @@ const PostRequest = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (enterArea && areas.length) setAreas([]);
     if (!enterArea && area.length) setArea('');
-    // eslint-disable-next-line
   }, [enterArea, area.length, areas.length]);
 
   useEffect(() => {
@@ -113,22 +119,16 @@ const PostRequest = ({ isOpen, onClose }) => {
                   })}
                   error={errors?.house_types?.message}
                 />
-                <p className='-mt-5'>Area (Select multiple)</p>
                 {
                   !enterArea ? (
                     <>
-                      <div className='mb-3'>
+                      <div>
+                        <h1 className='mb-2'>Area (Select Multiple)</h1>
                         <MultiSelect
                           options={options}
-                          value={areas}
-                          onChange={value => setAreas(value)}
-                          labelledBy="Select an ara"
-                          {...register('area', {
-                            required: {
-                              value: true,
-                              message: 'area is required',
-                            },
-                          })}
+                          value={selected}
+                          onChange={setSelected}
+                          labelledBy="Select"
                         />
                       </div>
                       <button
@@ -165,21 +165,6 @@ const PostRequest = ({ isOpen, onClose }) => {
                     </>
                   )
                 }
-
-                {/* <Select
-                  // multiple
-                  options={areas}
-                  label='Area'
-                  name='Area'
-                  {...register('area', {
-                    required: {
-                      value: true,
-                      message: 'area is required',
-                    },
-                  })}
-                  error={errors?.area?.message}
-                /> */}
-
                 <TextArea
                   label='Comments' bordered
                   {...register('comments', {

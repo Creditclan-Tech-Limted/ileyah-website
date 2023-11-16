@@ -56,9 +56,9 @@ const Artisans = () => {
                         <div className="item h-[350px] shadow text-white">
                           <div
                             style={{
-                              background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${houses.houseImgSrc})`,
+                              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url(${houses.houseImgSrc})`,
                             }}
-                            className="rounded-xl h-full bg-cover"
+                            className="rounded-xl h-full bg-cover bg-no-repeat object-fit"
                           >
                             <div className="text-left text-white p-10 h-full">
                               <div>

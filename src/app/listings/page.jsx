@@ -97,15 +97,13 @@ const Page = () => {
         }
         setProperties([...properties, ...array])
       }
-
-
     } catch (error) {
       console.log({ error });
     }
   }
 
   useEffect(() => {
-    if (data?.pages[0]?.array?.length > 0) {
+    if (data && data?.pages[0]?.array?.length > 0) {
       getPorperties(data?.pages[0]?.array)
     }
 
@@ -249,7 +247,9 @@ const Page = () => {
           <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4 md:hidden">
             <p className='inline-flex'>
               <IconMoodCry className='mr-2' />
-              Didn't find what you're looking for?
+              <span className=''>
+                Didn't find what you're looking for?
+              </span>
             </p>
             <Button color='white' size='sm' onClick={() => (
               setCall(true),
@@ -291,7 +291,7 @@ const Page = () => {
               </div>
             ) : (
               <div className=''>
-                {properties.map((m, i) => (
+                {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingFlex
                       key={i}
@@ -324,66 +324,57 @@ const Page = () => {
             <div className='hidden md:block'>
               <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
-                  <IconMoodCry className='mr-2' />
-                  Didn't find what you're looking for?
+                  <IconMoodCry size={30} className='mr-2' />
+                  <span className='text-3xl'>
+                    Didn't find what you're looking for?
+                  </span>
                 </p>
-                <Button color='white' size='sm' onClick={() => (
+                <Button className='ml-6' color='white' size='sm' onClick={() => (
                   setCall(true),
                   setShowModal(true)
                 )} >Post a Request</Button>
               </div>
-
-              {
-                isFiltering && (
-
-                  <div className='flex justify-center mt-4'>
-                    <Button color='black' size='md' onClick={cancelFilter} >Clear Filter</Button>
-                  </div>
-
-                )
-              }
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
-
-                <form onSubmit={handleSubmit(onFilterProperty)}>
+                <form onSubmit={handleSubmit(onFilterProperty)} className='space-y-6'>
                   <div>
                     <p>House Type</p>
-                    <div class='flex items-center mb-4'>
+                    <div className='flex items-center my-5'>
                       <input
                         id='default-checkbox1'
                         type='checkbox'
                         value='1'
                         checked={checkedInput === '1'}
                         onChange={() => setCheckedInput('1')}
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                        className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
 
-                      <label for='default-checkbox1' class='ml-2 text-base'>
+                      <label for='default-checkbox1' className='ml-2 text-base'>
                         One Bedroom
                       </label>
                     </div>
-                    <div class='flex items-center mb-4'>
+                    <div className='flex items-center mb-4'>
                       <input
                         id='default-checkbox2'
                         type='checkbox'
                         value='2'
                         checked={checkedInput === '2'}
                         onChange={() => setCheckedInput('2')}
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                        className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
-                      <label for='default-checkbox2' class='ml-2 text-base'>
+                      <label for='default-checkbox2' className='ml-2 text-base'>
                         Two Bedroom
                       </label>
                     </div>
-                    <div class='flex items-center mb-4'>
+                    <div className='flex items-center mb-4'>
                       <input
                         id='default-checkbox3'
                         type='checkbox'
                         value='3'
                         checked={checkedInput === '3'}
                         onChange={() => setCheckedInput('3')}
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                        className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
-                      <label for='default-checkbox3' class='ml-2 text-base'>
+                      <label for='default-checkbox3' className='ml-2 text-base'>
                         Three Bedroom
                       </label>
                     </div>
@@ -391,16 +382,15 @@ const Page = () => {
                   </div>
 
                   <div>
-                    <p>Amount</p>
                     <div className='w-full my-4'>
                       <Input
-                        bordered label='Rent ' block
+                        bordered label='Maximum Rent Amount' block
 
                         {...register("price", {
-                          required: {
-                            value: true,
-                            message: "amount is required"
-                          },
+                          // required: {
+                          //   value: true,
+                          //   message: "amount is required"
+                          // },
                           min: {
                             value: 300000,
                             message: "Please provide an amount greater than ₦100,000",
@@ -421,22 +411,29 @@ const Page = () => {
                       <Select
                         options={areas}
                         {...register("area", {
-                          required: {
-                            value: true,
-                            message: "location is required"
-                          },
+                          // required: {
+                          //   value: true,
+                          //   message: "location is required"
+                          // },
                         })}
                         error={errors?.area?.message}
                       />
 
                     </div>
                   </div>
-                  <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
+                  <div className="flex space-x-3">
+                    <Button type="submit" leftIcon={<IconSearch />} loading={loadingFilter}  >Apply Filter</Button>
+                    {
+                      isFiltering && (
+                        <Button variant='outlined' color='red' size='md' onClick={cancelFilter} >Clear Filter</Button>
+                      )
+                    }
+                  </div>
                 </form>
 
 
                 <div>
-                  <p className='mb-3 italic'>Didn't find your choice property</p>
+                  <p className='mb-3 italic '>Didn't find your choice property</p>
                   <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setShowModal(true)}>
                     <div className="flex">
                       <div className="flex">
@@ -457,13 +454,7 @@ const Page = () => {
                 </div>
               </div>
             </div>
-
           </div>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
         </div>
       </div>
       <Explore />

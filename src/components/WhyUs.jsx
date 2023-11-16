@@ -51,10 +51,10 @@ const WhyUs = () => {
                 </div>
               </div>
               <h3 className=" text-lg font-bold">
-                Rent To Own (Beta)
+                Subscription Services
               </h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                We are partnering with estate developers to support you.
+              Unlock a World of Convenience - Elevate Your Lifestyle with Our Subscription Services
               </p>
             </div>
             <div>
