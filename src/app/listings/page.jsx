@@ -105,7 +105,7 @@ const Page = () => {
   }
 
   useEffect(() => {
-    if (data?.pages[0]?.array?.length > 0) {
+    if (data && data?.pages[0]?.array?.length > 0) {
       getPorperties(data?.pages[0]?.array)
     }
 
@@ -249,8 +249,8 @@ const Page = () => {
           <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4 md:hidden">
             <p className='inline-flex'>
               <IconMoodCry className='mr-2' />
-              <span className=''>  
-              Didn't find what you're looking for?
+              <span className=''>
+                Didn't find what you're looking for?
               </span>
             </p>
             <Button color='white' size='sm' onClick={() => (
@@ -328,7 +328,7 @@ const Page = () => {
                 <p className='inline-flex'>
                   <IconMoodCry size={30} className='mr-2' />
                   <span className='text-3xl'>
-                  Didn't find what you're looking for?
+                    Didn't find what you're looking for?
                   </span>
                 </p>
                 <Button className='ml-6' color='white' size='sm' onClick={() => (

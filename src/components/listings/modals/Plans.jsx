@@ -51,7 +51,7 @@ const artisans = [
   }
 ]
 
-const Plans = ({ isOpen, onClose }) => {
+const Plans = ({ isOpen, onClose, property }) => {
   const array = [];
   const toast = useToast();
   const router = useRouter();
@@ -98,9 +98,9 @@ const Plans = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose} title='Subscriptions Plans' smLonger={true}>
+      <Drawer isOpen={isOpen} onClose={onClose} title='Choose your plan' smLonger={true}>
 
-        <p className="mb-5">Please select the subs you want to add to your plans</p>
+        <p className="mb-5">Please select plan is {formatCurrency(property.price / 12)}/mo pls choose subscription services</p>
         <div className="border border-slate-300 rounded-xl">
           <Collapsible
             header={(
