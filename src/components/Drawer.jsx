@@ -49,15 +49,15 @@ const Drawer = (
               exit="exit"
               className={classNames(
                 "fixed right-0 bottom-0 top-0 w-full h-full overflow-hidden flex flex-col justify-end z-[999]",
-                "md:p-4 pointer-events-none",
-                longer ? 'sm:max-w-4xl' : 'sm:max-w-2xl',
+                "pointer-events-none",
+                longer ? 'sm:max-w-3xl' : 'sm:max-w-2xl',
                 smLonger ? 'sm:max-w-3xl' : 'sm:max-w-2xl'
               )}
             >
               <div
                 className={classNames(
                   "relative inset-x-0 bottom-0 bg-white h-min max-h-full sm:h-full overflow-x-hidden overflow-y-auto",
-                  "rounded-t-[30px] md:rounded-r-[30px] md:rounded-l-[30px] min-h-[50vh] flex flex-col pointer-events-auto",
+                  "rounded-t-[30px] md:!rounded-tr-none md:rounded-l-[30px] min-h-[50vh] flex flex-col pointer-events-auto",
                   { 'p-8 md:p-10': padding }
                 )}
               >

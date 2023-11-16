@@ -89,7 +89,7 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="-pt-10">{property?.createdAt?.slice(0, 10)}</p>
         <hr />
         <div className="flex space-x-5">
-          <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button>
+          {/* <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button> */}
           {/* <Button block onClick={chooseProperty}> I want this </Button> */}
           <Button block onClick={viewPlans} > View subscription </Button>
         </div>
