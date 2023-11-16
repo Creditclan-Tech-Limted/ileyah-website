@@ -260,7 +260,7 @@ const Page = () => {
           </div>
 
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
-            {isGridView ? (
+            {!isGridView ? (
               <div className=' grid md:grid-cols-2 gap-10'>
                 {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
@@ -293,7 +293,7 @@ const Page = () => {
               </div>
             ) : (
               <div className=''>
-                {properties.map((m, i) => (
+                {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingFlex
                       key={i}

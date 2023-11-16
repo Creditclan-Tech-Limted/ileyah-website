@@ -2,6 +2,8 @@ import { formatCurrency } from '@/lib/utils';
 import { IconBath, IconBed, IconHeart, IconMapPin, IconMapPinFilled, IconMapPins } from '@tabler/icons-react'
 
 const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNum, bedNum, bathNum, bed, bath, length, role, avatar, onClick }) => {
+
+  console.log(houseImg);
   return (
     <div onClick={onClick}>
       <div className='max-w-sm w-full relative bg-white lg:max-w-4xl lg:flex lg:gap-4 p-4 shadow mt-4 rounded-2xl'>
