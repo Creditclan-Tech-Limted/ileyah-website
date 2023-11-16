@@ -15,28 +15,7 @@ const images = [
   "https://images.nigeriapropertycentre.com/properties/images/thumbs/1941982/0651d2073115ef-brand-new-mini-flat-at-abule-egba-mini-flats-for-rent-abule-egba-agege-lagos.jpg"
 ]
 
-export default function ListingsGrid({
-  heading,
-  price,
-  title,
-  houseImg,
-  location,
-  name,
-  lengthNum,
-  bedNum,
-  bathNum,
-  bed,
-  bath,
-  length,
-  role,
-  avatar,
-  url,
-  property,
-  onClick,
-  index
-}) {
-
-  console.log(houseImg[0]);
+export default function ListingsGrid({ heading, price, title, houseImg, location, name, lengthNum, bedNum, bathNum, bed, bath, length, role, avatar, url, property, onClick, index }) {
   const [isImageBroken, setImageBroken] = useState(false);
   const handleImageError = () => {
     setImageBroken(true);
@@ -103,7 +82,7 @@ export default function ListingsGrid({
             </div>
             <div className='flex'>
               <p className='text-lg font-bold bg-white absolute bottom-[300px] md:bottom-[280px] rounded-lg p-2 '>
-                {formatCurrency(Number(price) / 12)} 
+                {formatCurrency(Number(price) / 12)}
                 <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>

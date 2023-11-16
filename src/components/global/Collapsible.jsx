@@ -4,13 +4,13 @@ import classNames from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconChevronRight, IconPlus } from "@tabler/icons-react";
 
-const Collapsible = ({ header, content }) => {
-  const [expanded, setExpanded] = useState(false);
+const Collapsible = ({ header, content, defaultIsOpen = false }) => {
+  const [expanded, setExpanded] = useState(defaultIsOpen);
 
   return (
     <div className="overflow-hidden">
       <div
-        onClick={ () => setExpanded(v => !v) }
+        onClick={() => setExpanded(v => !v)}
         className={
           classNames(
             "flex justify-between items-center cursor-pointer px-6 py-4",
@@ -18,22 +18,22 @@ const Collapsible = ({ header, content }) => {
           )
         }
       >
-        { header }
+        {header}
         <div>
           <div
-            className={ classNames(
+            className={classNames(
               "w-8 h-8 rounded-full border flex items-center justify-center",
               { 'bg-primary-700 text-white border-0': expanded }
-            ) }
+            )}
           >
             <IconPlus
               size="20"
-              className={ classNames("transition-all duration-300", { 'rotate-90': expanded }) }
+              className={classNames("transition-all duration-300", { 'rotate-90': expanded })}
             />
           </div>
         </div>
       </div>
-      <AnimatePresence initial={ false } mode="wait" onExitComplete={ () => null }>
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         {
           expanded && (
             <motion.section
@@ -41,12 +41,12 @@ const Collapsible = ({ header, content }) => {
               initial="collapsed"
               animate="open"
               exit="collapsed"
-              variants={ {
+              variants={{
                 open: { height: "auto" },
                 collapsed: { height: 0 }
-              } }
+              }}
             >
-              { content }
+              {content}
             </motion.section>
           )
         }

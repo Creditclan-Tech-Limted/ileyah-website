@@ -100,9 +100,11 @@ const Plans = ({ isOpen, onClose, property }) => {
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title='Choose your plan' smLonger={true}>
 
-        <p className="mb-5">Please select plan is {formatCurrency(property.price / 12)}/mo pls choose subscription services</p>
+        <p>Your Monthly Repayment is <span className="font-bold">{formatCurrency(property.price / 12)}</span> /mo</p>
+        <p className="mb-5">Please select plan a subscription services</p>
         <div className="border border-slate-300 rounded-xl">
           <Collapsible
+          defaultIsOpen={true}
             header={(
               <h5 className="md:text-lg font-medium inline-flex">
                 <span className="w-12 h-10 rounded-full text-white grid place-items-center my-auto bg-primary-600">
@@ -124,13 +126,13 @@ const Plans = ({ isOpen, onClose, property }) => {
                 <swiper-container slides-per-view='1.7' space-between='20' >
                   <swiper-slide>
                     <div className="flex">
-                      <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3">
+                      <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3 h-full">
                         <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
                         <p className="font-bold">Basic</p>
                         <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
                         <p className="text-4xl font-bold">5,000</p>
-                        <p className="font-bold text-sm">What's included:</p>
-                        <div>
+                        <p className="font-bold text-sm">No Subscription</p>
+                        {/* <div>
                           <p className="inline-flex">
                             <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
                           </p> <br />
@@ -149,8 +151,8 @@ const Plans = ({ isOpen, onClose, property }) => {
                           <p className="inline-flex">
                             <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
                           </p> <br />
-                        </div>
-                        <div className="mt-10">
+                        </div> */}
+                        <div className="mt-auto">
                           <Button block className='mt-10'>Choose Plan</Button>
                         </div>
                       </div>
@@ -196,7 +198,7 @@ const Plans = ({ isOpen, onClose, property }) => {
                         <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
                         <p className="font-bold">Starter</p>
                         <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                        <p className="text-4xl font-bold">5000</p>
+                        <p className="text-4xl font-bold">50,000</p>
                         <p className="font-bold text-sm">What's included:</p>
                         <div>
                           <p className="inline-flex">
@@ -224,12 +226,46 @@ const Plans = ({ isOpen, onClose, property }) => {
                       </div>
                     </div>
                   </swiper-slide>
+                  <swiper-slide>
+                    <div className="flex">
+                      <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
+                        <IconStar size={26} color="blue" className="bg-gray-200 p-1 rounded-full" />
+                        <p className="font-bold">Starter</p>
+                        <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
+                        <p className="text-4xl font-bold">100,000</p>
+                        <p className="font-bold text-sm">What's included:</p>
+                        <div className="text-white">
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p>
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p> <br />
+                          <p className="inline-flex">
+                            <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                          </p>
+                        </div>
+                        <div className="mt-10">
+                          <Button block className='mt-10'>Choose Plan</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </swiper-slide>
                 </swiper-container>
               </div>
             )}
           />
         </div>
-        <div className='mt-5 space-y-5'>
+        {/* <div className='mt-5 space-y-5'>
           {artisans.map((item, index) => (
             <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" key={index}>
               <div className="flex">
@@ -252,11 +288,11 @@ const Plans = ({ isOpen, onClose, property }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
-        <div className="mt-10">
+        {/* <div className="mt-10">
           <Button onClick={signUp} >Continue</Button>
-        </div>
+        </div> */}
 
       </Drawer>
     </>
