@@ -282,16 +282,16 @@ const Page = ({ className }) => {
                                       <div>
                                         <div className="w-full bg-gray-200 rounded-b-xl">
                                           {!pendingRequest?.creditclan_request_id && (
-                                            <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
+                                            <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
                                           )}
                                           {
                                             pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
-                                              <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
+                                              <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
                                             )
                                           }
                                           {
                                             pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
-                                              <div class="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
+                                              <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
                                             )
                                           }
                                         </div>

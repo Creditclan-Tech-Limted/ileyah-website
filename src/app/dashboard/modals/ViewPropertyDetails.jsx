@@ -90,22 +90,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                       {
                         views === 'upfront' && (
                           <>
-                            <div class="my-5">
-                              <div class="text-center items-center justify-center">
-                                <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                  <p class="flex justify-between p-3">
+                            <div className="my-5">
+                              <div className="text-center items-center justify-center">
+                                <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                                  <p className="flex justify-between p-3">
                                     <div>Amount:</div>
                                     <div>{formatCurrency(upfront?.transaction_payload?.amount)}</div>
                                   </p>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Customer Name:</div>
                                     <div>{upfront?.transaction_payload?.originatorname}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Customer Account  Number:</div>
                                     <div>{upfront?.transaction_payload.originatoraccountnumber}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Ileyah Account:</div>
                                     <div>{upfront?.transaction_payload?.craccount}</div>
                                   </div>
@@ -118,22 +118,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
 
                       {
                         views === 'bio' && (
-                          <div class="my-5">
-                            <div class="text-center items-center justify-center">
-                              <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                <p class="flex justify-between p-3">
+                          <div className="my-5">
+                            <div className="text-center items-center justify-center">
+                              <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                                <p className="flex justify-between p-3">
                                   <div>Rent:</div>
                                   <div>{formatCurrency(request?.amount)}</div>
                                 </p>
-                                <div class="flex justify-between p-3">
+                                <div className="flex justify-between p-3">
                                   <div>Upfront:</div>
                                   <div>{loan?.loan?.offers[0]?.upfront}</div>
                                 </div>
-                                <div class="flex justify-between p-3">
+                                <div className="flex justify-between p-3">
                                   <div>Monthly Repayments:</div>
                                   <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                                 </div>
-                                <div class="flex justify-between p-3">
+                                <div className="flex justify-between p-3">
                                   <div>Duration:</div>
                                   <div>12 Month(s)</div>
                                 </div>
@@ -146,14 +146,14 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                       {
                         views === 'repay-info' && (
                           <>
-                            <div class="my-5">
-                              <div class="text-center items-center justify-center">
-                                <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                  <div class="flex justify-between p-3">
+                            <div className="my-5">
+                              <div className="text-center items-center justify-center">
+                                <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                                  <div className="flex justify-between p-3">
                                     <div>Account Number:</div>
                                     <div>{recovery?.customer?.account_number}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Bank name:</div>
                                     <div>{'WEMA'}</div>
                                   </div>
@@ -256,22 +256,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                             <p>
                               You application is under review, <br />
                             </p>
-                            <div class="my-5">
-                              <div class="text-center items-center justify-center">
-                                <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                  <p class="flex justify-between p-3">
+                            <div className="my-5">
+                              <div className="text-center items-center justify-center">
+                                <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                                  <p className="flex justify-between p-3">
                                     <div>Rent:</div>
                                     <div>{formatCurrency(request?.amount)}</div>
                                   </p>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Upfront:</div>
                                     <div>{loan?.loan?.offers[0]?.upfront}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Monthly Repayments:</div>
                                     <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Duration:</div>
                                     <div>12 Month(s)</div>
                                   </div>
@@ -291,22 +291,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                             <p>
                               We have an offer for you. Find the details below.
                             </p>
-                            <div class="my-5">
-                              <div class="text-center items-center justify-center">
-                                <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                                  <p class="flex justify-between p-3">
+                            <div className="my-5">
+                              <div className="text-center items-center justify-center">
+                                <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                                  <p className="flex justify-between p-3">
                                     <div>Rent:</div>
                                     <div>{formatCurrency(request?.amount)}</div>
                                   </p>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Upfront:</div>
                                     <div>{loan?.loan?.offers[0]?.upfront}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Monthly Repayments:</div>
                                     <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                                   </div>
-                                  <div class="flex justify-between p-3">
+                                  <div className="flex justify-between p-3">
                                     <div>Duration:</div>
                                     <div>12 Month(s)</div>
                                   </div>
@@ -336,22 +336,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                   Sorry, We can not generate an offer for you <br />
                   <p>Contact us on our support lines if you require any assistance.</p>
                 </p>
-                <div class="my-5">
-                  <div class="text-center items-center justify-center">
-                    <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                      <p class="flex justify-between p-3">
+                <div className="my-5">
+                  <div className="text-center items-center justify-center">
+                    <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                      <p className="flex justify-between p-3">
                         <div>Rent:</div>
                         <div>{formatCurrency(request?.amount)}</div>
                       </p>
-                      <div class="flex justify-between p-3">
+                      <div className="flex justify-between p-3">
                         <div>Upfront:</div>
                         <div>{loan?.loan?.offers[0]?.upfront}</div>
                       </div>
-                      <div class="flex justify-between p-3">
+                      <div className="flex justify-between p-3">
                         <div>Monthly Repayments:</div>
                         <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                       </div>
-                      <div class="flex justify-between p-3">
+                      <div className="flex justify-between p-3">
                         <div>Duration:</div>
                         <div>12 Month(s)</div>
                       </div>
@@ -430,22 +430,22 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
           <p>
             You have a pending request with an offer, <br /> Please check details below
           </p>
-          <div class="my-5">
-            <div class="text-center items-center justify-center">
-              <div class="border-gray-300 rounded-2xl border-2 divide-y">
-                <p class="flex justify-between p-3">
+          <div className="my-5">
+            <div className="text-center items-center justify-center">
+              <div className="border-gray-300 rounded-2xl border-2 divide-y">
+                <p className="flex justify-between p-3">
                   <div>Rent:</div>
                   <div>{formatCurrency(request?.amount)}</div>
                 </p>
-                <div class="flex justify-between p-3">
+                <div className="flex justify-between p-3">
                   <div>Upfront:</div>
                   <div>{loan?.loan?.offers[0]?.upfront}</div>
                 </div>
-                <div class="flex justify-between p-3">
+                <div className="flex justify-between p-3">
                   <div>Monthly Repayments:</div>
                   <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
                 </div>
-                <div class="flex justify-between p-3">
+                <div className="flex justify-between p-3">
                   <div>Duration:</div>
                   <div>12 Month(s)</div>
                 </div>

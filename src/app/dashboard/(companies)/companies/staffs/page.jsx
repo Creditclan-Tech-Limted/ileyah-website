@@ -54,14 +54,14 @@ const Page = () => {
         <div className='w-screen md:w-full'>
           <div className='mt-10 w-screen md:w-full'>
               {loading ? (
-                <div role='status' class='max-wsm animate-pulse'>
-                  <div class='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
-                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
-                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
-                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
-                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
-                  <div class='h-2 bg-gray-200 rounded-full dark:bg-gray-700 '></div>
-                  <span class='sr-only'>Loading...</span>
+                <div role='status' className='max-wsm animate-pulse'>
+                  <div className='h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5'></div>
+                  <div className='h-2 bg-gray-200 rounded-full dark:bg-gray-700 '></div>
+                  <span className='sr-only'>Loading...</span>
                 </div>
               ): 
               <>

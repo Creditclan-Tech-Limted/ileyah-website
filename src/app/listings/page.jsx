@@ -97,8 +97,6 @@ const Page = () => {
         }
         setProperties([...properties, ...array])
       }
-
-
     } catch (error) {
       console.log({ error });
     }
@@ -260,7 +258,7 @@ const Page = () => {
           </div>
 
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
-            {!isGridView ? (
+            {isGridView ? (
               <div className=' grid md:grid-cols-2 gap-10'>
                 {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
@@ -340,43 +338,43 @@ const Page = () => {
                 <form onSubmit={handleSubmit(onFilterProperty)} className='space-y-6'>
                   <div>
                     <p>House Type</p>
-                    <div class='flex items-center my-5'>
+                    <div className='flex items-center my-5'>
                       <input
                         id='default-checkbox1'
                         type='checkbox'
                         value='1'
                         checked={checkedInput === '1'}
                         onChange={() => setCheckedInput('1')}
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                        className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
 
-                      <label for='default-checkbox1' class='ml-2 text-base'>
+                      <label for='default-checkbox1' className='ml-2 text-base'>
                         One Bedroom
                       </label>
                     </div>
-                    <div class='flex items-center mb-4'>
+                    <div className='flex items-center mb-4'>
                       <input
                         id='default-checkbox2'
                         type='checkbox'
                         value='2'
                         checked={checkedInput === '2'}
                         onChange={() => setCheckedInput('2')}
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                        className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
-                      <label for='default-checkbox2' class='ml-2 text-base'>
+                      <label for='default-checkbox2' className='ml-2 text-base'>
                         Two Bedroom
                       </label>
                     </div>
-                    <div class='flex items-center mb-4'>
+                    <div className='flex items-center mb-4'>
                       <input
                         id='default-checkbox3'
                         type='checkbox'
                         value='3'
                         checked={checkedInput === '3'}
                         onChange={() => setCheckedInput('3')}
-                        class='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
+                        className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
-                      <label for='default-checkbox3' class='ml-2 text-base'>
+                      <label for='default-checkbox3' className='ml-2 text-base'>
                         Three Bedroom
                       </label>
                     </div>

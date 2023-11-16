@@ -35,6 +35,8 @@ export default function ListingsGrid({
   onClick,
   index
 }) {
+
+  console.log(houseImg[0]);
   const [isImageBroken, setImageBroken] = useState(false);
   const handleImageError = () => {
     setImageBroken(true);
