@@ -11,11 +11,13 @@ import Hover from '@/global/Hover';
 import products from '@/lib/products';
 import useGlobalStore from '@/store/global';
 
-const Navbar = () => {
+const Navbar = ({filterAction}) => {
+
   const toggleIsSignupOpen = useGlobalStore(state => state.toggleIsSignupOpen);
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
+
 
   useIsomorphicLayoutEffect(() => {
     if (isMobileNavVisible) document.scrollingElement.style.overflowY = 'hidden';
@@ -135,22 +137,22 @@ const Navbar = () => {
             </nav>
           </div>
           <div className='mt-20 grid-cols-6 gap-5 hidden md:grid'>
-            <div className='rounded px-10 py-6' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://fastly.picsum.photos/id/1021/200/303.jpg?hmac=qg2Q16h_k7J1-IykCJ5S4RDIf8sJ136v-aD6tK4NjBw')` }}>
+            <div onClick={()=>filterAction("Festac")}  className='rounded px-10 py-6 cursor-pointer' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://fastly.picsum.photos/id/1021/200/303.jpg?hmac=qg2Q16h_k7J1-IykCJ5S4RDIf8sJ136v-aD6tK4NjBw')` }}>
               <p className='text-center'>Festac</p>
             </div>
-            <div className='rounded px-10 py-6 bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU')` }}>
+            <div onClick={()=>filterAction("Surulere")}  className='rounded px-10 py-6 cursor-pointer bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU')` }}>
               <p className='text-center'>Surulere</p>
             </div>
-            <div className='rounded px-10 py-6 bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/305')` }}>
+            <div onClick={()=>filterAction("Apapa")} className='rounded px-10 py-6 cursor-pointer bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/305')` }}>
               <p className='text-center'>Apapa</p>
             </div>
-            <div className='rounded px-10 py-6 bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/301` }}>
+            <div onClick={()=>filterAction("Oshodi")} className='rounded px-10 py-6 cursor-pointer bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/301` }}>
               <p className='text-center'>Oshodi</p>
             </div>
-            <div className='rounded px-10 py-6 bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/302')` }}>
+            <div onClick={()=>filterAction("Ikeja")} className='rounded px-10 py-6 cursor-pointer bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/302')` }}>
               <p className='text-center'>Ikeja</p>
             </div>
-            <div className='rounded px-10 py-6 bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/304')` }}>
+            <div onClick={()=>filterAction("V I")} className='rounded px-10 py-6 cursor-pointer bg-cover' style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url('https://picsum.photos/200/304')` }}>
               <p className='text-center'>V I</p>
             </div>
           </div>

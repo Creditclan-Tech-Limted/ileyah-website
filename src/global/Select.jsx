@@ -30,9 +30,9 @@ const Select = forwardRef((
                   <option value="">Please select an option</option>
                   {
                     options.map(option => (
-                      <>
+                   
                         <option key={option.value} value={option.value}>{option.text}</option>
-                      </>
+                    
                     ))
                   }
                 </>

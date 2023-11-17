@@ -1,14 +1,14 @@
 'use client'
 import ListingFlex from '@/components/listings/ListingFlex'
 import ListingsGrid from '@/components/listings/ListingsGrid'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Explore from '@/components/listings/Explore'
 import Pagination from '@/components/listings/pagination'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import Footer from '@/components/Footer'
 import axios from 'axios'
-import { useQuery, useInfiniteQuery } from '@tanstack/react-query'
+
 import ProDetails from '@/components/listings/modals/property_details'
 import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
@@ -46,30 +46,21 @@ const Page = () => {
   const bottomRef = useRef(null)
 
   const apiUrl = 'https://kuda-creditclan-api.herokuapp.com/'
+  
   const {
     data,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    status,
-    isFirstTry
   } = usePropertyQuery({
     apiUrl,
   });
 
-  const handleScroll = (event) => {
-    const scrollPosition = window.innerHeight + window.scrollY
-    const pageHeight = document.body.offsetHeight
-    const middleOfPage = pageHeight / 2
 
-    setScrollTop(event.target.scrollingElement.scrollTop)
 
-    if (scrollPosition >= middleOfPage) {
-      if (call) return
-      setCall(true)
-      setShowModal(true)
-    }
-  }
+
+ 
+  
 
   const handleClose = async () => {
     try {
@@ -87,30 +78,39 @@ const Page = () => {
     })
   }
 
-  const getPorperties = async (returnedData) => {
-    try {
-      if (returnedData) {
-        let array = [...returnedData]
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
+
+
+  const getPorperties = useCallback(
+    (returnedData) => {
+      try {
+        if (returnedData) {
+          let array = [...returnedData]
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+          }
+          setProperties([...properties, ...array])
+          setLoading(false)
         }
-        setProperties([...properties, ...array])
+  
+  
+      } catch (error) {
+        console.log({ error });
       }
-    } catch (error) {
-      console.log({ error });
-    }
-  }
+    },
+    [properties],
+  )
+  
+
 
   useEffect(() => {
     if (data && data?.pages[0]?.array?.length > 0) {
       getPorperties(data?.pages[0]?.array)
     }
+  }, [data])
 
-    if (isFirstTry) {
-      setLoading(false)
-    }
-  }, [data, isFirstTry])
+
+
 
   useEffect(() => {
     const bottom = bottomRef?.current;
@@ -120,7 +120,7 @@ const Page = () => {
       let isBottom = rect.bottom <= window.innerHeight + 2000;
 
       if (isBottom) {
-        console.log('filter state  value', isFilterAboveMarkAction)
+        
         if (!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction) {
           fetchNextPage()
         }
@@ -131,16 +131,22 @@ const Page = () => {
     return () => {
       window?.removeEventListener("scroll", handlePropScroll);
     }
-  }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction])
+  }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction, fetchNextPage])
+
+
+
 
   const onFilterProperty = async (data) => {
     const { area, price } = data
     try {
       setLoadingFilter(true)
+
       const res = await axios.get(`${apiUrl}filter_by_search_params?beds=${checkedInput}&area=${area}&price=${price}`)
+
       setLoadingFilter(false)
       setIsFiltering(true)
       setFilterData([...res?.data])
+      
       if (res.data.length < 50) {
         setIsFilterAboveMarkAction(false)
       }
@@ -149,12 +155,51 @@ const Page = () => {
     }
   }
 
+
+  const onTopCategoryAreaFilter = async (filter) => {
+
+    try {
+      setLoadingFilter(true)
+
+      const res = await axios.get(`${apiUrl}filter_by_search_params?area=${filter}`)
+
+      setLoadingFilter(false)
+      setIsFiltering(true)
+      setFilterData([...res?.data])
+
+      if (res.data.length < 50) {
+        setIsFilterAboveMarkAction(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
+
   useEffect(() => {
+
+    const handleScroll = (event) => {
+      const scrollPosition = window.innerHeight + window.scrollY
+      const pageHeight = document.body.offsetHeight
+      const middleOfPage = pageHeight / 2
+  
+      setScrollTop(event.target.scrollingElement.scrollTop)
+  
+      if (scrollPosition >= middleOfPage) {
+        if (call) return
+        setCall(true)
+        setShowModal(true)
+      }
+    }
+
+
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [call, setCall])
+  }, [call])
 
   const toggleView = () => {
     setIsGridView((prev) => !prev)
@@ -192,7 +237,7 @@ const Page = () => {
   return (
     <div className='bg-gray-100'>
       <ScrollToTop />
-      <Navbar />
+      <Navbar filterAction={onTopCategoryAreaFilter} />
       <div className='grid gap-10 container mt-[10px]'>
         <div className=''>
           {loading && (
@@ -258,8 +303,20 @@ const Page = () => {
           </div>
 
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
+
+
+
             {isGridView ? (
               <div className=' grid md:grid-cols-2 gap-10'>
+                 {isFiltering && filterData?.length === 0 && (
+                    <div className='flex flex-col items-center  col-span-2 justify-center text-lg'>
+                      <span className='mb-4'>property currently unavailable for selected filters</span>
+                     
+                      
+                          <Button variant='outlined' color='red' size='md' onClick={cancelFilter} >Clear Filter</Button>
+                
+                    </div>
+                  )} 
                 {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingsGrid
@@ -291,6 +348,9 @@ const Page = () => {
               </div>
             ) : (
               <div className=''>
+               
+
+
                 {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingFlex
@@ -348,7 +408,7 @@ const Page = () => {
                         className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
 
-                      <label for='default-checkbox1' className='ml-2 text-base'>
+                      <label htmlFor='default-checkbox1' className='ml-2 text-base'>
                         One Bedroom
                       </label>
                     </div>
@@ -361,7 +421,7 @@ const Page = () => {
                         onChange={() => setCheckedInput('2')}
                         className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
-                      <label for='default-checkbox2' className='ml-2 text-base'>
+                      <label htmlFor='default-checkbox2' className='ml-2 text-base'>
                         Two Bedroom
                       </label>
                     </div>
@@ -374,7 +434,7 @@ const Page = () => {
                         onChange={() => setCheckedInput('3')}
                         className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2'
                       />
-                      <label for='default-checkbox3' className='ml-2 text-base'>
+                      <label htmlFor='default-checkbox3' className='ml-2 text-base'>
                         Three Bedroom
                       </label>
                     </div>
@@ -384,13 +444,9 @@ const Page = () => {
                   <div>
                     <div className='w-full my-4'>
                       <Input
-                        bordered label='Maximum Rent Amount' block
+                        bordered label='Maximum Rent Amount' 
 
                         {...register("price", {
-                          // required: {
-                          //   value: true,
-                          //   message: "amount is required"
-                          // },
                           min: {
                             value: 300000,
                             message: "Please provide an amount greater than ₦100,000",
@@ -411,10 +467,7 @@ const Page = () => {
                       <Select
                         options={areas}
                         {...register("area", {
-                          // required: {
-                          //   value: true,
-                          //   message: "location is required"
-                          // },
+                          
                         })}
                         error={errors?.area?.message}
                       />
