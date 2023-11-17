@@ -238,7 +238,7 @@ const Page = () => {
                
               </div>
             <div className="mt-1">
-              <div className="relative">
+              {/* <div className="relative">
                 <div 
                   className="
                     absolute 
@@ -254,16 +254,16 @@ const Page = () => {
                     Or continue with
                   </span>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="my-6 flex gap-2 sm:gap-4">
+              {/* <div className="my-6 flex gap-2 sm:gap-4">
 
                   <AuthSocialButton
                     icon={FcGoogle} 
                     onClick={socialAction} 
                   />
                   
-              </div>
+              </div> */}
             </div>
 
               <div className='flex items-center pb-6'>

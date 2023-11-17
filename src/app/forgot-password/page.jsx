@@ -22,28 +22,29 @@ const Page = () => {
   const [loading, setLoading] = useState(false)
 
   const { mutateAsync: send, isLoading } = useLoginMutation()
-  // const [activeTab, setActiveTab] = useState('tenants')
+  const [successReturn, setSuccessReturn] = useState(false)
+
+
 
 
 
   const onSubmit = async (data) => {
-    router.push('/reset-password')
+    try {
+      setLoading(true);
+      const res = await axios.post(AUTH_ENDPOINT.FORGET_PASSWORD(), {
+        ...data})
 
-    // try {
-    //   setLoading(true);
-    //   const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
-    //     ...data,
-    //     // user_type: activeTab,
-    //   })
-    //   if (res.data.status) {
-    //     router.push('/reset-password')
-    //   }
-    //   setLoading(false)
-    // } catch (error) {
-    //   setLoading(false)
-    //   toast.error(error?.response?.data?.message)
-    //   reset()
-    // }
+      if (res.data.status) {
+        toast.success("Success")
+        setSuccessReturn(true)
+        // router.push('/reset-password')
+      }
+      setLoading(false)
+    } catch (error) {
+      setLoading(false)
+      toast.error(error?.response?.data?.message)
+      reset()
+    }
   }
 
 
@@ -71,7 +72,16 @@ const Page = () => {
                       alt='logo'
                     />
                     <h4 className='pb-1 text-gray-400 mb-4'>Forgot Password</h4>
-                    <h1 className='pb-1 text-gray-600 text-lg'>Please enter your valid email address to receive password-reset instruction</h1>
+
+                      {
+                        successReturn ? (
+                          <h1 className='pb-1 text-gray-600 text-xl'>Please check your email for password-reset instruction</h1>
+                        ) : (
+
+                          <h1 className='pb-1 text-gray-600 text-lg'>Please enter your valid email address to receive password-reset instruction</h1>
+                        )
+                      }
+
                   </div>
  
                   <div className=''>
@@ -80,6 +90,8 @@ const Page = () => {
                      
                         <div>
                          
+                         {
+                          !successReturn && (
                           <form onSubmit={handleSubmit(onSubmit)}>
                             <div
                               className='relative mb-4'
@@ -116,6 +128,9 @@ const Page = () => {
                               </Link>
                             </div>
                           </form>
+
+                          )
+                         }
                         </div>
                       
                     

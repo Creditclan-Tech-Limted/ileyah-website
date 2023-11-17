@@ -20,7 +20,8 @@ import PostRequest from './modals/PostRequest'
 import { usePropertyQuery } from '@/hooks/use-property-query'
 import Input from '@/global/Input'
 import { useForm } from 'react-hook-form'
-import { areas } from '@/lib/utils'
+import { areas, availableAreas } from '@/lib/utils'
+import { MultiSelect } from 'react-multi-select-component';
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -38,6 +39,7 @@ const Page = () => {
   const [loading, setLoading] = useState(true);
   const [openFindHouse, setOpenFindHouse] = useState(false)
   const [checkedInput, setCheckedInput] = useState(null)
+  const [selectedFilterArea, setSelectedFilterArea] = useState([]);
   const [loadingFilter, setLoadingFilter] = useState(false)
   const [isFilterAboveMarkAction, setIsFilterAboveMarkAction] = useState(true)
   const [isFiltering, setIsFiltering] = useState(false)
@@ -121,7 +123,7 @@ const Page = () => {
 
       if (isBottom) {
         
-        if (!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction) {
+        if (!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction && !isFiltering) {
           fetchNextPage()
         }
       }
@@ -131,27 +133,37 @@ const Page = () => {
     return () => {
       window?.removeEventListener("scroll", handlePropScroll);
     }
-  }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction, fetchNextPage])
+  }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction, fetchNextPage, isFiltering])
 
 
 
 
   const onFilterProperty = async (data) => {
-    const { area, price } = data
+    const { price } = data
     try {
       setLoadingFilter(true)
+      
+      const areas = selectedFilterArea?.map(filterArea => filterArea.value)
 
-      const res = await axios.get(`${apiUrl}filter_by_search_params?beds=${checkedInput}&area=${area}&price=${price}`)
+      // beds=${checkedInput}&area=${areas}&price=${price}
+      const res = await axios.post(`${apiUrl}filter_by_search_params`, {
+        beds:checkedInput,
+        area:areas, 
+        price: price
+      })
 
       setLoadingFilter(false)
       setIsFiltering(true)
+      console.log(res)
       setFilterData([...res?.data])
       
       if (res.data.length < 50) {
         setIsFilterAboveMarkAction(false)
       }
+
     } catch (error) {
       console.log(error)
+      setLoadingFilter(false)
     }
   }
 
@@ -172,6 +184,7 @@ const Page = () => {
       }
     } catch (error) {
       console.log(error)
+      setLoadingFilter(false)
     }
   }
 
@@ -231,8 +244,16 @@ const Page = () => {
     reset()
     setCheckedInput(null)
     setIsFiltering(false),
-      setIsFilterAboveMarkAction(true)
+    setIsFilterAboveMarkAction(true)
+    setSelectedFilterArea([])
+    
+
   }
+
+
+
+
+
 
   return (
     <div className='bg-gray-100'>
@@ -462,15 +483,21 @@ const Page = () => {
                   </div>
 
                   <div>
-                    <p>Location</p>
+                    <p>Location (Select Multiple)</p>
                     <div className='w-full my-4'>
-                      <Select
+                      {/* <Select
                         options={areas}
                         {...register("area", {
                           
                         })}
                         error={errors?.area?.message}
-                      />
+                      /> */}
+                      <MultiSelect
+                          options={availableAreas}
+                          value={selectedFilterArea}
+                          onChange={setSelectedFilterArea}
+                          labelledBy="Please select area"
+                        />
 
                     </div>
                   </div>

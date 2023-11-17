@@ -4,7 +4,7 @@ import Button from '@/components/global/Button'
 import Input from '@/global/Input'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 import axios from 'axios'
 import { AUTH_ENDPOINT } from '@/api/landlord'
@@ -22,30 +22,30 @@ const Page = () => {
     } = useForm()
     const [loading, setLoading] = useState(false)
     const [isVisiblePassword, setIsVisiblePassword] = useState(false)
+    const token = useSearchParams().get('token')
+    console.log(token)
   
     const { mutateAsync: send, isLoading } = useLoginMutation()
 
 
 
 
-    const onSubmit = async (data) => {
-        // router.push('/reset-password')
-    
-        // try {
-        //   setLoading(true);
-        //   const res = await axios.post(AUTH_ENDPOINT.LOGIN(), {
-        //     ...data,
-        //     // user_type: activeTab,
-        //   })
-        //   if (res.data.status) {
-        //     router.push('/reset-password')
-        //   }
-        //   setLoading(false)
-        // } catch (error) {
-        //   setLoading(false)
-        //   toast.error(error?.response?.data?.message)
-        //   reset()
-        // }
+    const onSubmit = async (data) => {  
+        try {
+          setLoading(true);
+          const res = await axios.post(AUTH_ENDPOINT.RESET_PASSWORD(), {
+           token, ...data,
+          })
+          if (res.data.status) {
+            toast.success("Success")
+            router.push('/login')
+          }
+          setLoading(false)
+        } catch (error) {
+          setLoading(false)
+          toast.error(error?.response?.data?.message)
+          reset()
+        }
       }
 
 
@@ -75,7 +75,7 @@ const Page = () => {
                       alt='logo'
                     />
                     <h4 className='pb-1 text-gray-400 mb-4'>Reset Password</h4>
-                    <h1 className='pb-1 text-gray-600 text-lg'>We have sent password reset token to your email. Please enter the token and your new password as appropriate</h1>
+                    <h1 className='pb-1 text-gray-600 text-lg'>Please enter your new password as appropriate</h1>
                   </div>
 
                   <div className=''>
@@ -85,7 +85,7 @@ const Page = () => {
                         <div>
                         
                           <form onSubmit={handleSubmit(onSubmit)}>
-                            <div
+                            {/* <div
                               className='relative mb-4'
                               data-te-input-wrapper-init
                             >
@@ -102,7 +102,7 @@ const Page = () => {
                                 })}
                                 error={errors?.email?.message}
                               />
-                            </div>
+                            </div> */}
                             <div
                               className='relative mb-4'
                               data-te-input-wrapper-init
