@@ -41,7 +41,7 @@ const Input = forwardRef(({ label, rightIcon:RightIcon, togglePasswordVisibility
 Input.displayName = 'Input';
 
 Input.propTypes = {
-  rightIcon: PropTypes.element,
+  rightIcon: PropTypes.any,
   label: PropTypes.string,
   id: PropTypes.string,
   error: PropTypes.string,

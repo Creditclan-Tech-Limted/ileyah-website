@@ -118,6 +118,30 @@ export const areas = [
   { text: 'Isolo', value: 'Isolo' }
 ];
 
+export const availableAreas = [
+  { label: "Ajah", value: "Ajah" },
+  { label: "Ikorodu Road", value: "Ikorodu Road" },
+  { label: "Ikeja", value: "Ikeja" },
+  { label: "Victoria Island", value: "Victoria Island" },
+  { label: "Lekki", value: "Lekki" },
+  { label: "Yaba", value: "Yaba" },
+  { label: "Gbagada", value: "Gbagada" },
+  { label: "Surulere", value: "Surulere" },
+  { label: "Ikoyi", value: "Ikoyi" },
+  { label: "Oshodi", value: "Oshodi" },
+  { label: "Ikorodu", value: "Ikorodu" },
+  { label: "Apapa", value: "Apapa" },
+  { label: "Mushin", value: "Mushin" },
+  { label: "Berger", value: "Berger" },
+  { label: "Maryland", value: "Maryland" },
+  { label: "Ojota", value: "Ojota" },
+  { label: "Alausa", value: "Alausa" },
+  { label: "Ogba", value: "Ogba" },
+  { label: "Idimu", value: "Idimu" },
+  { label: "Egbeda", value: "Egbeda" },
+  { label: "Isolo", value: "Isolo" }
+];
+
 export const banks = [
   {
     id: '14',

@@ -130,7 +130,7 @@ const PostRequest = ({ isOpen, onClose }) => {
                           onChange={setSelected}
                           labelledBy="Select"
                         />
-                      </div>
+                      </div> 
                       <button
                         onClick={() => setEnterArea(true)}
                         className="font-17 mb-3 call-number alt-plan pointer border-0 bg-transparent"
