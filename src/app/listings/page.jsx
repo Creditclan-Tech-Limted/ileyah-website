@@ -398,7 +398,7 @@ const Page = () => {
                     Didn't find what you're looking for?
                   </span>
                 </p>
-                <Button className='ml-6' color='white' size='sm' onClick={() => (
+                <Button color='white' size='sm' onClick={() => (
                   setCall(true),
                   setShowModal(true)
                 )} >Post a Request</Button>
