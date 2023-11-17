@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 export const usePropertyQuery = ({apiUrl})=>{
 
-  const [isFirstTry, setIsFirstTry] = useState(true)
+  // const [isFirstTry, setIsFirstTry] = useState(true)
 
 // infinite scroll
 const getProptest = async ({ pageParam = undefined }) => {
@@ -19,18 +19,18 @@ const getProptest = async ({ pageParam = undefined }) => {
       let array = res?.data?.data
       const nextPage = res?.data?.nextPage
 
-      if(param !== 1){
-        setIsFirstTry(false)
-      }
+      // if(param !== 1){
+      //   setIsFirstTry(false)
+      // }
 
-      console.log('fetched...', res?.data, {array, nextPage})
+      // console.log('fetched...', res?.data, {array, nextPage})
       return  {array, nextPage}
     } catch (error) {
       console.log({ error });
     }
   };
 
-  const {data, fetchNextPage, hasNextPage, isFetchingNextPage, status} = useInfiniteQuery({
+  const {data, fetchNextPage, hasNextPage, isFetchingNextPage} = useInfiniteQuery({
     queryKey: ['getProperty'],
     queryFn: getProptest,
     getNextPageParam: (lastPage) => lastPage?.nextPage,
@@ -44,8 +44,7 @@ const getProptest = async ({ pageParam = undefined }) => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    status,
-    isFirstTry
+    // isFirstTry
   }
 
   
