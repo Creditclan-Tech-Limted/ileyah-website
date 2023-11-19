@@ -1,6 +1,7 @@
 import Drawer from '@/components/Drawer';
 
 const InspectionDetails = ({ isOpen, onClose, inspection }) => {
+  console.log(inspection);
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title='Inspection Detiails'>
@@ -18,34 +19,34 @@ const InspectionDetails = ({ isOpen, onClose, inspection }) => {
 
         <div className='mt-10'>
           <p className='font-medium'>Inspection Details</p>
-          <div className='border rounded-xl mt-3 p-6 space-y-5'>
-            <div className='flex justify-between'>
+          <div className='border rounded-xl mt-3 space-y-5 divide-y-2'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Title</p>
-              <p>{inspection?.ileyah_property?.description}</p>
+              <p className=' w-1/2'>{inspection?.property?.description}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Price</p>
-              <p>{inspection?.ileyah_property?.price}</p>
+              <p>{inspection?.property?.price}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Description</p>
-              <p className='w-1/2'>{inspection?.ileyah_property?.title}</p>
+              <p className='w-1/2'>{inspection?.property?.title}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Area</p>
-              <p>{inspection?.ileyah_property?.source}</p>
+              <p>{inspection?.property?.source}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Beds</p>
-              <p>{inspection?.ileyah_property?.beds}</p>
+              <p>{inspection?.property?.beds}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Baths</p>
-              <p>{inspection?.ileyah_property?.baths}</p>
+              <p>{inspection?.property?.baths}</p>
             </div>
-            <div className='flex justify-between'>
+            <div className='flex justify-between pt-3 pl-3 pr-3'>
               <p>Toilets</p>
-              <p>{inspection?.ileyah_property?.toilets}</p>
+              <p>{inspection?.property?.toilets || 'N/A'}</p>
             </div>
           </div>
         </div>

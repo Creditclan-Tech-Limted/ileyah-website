@@ -78,12 +78,10 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="text-xl">{property?.description} ▪️ {property?.area || property?.Area} </p>
         <hr />
         <div className="flex justify-between">
-          <p className="font-semibold text-2xl text-gray-500"> 
-          {formatCurrency(Number(property?.price) / 12).toString().slice(0, -3)} 
-                     
-                   
-                     <span className="text-sm text-black">/mo</span>  
-           </p>
+          <p className="font-semibold text-2xl text-gray-500">
+            {formatCurrency(Number(property?.price) / 12).toString().slice(0, -3)}
+            <span className="text-sm text-black">/mo</span>
+          </p>
           <IconBookmark className="cursor-pointer" />
         </div>
         <p className="-pt-10">{property?.createdAt?.slice(0, 10)}</p>
@@ -91,14 +89,16 @@ const Details = ({ property, onClose, onNext }) => {
         <div className="flex space-x-5">
           {/* <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button> */}
           {/* <Button block onClick={chooseProperty}> I want this </Button> */}
-          <Button block onClick={viewPlans} > View subscription </Button>
+          <Button block onClick={viewPlans} color='black' > View subscription </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">
           {/* <a target="_blank" href={`https://${property?.link}`} rel="noopener noreferrer"> Check Property Source...</a> */}
         </p>
         <div className="border p-5 rounded">
-          <p className="mb-3">Description</p>
+          <p className="mb-3 font-bold">Description</p>
           {property?.description}
+          <p className="my-3">Beds: {property.beds}</p>
+          <p>Bath: {property.baths}</p>
         </div>
         <div className="mt-5 border p-5 rounded flex justify-between">
           <p className="mb-3 mt-5">Property Source</p>
@@ -112,7 +112,7 @@ const Details = ({ property, onClose, onNext }) => {
       {openWantThis && (
         <WantThis onClose={() => setOpenWantThis(false)} />
       )}
-      <Plans isOpen={openViewPlans} onClose={() => setopenViewPlans(false)} property={property} />
+      <Plans isOpen={openViewPlans} onClose={() => setopenViewPlans(false)} property={property} onNext={onNext} />
     </>
   )
 }

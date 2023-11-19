@@ -19,19 +19,23 @@ const Collapsible = ({ header, content, defaultIsOpen = false }) => {
         }
       >
         {header}
-        <div>
-          <div
-            className={classNames(
-              "w-8 h-8 rounded-full border flex items-center justify-center",
-              { 'bg-primary-700 text-white border-0': expanded }
-            )}
-          >
-            <IconPlus
-              size="20"
-              className={classNames("transition-all duration-300", { 'rotate-90': expanded })}
-            />
-          </div>
-        </div>
+        {
+          defaultIsOpen && (
+            <div>
+              <div
+                className={classNames(
+                  "w-8 h-8 rounded-full border flex items-center justify-center",
+                  { 'bg-primary-700 text-white border-0': expanded }
+                )}
+              >
+                <IconPlus
+                  size="20"
+                  className={classNames("transition-all duration-300", { 'rotate-90': expanded })}
+                />
+              </div>
+            </div>
+          )
+        }
       </div>
       <AnimatePresence initial={false} mode="wait" onExitComplete={() => null}>
         {

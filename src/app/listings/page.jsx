@@ -316,10 +316,12 @@ const Page = () => {
           </div>
 
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
+
+
+
             {isGridView ? (
               <>
-                <div className='loplpllp[
-                  kgrid md:grid-cols-2 gap-10'>
+                <div className=' grid md:grid-cols-2 gap-10'>
                   {isFiltering && filterData?.length === 0 && (
                     <div className='border-2 bg-red-300 w-full'>
                       <span className='mb-4'>property currently unavailable for selected filters</span>
@@ -391,11 +393,12 @@ const Page = () => {
             <div className='hidden md:block'>
               <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
+                  {/* <IconMoodCry size={30} className='mr-2' /> */}
                   <span className='text-3xl'>
                     Didn't find what you're looking for?
                   </span>
                 </p>
-                <Button color='white' size='sm' onClick={() => (
+                <Button className='ml-6' color='white' size='sm' onClick={() => (
                   setCall(true),
                   setShowModal(true)
                 )} >Post a Request</Button>
