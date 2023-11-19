@@ -20,7 +20,7 @@ const Collapsible = ({ header, content, defaultIsOpen = false }) => {
       >
         {header}
         {
-          defaultIsOpen && (
+          !defaultIsOpen && (
             <div>
               <div
                 className={classNames(

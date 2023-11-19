@@ -48,9 +48,6 @@ reset()
     <>
       <div className="pb-3">
         <p className="text-cc-dark font-17 flex">
-          <div className="border rounded-full mr-3 h-8 w-8 flex items-center border-black cursor-pointer" onClick={onBack} >
-            <IconChevronLeft />
-          </div>
           Please provide the following information to proceed
         </p>
       </div>
