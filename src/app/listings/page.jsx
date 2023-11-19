@@ -48,7 +48,7 @@ const Page = () => {
   const bottomRef = useRef(null)
 
   const apiUrl = 'https://kuda-creditclan-api.herokuapp.com/'
-  
+
   const {
     data,
     fetchNextPage,
@@ -57,12 +57,6 @@ const Page = () => {
   } = usePropertyQuery({
     apiUrl,
   });
-
-
-
-
- 
-  
 
   const handleClose = async () => {
     try {
@@ -80,8 +74,6 @@ const Page = () => {
     })
   }
 
-
-
   const getPorperties = useCallback(
     (returnedData) => {
       try {
@@ -94,15 +86,15 @@ const Page = () => {
           setProperties([...properties, ...array])
           setLoading(false)
         }
-  
-  
+
+
       } catch (error) {
         console.log({ error });
       }
     },
     [properties],
   )
-  
+
 
 
   useEffect(() => {
@@ -122,7 +114,7 @@ const Page = () => {
       let isBottom = rect.bottom <= window.innerHeight + 2000;
 
       if (isBottom) {
-        
+
         if (!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction && !isFiltering) {
           fetchNextPage()
         }
@@ -142,13 +134,13 @@ const Page = () => {
     const { price } = data
     try {
       setLoadingFilter(true)
-      
+
       const areas = selectedFilterArea?.map(filterArea => filterArea.value)
 
       // beds=${checkedInput}&area=${areas}&price=${price}
       const res = await axios.post(`${apiUrl}filter_by_search_params`, {
-        beds:checkedInput,
-        area:areas, 
+        beds: checkedInput,
+        area: areas,
         price: price
       })
 
@@ -156,7 +148,7 @@ const Page = () => {
       setIsFiltering(true)
       console.log(res)
       setFilterData([...res?.data])
-      
+
       if (res.data.length < 50) {
         setIsFilterAboveMarkAction(false)
       }
@@ -197,9 +189,9 @@ const Page = () => {
       const scrollPosition = window.innerHeight + window.scrollY
       const pageHeight = document.body.offsetHeight
       const middleOfPage = pageHeight / 2
-  
+
       setScrollTop(event.target.scrollingElement.scrollTop)
-  
+
       if (scrollPosition >= middleOfPage) {
         if (call) return
         setCall(true)
@@ -244,9 +236,9 @@ const Page = () => {
     reset()
     setCheckedInput(null)
     setIsFiltering(false),
-    setIsFilterAboveMarkAction(true)
+      setIsFilterAboveMarkAction(true)
     setSelectedFilterArea([])
-    
+
 
   }
 
@@ -324,54 +316,48 @@ const Page = () => {
           </div>
 
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
-
-
-
             {isGridView ? (
-              <div className=' grid md:grid-cols-2 gap-10'>
-                 {isFiltering && filterData?.length === 0 && (
-                    <div className='flex flex-col items-center  col-span-2 justify-center text-lg'>
+              <>
+                <div className='loplpllp[
+                  kgrid md:grid-cols-2 gap-10'>
+                  {isFiltering && filterData?.length === 0 && (
+                    <div className='border-2 bg-red-300 w-full'>
                       <span className='mb-4'>property currently unavailable for selected filters</span>
-                     
-                      
-                          <Button variant='outlined' color='red' size='md' onClick={cancelFilter} >Clear Filter</Button>
-                
+                      <Button variant='outlined' color='red' size='md' onClick={cancelFilter} >Clear Filter</Button>
                     </div>
-                  )} 
-                {(isFiltering ? filterData : properties)?.map((m, i) => (
-                  <div key={i}>
-                    <ListingsGrid
-                      index={i}
-                      key={i}
-                      houseImg={m.image}
-                      heading='For Rent'
-                      price={m?.price}
-                      title={m?.description}
-                      avatar={imageAvatar}
-                      name='Jonathan Reinink'
-                      role='Estate Agents'
-                      location={m?.area}
-                      lengthNum='3450'
-                      bedNum={m?.beds}
-                      bathNum={m?.baths}
-                      bed='Bed'
-                      bath='Bath'
-                      length='Square Ft'
-                      property={m}
-                      onClick={() => {
-                        setCurrent(m)
-                        setOpenPropertyDetails(true)
-                      }}
-                    />
-                  </div>
-                ))}
-                <div ref={bottomRef} />
-              </div>
+                  )}
+                  {(isFiltering ? filterData : properties)?.map((m, i) => (
+                    <div key={i}>
+                      <ListingsGrid
+                        index={i}
+                        key={i}
+                        houseImg={m.image}
+                        heading='For Rent'
+                        price={m?.price}
+                        title={m?.description}
+                        avatar={imageAvatar}
+                        name='Jonathan Reinink'
+                        role='Estate Agents'
+                        location={m?.area}
+                        lengthNum='3450'
+                        bedNum={m?.beds}
+                        bathNum={m?.baths}
+                        bed='Bed'
+                        bath='Bath'
+                        length='Square Ft'
+                        property={m}
+                        onClick={() => {
+                          setCurrent(m)
+                          setOpenPropertyDetails(true)
+                        }}
+                      />
+                    </div>
+                  ))}
+                  <div ref={bottomRef} />
+                </div>
+              </>
             ) : (
               <div className=''>
-               
-
-
                 {(isFiltering ? filterData : properties)?.map((m, i) => (
                   <div key={i}>
                     <ListingFlex
@@ -405,12 +391,11 @@ const Page = () => {
             <div className='hidden md:block'>
               <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
-                  <IconMoodCry size={30} className='mr-2' />
                   <span className='text-3xl'>
                     Didn't find what you're looking for?
                   </span>
                 </p>
-                <Button className='ml-6' color='white' size='sm' onClick={() => (
+                <Button color='white' size='sm' onClick={() => (
                   setCall(true),
                   setShowModal(true)
                 )} >Post a Request</Button>
@@ -465,7 +450,7 @@ const Page = () => {
                   <div>
                     <div className='w-full my-4'>
                       <Input
-                        bordered label='Maximum Rent Amount' 
+                        bordered label='Maximum Rent Amount'
 
                         {...register("price", {
                           min: {
@@ -493,11 +478,11 @@ const Page = () => {
                         error={errors?.area?.message}
                       /> */}
                       <MultiSelect
-                          options={availableAreas}
-                          value={selectedFilterArea}
-                          onChange={setSelectedFilterArea}
-                          labelledBy="Please select area"
-                        />
+                        options={availableAreas}
+                        value={selectedFilterArea}
+                        onChange={setSelectedFilterArea}
+                        labelledBy="Please select area"
+                      />
 
                     </div>
                   </div>

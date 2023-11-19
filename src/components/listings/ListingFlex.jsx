@@ -49,7 +49,7 @@ const ListingFlex = ({ heading, price, title, houseImg, location, name, lengthNu
               </div>
             </div>
             <div className='font-bold'>
-              {formatCurrency(price / 12)} / mo
+              {formatCurrency(price / 12).toString().slice(0, -3)} / mo
             </div>
           </div>
         </div>
