@@ -73,8 +73,6 @@ const Page = ({ className }) => {
   const getRecoveryInfo = async (creditclan_request_id) => {
     try {
       const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
-      // const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '298315' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
-      // const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: '298203' }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       setRecovery(res?.data?.data)
       if (res?.data?.data) {
         const schedule = res?.data?.data?.currentLoan[0].schedules;
@@ -97,7 +95,6 @@ const Page = ({ className }) => {
             const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
             nextTillEnd = schedule.filter((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
             nextTillEndTotal = nextTillEnd.reduce((acc, cur) => acc + (+cur?.how_much_remaining), 0)
-            // console.log({ next, nextTillEnd, nextTillEndTotal });
             nextMonth = next;
           } else {
             const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
@@ -115,24 +112,6 @@ const Page = ({ className }) => {
       console.log({ error });
     }
   };
-
-  // const {
-  //   data: loan,
-  //   isLoading: isGetLoanDetailsLoading,
-  // } = useGetLoanDetailsQuery({
-  //   email: 'talk2asaphorlar@gmail.com',
-  //   phone: '07065252120',
-  //   request_id: '312189',
-  // });
-
-  // const {
-  //   data: loan,
-  //   isLoading: isGetLoanDetailsLoading,
-  // } = useGetLoanDetailsQuery({
-  //   email: 'proteckvision@gmail.com',
-  //   phone: '08165437237',
-  //   request_id: '310655',
-  // });
 
   const {
     data: loan,
@@ -155,7 +134,7 @@ const Page = ({ className }) => {
 
   const getInspectionsDetails = async () => {
     try {
-      const res = await getInspections({ landlordAgentId: '27ebe5f4-05d5-42f8-bff9-e96929ff4ee0' });
+      const res = await getInspections({ landlordAgentId: data?.user?.id });
       if (res?.data?.data.length) {
         setInspections(res?.data?.data)
       } else {
@@ -322,8 +301,8 @@ const Page = ({ className }) => {
                                     <div className="flex">
                                       <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
                                       <div>
-                                        <p>{m?.property?.description}</p>
-                                        <p>{(m?.property?.price)}</p>
+                                        <p className='mb-3'>{m?.property?.description}</p>
+                                        <p className='font-bold'>{formatCurrency(m?.property?.price)}</p>
                                       </div>
                                     </div>
                                     <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
