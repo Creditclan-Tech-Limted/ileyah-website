@@ -74,7 +74,7 @@ const Navbar = () => {
                               >
                                 {
                                   products.map((product, i) => (
-                                    <a href={product?.homeLink} key={i}>
+                                    <Link href={product?.homeLink} key={i}>
                                       <div
                                         key={product.name}
                                         className="rounded-2xl flex items-center hover:bg-gray-200/70 p-4 transition-all cursor-pointer"
@@ -93,7 +93,7 @@ const Navbar = () => {
                                           </p>
                                         </div>
                                       </div>
-                                    </a>
+                                    </Link>
                                   ))
                                 }
                               </motion.div>
