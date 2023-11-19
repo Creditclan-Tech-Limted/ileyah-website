@@ -82,7 +82,7 @@ export default function ListingsGrid({ heading, price, title, houseImg, location
             </div>
             <div className='flex'>
               <p className='text-lg font-bold bg-white absolute bottom-[300px] md:bottom-[280px] rounded-lg p-2 '>
-                {formatCurrency(Number(price) / 12)}
+                {(formatCurrency(Number(price) / 12)).toString().slice(0, -3)}
                 <span className='text-sm text-gray-400'> / mo </span>{' '}
               </p>
             </div>
