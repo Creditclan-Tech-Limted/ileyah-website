@@ -118,7 +118,7 @@ const Navbar = () => {
             <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">
               <div className="hidden lg:block space-x-4">
                 <Link href='/login'>
-                  <Button>Sign In</Button>
+                  <Button>Get Started</Button>
                 </Link>
               </div>
               <div className="-mr-1 lg:hidden">

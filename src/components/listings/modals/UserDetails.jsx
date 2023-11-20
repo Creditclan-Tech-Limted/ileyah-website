@@ -14,7 +14,6 @@ const UserDetails = ({ onBack }) => {
   const toast = useToast();
   const router = useRouter();
 
-
   const {
     register,
     handleSubmit,

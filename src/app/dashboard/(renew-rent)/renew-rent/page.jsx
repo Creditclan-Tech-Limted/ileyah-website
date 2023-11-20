@@ -79,15 +79,18 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
 
   const onSubmit = async (values) => {
     const payload = {
-      ...data,
       source: 1,
       process_type: 'renew',
       picture: '',
       full_name: data?.user?.name,
       phone: data?.user?.phone,
       email: data?.user?.email,
-      ...values
+      information_source: "Ileyah Representative",
+      amount: values.amount,
+      house_type: values.house_type,
+      address: values.address,
     }
+    console.log({ payload });
     const res = await send(payload);
     if (res.data.status) {
       toast.success(res.data.message || "Request Successfully Created");
@@ -98,7 +101,7 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
 
   return (
     <>
-      <Drawer isOpen={isOpenDrawer} onClose={onClose} title='Renew Rent'>
+      <Drawer isOpen={isOpenDrawer} onClose={onClose} title='I have Found a House'>
         {
           views === 'request' && (
             <>
