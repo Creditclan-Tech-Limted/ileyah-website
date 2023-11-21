@@ -99,7 +99,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
         // }
         // return router.push(`/dashboard`);
       } else {
-        return router.push(`/login`)
+        return router.push(`/register`)
       }
     } catch (error) {
       console.log({ error });
