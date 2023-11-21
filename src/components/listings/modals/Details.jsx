@@ -25,7 +25,7 @@ const Details = ({ property, onClose, onNext }) => {
         // updateData({ user: ileyah_token, property })
         // return router.push(`/dashboard`);
       } else {
-        return router.push(`/login`)
+        return router.push(`/register`)
       }
     } catch (error) {
       console.log({ error });
