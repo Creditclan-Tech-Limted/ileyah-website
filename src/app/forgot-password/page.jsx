@@ -75,7 +75,12 @@ const Page = () => {
 
                       {
                         successReturn ? (
-                          <h1 className='pb-1 text-gray-600 text-xl'>Please check your email for password-reset instruction</h1>
+                          <div>
+                            <h1 className='pb-3 text-gray-600 text-xl'>Please check your email for password-reset instruction.</h1>
+                              <h3 className='pb-1 text-gray-600 text-lg'>
+                                If you haven't received the email within a few minutes, please check your spam folder.
+                              </h3>
+                          </div>
                         ) : (
 
                           <h1 className='pb-1 text-gray-600 text-lg'>Please enter your valid email address to receive password-reset instruction</h1>

@@ -5,10 +5,13 @@ import Input from '@/global/Input';
 import Select from '@/global/Select';
 import { sectors, staff_strength } from '@/lib/utils';
 import axios from 'axios';
+import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 const SignUp = ({ isOpen, isClosed }) => {
-  const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+  const { register, handleSubmit, reset, watch, formState: { errors }, } = useForm();
+  const password = useRef({});
+  password.current = watch("password", "");
 
   const onSubmit = async (data) => {
     try {
@@ -76,7 +79,8 @@ const SignUp = ({ isOpen, isClosed }) => {
             required: {
               value: true,
               message: 'Confirm Password is required'
-            }
+            },
+            validate: value => value === password.current || "Passwords do not match", 
           })} error={errors?.confirm_password?.message} />
 
           <Button type='submit' className='mt-10'>Sign Up</Button>

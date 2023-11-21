@@ -5,7 +5,7 @@ import Input from '@/global/Input'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import axios from 'axios'
 import { AUTH_ENDPOINT } from '@/api/landlord'
 import { useToast } from '@/lib/use-toast'
@@ -18,12 +18,17 @@ const Page = () => {
       register,
       handleSubmit,
       reset,
+      watch,
       formState: { errors },
     } = useForm()
     const [loading, setLoading] = useState(false)
     const [isVisiblePassword, setIsVisiblePassword] = useState(false)
     const token = useSearchParams().get('token')
-    console.log(token)
+
+
+    const password = useRef({});
+    password.current = watch("password", "");
+
   
     const { mutateAsync: send, isLoading } = useLoginMutation()
 
@@ -31,10 +36,11 @@ const Page = () => {
 
 
     const onSubmit = async (data) => {  
+      const {password} = data
         try {
           setLoading(true);
           const res = await axios.post(AUTH_ENDPOINT.RESET_PASSWORD(), {
-           token, ...data,
+           token, password,
           })
           if (res.data.status) {
             toast.success("Success")
@@ -130,9 +136,11 @@ const Page = () => {
                                   label='Confirm Password' 
                                   bordered {...register('confirm_password', {
                                   required: {
-                                  value: true,
-                                  message: 'Confirm Password is required'
-                                  }
+                                    value: true,
+                                    message: 'Confirm Password is required',
+                                  },
+                                
+                                  validate: value => value === password.current || "Passwords do not match", 
                               })} error={errors?.confirm_password?.message} />
 
                             </div>

@@ -9,7 +9,7 @@ import useSignupStore from '@/store/signup'
 import axios from 'axios'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 // import { toast } from 'react-toastify'
 import { useToast } from '@/lib/use-toast'
@@ -24,6 +24,7 @@ const Page = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm()
   const [error, setError] = useState({
@@ -32,6 +33,13 @@ const Page = () => {
   })
   const [loading, setLoading] = useState(false)
   const [isVisiblePassword, setIsVisiblePassword] = useState(false)
+  const password = useRef({});
+  password.current = watch("password", "");
+
+
+
+
+
 
   const onSubmit = async (data) => {
     console.log(data, 'data')
@@ -142,7 +150,8 @@ const Page = () => {
                 required: {
                   value: true,
                   message: 'Confirm Password is required'
-                }
+                },
+                validate: value => value === password.current || "Passwords do not match", 
               })} error={errors?.confirm_password?.message} />
 
               <Button type='submit' className='mt-10'>Sign Up</Button>
