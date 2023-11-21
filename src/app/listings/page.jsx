@@ -8,7 +8,6 @@ import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import Footer from '@/components/Footer'
 import axios from 'axios'
-
 import ProDetails from '@/components/listings/modals/property_details'
 import useSignupStore from '@/store/signup'
 import Select from '@/global/Select'
@@ -95,16 +94,11 @@ const Page = () => {
     [properties],
   )
 
-
-
   useEffect(() => {
     if (data && data?.pages[0]?.array?.length > 0) {
       getPorperties(data?.pages[0]?.array)
     }
   }, [data])
-
-
-
 
   useEffect(() => {
     const bottom = bottomRef?.current;
@@ -126,9 +120,6 @@ const Page = () => {
       window?.removeEventListener("scroll", handlePropScroll);
     }
   }, [isFetchingNextPage, hasNextPage, bottomRef, isFilterAboveMarkAction, fetchNextPage, isFiltering])
-
-
-
 
   const onFilterProperty = async (data) => {
     const { price } = data
@@ -238,14 +229,7 @@ const Page = () => {
     setIsFiltering(false),
       setIsFilterAboveMarkAction(true)
     setSelectedFilterArea([])
-
-
   }
-
-
-
-
-
 
   return (
     <div className='bg-gray-100'>
@@ -316,9 +300,6 @@ const Page = () => {
           </div>
 
           <div className={`md:grid md:grid-cols-[1fr_350px] gap-10 mt-10`}>
-
-
-
             {isGridView ? (
               <>
                 <div className=' grid md:grid-cols-2 gap-10'>
@@ -398,7 +379,7 @@ const Page = () => {
                     Didn't find what you're looking for?
                   </span>
                 </p>
-                <Button className='ml-6' color='white' size='sm' onClick={() => (
+                <Button color='white' size='sm' onClick={() => (
                   setCall(true),
                   setShowModal(true)
                 )} >Post a Request</Button>

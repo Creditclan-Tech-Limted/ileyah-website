@@ -41,6 +41,9 @@ const RequestDetails = () => {
     if (!request?.creditclan_request_id) return await refetchRentRequest();
     await refetchLoanDetails();
   };
+
+  console.log({ request });
+
   return (
     <>
       {

@@ -86,7 +86,7 @@ const Page = ({ className }) => {
                   <p className='mr-4'>  {f?.landlordAgent?.name} </p> •
                   <p>  {f?.landlordAgent?.phone} </p>
                 </div>
-                <p className='text-2xl font-semibold'>  {formatCurrency(f?.amount)} </p>
+                <p className='text-2xl font-semibold'>  {formatCurrency(f?.amount.replace(',', ''))} </p>
                 <div className='flex space-x-4'>
                   <p>  {f?.house_types} </p>
                   <p>-</p>

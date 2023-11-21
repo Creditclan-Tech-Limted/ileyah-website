@@ -53,6 +53,7 @@ const Page = ({ className }) => {
         await getRecoveryInfo(res?.data?.request?.creditclan_request_id)
         await getUpfrontStatus(res?.data?.request?.creditclan_request_id);
         const request = res?.data?.request ?? null;
+        console.log({ request: request.payload });
         if (request) request.payload = parseJsonString(request.payload) || request.payload;
         setPendingRequest(res.data.request)
         updateData({ request: res.data.request })
@@ -178,7 +179,7 @@ const Page = ({ className }) => {
         )}
         {!globalLoading && (
           <>
-            <div className='p-10 space-y-10'>
+            <div className='md:p-10 space-y-10'>
               <div className="flex">
                 <div>
                   <p className='text-2xl'>Welcome <span className='font-semibold'>{data?.user?.name}</span> 🥳</p>
@@ -378,6 +379,8 @@ const Page = ({ className }) => {
                             onClick={() => {
                               if (pendingRequest) {
                                 setOpenViewProperty(true)
+                              } else {
+                                setIsOpenDrawer(true)
                               }
                             }}
                           >
