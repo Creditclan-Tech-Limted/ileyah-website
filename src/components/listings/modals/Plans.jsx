@@ -429,6 +429,11 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                     <p>Selected Plan:</p>
                     {formatCurrency(plans)}
                   </div>
+                  <div className="flex justify-between p-3">
+                    <p>Total:</p>
+                    ---
+                    {/* {formatCurrency(plans)} */}
+                  </div>
                 </div>
 
                 <Button className='mt-10' color='black' onClick={scheduleInspections} >Continue and Schedule Inspection</Button>
