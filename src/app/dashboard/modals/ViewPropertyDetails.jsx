@@ -9,8 +9,8 @@ import { IconX } from '@tabler/icons-react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
-  console.log({request});
+const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront, isGetLoanDetailsLoading }) => {
+  console.log({isGetLoanDetailsLoading});
   const { data, updateData } = useSignupStore((state) => state);
   const { mutateAsync: cancelRequest, isLoading: isCancelRequestLoading } = useCancelRequestMutation();
   const { mutateAsync: cancelCcRequest, isLoading: isCancelCcRequestLoading } = useCancelCcRequestMutation();
@@ -40,7 +40,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
       const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: request.creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       setSchedules(res?.data?.data?.currentLoan[0]?.schedules)
       setRecovery(res?.data?.data)
-      console.log(recovery);
     } catch (error) {
       console.log({ error });
     }
@@ -64,10 +63,13 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
 
   return (
     <>
+    {
+      isGetLoanDetailsLoading ? <span>Loading...</span> : 
+      <>
       {
         loan && (
           <>
-            {loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && (
+            {loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && (
               <>
                 {
                   loan?.loan?.loan_status === '3' ?
@@ -330,7 +332,7 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
                 }
               </>
             )}
-            {loan && parseFloat(loan?.loan?.offers[0]?.amount) == 0 && (
+            {loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) == 0 && (
               <>
                 <p>
                   Sorry, We can not generate an offer for you <br />
@@ -364,7 +366,7 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
         )
       }
       {
-        !loan && (
+        !loan || loan?.loan?.offers === null &&  (
           <div>
             <div className="flex items-center justify-between mb-10">
               <h3 className="text-xl font-semibold">Ongoing Request</h3>
@@ -425,100 +427,8 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront }) => {
           </div>
         )
       }
-      {/* {loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 ? (
-        <>
-          <p>
-            You have a pending request with an offer, <br /> Please check details below
-          </p>
-          <div className="my-5">
-            <div className="text-center items-center justify-center">
-              <div className="border-gray-300 rounded-2xl border-2 divide-y">
-                <p className="flex justify-between p-3">
-                  <div>Rent:</div>
-                  <div>{formatCurrency(request?.amount)}</div>
-                </p>
-                <div className="flex justify-between p-3">
-                  <div>Upfront:</div>
-                  <div>{loan?.loan?.offers[0]?.upfront}</div>
-                </div>
-                <div className="flex justify-between p-3">
-                  <div>Monthly Repayments:</div>
-                  <div>{loan?.loan?.offers[0]?.monthly_repayment}</div>
-                </div>
-                <div className="flex justify-between p-3">
-                  <div>Duration:</div>
-                  <div>12 Month(s)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <ClientOnly>
-            <LaunchEligibilityWidget
-              onReady={() => setLoading("false")}
-              request={request}
-              onCancel={handleEligibilityCancelled}
-              onCompleted={handleEligibilityCompleted}
-              className="w-100"
-            >
-              <Button>Get funded</Button>
-            </LaunchEligibilityWidget>
-          </ClientOnly>
-        </>
-      ) :
-        <div>
-          <>
-            <p> You have an on-going request. <br />
-              Click on <b className='font-bold'>Continue</b> to proceed with your application. </p>
-            <p>Contact us on our support lines if you require any assistance.</p>
-          </>
-          <div className="font-17 border border-gray-300 rounded-xl mt-5">
-            <ul className="">
-              <li className="flex justify-between items-center border-b p-3">
-                Rent amount:
-                <span className=" text-right">
-                  {formatCurrency(request?.amount) || 'N/A'}
-                </span>
-              </li>
-              <li className="flex justify-between items-center border-b p-3">
-                Type of house:
-                <span className="text-right">
-                  {capitalizeFirstLetter(request?.house_type) || 'N/A'}
-                </span>
-              </li>
-              <li className="flex justify-between items-center border-b p-3">
-                Address:
-                <span className="text-right">
-                  {request?.address || 'N/A'}
-                </span>
-              </li>
-              <li className="flex justify-between items-center p-3">
-                Landlord phone number:
-                <span className="text-right">
-                  {request?.landlord_phone || "Not provided"}
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div className='mt-10 flex justify-between'>
-            <div>
-              {!request?.creditclan_request_id && (
-                <Button variant='outlined' color='red' onClick={handleCancelRequest} loading={isCancelRequestLoading} >Cancel Request </Button>
-              )}
-            </div>
-            <ClientOnly>
-              <LaunchEligibilityWidget
-                onReady={() => setLoading("false")}
-                request={request}
-                onCancel={handleEligibilityCancelled}
-                onCompleted={handleEligibilityCompleted}
-                className="w-100"
-              >
-                <Button>Get funded</Button>
-              </LaunchEligibilityWidget>
-            </ClientOnly>
-          </div>
-        </div>
-      } */}
+    </>
+    }
     </>
   )
 }

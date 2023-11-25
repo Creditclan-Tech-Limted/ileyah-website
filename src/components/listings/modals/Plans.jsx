@@ -11,6 +11,9 @@ import { useEffect, useRef, useState } from "react";
 import { formatCurrency } from "@/lib/utils";
 import Collapsible from "@/components/global/Collapsible";
 import useSignupStore from "@/store/signup";
+import { useForm } from "react-hook-form";
+import Input from "@/global/Input";
+import Select from "@/global/Select";
 register();
 
 const artisans = [
@@ -52,6 +55,16 @@ const artisans = [
   }
 ]
 
+const house_types = [
+  { value: 'room-only', text: 'Room only' },
+  { value: 'room-parlour', text: 'Room and parlour' },
+  { value: 'two-bedroom', text: 'Two bedroom' },
+  { value: 'three-bedroom', text: 'Three bedroom' },
+  { value: 'four-bedroom', text: 'Four bedroom' },
+  { value: 'bungalow', text: 'Bungalow' },
+  { value: 'duplex', text: 'Duplex' },
+];
+
 const Plans = ({ isOpen, onClose, property, onNext }) => {
   const array = [];
   const toast = useToast();
@@ -59,6 +72,8 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
   const [plans, setPlans] = useState()
   const [views, setViews] = useState('plans')
   const { data, updateData } = useSignupStore((state) => state);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm()
+
 
 
   const add = async (item) => {
@@ -93,11 +108,8 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
     try {
       const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
       if (ileyah_token) {
-        // if (data?.user?.credit_score) {
         updateData({ user: ileyah_token, property });
         return onNext();
-        // }
-        // return router.push(`/dashboard`);
       } else {
         return router.push(`/register`)
       }
@@ -106,26 +118,25 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
     }
   }
 
-  // const swiperElRef = useRef(null);
-
-  // useEffect(() => {
-  //   const swiperParams = {
-  //     speed: 10000,
-  //     spaceBetween: 20,
-  //     slidesPerView: 1.7
-  //   };
-  //   Object?.assign(swiperElRef.current, swiperParams);
-  //   swiperElRef.current.initialize();
-  // }, []);
+  const onSubmit = async (values) => {
+    // const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...values, landlordAgentId: data?.user.id });
+  }
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose} title='Choose your plan' smLonger={true}>
+      <Drawer isOpen={isOpen} onClose={onClose} smLonger={true}>
 
         <>
           {
             views === 'plans' && (
               <>
+                <div className="flex items-center justify-between mb-10">
+                  <h3 className="text-xl font-semibold">Choose Plan</h3>
+                  <Button
+                    onClick={onClose} rounded icon={<IconX size="20" />}
+                    size="sm" color="red" variant="outlined"
+                  > <IconX /> </Button>
+                </div>
                 <p>Your Monthly Repayment is <span className="font-bold">{formatCurrency(property.price / 12)}</span> /mo</p>
                 <p className="mb-5">Please select plan a subscription services</p>
                 <div className="border border-slate-300 rounded-xl">
@@ -133,17 +144,10 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                     defaultIsOpen={true}
                     header={(
                       <h5 className="md:text-lg font-medium inline-flex">
-                        {/* <span className="w-12 h-10 rounded-full text-white grid place-items-center my-auto bg-primary-600">
-                          <IconBus size={20} />
-                        </span> */}
                         <div className="my-auto font-bold">
                           <span>
                             Move in Service
                           </span>
-                          {/* <p className="opacity-75 text-[.95rem] leading-snug">
-                            - Simplify Your Move-In Experience <br />
-                            - Seamless Transitions to Your New Home Await.
-                          </p> */}
                         </div>
                       </h5>
                     )}
@@ -161,7 +165,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <div className="mt-auto">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(5000);
-                                    setViews('details')
+                                    setViews('vehicle-movement')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -177,28 +181,28 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="font-bold text-sm">What's included:</p>
                                 <div className="text-white">
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine</span>
                                   </p>
                                 </div>
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(10000);
-                                    setViews('details')
+                                    setViews('vehicle-movement')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -235,7 +239,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(25000);
-                                    setViews('details')
+                                    setViews('vehicle-movement')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -272,7 +276,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(50000);
-                                    setViews('details')
+                                    setViews('vehicle-movement')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -309,7 +313,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(100000);
-                                    setViews('details')
+                                    setViews('vehicle-movement')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -325,8 +329,96 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
           }
 
           {
+            views === 'vehicle-movement' && (
+              <>
+                <div className="flex items-center justify-between mb-10">
+                  <h3 className="text-xl font-semibold">Vehicle Movement</h3>
+                  <Button
+                    onClick={() => setViews('plans')} rounded icon={<IconX size="20" />}
+                    size="sm" color="red" variant="outlined"
+                  > <IconX /> </Button>
+                </div>
+                <div>
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+                    <div className="space-y-3">
+                      <div>
+                        <p>Moving From</p>
+                        <div className="border-2 mt-3 border-gray-300 p-5 rounded-2xl space-y-10 border-dashed">
+                          <Input
+                            type='text'
+                            label='Area'
+                            bordered
+                            {...register('area', {
+                              required: {
+                                value: true,
+                                message: 'Area is required',
+                              },
+                            })}
+                            error={errors?.area?.message}
+                          />
+
+                          <Select
+                            options={house_types} label='House Type' bordered
+                            {...register('house_types', {
+                              required: {
+                                value: true,
+                                message: 'House Type is required'
+                              }
+                            })}
+                            error={errors?.house_types?.message}
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <p>Moving To</p>
+                        <div className="border-2 border-gray-300 p-5 rounded-2xl space-y-10 border-dashed mt-3">
+                          <Input
+                            type='text'
+                            label='Area'
+                            bordered
+                            {...register('area', {
+                              required: {
+                                value: true,
+                                message: 'Area is required',
+                              },
+                            })}
+                            error={errors?.area?.message}
+                          />
+
+                          <Select
+                            options={house_types} label='House Type' bordered
+                            {...register('house_types', {
+                              required: {
+                                value: true,
+                                message: 'House Type is required'
+                              }
+                            })}
+                            error={errors?.house_types?.message}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex justify-between mt-10">
+                      <Button color='black' type='submit'> Get Total </Button>
+                      <Button variant='outlined' onClick={() => setViews('details')} > Skip </Button>
+                    </div>
+                  </form>
+                </div>
+
+              </>
+            )
+          }
+
+          {
             views === 'details' && (
               <>
+                <div className="flex items-center justify-between mb-10">
+                  <h3 className="text-xl font-semibold">Summary</h3>
+                  <Button
+                    onClick={onClose} rounded icon={<IconX size="20" />}
+                    size="sm" color="red" variant="outlined"
+                  > <IconX /> </Button>
+                </div>
                 <p className="mb-3">Below is the ...</p>
                 <div className="border border-gray-300 divide-y rounded-xl">
                   <div className="flex justify-between p-3">

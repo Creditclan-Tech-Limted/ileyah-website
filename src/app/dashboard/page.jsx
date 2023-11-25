@@ -198,7 +198,7 @@ const Page = ({ className }) => {
                       <div>
                         <>
                           {
-                            pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' ?
+                            pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' ?
                               <>
                                 <div>
                                   <h3 className="text-xl font-medium mb-8 px-1">Active Request</h3>
@@ -265,12 +265,12 @@ const Page = ({ className }) => {
                                             <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
                                           )}
                                           {
-                                            pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
+                                            pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
                                               <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
                                             )
                                           }
                                           {
-                                            pendingRequest?.creditclan_request_id && loan && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
+                                            pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
                                               <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
                                             )
                                           }
@@ -460,7 +460,7 @@ const Page = ({ className }) => {
         )}
       </div>
       <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} longer={true}>
-        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} upfront={upfront} />
+        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} upfront={upfront} isGetLoanDetailsLoading={isGetLoanDetailsLoading} />
       </Drawer>
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />
       <RenewRentDashboard isOpenDrawer={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} />

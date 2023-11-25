@@ -140,15 +140,15 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
                   <div className="space-y-6">
                     <div className="grid grid-cols-2 gap-6">
                       <Input
-                        bordered label='Rent ' block
+                        bordered label='Rent ' block type='number'
                         {...register("amount", {
                           required: {
                             value: true,
                             message: "amount is required"
                           },
                           min: {
-                            value: 100000,
-                            message: "Please provide an amount greater than ₦100,000",
+                            value: 300000,
+                            message: "Please provide an amount greater or euqals ₦300,000",
                           },
                           max: {
                             value: 3000000,
