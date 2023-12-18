@@ -23,7 +23,7 @@ import ListingsGrid from '@/components/listings/ListingsGrid';
 import Drawer from '@/components/Drawer';
 import { isBefore, isAfter } from 'date-fns'
 import MakePayment from './modals/MakePayment';
-
+import Link from 'next/link';
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -356,9 +356,10 @@ const Page = ({ className }) => {
                           </div>
                         </div>
                         <div className='mt-3'>
+                          <Link href={'/dashboard/listings'}>
                           <div
                             className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
-                          >
+                            >
                             <div className="text-red-600 grid place-items-center mt-1">
                               <IconHomeSearch size="32" />
                             </div>
@@ -374,6 +375,7 @@ const Page = ({ className }) => {
                               <IconChevronRight className="text-black" size="20" />
                             </div>
                           </div>
+                            </Link>
                           <div
                             className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                             onClick={() => {

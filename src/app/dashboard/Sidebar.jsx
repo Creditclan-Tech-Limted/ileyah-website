@@ -13,19 +13,19 @@ import { usePathname, useRouter } from 'next/navigation'
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard',
+    link: '/dashboard/',
     icon: <IconApps />,
     name: 'Dashboard',
   },
   {
     id: 2,
-    link: '/dashboard/listings',
+    link: '/dashboard/listings/',
     icon: <IconListDetails />,
     name: 'Market Place',
   },
   {
     id: 3,
-    link: '/dashboard/profile',
+    link: '/dashboard/profile/',
     icon: <IconUser />,
     name: 'Profile',
   },

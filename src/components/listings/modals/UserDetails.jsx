@@ -32,12 +32,10 @@ const UserDetails = ({ onBack }) => {
         landlordAgentId: data?.user?.id,
         propertyId: data?.property?.id
       })
-reset()
-
-      console.log(res?.data);
+      reset();
       updateData({ property: null });
       setLoading(false)
-      router.push('dashboard')
+      router.push('/dashboard')
       toast.success('Submitted')
     } catch (error) {
       console.log({ error });

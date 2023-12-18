@@ -13,8 +13,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
-import { FcGoogle  } from 'react-icons/fc';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { FcGoogle } from 'react-icons/fc';
 
 const Page = () => {
   const router = useRouter();
@@ -23,6 +23,8 @@ const Page = () => {
   const { mutateAsync: sendRentRequest, isLoadingRentRequest } = useCreateRentRequestMutation();
 
   const { data, updateData } = useSignupStore((state) => state)
+
+  console.log({ data });
   console.log({ data });
   const {
     register,
@@ -50,6 +52,14 @@ const Page = () => {
       }
       if (data?.createPostRequest) {
         await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...data?.createPostRequest, landlordAgentId: res?.data?.data?.id });
+      }
+      if (data?.property) {
+        const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createInspections', {
+          date: "23-10-2000",
+          time: "12:00",
+          landlordAgentId: res?.data?.data?.id,
+          propertyId: data?.property?.id
+        })
       }
       if (res.data.status) {
         toast.success(res.data.message)
@@ -103,7 +113,7 @@ const Page = () => {
   }
 
 
-  const socialAction = ()=>{
+  const socialAction = () => {
     // setIsLoading(true)
 
     // signIn(action, { redirect: false })
@@ -184,10 +194,10 @@ const Page = () => {
               <div className='relative mb-4' data-te-input-wrapper-init>
                 <Input
                   label='Passsword'
-                  type={isVisiblePassword ? 'text'  : 'password'}
+                  type={isVisiblePassword ? 'text' : 'password'}
                   name='passsword'
-                  togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
-                  rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+                  togglePasswordVisibility={() => setIsVisiblePassword(!isVisiblePassword)}
+                  rightIcon={isVisiblePassword ? AiFillEyeInvisible : AiFillEye}
                   bordered
                   {...register('password', {
                     required: {
@@ -235,10 +245,10 @@ const Page = () => {
                 <Button type='submit' loading={loading}>
                   {loading ? 'Loading...' : 'Sign Up'}{' '}
                 </Button>
-               
+
               </div>
-            <div className="mt-1">
-              {/* <div className="relative">
+              <div className="mt-1">
+                {/* <div className="relative">
                 <div 
                   className="
                     absolute 
@@ -256,7 +266,7 @@ const Page = () => {
                 </div>
               </div> */}
 
-              {/* <div className="my-6 flex gap-2 sm:gap-4">
+                {/* <div className="my-6 flex gap-2 sm:gap-4">
 
                   <AuthSocialButton
                     icon={FcGoogle} 
@@ -264,7 +274,7 @@ const Page = () => {
                   />
                   
               </div> */}
-            </div>
+              </div>
 
               <div className='flex items-center pb-6'>
                 <p className='mb-0 mr-2'>Already have an account?</p>

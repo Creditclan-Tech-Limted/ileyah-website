@@ -65,8 +65,23 @@ const Page = ({ className }) => {
 
   const getPorperties = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
-      setProperties(res?.data?.data)
+      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties');
+      let props = res?.data?.data;
+      for (let i = props.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [props[i], props[j]] = [props[j], props[i]];
+      }
+
+      let updatedProducts = props.map(product => {
+        let markupPercentage = 0.42; // 42%
+        let percentage = +product.price * markupPercentage;
+        let newPrice = +percentage + +product.price
+        return { ...product, newPrice };
+      });
+
+      console.log({updatedProducts});
+
+      setProperties(updatedProducts)
       return res?.data?.data
     } catch (error) {
 
@@ -241,7 +256,7 @@ const Page = ({ className }) => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price={m?.price}
+                    price={m?.newPrice}
                     title={m?.description}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'
@@ -270,7 +285,7 @@ const Page = ({ className }) => {
                     key={i}
                     houseImg={m.image}
                     heading='For Rent'
-                    price={m?.price}
+                    price={m?.newPrice}
                     title={m?.title}
                     avatar={imageAvatar}
                     name='Jonathan Reinink'

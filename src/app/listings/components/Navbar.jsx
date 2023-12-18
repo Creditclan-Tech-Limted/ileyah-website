@@ -40,6 +40,19 @@ const Navbar = ({filterAction}) => {
     window.location.reload();
   };
 
+  const signIn = async () => {
+    try {
+      const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
+      if (ileyah_token) {
+        router.push('/dashboard')
+      } else {
+        router.push('/login')
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   return (
     <>
       <header className={classNames(
@@ -107,9 +120,6 @@ const Navbar = ({filterAction}) => {
                       )
                     }
                   </Hover>
-                  {/* <Link className="inline-flex items-center rounded-full py-1 px-4" href="/tenants">
-                    Tenants
-                  </Link> */}
                   <Link className="inline-flex items-center rounded-full py-1 px-4" href="/landlords">
                     Landlords
                   </Link>
@@ -120,9 +130,7 @@ const Navbar = ({filterAction}) => {
               </div>
               <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">
                 <div className="hidden lg:block space-x-4">
-                  <Link href='/login'>
-                    <Button color='white' >Sign In</Button>
-                  </Link>
+                    <Button color='white' onClick={signIn}>Sign In</Button>
                 </div>
                 <div className="-mr-1 lg:hidden">
                   <button

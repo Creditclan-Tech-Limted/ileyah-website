@@ -1,4 +1,5 @@
 import Button from "@/components/global/Button"
+import Link from "next/link";
 
 const WePay = () => {
   return (
@@ -19,7 +20,9 @@ const WePay = () => {
                   </p>
                 </div>
                 <Button className='mt-10 inline-flex' size='lg'>
+                  <Link href={'/register/landlords'}>
                   Get started
+                  </Link>
                 </Button>
               </div>
               <div className="flex justify-center">

@@ -28,8 +28,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront, isGetLoa
       }
       toast.success('Req Cancceld');
       onClose()
-      // onDone();
-      // await queryClient.clear();
     } catch (e) {
       console.log({ e });
     }

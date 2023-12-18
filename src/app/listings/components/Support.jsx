@@ -35,60 +35,6 @@ const Support = ({ isOpen, onClose }) => {
             <Button variant='outlined' className='mt-14' onClick={onClose}>Continue</Button>
           </div>
         </div>
-        {/* <p>Please fill in the information below</p> */}
-        {/* <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
-          <Input
-            label='Full Name'
-            bordered
-            {...register('name', {
-              required: {
-                value: true,
-                message: 'Name is required',
-              },
-            })}
-            error={errors?.name?.message}
-          />
-          <Input
-            label='Phone'
-            bordered
-            {...register('phone', {
-              required: {
-                value: true,
-                message: 'phone is required',
-              },
-            })}
-            error={errors?.phone?.message}
-          />
-          <Input
-            label='Email'
-            bordered
-            {...register('email', {
-              required: {
-                value: true,
-                message: 'email is required',
-              },
-            })}
-            error={errors?.email?.message}
-          />
-          <TextArea
-            label='Comments'
-            {...register('comments', {
-              required: {
-                value: true,
-                message: ' comments is required',
-              },
-            })}
-            error={errors?.comments?.message}
-          />
-          <Button
-            type='submit'
-            className='mt-10'
-            rightIcon={<IconCircleChevronRight />}
-            loading={false}
-          >
-            Submit
-          </Button>
-        </form> */}
       </Drawer>
     </>
   )

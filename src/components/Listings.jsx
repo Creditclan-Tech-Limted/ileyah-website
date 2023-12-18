@@ -15,7 +15,6 @@ const Listings = () => {
   SwiperCore.use([Autoplay]);
   const el = useRef(null)
 
-
   useEffect(() => {
     AOS.init();
   }, []);

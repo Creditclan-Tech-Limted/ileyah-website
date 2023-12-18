@@ -3,17 +3,15 @@ import ListingFlex from '@/components/listings/ListingFlex'
 import ListingsGrid from '@/components/listings/ListingsGrid'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Explore from '@/components/listings/Explore'
-import Pagination from '@/components/listings/pagination'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import Footer from '@/components/Footer'
 import axios from 'axios'
 import ProDetails from '@/components/listings/modals/property_details'
 import useSignupStore from '@/store/signup'
-import Select from '@/global/Select'
 import Button from '@/components/global/Button'
 import Navbar from './components/Navbar'
-import { IconChevronRight, IconLayoutGrid, IconLayoutList, IconListNumbers, IconMoodCry, IconSearch } from '@tabler/icons-react'
+import { IconChevronRight, IconListNumbers, IconMoodCry, IconSearch } from '@tabler/icons-react'
 import WeCall from '@/components/WeCall'
 import PostRequest from './modals/PostRequest'
 import { usePropertyQuery } from '@/hooks/use-property-query'
@@ -21,6 +19,7 @@ import Input from '@/global/Input'
 import { useForm } from 'react-hook-form'
 import { areas, availableAreas } from '@/lib/utils'
 import { MultiSelect } from 'react-multi-select-component';
+import SuscriptionStandAlone from '@/components/listings/modals/SuscriptionStandAlone'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -45,6 +44,7 @@ const Page = () => {
   const [filterData, setFilterData] = useState([])
   const containerRef = useRef(null)
   const bottomRef = useRef(null)
+  const [openStandAlonePlans, setOpenStandAlonePlans] = useState(false)
 
   const apiUrl = 'https://kuda-creditclan-api.herokuapp.com/'
 
@@ -82,11 +82,19 @@ const Page = () => {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
           }
-          setProperties([...properties, ...array])
+
+          let a = [...properties, ...array];
+
+          let updatedProducts = a.map(product => {
+            let markupPercentage = 0.42; // 42%
+            let percentage = +product.price * markupPercentage;
+            let newPrice = +percentage + +product.price
+            return { ...product, newPrice };
+          });
+
+          setProperties(updatedProducts)
           setLoading(false)
         }
-
-
       } catch (error) {
         console.log({ error });
       }
@@ -108,7 +116,6 @@ const Page = () => {
       let isBottom = rect.bottom <= window.innerHeight + 2000;
 
       if (isBottom) {
-
         if (!isFetchingNextPage && hasNextPage && isFilterAboveMarkAction && !isFiltering) {
           fetchNextPage()
         }
@@ -125,25 +132,18 @@ const Page = () => {
     const { price } = data
     try {
       setLoadingFilter(true)
-
       const areas = selectedFilterArea?.map(filterArea => filterArea.value)
-
-      // beds=${checkedInput}&area=${areas}&price=${price}
       const res = await axios.post(`${apiUrl}filter_by_search_params`, {
         beds: checkedInput,
         area: areas,
         price: price
       })
-
       setLoadingFilter(false)
       setIsFiltering(true)
-      console.log(res)
       setFilterData([...res?.data])
-
       if (res.data.length < 50) {
         setIsFilterAboveMarkAction(false)
       }
-
     } catch (error) {
       console.log(error)
       setLoadingFilter(false)
@@ -152,12 +152,9 @@ const Page = () => {
 
 
   const onTopCategoryAreaFilter = async (filter) => {
-
     try {
       setLoadingFilter(true)
-
       const res = await axios.get(`${apiUrl}filter_by_search_params?area=${filter}`)
-
       setLoadingFilter(false)
       setIsFiltering(true)
       setFilterData([...res?.data])
@@ -171,25 +168,18 @@ const Page = () => {
     }
   }
 
-
-
-
   useEffect(() => {
-
     const handleScroll = (event) => {
       const scrollPosition = window.innerHeight + window.scrollY
       const pageHeight = document.body.offsetHeight
       const middleOfPage = pageHeight / 2
-
       setScrollTop(event.target.scrollingElement.scrollTop)
-
       if (scrollPosition >= middleOfPage) {
         if (call) return
         setCall(true)
         setShowModal(true)
       }
     }
-
 
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -316,7 +306,7 @@ const Page = () => {
                         key={i}
                         houseImg={m.image}
                         heading='For Rent'
-                        price={m?.price}
+                        price={m?.newPrice}
                         title={m?.description}
                         avatar={imageAvatar}
                         name='Jonathan Reinink'
@@ -348,7 +338,7 @@ const Page = () => {
                       index={i}
                       houseImg={m.image}
                       heading='For Rent'
-                      price={m?.price}
+                      price={m?.newPrice}
                       title={m?.description}
                       avatar={imageAvatar}
                       name='Jonathan Reinink'
@@ -374,7 +364,6 @@ const Page = () => {
             <div className='hidden md:block'>
               <div className="border-gray-300 border px-8 py-6 bg-blue-900 rounded-2xl text-white space-y-6 navbar_bg2 mt-4">
                 <p className='inline-flex'>
-                  {/* <IconMoodCry size={30} className='mr-2' /> */}
                   <span className='text-3xl'>
                     Didn't find what you're looking for?
                   </span>
@@ -384,6 +373,28 @@ const Page = () => {
                   setShowModal(true)
                 )} >Post a Request</Button>
               </div>
+
+              <div>
+                <p className='mb-3 italic mt-10'>Setup your Subscription Services</p>
+                <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setOpenStandAlonePlans(true)}>
+                  <div className="flex">
+                    <div className="flex">
+                      <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
+                        <IconListNumbers size="20" />
+                      </div>
+                    </div>
+                    <div className="px-5 my-auto">
+                      <p className="text-lg font-medium text-left">
+                        Choose Subscriptions
+                      </p>
+                    </div>
+                  </div>
+                  <div>
+                    <IconChevronRight className="text-black ml-auto" size="20" />
+                  </div>
+                </div>
+              </div>
+
               <div className='bg-white rounded-2xl p-10 max-h-[770px] space-y-10 sticky top-[30px] mt-10'>
                 <form onSubmit={handleSubmit(onFilterProperty)} className='space-y-6'>
                   <div>
@@ -479,28 +490,6 @@ const Page = () => {
                     }
                   </div>
                 </form>
-
-
-                <div>
-                  <p className='mb-3 italic '>Didn't find your choice property</p>
-                  <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setShowModal(true)}>
-                    <div className="flex">
-                      <div className="flex">
-                        <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
-                          <IconListNumbers size="20" />
-                        </div>
-                      </div>
-                      <div className="px-5 my-auto">
-                        <p className="text-lg font-medium text-left">
-                          Join our waitlist
-                        </p>
-                      </div>
-                    </div>
-                    <div>
-                      <IconChevronRight className="text-black ml-auto" size="20" />
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -514,6 +503,7 @@ const Page = () => {
       <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} />
       <WeCall isOpen={showModal} onClose={() => setShowModal(false)} />
       <PostRequest isOpen={openFindHouse} onClose={() => setOpenFindHouse(false)} />
+      <SuscriptionStandAlone isOpen={openStandAlonePlans} onClose={() => setOpenStandAlonePlans(false)} />
     </div>
   )
 }

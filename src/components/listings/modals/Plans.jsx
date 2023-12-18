@@ -7,7 +7,7 @@ import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { register } from 'swiper/element/bundle';
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { formatCurrency } from "@/lib/utils";
 import Collapsible from "@/components/global/Collapsible";
 import useSignupStore from "@/store/signup";
@@ -70,11 +70,9 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
   const toast = useToast();
   const router = useRouter();
   const [plans, setPlans] = useState()
-  const [views, setViews] = useState('plans')
+  const [views, setViews] = useState('charges')
   const { data, updateData } = useSignupStore((state) => state);
   const { register, handleSubmit, reset, formState: { errors } } = useForm()
-
-
 
   const add = async (item) => {
     try {
@@ -106,11 +104,13 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
 
   const scheduleInspections = async () => {
     try {
+      console.log({property});
       const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
       if (ileyah_token) {
         updateData({ user: ileyah_token, property });
         return onNext();
       } else {
+        updateData({ user: ileyah_token, property });
         return router.push(`/register`)
       }
     } catch (error) {
@@ -125,6 +125,44 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose} smLonger={true}>
+
+        <>
+          {
+            views === 'charges' && (
+              <>
+                <div className="flex items-center justify-between mb-10">
+                  <h3 className="text-xl font-semibold">Charges</h3>
+                  <Button
+                    onClick={onClose} rounded icon={<IconX size="20" />}
+                    size="sm" color="red" variant="outlined"
+                  > <IconX /> </Button>
+                </div>
+                <div class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+                  <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                  </svg>
+                  <span class="sr-only">Info</span>
+                  <div>
+                    <span class="font-medium">Note!</span> Please note the amount below is subject to increase or decrease.
+                  </div>
+                </div>
+
+                <div className="border border-gray-300 p-5 rounded-2xl">
+                  <div className="text-3xl font-bold">
+                    {formatCurrency(property.price * 0.42)}
+                  </div>
+                  <div className="mt-6">
+                    The above amount is to be paid as (Agreement | Commision | Security Charges) to the Landlord / Agents of the property!
+                  </div>
+                </div>
+
+                <div className="mt-10">
+                  <Button color='black' onClick={() => setViews('plans')} >Accept and Continue</Button>
+                </div>
+              </>
+            )
+          }
+        </>
 
         <>
           {
@@ -156,17 +194,14 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                         <swiper-container slides-per-view='1.7' space-between='20' >
                           <swiper-slide>
                             <div className="flex">
-                              <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3 h-full">
+                              <div className="border-green-500 border shadow rounded-2xl my-auto p-10 space-y-3 h-full w-full">
                                 <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
-                                <p className="font-bold">Basic</p>
-                                <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                                <p className="text-4xl font-bold">5,000</p>
-                                <p className="font-bold text-sm">No Subscription</p>
+                                <p className="text-4xl font-bold">No Plans</p>
                                 <div className="mt-auto">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(5000);
-                                    setViews('vehicle-movement')
-                                  }}>Choose Plan</Button>
+                                    setViews('details')
+                                  }}>Continue</Button>
                                 </div>
                               </div>
                             </div>
@@ -202,7 +237,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(10000);
-                                    setViews('vehicle-movement')
+                                    setViews('details')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -218,28 +253,28 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="font-bold text-sm">What's included:</p>
                                 <div>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
-                                  </p> <br />
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine</span>
+                                  </p>
                                 </div>
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(25000);
-                                    setViews('vehicle-movement')
+                                    setViews('details')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -255,28 +290,28 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="font-bold text-sm">What's included:</p>
                                 <div className="text-white">
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine</span>
                                   </p>
                                 </div>
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(50000);
-                                    setViews('vehicle-movement')
+                                    setViews('details')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>
@@ -292,28 +327,28 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="font-bold text-sm">What's included:</p>
                                 <div>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconX size={15} color="gray" className="bg-gray-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm line-through">Lorem Ipsum Dolor</span>
-                                  </p> <br />
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine Servicing </span>
+                                  </p>
                                 </div>
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
                                     setPlans(100000);
-                                    setViews('vehicle-movement')
+                                    setViews('details')
                                   }}>Choose Plan</Button>
                                 </div>
                               </div>

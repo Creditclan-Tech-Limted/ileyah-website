@@ -9,6 +9,7 @@ import WantThis from "./WantThis";
 import Plans from "./Plans";
 
 const Details = ({ property, onClose, onNext }) => {
+  console.log(property);
   const swiperRef = useRef(null);
   const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state)
@@ -79,7 +80,7 @@ const Details = ({ property, onClose, onNext }) => {
         <hr />
         <div className="flex justify-between">
           <p className="font-semibold text-2xl text-gray-500">
-            {formatCurrency(Number(property?.price) / 12).toString().slice(0, -3)}
+            {formatCurrency(Number(property?.newPrice) / 12).toString().slice(0, -3)}
             <span className="text-sm text-black">/mo</span>
           </p>
           <IconBookmark className="cursor-pointer" />
@@ -87,12 +88,9 @@ const Details = ({ property, onClose, onNext }) => {
         <p className="-pt-10">{property?.createdAt?.slice(0, 10)}</p>
         <hr />
         <div className="flex space-x-5">
-          {/* <Button block onClick={scheduleInspections} variant='outlined' color='blue'  > Schedule Inspection </Button> */}
-          {/* <Button block onClick={chooseProperty}> I want this </Button> */}
           <Button block onClick={viewPlans} color='black' > View subscription </Button>
         </div>
         <p className="ml-auto text-blue-600 underline">
-          {/* <a target="_blank" href={`https://${property?.link}`} rel="noopener noreferrer"> Check Property Source...</a> */}
         </p>
         <div className="border p-5 rounded">
           <p className="mb-3 font-bold">Description</p>
@@ -105,7 +103,6 @@ const Details = ({ property, onClose, onNext }) => {
           <div className=" p-3 rounded-full">
             <img src="https://static.wixstatic.com/media/af4a76_170dbc341f2d462884c99fcebf247880~mv2.png" width={100} alt="" />
           </div>
-          {/* {property?.source || 'Nigeria Property Center'} */}
         </div>
       </div>
 

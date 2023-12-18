@@ -38,6 +38,19 @@ const Navbar = () => {
     window.location.reload();
   };
 
+  const signIn = async () => {
+    try {
+      const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
+      if (ileyah_token) {
+        router.push('/dashboard')
+      } else {
+        router.push('/login')
+      }
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
   return (
     <>
       <header className={classNames(
@@ -117,9 +130,9 @@ const Navbar = () => {
             </div>
             <div className="flex items-center justify-end gap-x-5 md:gap-x-4 ml-6">
               <div className="hidden lg:block space-x-4">
-                <Link href='/login'>
-                  <Button>Get Started</Button>
-                </Link>
+                <Button onClick={signIn}>Sign In</Button>
+                {/* <Link href='/register'>
+                </Link> */}
               </div>
               <div className="-mr-1 lg:hidden">
                 <button
@@ -159,12 +172,6 @@ const Navbar = () => {
                 >
                   Product
                 </Link>
-                {/* <Link
-                  onClick={() => setIsMobileNavVisible(false)} href="/tenants"
-                  className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
-                >
-                  Tenants
-                </Link> */}
                 <Link
                   onClick={() => setIsMobileNavVisible(false)} href="/landlords"
                   className="block w-full px-4 py-3 rounded-xl hover:bg-zinc-200"
