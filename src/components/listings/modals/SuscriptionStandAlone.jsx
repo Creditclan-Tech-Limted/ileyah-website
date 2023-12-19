@@ -1,13 +1,16 @@
 import Drawer from '@/components/Drawer'
 import Button from '@/components/global/Button';
 import Collapsible from '@/components/global/Collapsible';
-import { IconBath, IconBulb, IconBus, IconCheck, IconChevronRight, IconEdit, IconHeart, IconPaint, IconPalette, IconPlus, IconRotate2, IconStar, IconTriangleInverted, IconX } from "@tabler/icons-react";
-
+import { IconCheck, IconChevronRight, IconEdit, IconHeart, IconStar } from "@tabler/icons-react";
+import CustomizePlan from './CustomizePlan';
+import { useState } from 'react';
 
 const SuscriptionStandAlone = ({ isOpen, onClose }) => {
+  const [openCustomizePlan, setOpenCustomizePlan] = useState(false)
 
   return (
     <>
+      <CustomizePlan isOpen={openCustomizePlan} onClose={() => setOpenCustomizePlan(false)} />
       <Drawer isOpen={isOpen} onClose={onClose} title={'Subscriptions'}>
         <>
           <p className="mb-5">Please select plan a subscription services</p>
@@ -25,7 +28,7 @@ const SuscriptionStandAlone = ({ isOpen, onClose }) => {
               )}
               content={(
                 <div className="opacity-80 pb-6 px-6">
-                  <swiper-container slides-per-view='1.7' space-between='20' >
+                  <swiper-container slides-per-view='1.7' space-between='20'>
                     <swiper-slide>
                       <div className="flex">
                         <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
@@ -198,6 +201,9 @@ const SuscriptionStandAlone = ({ isOpen, onClose }) => {
 
           <div
             className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100 mt-10"
+            onClick={() => {
+              onClose()
+              setOpenCustomizePlan(true)}}
           >
             <div>
               <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center">
@@ -218,8 +224,10 @@ const SuscriptionStandAlone = ({ isOpen, onClose }) => {
           </div>
         </>
       </Drawer>
+
+
     </>
   )
 }
 
-export default SuscriptionStandAlone
+export default SuscriptionStandAlone;
