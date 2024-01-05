@@ -10,7 +10,7 @@ import useSignupStore from '@/store/signup'
 import axios from 'axios'
 import { AUTH_ENDPOINT } from '@/api/landlord'
 import { useToast } from '@/lib/use-toast'
-import {AiFillEye, AiFillEyeInvisible} from 'react-icons/ai'
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 
 const Page = () => {
   const router = useRouter()
@@ -91,39 +91,9 @@ const Page = () => {
                   </div>
 
                   <div className=''>
-                    {/* <div className='flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-between'>
-                      <button
-                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'tenants'
-                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                            : ''
-                          }`}
-                        onClick={() => handleTabClick('tenants')}
-                      >
-                        Tenants
-                      </button>
-                      <button
-                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'agents/landlords'
-                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                            : ''
-                          }`}
-                        onClick={() => handleTabClick('agents/landlords')}
-                      >
-                        Agents
-                      </button>
-                      <button
-                        className={`py-2 px-4 rounded-t-lg ${activeTab === 'companies'
-                            ? 'bg-gray-200 rounded-t-lg active text-blue-900 hover:text-gray-600 '
-                            : ''
-                          }`}
-                        onClick={() => handleTabClick('companies')}
-                      >
-                        Company
-                      </button>
-                    </div> */}
                     <div className=' py-4  rounded-b-lg'>
                       {activeTab === 'tenants' && (
                         <div>
-                          {/* Tenants Login Form */}
                           <form onSubmit={handleSubmit(onSubmit)}>
                             <div
                               className='relative mb-4'
@@ -149,9 +119,9 @@ const Page = () => {
                               <Input
                                 label='Passsword'
                                 name='password'
-                                type={isVisiblePassword ? 'text'  : 'password'}
-                              togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
-                              rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+                                type={isVisiblePassword ? 'text' : 'password'}
+                                togglePasswordVisibility={() => setIsVisiblePassword(!isVisiblePassword)}
+                                rightIcon={isVisiblePassword ? AiFillEyeInvisible : AiFillEye}
                                 bordered
                                 {...register('password', {
                                   required: {
@@ -167,7 +137,6 @@ const Page = () => {
                                 {' '}
                                 {loading ? 'Loading...' : 'Log in'}{' '}
                               </Button>
-                              {/* <div className='mt-2 cursor-pointer'>Forgot password?</div> */}
                               <Link href='/forgot-password'>
                                 <p>Forgot password?</p>
                               </Link>
@@ -185,7 +154,6 @@ const Page = () => {
                       )}
                       {activeTab === 'agents/landlords' && (
                         <div>
-                          {/* Agent Login Form */}
                           <form onSubmit={handleSubmit(onSubmit)}>
                             <div
                               className='relative mb-4'
@@ -211,9 +179,9 @@ const Page = () => {
                               <Input
                                 label='Passsword'
                                 name='password'
-                                type={isVisiblePassword ? 'text'  : 'password'}
-                                togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
-                                rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+                                type={isVisiblePassword ? 'text' : 'password'}
+                                togglePasswordVisibility={() => setIsVisiblePassword(!isVisiblePassword)}
+                                rightIcon={isVisiblePassword ? AiFillEyeInvisible : AiFillEye}
 
                                 bordered
                                 {...register('password', {
@@ -271,9 +239,9 @@ const Page = () => {
                               <Input
                                 label='Passsword'
                                 name='password'
-                                type={isVisiblePassword ? 'text'  : 'password'}
-                                togglePasswordVisibility={()=>setIsVisiblePassword(!isVisiblePassword)}
-                                rightIcon={isVisiblePassword ? AiFillEyeInvisible  : AiFillEye}
+                                type={isVisiblePassword ? 'text' : 'password'}
+                                togglePasswordVisibility={() => setIsVisiblePassword(!isVisiblePassword)}
+                                rightIcon={isVisiblePassword ? AiFillEyeInvisible : AiFillEye}
 
                                 bordered
                                 {...register('password', {

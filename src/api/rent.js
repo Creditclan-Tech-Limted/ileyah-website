@@ -2,7 +2,6 @@ import { parseJsonString } from "@/lib/utils.js";
 import http from "@/lib/http";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-// https://wema.creditclan.com/api/v3/rent/register
 export const useSignUpMutation = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
     return http.post('https://wema.creditclan.com/api/v3/rent/register', payload);

@@ -1,7 +1,9 @@
 import Drawer from '@/components/Drawer'
-import { IconBath, IconBulb, IconEdit, IconPaint, IconPalette, IconPlus, IconTriangleInverted } from '@tabler/icons-react'
+import Button from '@/components/global/Button'
+import { useToast } from '@/lib/use-toast'
+import { IconBath, IconBulb, IconEdit, IconHammer, IconPaint, IconPalette, IconPlus, IconTriangleInverted } from '@tabler/icons-react'
 import classNames from 'classnames'
-import React from 'react'
+import React, { useState } from 'react'
 
 const artisans = [
   {
@@ -30,7 +32,7 @@ const artisans = [
   },
   {
     name: 'Carpentry Services',
-    icon: <IconTriangleInverted size="20" />,
+    icon: <IconHammer size="20" />,
     desc: 'Carpenters can assist with furniture assembly, repairs, and custom furniture projects',
     bg_color: 'bg-teal-600'
   },
@@ -42,7 +44,27 @@ const artisans = [
   }
 ]
 
+
 const CustomizePlan = ({ isOpen, onClose }) => {
+  const toast = useToast();
+  const [selectedPlans, setSelectedPlans] = useState([])
+
+  const handleSetPlans = async (item) => {
+    try {
+      toast.success(`${item.name} Added`);
+      setSelectedPlans(item);
+    } catch (error) {
+      console.log({ error });
+    }
+  }
+
+  const submit = async () => {
+    try {
+
+    } catch (error) {
+      console.log({ error });
+    }
+  }
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title={'Customize Plan'}>
@@ -50,6 +72,7 @@ const CustomizePlan = ({ isOpen, onClose }) => {
           artisans.map((item, i) => (
             <div
               className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100 mb-5"
+              key={i}
             >
               <div>
                 <div className={classNames("w-10 h-10 rounded-full text-white grid place-items-center", item.bg_color)}>
@@ -65,12 +88,13 @@ const CustomizePlan = ({ isOpen, onClose }) => {
                 </p>
               </div>
               <div>
-                <IconPlus className="text-black" size="20" />
+                <IconPlus className="text-black" size="20" onClick={() => handleSetPlans(item)} />
               </div>
             </div>
-
           ))
         }
+
+        <Button onClick={submit}>Continue</Button>
       </Drawer>
     </>
   )

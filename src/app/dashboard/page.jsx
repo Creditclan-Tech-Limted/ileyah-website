@@ -1,11 +1,5 @@
 'use client'
-import {
-  IconChevronRight,
-  IconExclamationCircle,
-  IconHeadset,
-  IconHomeHand,
-  IconHomeSearch,
-} from '@tabler/icons-react';
+import { IconChevronRight, IconExclamationCircle, IconHeadset, IconHomeHand, IconHomeSearch } from '@tabler/icons-react';
 import { useEffect, useState } from 'react'
 import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
@@ -24,6 +18,7 @@ import Drawer from '@/components/Drawer';
 import { isBefore, isAfter } from 'date-fns'
 import MakePayment from './modals/MakePayment';
 import Link from 'next/link';
+import WeCall from '@/components/WeCall';
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -41,7 +36,8 @@ const Page = ({ className }) => {
   const [upfront, setUpfront] = useState();
   const [recoveryFilter, setRecoveryFilter] = useState();
   const [recovery, setRecovery] = useState();
-  const [openMakePayment, setOpenMakePayment] = useState(false)
+  const [openMakePayment, setOpenMakePayment] = useState(false);
+  const [openWeCall, setOpenWeCall] = useState(false);
 
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
   const { mutateAsync: getInspections, isLoading: isGetInspectionsLoading } = useGetInspectionDetails();
@@ -53,7 +49,6 @@ const Page = ({ className }) => {
         await getRecoveryInfo(res?.data?.request?.creditclan_request_id)
         await getUpfrontStatus(res?.data?.request?.creditclan_request_id);
         const request = res?.data?.request ?? null;
-        console.log({ request: request.payload });
         if (request) request.payload = parseJsonString(request.payload) || request.payload;
         setPendingRequest(res.data.request)
         updateData({ request: res.data.request })
@@ -85,7 +80,6 @@ const Page = ({ className }) => {
         let nextTillEndDate = null;
         let nextTillEndTotal = null;
         const hasFullyPaid = schedule.every(i => +i.how_much_remaining === 0)
-        console.log({ schedule, hasFullyPaid });
         if (!hasFullyPaid) {
           overdueBalances = schedule?.filter((i) => {
             return isBefore(new Date(i.repayment_date), new Date()) && +i.how_much_remaining > 0;
@@ -99,7 +93,6 @@ const Page = ({ className }) => {
             nextMonth = next;
           } else {
             const next = schedule.find((s) => isAfter(new Date(s.repayment_date), new Date()) && +s.how_much_remaining > 0);
-            console.log({ next });
             nextPayment = +next.how_much_remaining;
             nextPaymentDate = next?.repayment_date
           }
@@ -357,25 +350,25 @@ const Page = ({ className }) => {
                         </div>
                         <div className='mt-3'>
                           <Link href={'/dashboard/listings'}>
-                          <div
-                            className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                            <div
+                              className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                             >
-                            <div className="text-red-600 grid place-items-center mt-1">
-                              <IconHomeSearch size="32" />
+                              <div className="text-red-600 grid place-items-center mt-1">
+                                <IconHomeSearch size="32" />
+                              </div>
+                              <div className="px-6">
+                                <p className="text-lg font-medium text-left">
+                                  Browse Listings
+                                </p>
+                                <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                  Renew your house rent on a monthly basis while we handle the full payment
+                                </p>
+                              </div>
+                              <div className='my-auto'>
+                                <IconChevronRight className="text-black" size="20" />
+                              </div>
                             </div>
-                            <div className="px-6">
-                              <p className="text-lg font-medium text-left">
-                                Browse Listings
-                              </p>
-                              <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                                Renew your house rent on a monthly basis while we handle the full payment
-                              </p>
-                            </div>
-                            <div className='my-auto'>
-                              <IconChevronRight className="text-black" size="20" />
-                            </div>
-                          </div>
-                            </Link>
+                          </Link>
                           <div
                             className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                             onClick={() => {
@@ -404,10 +397,8 @@ const Page = ({ className }) => {
                           <div
                             className="rounded-2xl flex items-start border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
                             onClick={() => {
-                              if (pendingRequest) {
-                                setOpenViewProperty(true)
-                              }
-                            }}                          >
+                              setOpenWeCall(true);
+                            }}>
                             <div className="text-green-600 grid place-items-center mt-1">
                               <IconHeadset size="32" />
                             </div>
@@ -472,8 +463,7 @@ const Page = ({ className }) => {
         <WantThis />
       )}
       <MakePayment isOpen={openMakePayment} onClose={() => setOpenMakePayment(false)} recoveryFilter={recoveryFilter} recovery={recovery} />
-      {/* <ProDetails isOpen={openPropertyDetails} onClose={handleClose} property={current} /> */}
-
+      <WeCall isOpen={openWeCall} onClose={() => setOpenWeCall(false)} />
     </>
   )
 }

@@ -216,23 +216,11 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="font-bold text-sm">What's included:</p>
                                 <div className="text-white">
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Capentry Services</span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Basic Fixes</span>
                                   </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine</span>
-                                  </p>
                                 </div>
                                 <div className="mt-10">
                                   <Button block className='mt-10' onClick={() => {
@@ -251,24 +239,15 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
                                 <p className="text-4xl font-bold">25,000</p>
                                 <p className="font-bold text-sm">What's included:</p>
-                                <div>
+                                <div className="space-y-2">
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation Services (Indoor)</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
-                                  </p> <br />
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services (Basic Fix and Door Lock Change)</span>
+                                  </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services (Swtich box repair / Change of light switch)  </span>
                                   </p>
                                 </div>
                                 <div className="mt-10">
@@ -288,24 +267,24 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
                                 <p className="text-4xl font-bold">50,000</p>
                                 <p className="font-bold text-sm">What's included:</p>
-                                <div className="text-white">
+                                <div className="text-white space-y-2">
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine Servicing / Installation</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Generator Servicing </span>
+                                  </p>
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Change of light switches</span>
+                                  </p>
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">TV Installation </span>
                                   </p> <br />
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation</span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services</span>
                                   </p>
                                 </div>
                                 <div className="mt-10">
@@ -323,26 +302,26 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
                                 <p className="font-bold">Starter</p>
                                 <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                                <p className="text-4xl font-bold">100,000</p>
+                                <p className="text-4xl font-bold">75,000</p>
                                 <p className="font-bold text-sm">What's included:</p>
-                                <div>
+                                <div className="space-y-2">
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Installation (One - Off)</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigations</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services</span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation (Indoor)</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services</span>
-                                  </p> <br />
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services</span>
+                                  </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine Servicing </span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services / Installations</span>
+                                  </p>
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services and repairs</span>
+                                  </p>
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Repairs and Services  </span>
+                                  </p>
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Gas Charging (Top Up / Complete fill up)  </span>
                                   </p>
                                 </div>
                                 <div className="mt-10">
@@ -354,6 +333,47 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                               </div>
                             </div>
                           </swiper-slide>
+                          <swiper-slide>
+                            <div className="flex">
+                              <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
+                                <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
+                                <p className="font-bold">Starter</p>
+                                <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
+                                <p className="text-4xl font-bold">100,000</p>
+                                <p className="font-bold text-sm">What's included:</p>
+                                <div className="space-y-2">
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation (Indoor & Outdoor)</span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Basic home Cleaning</span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services</span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services / Installations</span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services and repairs</span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Repairs and Services  </span>
+                                  </p> <br />
+                                  <p className="inline-flex">
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Gas Charging (Top Up / Complete fill up)  </span>
+                                  </p>
+                                </div>
+                                <div className="mt-10">
+                                  <Button block className='mt-10' onClick={() => {
+                                    setPlans(100000);
+                                    setViews('details')
+                                  }}>Choose Plan</Button>
+                                </div>
+                              </div>
+                            </div>
+                          </swiper-slide>
+                          
                         </swiper-container>
                       </div>
                     )}

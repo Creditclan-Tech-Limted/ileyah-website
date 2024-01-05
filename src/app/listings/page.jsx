@@ -110,7 +110,6 @@ const Page = () => {
 
   useEffect(() => {
     const bottom = bottomRef?.current;
-
     const handlePropScroll = () => {
       const rect = bottom.getBoundingClientRect()
       let isBottom = rect.bottom <= window.innerHeight + 2000;

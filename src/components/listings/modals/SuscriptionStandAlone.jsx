@@ -20,9 +20,6 @@ const SuscriptionStandAlone = ({ isOpen, onClose }) => {
               header={(
                 <h5 className="md:text-lg font-medium inline-flex">
                   <div className="my-auto font-bold">
-                    <span>
-                      Move in Service
-                    </span>
                   </div>
                 </h5>
               )}
@@ -203,7 +200,8 @@ const SuscriptionStandAlone = ({ isOpen, onClose }) => {
             className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100 mt-10"
             onClick={() => {
               onClose()
-              setOpenCustomizePlan(true)}}
+              setOpenCustomizePlan(true)
+            }}
           >
             <div>
               <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center">
@@ -215,7 +213,7 @@ const SuscriptionStandAlone = ({ isOpen, onClose }) => {
                 Customize Plan
               </p>
               <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Tailor Your Package to Fit Your Needs
               </p>
             </div>
             <div>

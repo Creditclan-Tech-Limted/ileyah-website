@@ -19,7 +19,6 @@ const ViewPropertyDetails = ({ isOpen, onClose, loan, request, upfront, isGetLoa
   const [recovery, setRecovery] = useState([]);
 
   const toast = useToast();
-
   const handleCancelRequest = async () => {
     try {
       await cancelRequest(data.user.phone);
