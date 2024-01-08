@@ -116,6 +116,8 @@ const Page = ({ className }) => {
     request_id: pendingRequest?.creditclan_request_id,
   });
 
+  console.log({ loan });
+
   const getPorperties = async () => {
     try {
       const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
@@ -453,7 +455,7 @@ const Page = ({ className }) => {
         )}
       </div>
       <Drawer isOpen={openViewProperty} onClose={() => setOpenViewProperty(false)} longer={true}>
-        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} upfront={upfront} isGetLoanDetailsLoading={isGetLoanDetailsLoading} />
+        <ViewPropertyDetails request={pendingRequest} loan={loan} onClose={() => setOpenViewProperty(false)} upfront={upfront} isGetLoanDetailsLoading={isGetLoanDetailsLoading} globalLoading={globalLoading} />
       </Drawer>
       <InspectionDetails isOpen={openViewInspections} onClose={() => setopenViewInspections(false)} inspection={current} />
       <RenewRentDashboard isOpenDrawer={isOpenDrawer} onClose={() => setIsOpenDrawer(false)} />

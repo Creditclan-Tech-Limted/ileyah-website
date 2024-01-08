@@ -19,7 +19,7 @@ import Input from '@/global/Input'
 import { useForm } from 'react-hook-form'
 import { areas, availableAreas } from '@/lib/utils'
 import { MultiSelect } from 'react-multi-select-component';
-import SuscriptionStandAlone from '@/components/listings/modals/SuscriptionStandAlone'
+import SuscriptionStandAlone from '@/components/listings/SubStandAlone/SuscriptionStandAlone'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 

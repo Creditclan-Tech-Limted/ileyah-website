@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import Hover from '@/global/Hover';
 import products from '@/lib/products';
 import useGlobalStore from '@/store/global';
-import SuscriptionStandAlone from '@/components/listings/modals/SuscriptionStandAlone';
+import SuscriptionStandAlone from '@/components/listings/SubStandAlone/SuscriptionStandAlone';
 
 const Navbar = ({ filterAction }) => {
   const toggleIsSignupOpen = useGlobalStore(state => state.toggleIsSignupOpen);

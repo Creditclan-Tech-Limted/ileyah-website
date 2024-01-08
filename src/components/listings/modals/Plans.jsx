@@ -1,11 +1,8 @@
 import Drawer from "@/components/Drawer"
 import Button from "@/components/global/Button";
 import { useToast } from "@/lib/use-toast";
-import { HousesData } from "@/utils/houseData";
-import { IconBath, IconBulb, IconBus, IconCheck, IconHeart, IconPaint, IconPalette, IconPlus, IconStar, IconTriangleInverted, IconX } from "@tabler/icons-react";
-import classNames from "classnames";
+import { IconCheck, IconHeart, IconStar, IconX } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { register } from 'swiper/element/bundle';
 import { useState } from "react";
 import { formatCurrency } from "@/lib/utils";
@@ -15,45 +12,6 @@ import { useForm } from "react-hook-form";
 import Input from "@/global/Input";
 import Select from "@/global/Select";
 register();
-
-const artisans = [
-  {
-    name: 'Cleaning Services',
-    icon: <IconBath size="20" />,
-    desc: 'Cleaning companies offer deep cleaning services to ensure the apartment is spotless before moving in.',
-    bg_color: 'bg-red-600'
-  },
-  {
-    name: 'Plumbing Services',
-    icon: <IconPaint size="20" />,
-    desc: 'Plumbers can handle installation and repairs of plumbing fixtures, such as sinks, faucets, and toilets.',
-    bg_color: 'bg-blue-600'
-  },
-  {
-    name: 'Painting Services',
-    icon: <IconPaint size="20" />,
-    desc: 'Professional painters can refresh the interior or exterior of the apartment with a fresh coat of paint.',
-    bg_color: 'bg-green-600'
-  },
-  {
-    name: 'Electrical Services',
-    icon: <IconBulb size="20" />,
-    desc: 'Electricians can install or repair electrical fixtures, outlets, and wiring to ensure safety and functionality.',
-    bg_color: 'bg-purple-600'
-  },
-  {
-    name: 'Carpentry Services',
-    icon: <IconTriangleInverted size="20" />,
-    desc: 'Carpenters can assist with furniture assembly, repairs, and custom furniture projects',
-    bg_color: 'bg-teal-600'
-  },
-  {
-    name: 'Interior Design Services',
-    icon: <IconPalette size="20" />,
-    desc: 'Interior designers can assist with space planning, furniture selection, and creating a personalized living space.',
-    bg_color: 'bg-black'
-  }
-]
 
 const house_types = [
   { value: 'room-only', text: 'Room only' },
@@ -104,7 +62,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
 
   const scheduleInspections = async () => {
     try {
-      console.log({property});
+      console.log({ property });
       const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
       if (ileyah_token) {
         updateData({ user: ileyah_token, property });
@@ -121,6 +79,46 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
   const onSubmit = async (values) => {
     // const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...values, landlordAgentId: data?.user.id });
   }
+
+  const _plans = [
+    {
+      amount: "10,000",
+      items: [
+        { id: 1, name: "Caepentry Services" },
+        { id: 2, name: "Basic Fixes" }
+      ]
+    },
+    {
+      amount: "25,000",
+      items: [
+        { id: 1, name: "Fumigation Services (Indoor)" },
+        { id: 2, name: "Carpentry Services (Basic Fix and Door Lock Change)" },
+        { id: 3, name: "Electrical Services (Swtich box repair / Change of light switch)" },
+      ]
+    },
+    {
+      amount: '50,000',
+      items: [
+        { id: 1, name: "Washing Machine Servicing / Installation" },
+        { id: 2, name: "Generator Servicing" },
+        { id: 3, name: "Change of light switches" },
+        { id: 4, name: "TV Installation" },
+        { id: 5, name: "Fumigation" },
+        { id: 6, name: "Carpentry Services" }
+      ]
+    },
+    {
+      amount: "75,000",
+      items: [
+        { id: 1, name: "Fumigation (Indoor)" },
+        { id: 2, name: "Carpentry Services" },
+        { id: 3, name: "Electrical Services / Installations" },
+        { id: 4, name: "Plumbing Services and repairs" },
+        { id: 5, name: "AC Repairs and Services" },
+        { id: 6, name: "AC Gas Charging (Top Up / Complete fill up)"}
+      ]
+    }
+  ]
 
   return (
     <>
@@ -191,7 +189,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                     )}
                     content={(
                       <div className="opacity-80 pb-6 px-6">
-                        <swiper-container slides-per-view='1.7' space-between='20' >
+                        <swiper-container slides-per-view='1.7' space-between='20'>
                           <swiper-slide>
                             <div className="flex">
                               <div className="border-green-500 border shadow rounded-2xl my-auto p-10 space-y-3 h-full w-full">
@@ -318,10 +316,10 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                     <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services and repairs</span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Repairs and Services  </span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Repairs and Services </span>
                                   </p>
                                   <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Gas Charging (Top Up / Complete fill up)  </span>
+                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Gas Charging (Top Up / Complete fill up) </span>
                                   </p>
                                 </div>
                                 <div className="mt-10">
@@ -373,7 +371,6 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                               </div>
                             </div>
                           </swiper-slide>
-                          
                         </swiper-container>
                       </div>
                     )}

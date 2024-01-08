@@ -51,8 +51,8 @@ const CustomizePlan = ({ isOpen, onClose }) => {
 
   const handleSetPlans = async (item) => {
     try {
+      setSelectedPlans(prevState => ([ ...prevState, item ]));
       toast.success(`${item.name} Added`);
-      setSelectedPlans(item);
     } catch (error) {
       console.log({ error });
     }
@@ -60,11 +60,12 @@ const CustomizePlan = ({ isOpen, onClose }) => {
 
   const submit = async () => {
     try {
-
     } catch (error) {
       console.log({ error });
     }
   }
+
+  console.log({ selectedPlans });
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title={'Customize Plan'}>
@@ -93,7 +94,6 @@ const CustomizePlan = ({ isOpen, onClose }) => {
             </div>
           ))
         }
-
         <Button onClick={submit}>Continue</Button>
       </Drawer>
     </>
