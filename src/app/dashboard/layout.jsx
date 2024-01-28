@@ -1,4 +1,4 @@
-import React from 'react'
+'use client'
 import Sidebar from './Sidebar'
 
 const layout = ({ children }) => {

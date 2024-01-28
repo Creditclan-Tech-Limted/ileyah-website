@@ -98,6 +98,8 @@ const Page = ({ className }) => {
           }
         }
 
+        console.log({ nextPayment, nextTillEnd, nextMonth, nextPayment, nextPaymentDate, overdueBalances, hasFullyPaid, schedule });
+
         setRecoveryFilter({
           hasFullyPaid, overdueBalances, nextPayment, nextPaymentDate, nextMonth, nextTillEnd, nextTillEndTotal
         })
@@ -115,8 +117,6 @@ const Page = ({ className }) => {
     phone: data?.user?.phone,
     request_id: pendingRequest?.creditclan_request_id,
   });
-
-  console.log({ loan });
 
   const getPorperties = async () => {
     try {
@@ -150,7 +150,20 @@ const Page = ({ className }) => {
     }
   }
 
+  const authtenticate = async () => {
+    try {
+      const token = localStorage.removeItem('ileyah_token');
+      console.log({ token });
+      if (!token) {
+        router.push('/login')
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
+    authtenticate()
     getUser();
     getInspectionsDetails();
     getPorperties();
@@ -190,15 +203,15 @@ const Page = ({ className }) => {
                 ) :
                   <>
                     <div className="grid grid-cols-1 lg:grid-cols-[550px_1fr] gap-10 items-start">
-                      <div>
-                        <>
-                          {
-                            pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' ?
+                      {
+                        pendingRequest ?
+                          <>
+                            <div>
                               <>
-                                <div>
-                                  <h3 className="text-xl font-medium mb-8 px-1">Active Request</h3>
-                                  {
-                                    recoveryFilter?.overdueBalances.length > 0 ?
+                                {
+                                  recoveryFilter?.hasFullyPaid ? <>
+                                    <div>
+                                      <h3 className="text-xl font-medium mb-8 px-1">Repayment Complete</h3>
                                       <>
                                         <div className='grid border border-gray-300 rounded-xl overflow-hidden'>
                                           <div className="flex p-5  items-center ">
@@ -211,118 +224,215 @@ const Page = ({ className }) => {
                                             </div>
                                           </div>
                                           <div className='my-5 ml-20 flex space-x-5'>
-                                            <Button onClick={() => setOpenMakePayment(true)}>Make Payment</Button>
+                                            <Button>Renew Request</Button>
                                             <Button variant='outlined' onClick={() => setOpenViewProperty(true)} >View Request</Button>
                                           </div>
                                         </div>
                                       </>
-                                      :
+                                    </div>
+                                  </> :
+                                    pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' ?
                                       <>
-                                        <div className='grid  border border-gray-300 rounded-xl overflow-hidden'>
-                                          <div className="flex p-5  items-center ">
-                                            <div className='my-auto'> <IconHomeSearch size={50} /> </div>
-                                            <div className='px-5 overflow-hidden'>
-                                              <p className='text-3xl font-semibold'>{formatCurrency(recoveryFilter?.nextPayment)}</p>
-                                              <div className="">
-                                                <p>Next repayment due by {recoveryFilter?.nextPaymentDate} </p>
-                                              </div>
-                                            </div>
-                                          </div>
-                                          <div className='my-5 ml-20 flex space-x-5'>
-                                            <Button color='white' onClick={() => setOpenMakePayment(true)}>Make Payment</Button>
-                                            <Button variant='outlined' color='white' onClick={() => setOpenViewProperty(true)}>View Request</Button>
-                                          </div>
+                                        <div>
+                                          <h3 className="text-xl font-medium mb-8 px-1">Active Request</h3>
+                                          {
+                                            recoveryFilter?.overdueBalances.length > 0 ?
+                                              <>
+                                                <div className='grid border border-gray-300 rounded-xl overflow-hidden'>
+                                                  <div className="flex p-5  items-center ">
+                                                    <div className='my-auto'> <IconHomeSearch size={50} /> </div>
+                                                    <div className='px-5 overflow-hidden'>
+                                                      <p className='text-3xl font-semibold'>{formatCurrency(recoveryFilter?.nextPayment)}</p>
+                                                      <div className="">
+                                                        <p>Overdue payment </p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div className='my-5 ml-20 flex space-x-5'>
+                                                    <Button onClick={() => setOpenMakePayment(true)}>Make Payment</Button>
+                                                    <Button variant='outlined' onClick={() => setOpenViewProperty(true)} >View Request</Button>
+                                                  </div>
+                                                </div>
+                                              </>
+                                              :
+                                              <>
+                                                <div className='grid  border border-gray-300 rounded-xl overflow-hidden'>
+                                                  <div className="flex p-5  items-center ">
+                                                    <div className='my-auto'> <IconHomeSearch size={50} /> </div>
+                                                    <div className='px-5 overflow-hidden'>
+                                                      <p className='text-3xl font-semibold'>{formatCurrency(recoveryFilter?.nextPayment)}</p>
+                                                      <div className="">
+                                                        <p>Next repayment due by {recoveryFilter?.nextPaymentDate} </p>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <div className='my-5 ml-20 flex space-x-5'>
+                                                    <Button color='white' onClick={() => setOpenMakePayment(true)}>Make Payment</Button>
+                                                    <Button variant='outlined' color='white' onClick={() => setOpenViewProperty(true)}>View Request</Button>
+                                                  </div>
+                                                </div>
+                                              </>
+                                          }
                                         </div>
                                       </>
-                                  }
-                                </div>
-                              </>
-                              :
-                              <>
-                                <div>
-                                  <h3 className="text-xl font-medium mb-8 px-1">Pending Rent Request</h3>
-                                  {pendingRequest && (
-                                    <div className='grid border border-gray-300 rounded-xl overflow-hidden'>
-                                      <div className="flex p-5  items-center ">
-                                        <div className='my-auto'> <IconHomeSearch size={50} /> </div>
-                                        <div className='px-5 overflow-hidden'>
-                                          <p className='text-xl'>{pendingRequest?.address}</p>
-                                          <div className="">
-                                            <p className=''> Gbagaga, Lagos</p>
-                                            <p>{formatCurrency(pendingRequest?.amount)}</p>
-                                          </div>
-                                        </div>
-                                        <Button className='ml-auto' onClick={() => setOpenViewProperty(true)}>View</Button>
-                                      </div>
-                                      <div>
-                                        <div className="w-full bg-gray-200 rounded-b-xl">
-                                          {!pendingRequest?.creditclan_request_id && (
-                                            <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
+                                      :
+                                      <>
+                                        <div>
+                                          <h3 className="text-xl font-medium mb-8 px-1">Pending Rent Request</h3>
+                                          {pendingRequest && (
+                                            <div className='grid border border-gray-300 rounded-xl overflow-hidden'>
+                                              <div className="flex p-5  items-center ">
+                                                <div className='my-auto'> <IconHomeSearch size={50} /> </div>
+                                                <div className='px-5 overflow-hidden'>
+                                                  <p className='text-xl'>{pendingRequest?.address}</p>
+                                                  <div className="">
+                                                    <p className=''> Gbagaga, Lagos</p>
+                                                    <p>{formatCurrency(pendingRequest?.amount)}</p>
+                                                  </div>
+                                                </div>
+                                                <Button className='ml-auto' onClick={() => setOpenViewProperty(true)}>View</Button>
+                                              </div>
+                                              <div>
+                                                <div className="w-full bg-gray-200 rounded-b-xl">
+                                                  {!pendingRequest?.creditclan_request_id && (
+                                                    <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[33%] rounded-b-xl rounded-tr-xl" > Stage 1 / 3</div>
+                                                  )}
+                                                  {
+                                                    pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
+                                                      <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
+                                                    )
+                                                  }
+                                                  {
+                                                    pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
+                                                      <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
+                                                    )
+                                                  }
+                                                </div>
+                                              </div>
+                                            </div>
                                           )}
-                                          {
-                                            pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status !== '3' && (
-                                              <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[67%] rounded-b-xl rounded-tr-xl" > Stage 2 / 3</div>
-                                            )
-                                          }
-                                          {
-                                            pendingRequest?.creditclan_request_id && loan && loan?.loan?.offers && parseFloat(loan?.loan?.offers[0]?.amount) > 0 && loan?.loan?.loan_status === '3' && (
-                                              <div className="bg-green-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounede w-[99%] rounded-b-xl rounded-tr-xl" > Stage 3 / 3</div>
-                                            )
-                                          }
+                                          {!pendingRequest && (
+                                            <>
+                                              <div className='border p-10 rounded-xl'>
+                                                <div className="flex flex-col">
+                                                  <IconExclamationCircle className='mx-auto my-auto' />
+                                                  <p className='text-center mt-5'>No Pending Request Yet</p>
+                                                </div>
+                                              </div>
+                                            </>
+                                          )}
                                         </div>
-                                      </div>
-                                    </div>
-                                  )}
-                                  {!pendingRequest && (
-                                    <>
-                                      <div className='border p-10 rounded-xl'>
-                                        <div className="flex flex-col">
-                                          <IconExclamationCircle className='mx-auto my-auto' />
-                                          <p className='text-center mt-5'>No Pending Request Yet</p>
-                                        </div>
-                                      </div>
-                                    </>
-                                  )}
-                                </div>
+                                      </>
+                                }
                               </>
-                          }
-                        </>
-                        <h3 className="text-xl font-medium mb-8 px-1 mt-16"> Inspection Bookings </h3>
-                        {inspections && (
-                          <>
-                            <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
-                              {inspections?.map((m, i) => (
+                              <h3 className="text-xl font-medium mb-8 px-1 mt-16"> Inspection Bookings </h3>
+                              {inspections && (
                                 <>
-                                  <div className="flex py-4 px-8">
-                                    <div className="flex">
-                                      <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
-                                      <div>
-                                        <p className='mb-3'>{m?.property?.description}</p>
-                                        <p className='font-bold'>{formatCurrency(m?.property?.price)}</p>
-                                      </div>
+                                  <div className='border border-gray-300 py-2  rounded-xl divide-y divide-gray-300 '>
+                                    {inspections?.map((m, i) => (
+                                      <>
+                                        <div className="flex py-4 px-8">
+                                          <div className="flex">
+                                            <div className='my-auto mr-5'> <IconHomeSearch size={30} className='text-cyan-600' /> </div>
+                                            <div>
+                                              <p className='mb-3'>{m?.property?.description}</p>
+                                              <p className='font-bold'>{formatCurrency(m?.property?.price)}</p>
+                                            </div>
+                                          </div>
+                                          <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
+                                            setCurrent(m);
+                                            setopenViewInspections(true)
+                                          }}>View</Button>
+                                        </div>
+                                      </>
+                                    ))}
+                                  </div>
+                                  <div className="underline text-blue-500 mt-5 cursor-pointer text-right">See all Bookings</div>
+                                </>
+                              )}
+                              {!inspections && (
+                                <>
+                                  <div className='border p-10 rounded-xl'>
+                                    <div className="flex flex-col">
+                                      <IconExclamationCircle className='mx-auto my-auto' />
+                                      <p className='text-center mt-5'>No Pending Inspections </p>
                                     </div>
-                                    <Button className='ml-auto my-auto' variant='outlined' color='black' onClick={() => {
-                                      setCurrent(m);
-                                      setopenViewInspections(true)
-                                    }}>View</Button>
                                   </div>
                                 </>
-                              ))}
+                              )}
                             </div>
-                            <div className="underline text-blue-500 mt-5 cursor-pointer text-right">See all Bookings</div>
                           </>
-                        )}
-                        {!inspections && (
+                          :
                           <>
-                            <div className='border p-10 rounded-xl'>
-                              <div className="flex flex-col">
-                                <IconExclamationCircle className='mx-auto my-auto' />
-                                <p className='text-center mt-5'>No Pending Inspections </p>
+                            <div className='mt-3'>
+                              <Link href={'/dashboard/listings'}>
+                                <div
+                                  className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div className="text-red-600 grid place-items-center mt-1">
+                                    <IconHomeSearch size="32" />
+                                  </div>
+                                  <div className="px-6">
+                                    <p className="text-lg font-medium text-left">
+                                      Browse Listings
+                                    </p>
+                                    <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                      Renew your house rent on a monthly basis while we handle the full payment
+                                    </p>
+                                  </div>
+                                  <div className='my-auto'>
+                                    <IconChevronRight className="text-black" size="20" />
+                                  </div>
+                                </div>
+                              </Link>
+                              <div
+                                className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                                onClick={() => {
+                                  if (pendingRequest) {
+                                    setOpenViewProperty(true)
+                                  } else {
+                                    setIsOpenDrawer(true)
+                                  }
+                                }}
+                              >
+                                <div className="text-blue-600 grid place-items-center mt-1">
+                                  <IconHomeHand size="32" />
+                                </div>
+                                <div className="px-6">
+                                  <p className="text-lg font-medium text-left">
+                                    I found a house
+                                  </p>
+                                  <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                    Renew your house rent on a monthly basis while we handle the full payment
+                                  </p>
+                                </div>
+                                <div className='my-auto'>
+                                  <IconChevronRight className="text-black" size="20" />
+                                </div>
+                              </div>
+                              <div
+                                className="rounded-2xl flex items-start border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                                onClick={() => {
+                                  setOpenWeCall(true);
+                                }}>
+                                <div className="text-green-600 grid place-items-center mt-1">
+                                  <IconHeadset size="32" />
+                                </div>
+                                <div className="px-6">
+                                  <p className="text-lg font-medium text-left">
+                                    Talk to Advisor
+                                  </p>
+                                  <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                    Renew your house rent on a monthly basis while we handle the full payment
+                                  </p>
+                                </div>
+                                <div className='my-auto'>
+                                  <IconChevronRight className="text-black" size="20" />
+                                </div>
                               </div>
                             </div>
                           </>
-                        )}
-                      </div>
+                      }
                       <div>
                         <div>
                           <div className="border bg-blue-100 border-blue-200  p-8  rounded-2xl ml-auto">
@@ -350,73 +460,77 @@ const Page = ({ className }) => {
                             }
                           </div>
                         </div>
-                        <div className='mt-3'>
-                          <Link href={'/dashboard/listings'}>
-                            <div
-                              className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
-                            >
-                              <div className="text-red-600 grid place-items-center mt-1">
-                                <IconHomeSearch size="32" />
+                        {
+                          !!pendingRequest && (
+                            <div className='mt-3'>
+                              <Link href={'/dashboard/listings'}>
+                                <div
+                                  className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                                >
+                                  <div className="text-red-600 grid place-items-center mt-1">
+                                    <IconHomeSearch size="32" />
+                                  </div>
+                                  <div className="px-6">
+                                    <p className="text-lg font-medium text-left">
+                                      Browse Listings
+                                    </p>
+                                    <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                      Renew your house rent on a monthly basis while we handle the full payment
+                                    </p>
+                                  </div>
+                                  <div className='my-auto'>
+                                    <IconChevronRight className="text-black" size="20" />
+                                  </div>
+                                </div>
+                              </Link>
+                              <div
+                                className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                                onClick={() => {
+                                  if (pendingRequest) {
+                                    setOpenViewProperty(true)
+                                  } else {
+                                    setIsOpenDrawer(true)
+                                  }
+                                }}
+                              >
+                                <div className="text-blue-600 grid place-items-center mt-1">
+                                  <IconHomeHand size="32" />
+                                </div>
+                                <div className="px-6">
+                                  <p className="text-lg font-medium text-left">
+                                    I found a house
+                                  </p>
+                                  <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                    Renew your house rent on a monthly basis while we handle the full payment
+                                  </p>
+                                </div>
+                                <div className='my-auto'>
+                                  <IconChevronRight className="text-black" size="20" />
+                                </div>
                               </div>
-                              <div className="px-6">
-                                <p className="text-lg font-medium text-left">
-                                  Browse Listings
-                                </p>
-                                <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                                  Renew your house rent on a monthly basis while we handle the full payment
-                                </p>
+                              <div
+                                className="rounded-2xl flex items-start border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
+                                onClick={() => {
+                                  setOpenWeCall(true);
+                                }}>
+                                <div className="text-green-600 grid place-items-center mt-1">
+                                  <IconHeadset size="32" />
+                                </div>
+                                <div className="px-6">
+                                  <p className="text-lg font-medium text-left">
+                                    Talk to Advisor
+                                  </p>
+                                  <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
+                                    Renew your house rent on a monthly basis while we handle the full payment
+                                  </p>
+                                </div>
+                                <div className='my-auto'>
+                                  <IconChevronRight className="text-black" size="20" />
+                                </div>
                               </div>
-                              <div className='my-auto'>
-                                <IconChevronRight className="text-black" size="20" />
-                              </div>
                             </div>
-                          </Link>
-                          <div
-                            className="rounded-2xl flex items-start  border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
-                            onClick={() => {
-                              if (pendingRequest) {
-                                setOpenViewProperty(true)
-                              } else {
-                                setIsOpenDrawer(true)
-                              }
-                            }}
-                          >
-                            <div className="text-blue-600 grid place-items-center mt-1">
-                              <IconHomeHand size="32" />
-                            </div>
-                            <div className="px-6">
-                              <p className="text-lg font-medium text-left">
-                                I found a house
-                              </p>
-                              <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                                Renew your house rent on a monthly basis while we handle the full payment
-                              </p>
-                            </div>
-                            <div className='my-auto'>
-                              <IconChevronRight className="text-black" size="20" />
-                            </div>
-                          </div>
-                          <div
-                            className="rounded-2xl flex items-start border-b px-7 py-7 cursor-pointer hover:bg-gray-100"
-                            onClick={() => {
-                              setOpenWeCall(true);
-                            }}>
-                            <div className="text-green-600 grid place-items-center mt-1">
-                              <IconHeadset size="32" />
-                            </div>
-                            <div className="px-6">
-                              <p className="text-lg font-medium text-left">
-                                Talk to Advisor
-                              </p>
-                              <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                                Renew your house rent on a monthly basis while we handle the full payment
-                              </p>
-                            </div>
-                            <div className='my-auto'>
-                              <IconChevronRight className="text-black" size="20" />
-                            </div>
-                          </div>
-                        </div>
+                          )
+                        }
                       </div>
                     </div>
                     <h3 className="text-xl font-medium mb-8 px-1 my-20">Market Place</h3>

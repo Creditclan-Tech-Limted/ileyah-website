@@ -102,8 +102,8 @@ const Footer = () => {
                   Contact us
                 </Link>
               </h5>
-              <div className="space-y-3">
-                <div>
+              <div className="space-y-5">
+                <div className='space-y-2'>
                   <Link
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
@@ -111,13 +111,31 @@ const Footer = () => {
                     <IconPhoneCall size={20} className='mr-5' />
                     +234 9055 552 255
                   </Link>
+                  <Link
+                    href="#"
+                    className={`flex items-center ml-10 ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    +234 9062 827 914
+                  </Link>
+                  <Link
+                    href="#"
+                    className={`flex items-center ml-10 ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    +234 9062 827 822
+                  </Link>
+                  <Link
+                    href="#"
+                    className={`flex items-center ml-10 ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
+                  >
+                    +234 9062 827 859
+                  </Link>
                 </div>
                 <div>
                   <Link
                     href="#"
                     className={`flex items-center ${mode.dark ? 'md:text-gray-500' : 'md:text-black'}`}
                   >
-                    <IconMail size={20} className='mr-5'/>
+                    <IconMail size={20} className='mr-5' />
                     support@ileyah.com
                   </Link>
                 </div>

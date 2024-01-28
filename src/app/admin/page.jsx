@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation'
 
 
 const Admin = ({ className }) => {
-  // localStorage.removeItem('ileyah_token');
   const router = useRouter();
 
   const handleLogout = () => {

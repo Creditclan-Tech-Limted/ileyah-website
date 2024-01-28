@@ -14,16 +14,21 @@ function Summary({ onBack, onNext }) {
 
   const submit = async () => {
     try {
-      const res = await uploadImage(data?.houseImage.file);
-      const payload = {
-        ...data.user,
-        ...data.foundHouse,
-        picture: res.data.data.filename,
-        process_type: "foundHouse",
-        source: 1,
-      };
-      await send(payload);
-      onNext();
+      const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
+      if (ileyah_token) {
+        const res = await uploadImage(data?.houseImage.file);
+        const payload = {
+          ...data.user,
+          ...data.foundHouse,
+          picture: res.data.data.filename,
+          process_type: "foundHouse",
+          source: 1,
+        };
+        await send(payload);
+        onNext();
+      } else {
+        
+      }
     } catch (e) {
       console.log({ e });
     }
@@ -67,8 +72,8 @@ function Summary({ onBack, onNext }) {
             </p>
           </div>
           <div className="font-17">
-            <ul className="list-group">
-              <li className="list-group-item flex justify-between items-center">
+            <ul className="list-group space-y-5">
+              <li className="list-group-item flex justify-between items-center mt-5">
                 Rent :
                 <span className="text-right">
                   {formatCurrency(data?.foundHouse.amount ?? 0)}
@@ -98,23 +103,9 @@ function Summary({ onBack, onNext }) {
                   {data?.foundHouse?.information_source || "N/A"}
                 </span>
               </li>
-
-              {/* {plans.slice(0, 1)?.map((plan, i) => (
-                <li key={i} className="list-group-item flex justify-between items-center">
-                  Repayment schedule:
-                  <span className="font-weight-600 text-right">
-                    ₦{numberWithCommas(plan.monthly)}
-                    <span className="font-17 text-cc-dark">/mo</span>
-                    <span className="font-17 text-cc-dark">
-                      {" "}
-                      for {plan.duration} months
-                    </span>
-                  </span>
-                </li>
-              ))} */}
             </ul>
           </div>
-          <div className="font-17 mt-4">
+          <div className="font-17 mt-10">
             <button
               onClick={submit}
               disabled={isLoading || isUploadImageLoading}

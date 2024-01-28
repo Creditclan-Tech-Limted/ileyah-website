@@ -25,7 +25,6 @@ const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d1
 
 const Page = () => {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-
   const [isGridView, setIsGridView] = useState(true)
   const [scrollTop, setScrollTop] = useState(0)
   const [showModal, setShowModal] = useState(false)

@@ -11,6 +11,7 @@ import useSignupStore from "@/store/signup";
 import { useForm } from "react-hook-form";
 import Input from "@/global/Input";
 import Select from "@/global/Select";
+import classNames from "classnames";
 register();
 
 const house_types = [
@@ -115,7 +116,19 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
         { id: 3, name: "Electrical Services / Installations" },
         { id: 4, name: "Plumbing Services and repairs" },
         { id: 5, name: "AC Repairs and Services" },
-        { id: 6, name: "AC Gas Charging (Top Up / Complete fill up)"}
+        { id: 6, name: "AC Gas Charging (Top Up / Complete fill up)" }
+      ]
+    },
+    {
+      amount: "100,000",
+      items: [
+        { id: 1, name: "Fumigation (Indoor & Outdoor)" },
+        { id: 2, name: "Basic Home Cleaning" },
+        { id: 3, name: "Carpentry Services" },
+        { id: 4, name: "Electrical Services / Installations" },
+        { id: 5, name: "Plumbing Repairs and Services" },
+        { id: 6, name: "AC Repairs and Services" },
+        { id: 7, name: "AC Gas Charging (Top Up / Complete fill up)" }
       ]
     }
   ]
@@ -204,32 +217,41 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                               </div>
                             </div>
                           </swiper-slide>
-                          <swiper-slide>
-                            <div className="flex">
-                              <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
-                                <IconStar size={26} color="blue" className="bg-gray-200 p-1 rounded-full" />
-                                <p className="font-bold">Starter</p>
-                                <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                                <p className="text-4xl font-bold">10,000</p>
-                                <p className="font-bold text-sm">What's included:</p>
-                                <div className="text-white">
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Capentry Services</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Basic Fixes</span>
-                                  </p> <br />
-                                </div>
-                                <div className="mt-10">
-                                  <Button block className='mt-10' onClick={() => {
-                                    setPlans(10000);
-                                    setViews('details')
-                                  }}>Choose Plan</Button>
-                                </div>
-                              </div>
-                            </div>
-                          </swiper-slide>
-                          <swiper-slide>
+                          {
+                            _plans.map((p, i) => (
+                              <>
+                                <swiper-slide key={i}>
+                                  <div className="flex">
+                                    <div className={classNames('border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white', { '!bg-gray-100 text-black': i % 2 === 1 })}>
+                                      <IconStar size={26} color="blue" className="bg-gray-200 p-1 rounded-full" />
+                                      <p className="font-bold">Starter</p>
+                                      <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
+                                      <p className="text-4xl font-bold">{p.amount}</p>
+                                      <p className="font-bold text-sm">What's included:</p>
+                                      <div className="text-white">
+                                        {
+                                          p.items.map((item, i) => (
+                                            <>
+                                              <p className="inline-flex" key={i}>
+                                                <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">{item.name}</span>
+                                              </p> <br />
+                                            </>
+                                          ))
+                                        }
+                                      </div>
+                                      <div className="mt-10">
+                                        <Button block className='mt-10' onClick={() => {
+                                          setPlans(10000);
+                                          setViews('details')
+                                        }}>Choose Plan</Button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </swiper-slide>
+                              </>
+                            ))
+                          }
+                          {/* <swiper-slide>
                             <div className="flex">
                               <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3">
                                 <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
@@ -256,121 +278,7 @@ const Plans = ({ isOpen, onClose, property, onNext }) => {
                                 </div>
                               </div>
                             </div>
-                          </swiper-slide>
-                          <swiper-slide>
-                            <div className="flex">
-                              <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
-                                <IconStar size={26} color="blue" className="bg-gray-200 p-1 rounded-full" />
-                                <p className="font-bold">Starter</p>
-                                <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                                <p className="text-4xl font-bold">50,000</p>
-                                <p className="font-bold text-sm">What's included:</p>
-                                <div className="text-white space-y-2">
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Washing Machine Servicing / Installation</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Generator Servicing </span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Change of light switches</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">TV Installation </span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services</span>
-                                  </p>
-                                </div>
-                                <div className="mt-10">
-                                  <Button block className='mt-10' onClick={() => {
-                                    setPlans(50000);
-                                    setViews('details')
-                                  }}>Choose Plan</Button>
-                                </div>
-                              </div>
-                            </div>
-                          </swiper-slide>
-                          <swiper-slide>
-                            <div className="flex">
-                              <div className="border-gray-200 border bg-gray-100 shadow rounded-2xl my-auto p-10 space-y-3">
-                                <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
-                                <p className="font-bold">Starter</p>
-                                <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                                <p className="text-4xl font-bold">75,000</p>
-                                <p className="font-bold text-sm">What's included:</p>
-                                <div className="space-y-2">
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation (Indoor)</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services / Installations</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services and repairs</span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Repairs and Services </span>
-                                  </p>
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Gas Charging (Top Up / Complete fill up) </span>
-                                  </p>
-                                </div>
-                                <div className="mt-10">
-                                  <Button block className='mt-10' onClick={() => {
-                                    setPlans(100000);
-                                    setViews('details')
-                                  }}>Choose Plan</Button>
-                                </div>
-                              </div>
-                            </div>
-                          </swiper-slide>
-                          <swiper-slide>
-                            <div className="flex">
-                              <div className="border-gray-200 border shadow rounded-2xl my-auto p-10 space-y-3 bg-slate-800 text-white">
-                                <IconHeart size={26} className="bg-gray-200 p-1 rounded-full" />
-                                <p className="font-bold">Starter</p>
-                                <p className="text-gray-500 text-sm">Lorem ipsum dolor sit amet elit. Asperiores, deleniti!</p>
-                                <p className="text-4xl font-bold">100,000</p>
-                                <p className="font-bold text-sm">What's included:</p>
-                                <div className="space-y-2">
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Fumigation (Indoor & Outdoor)</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Basic home Cleaning</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Carpentry Services</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Electrical Services / Installations</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">Plumbing Services and repairs</span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Repairs and Services  </span>
-                                  </p> <br />
-                                  <p className="inline-flex">
-                                    <IconCheck size={15} color="green" className="bg-green-200 p-1 rounded-full mt-1 mr-3" /> <span className="text-sm">AC Gas Charging (Top Up / Complete fill up)  </span>
-                                  </p>
-                                </div>
-                                <div className="mt-10">
-                                  <Button block className='mt-10' onClick={() => {
-                                    setPlans(100000);
-                                    setViews('details')
-                                  }}>Choose Plan</Button>
-                                </div>
-                              </div>
-                            </div>
-                          </swiper-slide>
+                          </swiper-slide> */}
                         </swiper-container>
                       </div>
                     )}

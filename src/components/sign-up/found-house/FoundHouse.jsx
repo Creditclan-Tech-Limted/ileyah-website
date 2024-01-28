@@ -18,7 +18,7 @@ function FoundHouse({ onBack, onDone, onPending }) {
   return (
     <>
       {view === "step-one" && (
-        <StepOne onBack={onBack} onNext={() => setView("request-details")} />
+        <StepOne onBack={onBack} onNext={() => setView("step-two")} />
       )}
       {view === "request-details" && (
         <UserDetails
@@ -35,7 +35,7 @@ function FoundHouse({ onBack, onDone, onPending }) {
       )}
       {view === "step-two" && (
         <StepTwo
-          onBack={() => setView("request-details")}
+          onBack={() => setView("step-one")}
           onNext={() => setView("step-three")}
         />
       )}
