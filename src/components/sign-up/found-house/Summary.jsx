@@ -1,9 +1,15 @@
-import { useCreateRentRequestMutation, useGetPlansQuery, useUploadImageMutation } from "@/api/rent";
-import { capitalizeFirstLetter, formatCurrency, numberWithCommas } from "@/lib/utils";
+import {
+  useCreateRentRequestMutation,
+  useGetPlansQuery,
+  useUploadImageMutation,
+} from "@/api/rent";
+import { capitalizeFirstLetter, formatCurrency } from "@/lib/utils";
 import useSignupStore from "@/store/signup";
+import { useRouter } from "next/navigation";
 
 function Summary({ onBack, onNext }) {
-  const data = useSignupStore((state) => state.data);
+  const { data, updateData } = useSignupStore((state) => state);
+  const router = useRouter()
   const { data: plans, isLoading: isPlansLoading } = useGetPlansQuery({
     price: data?.foundHouse?.amount,
   });
@@ -14,7 +20,7 @@ function Summary({ onBack, onNext }) {
 
   const submit = async () => {
     try {
-      const ileyah_token = JSON.parse(localStorage.getItem(('ileyah_token')));
+      const ileyah_token = JSON.parse(localStorage.getItem("ileyah_token"));
       if (ileyah_token) {
         const res = await uploadImage(data?.houseImage.file);
         const payload = {
@@ -27,7 +33,15 @@ function Summary({ onBack, onNext }) {
         await send(payload);
         onNext();
       } else {
-        
+        const payload = {
+          ...data.user,
+          ...data.foundHouse,
+          picture: '',
+          process_type: "foundHouse",
+          source: 1,
+        };
+        updateData({ createUserRequest: payload });
+        router.push("/register");
       }
     } catch (e) {
       console.log({ e });
@@ -87,9 +101,7 @@ function Summary({ onBack, onNext }) {
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Address:
-                <span className="text-right">
-                  {data?.foundHouse?.address}
-                </span>
+                <span className="text-right">{data?.foundHouse?.address}</span>
               </li>
               <li className="list-group-item flex justify-between items-center">
                 Landlord phone number:
@@ -111,7 +123,9 @@ function Summary({ onBack, onNext }) {
               disabled={isLoading || isUploadImageLoading}
               className="items-center btn btn-blue-full call-number flex justify-sm-center w-100"
             >
-              {isLoading || isUploadImageLoading ? "Creating request" : "Submit request"}
+              {isLoading || isUploadImageLoading
+                ? "Creating request"
+                : "Submit request"}
 
               {isLoading || isUploadImageLoading ? (
                 <span className="ml-3 spin">

@@ -407,7 +407,6 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
                         src={URL.createObjectURL(file)}
                         alt={`Image ${index}`}
                       />
-
                       <IconTrash
                         color="white"
                         onClick={() => handleImageRemove(file)}

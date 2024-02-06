@@ -1,5 +1,4 @@
 import Button from '@/components/global/Button'
-import { IconArrowRight } from '@tabler/icons-react'
 import { useState } from 'react'
 import SignUp from '../Modals/SignUp'
 import Link from 'next/link'

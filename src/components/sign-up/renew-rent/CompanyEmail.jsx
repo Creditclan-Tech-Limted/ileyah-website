@@ -56,7 +56,6 @@ const CompanyEmail = ({ onBack, onNext }) => {
 
   const handlePinDone = async (values) => {
     try {
-      console.log({ values });
       setVerifyOtp(true);
       const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/verifyToken', { email, otp: values });
 

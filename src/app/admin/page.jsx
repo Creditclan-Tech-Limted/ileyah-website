@@ -1,8 +1,6 @@
 'use client'
-import { useGetStaff } from '@/api/action'
-import Button from '@/components/global/Button'
 import SimpleDropdown from '@/global/SimpleDropdown'
-import { IconChevronDown, IconChevronDownLeft, IconChevronRight, IconLogout, IconPlus } from '@tabler/icons-react'
+import { IconChevronDown, IconLogout } from '@tabler/icons-react'
 import classNames from 'classnames'
 import { useRouter } from 'next/navigation'
 

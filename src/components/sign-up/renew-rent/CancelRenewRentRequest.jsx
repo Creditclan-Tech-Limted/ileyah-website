@@ -12,8 +12,6 @@ function CancelRenewRentRequest({ onBack, onNext }) {
   const { mutateAsync: cancelRequest, isLoading: isCancelRequestLoading } = useCancelRequestMutation();
   const { mutateAsync: cancelCcRequest, isLoading: isCancelCcRequestLoading } = useCancelCcRequestMutation();
 
-  console.log({data});
-
   const handleCancelRequest = async () => {
     try {
       await cancelRequest(data.user.phone);

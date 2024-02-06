@@ -98,8 +98,6 @@ const Page = ({ className }) => {
           }
         }
 
-        console.log({ nextPayment, nextTillEnd, nextMonth, nextPayment, nextPaymentDate, overdueBalances, hasFullyPaid, schedule });
-
         setRecoveryFilter({
           hasFullyPaid, overdueBalances, nextPayment, nextPaymentDate, nextMonth, nextTillEnd, nextTillEndTotal
         })

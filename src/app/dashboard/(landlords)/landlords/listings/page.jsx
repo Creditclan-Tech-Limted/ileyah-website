@@ -1,6 +1,6 @@
 'use client'
 import Button from '@/components/global/Button'
-import { IconBed, IconHeartFilled, IconMapPinFilled, IconPlus, IconBath } from '@tabler/icons-react'
+import { IconHeartFilled, IconMapPinFilled, IconPlus } from '@tabler/icons-react'
 import AddNewProperty from './Modals/AddNewProperty'
 import useSignupStore from '@/store/signup'
 import { useState } from 'react'
@@ -12,10 +12,7 @@ import { useSearchParams } from 'next/navigation'
 
 const Page = () => {
   const router = useSearchParams().get('r');
-  console.log({ router });
-  // const { r } = router.query;
-  // console.log({ r });
-  const { data, updateData } = useSignupStore((state) => state);
+  const { data } = useSignupStore((state) => state);
   const [openAddNewStaff, setOpenAddNewStaff] = useState(false);
   const [property, setProperty] = useState([]);
   const userId = UserInfor().userId
@@ -41,15 +38,11 @@ const Page = () => {
     }
   }
 
-  const { data: userData, isLoading, error } = useQuery(['data'], fetchData);
+  const { data: userData, isLoading } = useQuery(['data'], fetchData);
 
-  const mergedArray = userData?.reduce((accumulator, currentObject) => {
-    return accumulator.concat(currentObject.images);
-  }, []);
 
   return (
     <>
-      {/* <div className='h-full'> */}
       <div className='flex justify-between'>
         <div>
           <div className='text-4xl font-bold'>

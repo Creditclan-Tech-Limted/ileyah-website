@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
 import CancelRequest from "./sign-up/CancelRequest";
 import NoRequest from "./sign-up/NoRequest";
@@ -25,7 +25,9 @@ function WhatsappSlideOut({ isActive, handleToggle }) {
         className={classNames("main-overlay", { visible: isActive })}
       ></div>
       <div className={`dotted-bg sidebar ${isActive ? "active" : ""}`}>
-        {view === "menu-view" && <MenuView onNext={(v) => setView(v)} handleToggle={handleToggle} />}
+        {view === "menu-view" && (
+          <MenuView onNext={(v) => setView(v)} handleToggle={handleToggle} />
+        )}
         {view === "user-details" && (
           <UserDetails
             onBack={() => setView("menu-view")}

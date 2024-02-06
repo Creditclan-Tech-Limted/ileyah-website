@@ -54,6 +54,8 @@ const Page = () => {
   const containerRef = useRef(null);
   const bottomRef = useRef(null);
   const [openStandAlonePlans, setOpenStandAlonePlans] = useState(false);
+  const [ileyahProperty, setIleyahProperty] = useState([]);
+  const [isIleyahProperty, setisIleyahProperty] = useState(false);
 
   const apiUrl = "https://kuda-creditclan-api.herokuapp.com/";
 
@@ -78,6 +80,19 @@ const Page = () => {
     });
   };
 
+  const getIleyahProperty = async () => {
+    try {
+      const res = await axios.get(
+        "https://kuda-creditclan-api.herokuapp.com/agents/properties"
+      );
+      setIleyahProperty(res?.data?.data);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
+
+  console.log({ ileyahProperty });
+
   const getPorperties = useCallback(
     (returnedData) => {
       try {
@@ -87,9 +102,7 @@ const Page = () => {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
           }
-
           let a = [...properties, ...array];
-
           let updatedProducts = a.map((product) => {
             let markupPercentage = 0.42; // 42%
             let percentage = +product.price * markupPercentage;
@@ -108,6 +121,7 @@ const Page = () => {
   );
 
   useEffect(() => {
+    getIleyahProperty();
     if (data && data?.pages[0]?.array?.length > 0) {
       getPorperties(data?.pages[0]?.array);
     }
@@ -323,6 +337,39 @@ const Page = () => {
                       </Button>
                     </div>
                   )}
+
+                  {ileyahProperty?.map((m, i) => (
+                    <div
+                      key={i}
+                      className="border-2 border-primary-500 rounded-2xl"
+                    >
+                      <ListingsGrid
+                        index={i}
+                        key={i}
+                        houseImg={m.image}
+                        heading="For Rent"
+                        price={m?.total_paid}
+                        title={m?.description}
+                        avatar={imageAvatar}
+                        name="Jonathan Reinink"
+                        role="Estate Agents"
+                        location={m?.Area}
+                        lengthNum="3450"
+                        bedNum={m?.beds}
+                        bathNum={m?.baths}
+                        bed="Bed"
+                        bath="Bath"
+                        length="Square Ft"
+                        property={m}
+                        onClick={() => {
+                          setCurrent(m);
+                          setOpenPropertyDetails(true);
+                          setisIleyahProperty(true)
+                        }}
+                      />
+                    </div>
+                  ))}
+
                   {(isFiltering ? filterData : properties)?.map((m, i) => (
                     <div key={i}>
                       <ListingsGrid
@@ -558,6 +605,7 @@ const Page = () => {
         isOpen={openPropertyDetails}
         onClose={handleClose}
         property={current}
+        isIleyahProperty
       />
       <WeCall isOpen={showModal} onClose={() => setShowModal(false)} />
       <PostRequest

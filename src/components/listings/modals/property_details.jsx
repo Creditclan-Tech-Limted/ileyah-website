@@ -7,14 +7,14 @@ import UserDetails from "./UserDetails";
 
 register();
 
-const ProDetails = ({ isOpen, onClose, property }) => {
+const ProDetails = ({ isOpen, onClose, property, isIleyahProperty }) => {
   const [views, setViews] = useState('details')
 
   return (
     <>
       {views === 'details' && (
         <Drawer isOpen={isOpen} onClose={onClose} padding={false} longer={true}>
-          <Details property={property} onClose={onClose} onNext={() => setViews('user_details')} />
+          <Details property={property} onClose={onClose} onNext={() => setViews('user_details')} isIleyahProperty />
         </Drawer>
       )}
       {views === 'user_details' && (

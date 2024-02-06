@@ -2,7 +2,7 @@
 import Button from '@/components/global/Button';
 import SimpleDropdown from '@/global/SimpleDropdown';
 import { formatCurrency } from '@/lib/utils';
-import { IconChevronDown, IconChevronDownLeft, IconChevronRight, IconLogout } from '@tabler/icons-react';
+import { IconChevronDown, IconLogout } from '@tabler/icons-react';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import classNames from 'classnames'
@@ -16,7 +16,6 @@ const Page = ({ className }) => {
   const getPorperties = async () => {
     try {
       const res = await axios.post('https://lendnode.creditclan.com/ileya_due', { page: 1, start: 0 });
-      console.log(res?.data);
       setProperties(res?.data?.data);
       return res?.data?.data?.data
     } catch (error) {

@@ -1,23 +1,22 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from "react";
 import { IconDoorEnter, IconTable, IconUsersGroup } from "@tabler/icons-react";
-import { IconHome2 } from '@tabler/icons-react';
-import Typed from 'typed.js';
+import { IconHome2 } from "@tabler/icons-react";
+import Typed from "typed.js";
 
 const WhyUs = () => {
-  const el = useRef(null)
+  const el = useRef(null);
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Life', 'Rent'],
+      strings: ["Life", "Rent"],
       typeSpeed: 100,
       backSpeed: 10,
       backDelay: 2000,
       loop: true,
-      showCursor: false
+      showCursor: false,
     });
 
     return () => {
-      // Destroy Typed instance during cleanup to stop animation
       typed.destroy();
     };
   }, []);
@@ -29,7 +28,9 @@ const WhyUs = () => {
             -- WHY ILEYAH --
           </h5>
           <h2 className="text-5xl md:text-6xl font-bold max-w-4xl">
-            With Ileyah, <span className='text-primary-500' ref={el} /> has never been easier.</h2>
+            With Ileyah, <span className="text-primary-500" ref={el} /> has
+            never been easier.
+          </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4  gap-10 mt-20 text-white">
             <div>
               <div className="flex mb-8">
@@ -37,11 +38,10 @@ const WhyUs = () => {
                   <IconHome2 size="28" />
                 </div>
               </div>
-              <h3 className=" text-lg font-bold">
-                Monthly Rent.
-              </h3>
+              <h3 className=" text-lg font-bold">Monthly Rent.</h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                Ileyah offers monthly, quarterly or annual payment terms to fit your unique budget.
+                Ileyah offers monthly, quarterly or annual payment terms to fit
+                your unique budget.
               </p>
             </div>
             <div>
@@ -50,11 +50,10 @@ const WhyUs = () => {
                   <IconUsersGroup size="28" />
                 </div>
               </div>
-              <h3 className=" text-lg font-bold">
-                Subscription Services
-              </h3>
+              <h3 className=" text-lg font-bold">Subscription Services</h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-              Unlock a World of Convenience - Elevate Your Lifestyle with Our Subscription Services
+                Unlock a World of Convenience - Elevate Your Lifestyle with Our
+                Subscription Services
               </p>
             </div>
             <div>
@@ -63,9 +62,7 @@ const WhyUs = () => {
                   <IconDoorEnter size="28" />
                 </div>
               </div>
-              <h3 className=" text-lg font-bold">
-                Shortlet (Beta)
-              </h3>
+              <h3 className=" text-lg font-bold">Shortlet (Beta)</h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
                 Overnight or short stay? We have you covered at Ileyah.
               </p>
@@ -76,18 +73,17 @@ const WhyUs = () => {
                   <IconTable size="28" />
                 </div>
               </div>
-              <h3 className=" text-lg font-bold">
-                Find Artisans(Beta)
-              </h3>
+              <h3 className=" text-lg font-bold">Find Artisans(Beta)</h3>
               <p className="mt-2 text-[.95rem] text-gray-400">
-                Let's connect you with our well curated list of 1000+ artisans such as painters, plumbers, electricians, etc.
+                Let's connect you with our well curated list of 1000+ artisans
+                such as painters, plumbers, electricians, etc.
               </p>
             </div>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default WhyUs
+export default WhyUs;

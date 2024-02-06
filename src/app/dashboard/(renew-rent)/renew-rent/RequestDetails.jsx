@@ -42,8 +42,6 @@ const RequestDetails = () => {
     await refetchLoanDetails();
   };
 
-  console.log({ request });
-
   return (
     <>
       {

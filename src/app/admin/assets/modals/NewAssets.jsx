@@ -21,7 +21,6 @@ const NewAssets = ({ isOpen, onClose }) => {
   const onChange = async (e) => {
     try {
       const files = Array.from(e.target.files)
-      console.log({ files })
       setSelectedFiles(files)
     } catch (error) {
       console.log(error)

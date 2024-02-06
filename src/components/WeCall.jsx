@@ -1,15 +1,19 @@
-import PostRequest from '@/app/listings/modals/PostRequest';
-import useSignupStore from '@/store/signup';
-import { IconChevronRight, IconHeadset, IconHomeSearch, IconListNumbers } from '@tabler/icons-react';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import Drawer from './Drawer';
-import Support from '@/app/listings/components/Support';
+import PostRequest from "@/app/listings/modals/PostRequest";
+import useSignupStore from "@/store/signup";
+import {
+  IconChevronRight,
+  IconHeadset,
+  IconHomeSearch,
+} from "@tabler/icons-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import Drawer from "./Drawer";
+import Support from "@/app/listings/components/Support";
 
 const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
   const { data, updateData } = useSignupStore((state) => state);
-  const [openFindHouse, setopenFindHouse] = useState(false)
-  const [openSupport, setOpenSupport] = useState(false)
+  const [openFindHouse, setopenFindHouse] = useState(false);
+  const [openSupport, setOpenSupport] = useState(false);
 
   const {
     register,
@@ -20,7 +24,7 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
   });
 
   const submit = async (values) => {
-    handleToggle()
+    handleToggle();
   };
   return (
     <>
@@ -43,15 +47,18 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
           </div>
           <div className="pt-5">
             <p className="font-bold text-3xl text-primary leading-[1.1]">
-              Not Satisfied?  <br />
+              Not Satisfied? <br />
             </p>
             <p className="text-cc-dark font-17">
               Please select from the options below?.
             </p>
           </div>
 
-          <div className='mt-10 space-y-10'>
-            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setopenFindHouse(true)}>
+          <div className="mt-10 space-y-10">
+            <div
+              className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
+              onClick={() => setopenFindHouse(true)}
+            >
               <div className="flex">
                 <div className="flex">
                   <div className="w-10 h-10 rounded-full bg-red-600 text-white grid place-items-center my-auto">
@@ -63,8 +70,8 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
                     Fine Me a House
                   </p>
                   <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                    - Didn't get your choice? <br />
-                    - Let's help you find a house in less than 48hrs.
+                    - Didn't get your choice? <br />- Let's help you find a
+                    house in less than 48hrs.
                   </p>
                 </div>
               </div>
@@ -73,7 +80,10 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
               </div>
             </div>
 
-            <div className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100" onClick={() => setOpenSupport(true)}>
+            <div
+              className="rounded-2xl flex justify-between items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
+              onClick={() => setOpenSupport(true)}
+            >
               <div className="flex">
                 <div className="flex">
                   <div className="w-10 h-10 rounded-full bg-blue-600 text-white grid place-items-center my-auto">
@@ -85,8 +95,8 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
                     Talk to an Advisor
                   </p>
                   <p className="text-left mt-0.5 opacity-75 text-[.95rem] leading-snug">
-                    - Speak with Our Expert Advisors Today. <br />
-                    - We'll respond immediately.
+                    - Speak with Our Expert Advisors Today. <br />- We'll
+                    respond immediately.
                   </p>
                 </div>
               </div>
@@ -100,10 +110,13 @@ const WeCall = ({ onNext, handleToggle, isOpen, onClose }) => {
           </div>
         </div>
       </Drawer>
-      <PostRequest isOpen={openFindHouse} onClose={() => setopenFindHouse(false)} />
+      <PostRequest
+        isOpen={openFindHouse}
+        onClose={() => setopenFindHouse(false)}
+      />
       <Support isOpen={openSupport} onClose={() => setOpenSupport(false)} />
     </>
-  )
-}
+  );
+};
 
 export default WeCall;

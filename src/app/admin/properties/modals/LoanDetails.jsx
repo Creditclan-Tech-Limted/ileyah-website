@@ -1,4 +1,3 @@
-import { useCheckRentRequestMutation } from '@/api/rent';
 import Drawer from '@/components/Drawer';
 import { formatCurrency, parseJsonString } from '@/lib/utils';
 import axios from 'axios';
@@ -33,7 +32,6 @@ const LoanDetails = ({ isOpen, onClose, details }) => {
       const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       setSchedules(res?.data?.data?.currentLoan[0]?.schedules)
       setRecovery(res?.data?.data)
-      console.log(recovery);
     } catch (error) {
       console.log({ error });
     }
@@ -42,7 +40,6 @@ const LoanDetails = ({ isOpen, onClose, details }) => {
   const getUpfrontStatus = async creditclan_request_id => {
     try {
       const res = await axios.post('https://wema.creditclan.com/api/v3/wema/getUpfrontStatus', { request_id: creditclan_request_id })
-      console.log(res?.data?.data);
     } catch (error) {
       console.log({ error });
     }

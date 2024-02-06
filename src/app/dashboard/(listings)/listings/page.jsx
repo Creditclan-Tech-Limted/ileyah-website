@@ -4,7 +4,6 @@ import ListingsGrid from '@/components/listings/ListingsGrid'
 import SearchBar from '@/components/listings/SearchBar'
 import React, { useEffect, useState } from 'react'
 import Pagination from '@/components/listings/pagination'
-import Navbar from '@/components/Navbar'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
 import { IconChevronDown, IconLogout } from '@tabler/icons-react'
@@ -25,7 +24,7 @@ const Page = ({ className }) => {
   const [properties, setProperties] = useState([]);
   const [current, setCurrent] = useState()
   const [openPropertyDetails, setOpenPropertyDetails] = useState(false);
-  const { data: signupData, updateData } = useSignupStore((state) => state);
+  const { data: signupData } = useSignupStore((state) => state);
 
 
   const handleScroll = ((event) => {
@@ -79,8 +78,6 @@ const Page = ({ className }) => {
         return { ...product, newPrice };
       });
 
-      console.log({updatedProducts});
-
       setProperties(updatedProducts)
       return res?.data?.data
     } catch (error) {
@@ -88,7 +85,7 @@ const Page = ({ className }) => {
     }
   }
 
-  const { data, isLoading, error } = useQuery(['properties'], getPorperties);
+  const { isLoading } = useQuery(['properties'], getPorperties);
   useEffect(() => {
     getPorperties()
     window.addEventListener("scroll", handleScroll);
@@ -97,9 +94,6 @@ const Page = ({ className }) => {
     };
   }, [call, setCall]);
 
-  const toggleView = () => {
-    setIsGridView((prev) => !prev)
-  }
 
   const [currentPage, setCurrentPage] = useState(1)
   const totalPages = 5
@@ -108,22 +102,8 @@ const Page = ({ className }) => {
     setCurrentPage(pageNumber)
   }
 
-  const handleClick = () => {
-    console.log('Button clicked!')
-  }
 
 
-  const checkLegacyRoute = async () => {
-    try {
-      console.log({ signupData });
-      if (signupData?.property) {
-        setCurrent(signupData?.property)
-        setOpenPropertyDetails(true)
-      }
-    } catch (error) {
-      console.log({ error });
-    }
-  }
 
   return (
     <div className='mt-[50px]'>

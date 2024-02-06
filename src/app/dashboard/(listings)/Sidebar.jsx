@@ -2,10 +2,7 @@
 import useSignupStore from '@/store/signup'
 import {
   IconApps,
-  IconGitPullRequest,
-  IconListDetails,
   IconSettings2,
-  IconUser,
 } from '@tabler/icons-react'
 import classNames from 'classnames'
 import Link from 'next/link'
@@ -18,24 +15,6 @@ const navLinks = [
     icon: <IconApps />,
     name: 'Dashboard',
   },
-  // {
-  //   id: 2,
-  //   link: '/dashboard/landlords/listings/',
-  //   icon: <IconListDetails />,
-  //   name: 'Listings',
-  // },
-  // {
-  //   id: 3,
-  //   link: '/dashboard/landlords/profile/',
-  //   icon: <IconUser />,
-  //   name: 'Profile',
-  // },
-  // {
-  //   id: 4,
-  //   link: '/dashboard/landlords/profile',
-  //   icon: <IconGitPullRequest />,
-  //   name: 'Request',
-  // },
   {
     id: 5,
     link: '/dashboard/landlords/profile',

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Product.css'
-import { IconHomeHand, IconHomeSearch, IconListSearch, IconRotate2 } from '@tabler/icons-react';
+import { IconHomeSearch, IconListSearch, IconRotate2 } from '@tabler/icons-react';
 import Button from '@/components/global/Button';
 
 const Products = () => {

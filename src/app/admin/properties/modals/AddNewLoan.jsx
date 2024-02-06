@@ -15,7 +15,6 @@ const AddNewLoan = ({ isOpen, onClose }) => {
   const onSubmit = async (values) => {
     try {
       const res = await send({ ...values })
-      console.log(res?.data);
       if (res.data.status) {
         toast.success(res.data.message || "Request Successfully Created");
         reset();

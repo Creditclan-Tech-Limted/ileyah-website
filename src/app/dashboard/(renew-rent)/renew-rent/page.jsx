@@ -90,7 +90,6 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
       house_type: values.house_type,
       address: values.address,
     }
-    console.log({ payload });
     const res = await send(payload);
     if (res.data.status) {
       toast.success(res.data.message || "Request Successfully Created");
