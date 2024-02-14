@@ -3,11 +3,8 @@ import './global-styles.scss'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
 import QueryProvider from '@/components/QueryProvider'
-import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastProvider } from '@/lib/use-toast'
-// import TagManager from 'react-gtm-module';
-// import { useEffect } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 

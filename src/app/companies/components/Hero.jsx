@@ -28,7 +28,6 @@ const Hero = () => {
               <p className="max-w-xl mx-auto font-light text-xl text-gray-300 my-10 text-primary md:text-center">
                 Your employees can secure their desired accommodation quickly and conveniently.
               </p>
-              {/* <Link href='/register'> */}
               <div className="flex w-full">
                 <div className="md:mx-auto space-x-5">
                   <Link href='/register/companies'>
@@ -43,7 +42,6 @@ const Hero = () => {
                   </Link>
                 </div>
               </div>
-              {/* </Link> */}
             </div>
           </div>
         </div>
