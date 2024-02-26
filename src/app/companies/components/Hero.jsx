@@ -35,7 +35,7 @@ const Hero = () => {
                       Get started
                     </Button>
                   </Link>
-                  <Link href='/login'>
+                  <Link href='/companies/login'>
                     <Button variant='outlined' color='white' size="lg">
                       Sign In
                     </Button>

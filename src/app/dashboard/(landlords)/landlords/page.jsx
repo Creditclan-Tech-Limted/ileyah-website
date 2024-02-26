@@ -1,7 +1,6 @@
 'use client'
 import Button from '@/components/global/Button';
 import { IconChevronRight, IconHome2 } from '@tabler/icons-react';
-import React from 'react'
 import Transactions from './Transactions';
 import useSignupStore from '@/store/signup';
 

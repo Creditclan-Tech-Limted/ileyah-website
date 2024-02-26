@@ -39,7 +39,7 @@ const AddNewStaff = ({ isOpen, onClose }) => {
 
   return (
     <>
-      <Drawer isOpen={isOpen} onClose={onClose} title='Add New Staff'>
+      <Drawer isOpen={isOpen} onClose={onClose} title='Invite a Staff'>
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
           <Input
             label='Name'
@@ -54,7 +54,6 @@ const AddNewStaff = ({ isOpen, onClose }) => {
           />
 
           <Input
-            type='Phone Number'
             label='Phone'
             bordered
             {...register('phone', {
@@ -67,7 +66,6 @@ const AddNewStaff = ({ isOpen, onClose }) => {
           />
 
           <Input
-            type='Work Email'
             label='Email'
             bordered
             {...register('email', {
@@ -79,47 +77,8 @@ const AddNewStaff = ({ isOpen, onClose }) => {
             error={errors?.email?.message}
           />
 
-          <Input
-            type='number'
-            label='Loan Amount'
-            bordered
-            {...register('amount', {
-              required: {
-                value: true,
-                message: ' Amount is required',
-              },
-            })}
-            error={errors?.amount?.message}
-          />
-
-          <Input
-            type='text'
-            label='Salary Range'
-            bordered
-            {...register('salary', {
-              required: {
-                value: true,
-                message: 'Salary Range is required',
-              },
-            })}
-            error={errors?.salary?.message}
-          />
-
-          <Input
-            type='text'
-            label='Work Email'
-            bordered
-            {...register('work_email', {
-              required: {
-                value: true,
-                message: ' Work Email is required',
-              },
-            })}
-            error={errors?.work_email?.message}
-          />
-
-          <Button type='submit' className='mt-10' leftIcon={<IconPlus />}>
-           { adding ? 'Adding' : 'Add New Staff'}
+          <Button type='submit' color='black' className='mt-10' leftIcon={<IconPlus />}>
+           { adding ? 'Adding' : 'Invite Staff'}
           </Button>
         </form>
       </Drawer>

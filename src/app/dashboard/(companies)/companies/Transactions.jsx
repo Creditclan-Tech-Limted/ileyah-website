@@ -7,9 +7,8 @@ const Transactions = () => {
     <div>
       <div className="mt-10 bg-gray-100 shadow px-12 py-8 rounded-xl">
         <div className="text-2xl font-bold mb-6 flex justify-between">
-          <div>Staff Request</div>
-          <Button variant='outlined' size='xs'>View All</Button>
-          {/* Staff Requests <span className="mx-5 border-2 rounded-full text-sm px-4 py-2">View All</span> */}
+          <div>Penidng Request</div>
+          <Button color='black' variant='outlined' size='xs'>Invite a Staff</Button>
         </div>
         <div className="divide-y divide-gray-200">
           <div className="flex space-x-6 space-y-4 mb-3 py-2">

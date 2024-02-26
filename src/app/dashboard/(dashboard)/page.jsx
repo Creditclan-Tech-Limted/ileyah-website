@@ -5,18 +5,18 @@ import useSignupStore from '@/store/signup';
 import Loader from '@/global/Loader';
 import { useCheckRentRequestMutation, useGetInspectionDetails, useGetLoanDetailsQuery } from "@/api/rent";
 import Button from '@/components/global/Button';
-import ViewPropertyDetails from './modals/ViewPropertyDetails';
+import ViewPropertyDetails from '../modals/ViewPropertyDetails';
 import { formatCurrency, parseJsonString } from '@/lib/utils';
-import InspectionDetails from './modals/InspectionDetails';
-import RenewRentDashboard from './(renew-rent)/renew-rent/page';
-import CheckOffers from './(inspections)/inspections/page';
-import FoundHouseDashboard from './find-me-a-house/page';
-import WantThis from './modals/WantThis';
+import InspectionDetails from '../modals/InspectionDetails';
+import RenewRentDashboard from '../(renew-rent)/renew-rent/page';
+import CheckOffers from '../(inspections)/inspections/page';
+import FoundHouseDashboard from '../find-me-a-house/page';
+import WantThis from '../modals/WantThis';
 import axios from 'axios';
 import ListingsGrid from '@/components/listings/ListingsGrid';
 import Drawer from '@/components/Drawer';
 import { isBefore, isAfter } from 'date-fns'
-import MakePayment from './modals/MakePayment';
+import MakePayment from '../modals/MakePayment';
 import Link from 'next/link';
 import WeCall from '@/components/WeCall';
 

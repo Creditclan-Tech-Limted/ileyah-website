@@ -108,9 +108,6 @@ const Page = ({ className }) => {
                 </td>
                 <td className='px-6 py-4'>
                   {formatCurrency(item?.how_much_remaining || 0)}
-                  {/* <div className='px-2.5 py-1 leading-none inline-block rounded-full border !border-green-500 !text-green-500'>
-                        Active
-                      </div> */}
                 </td>
                 <td className='px-6 py-4 whitespace-nowrap'>
                   {item?.date_disbursed}

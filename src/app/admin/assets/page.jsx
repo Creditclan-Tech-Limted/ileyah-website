@@ -158,7 +158,6 @@ const Page = ({ className }) => {
                     )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    {/* {item?.date_disbursed} */}
                     2023-01-01
                   </td>
                   <td className="flex">
