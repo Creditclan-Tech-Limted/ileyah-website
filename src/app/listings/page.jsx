@@ -91,8 +91,6 @@ const Page = () => {
     }
   };
 
-  console.log({ ileyahProperty });
-
   const getPorperties = useCallback(
     (returnedData) => {
       try {
@@ -364,7 +362,7 @@ const Page = () => {
                         onClick={() => {
                           setCurrent(m);
                           setOpenPropertyDetails(true);
-                          setisIleyahProperty(true)
+                          setisIleyahProperty(true);
                         }}
                       />
                     </div>

@@ -1,4 +1,8 @@
-import { IconHeadset, IconListSearch, IconRotate2 } from "@tabler/icons-react";
+import {
+  IconHeadset,
+  IconHomeSearch,
+  IconListSearch,
+} from "@tabler/icons-react";
 import Button from "./global/Button";
 import useGlobalStore from "@/store/global";
 import Link from "next/link";
@@ -55,23 +59,42 @@ const Products = ({ call }) => {
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-red-500 text-white">
-                  <IconRotate2 size="32" />
+                  <IconHomeSearch size="32" />
                 </div>
               </div>
-              <h2 className="text-xl font-medium">Renew your Rent</h2>
+              <h2 className="text-xl font-medium">Find me a House</h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Rent due in a few days? We help you convert your current yearly
-                tenancy into monthly tenancy forever.
+                Can't find your exact requirements in our listings? Don't worry,
+                post a request and we'll try to find it for you{" "}
               </p>
               <Button
                 className="mt-8"
-                onClick={toggleIsSignupOpen}
+                onClick={call}
                 variant="outlined"
                 color="white"
               >
                 Get started
               </Button>
             </div>
+            {/* <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
+              <div className="flex mb-8">
+                <div className="w-16 h-16 rounded-full flex justify-center items-center bg-yellow-500 text-white">
+                  <IconHomeSearch size="32" />
+                </div>
+              </div>
+              <h2 className="text-xl font-medium">Get a Shop</h2>
+              <p className="mt-4 text-[.95rem] text-white">
+                Secure your ideal shop location with Ileyah. ILEYAH is here to help you get a shop of your choice.
+              </p>
+              <Button
+                className="mt-8"
+                onClick={call}
+                variant="outlined"
+                color="white"
+              >
+                Get started
+              </Button>
+            </div> */}
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-green-500 text-white">
@@ -80,8 +103,8 @@ const Products = ({ call }) => {
               </div>
               <h2 className="text-xl font-medium">Talk to an Advisor</h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Initate a conversation with our Agents to futher help you in the
-                process...
+                Initate a conversation with one of our Agents. We are glad to
+                assist you further in the process.
               </p>
               <Button
                 className="mt-8"

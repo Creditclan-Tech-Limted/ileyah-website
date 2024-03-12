@@ -20,14 +20,12 @@ const Hero = () => {
                 We are helping millions of tenants pay their rent in easy,
                 monthly subscriptions across Africa.
               </p>
-              {/* <Button
+              <Button
                 rightIcon={<IconArrowRight />}
+                onClick={toggleIsSignupOpen}
                 size="lg"
                 className="mt-12"
               >
-                <Link href={"/register"}>Get started</Link>
-              </Button> */}
-              <Button rightIcon={<IconArrowRight />} onClick={toggleIsSignupOpen} size="lg" className="mt-12">
                 Get started
               </Button>
             </div>

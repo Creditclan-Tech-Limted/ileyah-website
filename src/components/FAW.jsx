@@ -6,7 +6,7 @@ const faqs = [
     q: 'What does Ileyah do?',
     a: (
       <>
-        We helps millions of tenants pay their rent in easy, monthly instalment across Africa.
+        We enable millions of tenants pay their rent in easy, monthly instalment across Africa.
       </>
     )
   },
@@ -18,19 +18,11 @@ const faqs = [
       </>
     )
   },
-  // {
-  //   q: 'How many percent of the rent makes up the security deposit?',
-  //   a: (
-  //     <>
-  //       Depends on eligibility. Usually between 10% and 25%.
-  //     </>
-  //   )
-  // },
   {
     q: 'What makes up the upfront payment?',
     a: (
       <>
-        30% of the rent value.
+        30% of the Total Package.
       </>
     )
   },
@@ -42,18 +34,18 @@ const faqs = [
       </>
     )
   },
-  {
-    q: 'What are the requirements for application?',
-    a: (
-      <>
-        - Register your house. <br />
-        - We test your eligibility in 10min. <br />
-        - We visit your address in 24-48hrs. <br />
-        - You pay security deposit. <br />
-        - Landlord paid immediately..
-      </>
-    )
-  }
+  // {
+  //   q: 'What are the requirements for application?',
+  //   a: (
+  //     <>
+  //       - Register your house. <br />
+  //       - We test your eligibility in 10min. <br />
+  //       - We visit your address in 24-48hrs. <br />
+  //       - You pay security deposit. <br />
+  //       - Landlord paid immediately..
+  //     </>
+  //   )
+  // }
 ];
 
 const FAW = () => {

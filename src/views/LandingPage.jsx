@@ -1,27 +1,26 @@
-import FAW from '@/components/FAW'
-import Footer from '@/components/Footer'
-import Future from '@/components/Future'
-// import Listings from '@/components/Listings'
-import Navbar from '@/components/Navbar'
-import Products from '@/components/Products'
-import WhyUs from '@/components/WhyUs'
-import React, { useEffect, useState } from 'react'
+import FAW from "@/components/FAW";
+import Footer from "@/components/Footer";
+import Future from "@/components/Future";
+import Navbar from "@/components/Navbar";
+import Products from "@/components/Products";
+import WhyUs from "@/components/WhyUs";
+import React, { useEffect, useState } from "react";
 import Hero from "@/components/Hero";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollToTopBtn from "@/components/ScrollToTpBtn";
-import Artisans from '@/components/Artisans'
-import Whatsapp from '@/components/Whatsapp'
-import Testimonials from '@/components/Testimonials'
-import WeCall from '@/components/WeCall'
-import classNames from 'classnames'
-import Listings from '@/components/Listings'
+import Artisans from "@/components/Artisans";
+import Whatsapp from "@/components/Whatsapp";
+import Testimonials from "@/components/Testimonials";
+import WeCall from "@/components/WeCall";
+import Listings from "@/components/Listings";
+import classNames from "classnames";
 
 const LandingPage = () => {
   const [scrollTop, setScrollTop] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [call, setCall] = useState(false)
+  const [call, setCall] = useState(false);
 
-  const handleScroll = ((event) => {
+  const handleScroll = (event) => {
     const scrollPosition = window.innerHeight + window.scrollY;
     const pageHeight = document.body.offsetHeight;
     const middleOfPage = pageHeight / 2;
@@ -33,7 +32,7 @@ const LandingPage = () => {
       // setCall(true);
       // setShowModal(true);
     }
-  });
+  };
 
   const handleScrollTop = () => {
     window.scrollTo({
@@ -55,7 +54,7 @@ const LandingPage = () => {
         onClick={() => setShowModal(false)}
         className={classNames("main-overlay", { visible: showModal })}
       ></div>
-      {showModal && (<WeCall handleToggle={() => setShowModal(false)} />)}
+      <WeCall isOpen={showModal} handleToggle={() => setShowModal(false)} />
       <ScrollToTop />
       <Navbar />
       <Hero />
@@ -65,12 +64,12 @@ const LandingPage = () => {
       <WhyUs />
       <Artisans />
       <Future />
-      <Testimonials source='main' />
+      <Testimonials source="main" />
       <FAW />
       <Footer />
       <ScrollToTopBtn scrollTop={scrollTop} handleScrollTop={handleScrollTop} />
     </>
-  )
-}
+  );
+};
 
 export default LandingPage;
