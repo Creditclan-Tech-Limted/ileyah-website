@@ -99,7 +99,7 @@ function MenuView({ onNext, handleToggle }) {
             <IconChevronRight className="text-black" size="20" />
           </div>
         </div>
-        {/* <div
+        <div
           className="rounded-2xl flex items-center border border-gray-300 px-7 py-5 cursor-pointer hover:bg-gray-100"
           onClick={() => setOpenCall(true)}
         >
@@ -117,7 +117,7 @@ function MenuView({ onNext, handleToggle }) {
           <div>
             <IconChevronRight className="text-black" size="20" />
           </div>
-        </div> */}
+        </div>
       </div>
 
       <WeCall isOpen={openCall} onClose={() => setOpenCall(false)} />

@@ -27,19 +27,15 @@ const NewAssets = ({ isOpen, onClose }) => {
     }
   }
 
-  const onSubmit = async (values) => {
+  const onSubmit = async (formData) => {
     try {
-      // const res = await send({ ...values })
-      // console.log(res?.data);
-      // if (res.data.status) {
-      //   toast.success(res.data.message || "Request Successfully Created");
-      //   reset();
-      // }
+      const { data } = await send(formData);
+      toast.success(data.message || 'Request Successfully Created');
+      reset();
     } catch (error) {
-      console.log({ error });
+      console.error(error);
     }
-  }
-
+  };
 
   return (
     <>

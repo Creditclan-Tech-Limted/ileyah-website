@@ -453,6 +453,14 @@ const ViewPropertyDetails = ({
                 loan?.loan?.offers &&
                 parseFloat(loan?.loan?.offers[0]?.amount) == 0 && (
                   <>
+                    <Button
+                      variant="outlined"
+                      color="red"
+                      onClick={handleCancelRequest}
+                      loading={isCancelRequestLoading}
+                    >
+                      Cancel Request
+                    </Button>
                     <p>
                       Sorry, We can not generate an offer for you <br />
                       <p>
@@ -537,16 +545,16 @@ const ViewPropertyDetails = ({
               </div>
               <div className="mt-10 flex justify-between">
                 <div>
-                  {!request?.creditclan_request_id && (
-                    <Button
-                      variant="outlined"
-                      color="red"
-                      onClick={handleCancelRequest}
-                      loading={isCancelRequestLoading}
-                    >
-                      Cancel Request
-                    </Button>
-                  )}
+                  {/* {!request?.creditclan_request_id && ( */}
+                  <Button
+                    variant="outlined"
+                    color="red"
+                    onClick={handleCancelRequest}
+                    loading={isCancelRequestLoading}
+                  >
+                    Cancel Request
+                  </Button>
+                  {/* )} */}
                 </div>
                 <ClientOnly>
                   <LaunchEligibilityWidget

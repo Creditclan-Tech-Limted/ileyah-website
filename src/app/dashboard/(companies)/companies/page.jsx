@@ -14,9 +14,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="text-4xl font-bold">
-        Welcome, {companyName || "Ileyah"} 👋🏿
-      </div>
+      <div className="text-4xl font-bold">Welcome, {companyName} 👋🏿</div>
       <div className="grid grid-cols-[1fr] md:grid-cols-[2fr_1fr] gap-10 mt-10">
         <div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-3 2xl:gap-7.5">

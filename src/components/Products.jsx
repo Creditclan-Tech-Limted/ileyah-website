@@ -6,14 +6,16 @@ import {
 import Button from "./global/Button";
 import useGlobalStore from "@/store/global";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
+import Shop from "./modals/Shop";
 
 const Products = ({ call }) => {
   const toggleIsSignupOpen = useGlobalStore(
     (state) => state.toggleIsSignupOpen
   );
   const el = useRef(null);
+  const [openShop, setOpenShop] = useState(false);
 
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -76,7 +78,7 @@ const Products = ({ call }) => {
                 Get started
               </Button>
             </div>
-            {/* <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
+            <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-yellow-500 text-white">
                   <IconHomeSearch size="32" />
@@ -84,17 +86,18 @@ const Products = ({ call }) => {
               </div>
               <h2 className="text-xl font-medium">Get a Shop</h2>
               <p className="mt-4 text-[.95rem] text-white">
-                Secure your ideal shop location with Ileyah. ILEYAH is here to help you get a shop of your choice.
+                Secure your ideal shop location with Ileyah. ILEYAH is here to
+                help you get a shop of your choice.
               </p>
               <Button
                 className="mt-8"
-                onClick={call}
+                onClick={() => setOpenShop(true)}
                 variant="outlined"
                 color="white"
               >
                 Get started
               </Button>
-            </div> */}
+            </div>
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-green-500 text-white">
@@ -118,6 +121,8 @@ const Products = ({ call }) => {
           </div>
         </div>
       </div>
+
+      <Shop isOpen={openShop} onClose={() => setOpenShop(false)} />
     </>
   );
 };

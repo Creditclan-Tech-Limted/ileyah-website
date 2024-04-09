@@ -21,7 +21,6 @@ const AddNewStaff = ({ isOpen, onClose }) => {
   const toast = useToast()
 
   const onSubmit = async (data) => {
-   
     try {
       const res = await add({
         data,

@@ -9,7 +9,7 @@ const useSignupStore = create(
   }),
     {
       name: 'signup-store', // unique name
-      storage: createJSONStorage(() => sessionStorage), // (optional) by default, 'localStorage' is used
+      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
     }
   )
 );

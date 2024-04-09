@@ -142,14 +142,14 @@ const FoundHouseDashboard = ({ isOpenDrawer, onClose }) => {
                             value: true,
                             message: "amount is required"
                           },
-                          min: {
-                            value: 100000,
-                            message: "Please provide an amount greater than ₦100,000",
-                          },
-                          max: {
-                            value: 3000000,
-                            message: "Please provide an amount less than ₦3million",
-                          },
+                          // min: {
+                          //   value: 100000,
+                          //   message: "Please provide an amount greater than ₦100,000",
+                          // },
+                          // max: {
+                          //   value: 3000000,
+                          //   message: "Please provide an amount less than ₦3million",
+                          // },
                         })} error={errors?.amount?.message}
                       />
                       <Select

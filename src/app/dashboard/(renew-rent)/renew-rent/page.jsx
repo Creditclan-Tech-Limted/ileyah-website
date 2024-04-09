@@ -145,14 +145,14 @@ const RenewRentDashboard = ({ isOpenDrawer, onClose }) => {
                             value: true,
                             message: "amount is required"
                           },
-                          min: {
-                            value: 300000,
-                            message: "Please provide an amount greater or euqals ₦300,000",
-                          },
-                          max: {
-                            value: 3000000,
-                            message: "Please provide an amount less than ₦3million",
-                          },
+                          // min: {
+                          //   value: 300000,
+                          //   message: "Please provide an amount greater or euqals ₦300,000",
+                          // },
+                          // max: {
+                          //   value: 3000000,
+                          //   message: "Please provide an amount less than ₦3million",
+                          // },
                         })} error={errors?.amount?.message}
                       />
                       <Select
