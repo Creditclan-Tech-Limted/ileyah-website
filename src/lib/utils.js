@@ -27,6 +27,45 @@ export function formatToNaira(number) {
   return formattedNumber;
 }
 
+export const locations = [
+  { text: "Lagos", value: "Lagos" },
+  { text: "Abuja", value: "Abuja" },
+  { text: "Abia", value: "Abia" },
+  { text: "Adamawa", value: "Adamawa" },
+  { text: "Akwa Ibom", value: "Akwa Ibom" },
+  { text: "Anambra", value: "Anambra" },
+  { text: "Bauchi", value: "Bauchi" },
+  { text: "Bayelsa", value: "Bayelsa" },
+  { text: "Benue", value: "Benue" },
+  { text: "Borno", value: "Borno" },
+  { text: "Cross River", value: "Cross River" },
+  { text: "Delta", value: "Delta" },
+  { text: "Ebonyi", value: "Ebonyi" },
+  { text: "Edo", value: "Edo" },
+  { text: "Ekiti", value: "Ekiti" },
+  { text: "Enugu", value: "Enugu" },
+  { text: "Gombe", value: "Gombe" },
+  { text: "Imo", value: "Imo" },
+  { text: "Jigawa", value: "Jigawa" },
+  { text: "Kaduna", value: "Kaduna" },
+];
+
+export const type = [
+  { text: "Room Only", value: "Room Only" },
+  { text: "Room and parlour", value: "Room and parlour" },
+  { text: "Two Bedroom", value: "Two Bedroom" },
+  { text: "Three Bedroom", value: "Three Bedroom" },
+  { text: "Four Bedroom", value: "Four Bedroom" },
+  { text: "Bungalow", value: "Bungalow" },
+  { text: "Duplex", value: "Duplex" },
+];
+
+export const rentType = [
+  { text: "Weekly", value: "Weekly" },
+  { text: "Monthly", value: "Monthly" },
+  { text: "Yearly", value: "Yearly" },
+];
+
 export const sectors = [
   { value: "61", text: "Agriculture" },
   { value: "11", text: "Banking" },
@@ -258,11 +297,11 @@ export const banks = [
     value: '50211',
     text: 'Kuda Bank'
   },
-  {
-    id: '33',
-    value: '014',
-    text: 'MainStreet Bank'
-  },
+  // {
+  //   id: '33',
+  //   value: '014',
+  //   text: 'MainStreet Bank'
+  // },
   {
     id: '48',
     value: '565',
@@ -273,11 +312,11 @@ export const banks = [
     value: '526',
     text: 'Parallex Bank'
   },
-  {
-    id: '39',
-    value: '526',
-    text: 'Parallex Microfinance Bank'
-  },
+  // {
+  //   id: '39',
+  //   value: '526',
+  //   text: 'Parallex Microfinance Bank'
+  // },
   {
     id: '9',
     value: '311',
@@ -303,11 +342,11 @@ export const banks = [
     value: '125',
     text: 'Rubies MFB'
   },
-  {
-    id: '24',
-    value: '076',
-    text: 'Skye Bank Plc'
-  },
+  // {
+  //   id: '24',
+  //   value: '076',
+  //   text: 'Skye Bank Plc'
+  // },
   {
     id: '44',
     value: '51310',
@@ -335,7 +374,7 @@ export const banks = [
   },
   {
     id: '43',
-    value: '302',
+    value: '3021',
     text: 'TAJ Bank'
   },
   {
@@ -348,11 +387,11 @@ export const banks = [
     value: '102',
     text: 'Titan Bank'
   },
-  {
-    id: '26',
-    value: '032',
-    text: 'Union Bank Of Nigeria Plc'
-  },
+  // {
+  //   id: '26',
+  //   value: '032',
+  //   text: 'Union Bank Of Nigeria Plc'
+  // },
   {
     id: '2',
     value: '032',

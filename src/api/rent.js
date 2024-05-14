@@ -115,3 +115,16 @@ export const useGetPlansQuery = ({ price }) => {
   }, { enabled: !!price });
   return { data, isLoading, refetch, isFetching };
 };
+
+export const useGetIleyahLoans = (status) => {
+  return useQuery({
+    queryKey: ["All", "due", "pending"],
+    queryFn: async () => {
+      const res = await http.post("https://lendnode.creditclan.com/ileyah_loans", {
+        page: 1, start: 0, status: status
+      });
+      return res.data.data;
+    },
+    refetchOnWindowFocus: true,
+  })
+}

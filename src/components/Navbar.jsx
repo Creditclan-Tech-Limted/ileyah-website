@@ -11,7 +11,7 @@ import Hover from "@/global/Hover";
 import products from "@/lib/products";
 import useGlobalStore from "@/store/global";
 
-const Navbar = () => {
+const Navbar = ({source}) => {
   const toggleIsSignupOpen = useGlobalStore(
     (state) => state.toggleIsSignupOpen
   );
@@ -58,7 +58,7 @@ const Navbar = () => {
     <>
       <header
         className={classNames(
-          "fixed top-0 inset-x-0 z-50 h-28 transition-all bg-white",
+          "fixed top-0 inset-x-0 z-50 h-28 transition-all",
           { "bg-white text-neutral-900 shadow !h-24": scrolled },
           { "text-neutral-900 shadow": !scrolled }
         )}
@@ -126,6 +126,12 @@ const Navbar = () => {
                   href="/listings"
                 >
                   Listings
+                </Link>
+                <Link
+                  className="inline-flex items-center rounded-full py-1 px-4"
+                  href="/shared"
+                >
+                  Shared
                 </Link>
                 <Link
                   className="inline-flex items-center rounded-full py-1 px-4"

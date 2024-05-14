@@ -336,7 +336,7 @@ const Page = () => {
                     </div>
                   )}
 
-                  {ileyahProperty?.map((m, i) => (
+                  {/* {ileyahProperty?.map((m, i) => (
                     <div
                       key={i}
                       className="border-2 border-primary-500 rounded-2xl"
@@ -366,7 +366,7 @@ const Page = () => {
                         }}
                       />
                     </div>
-                  ))}
+                  ))} */}
 
                   {(isFiltering ? filterData : properties)?.map((m, i) => (
                     <div key={i}>

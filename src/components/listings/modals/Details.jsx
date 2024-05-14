@@ -17,9 +17,7 @@ const ileyahImages = [
 ];
 
 const Details = ({ property, onClose, onNext, isIleyahProperty }) => {
-  console.log({isIleyahProperty});
   const _price = property.newPrice || property.total_paid / 12;
-  console.log({ _price });
   const swiperRef = useRef(null);
   const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state);
