@@ -40,6 +40,7 @@ export default function ListingsGrid({
   property,
   onClick,
   index,
+  source
 }) {
   const [isImageBroken, setImageBroken] = useState(false);
   const handleImageError = () => {
@@ -101,7 +102,7 @@ export default function ListingsGrid({
             </div>
           </div>
           <div className="mt-5 p-5 ">
-            <div className="text-gray-900 font-medium text-xl cursor-pointer  line-clamp-2">
+            <div className="text-gray-900 font-medium text-xl cursor-pointer uppercase line-clamp-2">
               {title}
             </div>
             <div className="flex gap-2 items-center my-2 divide-y">

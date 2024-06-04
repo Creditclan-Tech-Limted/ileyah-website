@@ -127,12 +127,12 @@ const Navbar = ({source}) => {
                 >
                   Listings
                 </Link>
-                <Link
+                {/* <Link
                   className="inline-flex items-center rounded-full py-1 px-4"
                   href="/shared"
                 >
                   Shared
-                </Link>
+                </Link> */}
                 <Link
                   className="inline-flex items-center rounded-full py-1 px-4"
                   href="/landlords"

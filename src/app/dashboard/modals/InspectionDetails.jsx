@@ -1,7 +1,6 @@
 import Drawer from '@/components/Drawer';
 
 const InspectionDetails = ({ isOpen, onClose, inspection }) => {
-  console.log(inspection);
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title='Inspection Detiails'>

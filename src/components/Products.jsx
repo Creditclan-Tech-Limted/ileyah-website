@@ -78,7 +78,7 @@ const Products = ({ call }) => {
                 Get started
               </Button>
             </div>
-            <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
+            {/* <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-yellow-500 text-white">
                   <IconHomeSearch size="32" />
@@ -97,7 +97,7 @@ const Products = ({ call }) => {
               >
                 Get started
               </Button>
-            </div>
+            </div> */}
             <div className="px-12 py-16 bg-gray-800 rounded-3xl relative">
               <div className="flex mb-8">
                 <div className="w-16 h-16 rounded-full flex justify-center items-center bg-green-500 text-white">

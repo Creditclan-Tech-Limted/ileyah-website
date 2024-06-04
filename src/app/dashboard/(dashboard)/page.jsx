@@ -19,6 +19,7 @@ import { isBefore, isAfter } from 'date-fns'
 import MakePayment from '../modals/MakePayment';
 import Link from 'next/link';
 import WeCall from '@/components/WeCall';
+import { useRouter } from 'next/navigation';
 
 const Page = ({ className }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -38,6 +39,7 @@ const Page = ({ className }) => {
   const [recovery, setRecovery] = useState();
   const [openMakePayment, setOpenMakePayment] = useState(false);
   const [openWeCall, setOpenWeCall] = useState(false);
+  const router = useRouter()
 
   const { mutateAsync: checkUser, isLoading: isCheckUserLoading } = useCheckRentRequestMutation();
   const { mutateAsync: getInspections, isLoading: isGetInspectionsLoading } = useGetInspectionDetails();
@@ -71,7 +73,7 @@ const Page = ({ className }) => {
       const res = await axios.post('https://mobile.creditclan.com/api/v3/loan/recovery', { creditclan_request_id: creditclan_request_id }, { headers: { 'x-api-key': 'WE4mwadGYqf0jv1ZkdFv1LNPMpZHuuzoDDiJpQQqaes3PzB7xlYhe8oHbxm6J228' } });
       setRecovery(res?.data?.data)
       if (res?.data?.data) {
-        const schedule = res?.data?.data?.currentLoan[0].schedules;
+        const schedule = res?.data?.data?.currentLoan[0]?.schedules;
         let overdueBalances = [];
         let nextPayment = null;
         let nextPaymentDate = null;
@@ -150,8 +152,7 @@ const Page = ({ className }) => {
 
   const authtenticate = async () => {
     try {
-      const token = localStorage.removeItem('ileyah_token');
-      console.log({ token });
+      const token = localStorage.getItem('ileyah_token');
       if (!token) {
         router.push('/login')
       }

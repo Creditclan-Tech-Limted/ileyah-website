@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import useSignupStore from "@/store/signup";
 import WantThis from "./WantThis";
 import Plans from "./Plans";
+import Markdown from "react-markdown";
 
 const ileyahImages = [
   "https://dataupload.creditclan.com/pub/uploadedimagesmerchant/sample1706608041.png",
@@ -105,7 +106,7 @@ const Details = ({ property, onClose, onNext, isIleyahProperty }) => {
       </div>
       <div className="space-y-5 p-8 flex flex-col">
         <p className="text-xl">
-          {property?.description} ▪️ {property?.area || property?.Area}{" "}
+          {property?.title} ▪️ {property?.area || property?.Area}{" "}
         </p>
         <hr />
         <div className="flex justify-between">
@@ -130,9 +131,9 @@ const Details = ({ property, onClose, onNext, isIleyahProperty }) => {
         <p className="ml-auto text-blue-600 underline"></p>
         <div className="border p-5 rounded">
           <p className="mb-3 font-bold">Description</p>
-          {property?.description}
-          <p className="my-3">Beds: {property.beds}</p>
-          <p>Bath: {property.baths}</p>
+          <Markdown className="markdown">{property?.description}</Markdown>
+          <p className="my-3">Beds: {property.beds || 1}</p>
+          <p>Bath: {property.baths || 1}</p>
         </div>
         {!property?.total_paid && (
           <div className="mt-5 border p-5 rounded flex justify-between">
@@ -154,6 +155,7 @@ const Details = ({ property, onClose, onNext, isIleyahProperty }) => {
         onClose={() => setopenViewPlans(false)}
         property={property}
         onNext={onNext}
+        isIleyahProperty
       />
     </>
   );

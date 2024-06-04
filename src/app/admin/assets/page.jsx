@@ -1,37 +1,35 @@
 "use client";
 import Button from "@/components/global/Button";
 import SimpleDropdown from "@/global/SimpleDropdown";
-import { IconChevronDown, IconLogout, IconPlus } from "@tabler/icons-react";
+import {
+  IconChevronDown,
+  IconEdit,
+  IconLogout,
+  IconPlus,
+} from "@tabler/icons-react";
 import classNames from "classnames";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import NewAssets from "./modals/NewAssets";
 import LoanDetails from "../properties/modals/LoanDetails";
 import Assets from "./modals/Assets";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
+import EditPropertyDetails from "./modals/EditPropertyDetails";
+import { useGetAdminProperties } from "@/api/action";
 
 const Page = ({ className }) => {
   const router = useRouter();
-  const [properties, setProperties] = useState([]);
+  // const [properties, setProperties] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openLoanDetails, setOpenLoanDetails] = useState(false);
   const [openAssetmodal, setOpenAssetmodal] = useState(false);
-  const [current, setCurrent] = useState();
+  const [openEditDetails, setOpenEditDetails] = useState(false);
+  const [current, setCurrent] = useState(null);
 
-  const getPorperties = async () => {
-    try {
-      const res = await axios.get(
-        "https://kuda-creditclan-api.herokuapp.com/agents/properties"
-      );
-      setProperties((res?.data?.data));
-    } catch (error) {
-      console.log({ error });
-    }
-  };
-
-
-  const { data, isLoading, error } = useQuery(["loans"], getPorperties);
+  const {
+    data: properties,
+    isLoading,
+    error,
+  } = useGetAdminProperties();
 
   const handleLogout = () => {
     localStorage.removeItem("ileyah_token");
@@ -128,9 +126,6 @@ const Page = ({ className }) => {
                 <th scope="col" className="px-6 py-4">
                   Status{" "}
                 </th>
-                <th scope="col" className="px-6 py-4">
-                  Acq. Date{" "}
-                </th>
                 <th scope="col" className="px-6 py-4 text-center">
                   Action{" "}
                 </th>
@@ -151,18 +146,22 @@ const Page = ({ className }) => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">{item?.Area}</td>
                   <td className="px-6 py-4">
-                    {item.image.length > 2 && (
+                    {item.fulfilled ? (
                       <div className="px-2.5 py-1 leading-none inline-block rounded-full border !border-green-500 !text-green-500">
                         Fulfilled
                       </div>
+                    ) : (
+                      "Not Fulfilled"
                     )}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    2023-01-01
                   </td>
                   <td className="flex">
                     <div className=" mx-auto flex space-x-3 mt-6">
-                      {" "}
+                      <IconEdit
+                        onClick={() => {
+                          setCurrent(item);
+                          setOpenEditDetails(true);
+                        }}
+                      />{" "}
                       <Button
                         size="xs"
                         variant="outlined"
@@ -174,12 +173,12 @@ const Page = ({ className }) => {
                         {" "}
                         Asset{" "}
                       </Button>{" "}
-                      <Button
+                      {/* <Button
                         size="xs"
                         onClick={() => setOpenLoanDetails(true)}
                       >
                         Tenants
-                      </Button>
+                      </Button> */}
                     </div>
                   </td>
                 </tr>
@@ -188,7 +187,16 @@ const Page = ({ className }) => {
           </table>
         </div>
       </div>
-
+      {!!current && (
+        <EditPropertyDetails
+          isOpen={openEditDetails}
+          onClose={() => {
+            setCurrent(null);
+            setOpenEditDetails(false);
+          }}
+          property={current}
+        />
+      )}
       <NewAssets isOpen={openDrawer} onClose={() => setOpenDrawer(false)} />
       <Assets
         isOpen={openAssetmodal}

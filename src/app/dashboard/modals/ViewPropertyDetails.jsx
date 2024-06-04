@@ -27,7 +27,7 @@ const ViewPropertyDetails = ({
     useCancelRequestMutation();
   const { mutateAsync: cancelCcRequest, isLoading: isCancelCcRequestLoading } =
     useCancelCcRequestMutation();
-  const [views, setViews] = useState("schedules");
+  const [views, setViews] = useState("bio");
   const [schedules, setSchedules] = useState();
   const [recovery, setRecovery] = useState([]);
 
@@ -82,7 +82,7 @@ const ViewPropertyDetails = ({
 
   return (
     <>
-      {globalLoading ? (
+      {isGetLoanDetailsLoading ? (
         <span>Loading...</span>
       ) : (
         <>
@@ -453,14 +453,14 @@ const ViewPropertyDetails = ({
                 loan?.loan?.offers &&
                 parseFloat(loan?.loan?.offers[0]?.amount) == 0 && (
                   <>
-                    <Button
+                    {/* <Button
                       variant="outlined"
                       color="red"
                       onClick={handleCancelRequest}
                       loading={isCancelRequestLoading}
                     >
                       Cancel Request
-                    </Button>
+                    </Button> */}
                     <p>
                       Sorry, We can not generate an offer for you <br />
                       <p>
@@ -496,7 +496,7 @@ const ViewPropertyDetails = ({
                 )}
             </>
           )}
-          {!loan && (
+          {loan && loan?.loan?.offers === null && (
             <div>
               <div className="flex items-center justify-between mb-10">
                 <h3 className="text-xl font-semibold">Ongoing Request</h3>
@@ -545,16 +545,16 @@ const ViewPropertyDetails = ({
               </div>
               <div className="mt-10 flex justify-between">
                 <div>
-                  {/* {!request?.creditclan_request_id && ( */}
-                  <Button
-                    variant="outlined"
-                    color="red"
-                    onClick={handleCancelRequest}
-                    loading={isCancelRequestLoading}
-                  >
-                    Cancel Request
-                  </Button>
-                  {/* )} */}
+                  {!request?.creditclan_request_id && (
+                    <Button
+                      variant="outlined"
+                      color="red"
+                      onClick={handleCancelRequest}
+                      loading={isCancelRequestLoading}
+                    >
+                      Cancel Request
+                    </Button>
+                  )}
                 </div>
                 <ClientOnly>
                   <LaunchEligibilityWidget

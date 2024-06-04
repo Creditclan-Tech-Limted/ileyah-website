@@ -2,30 +2,44 @@
 import useSignupStore from '@/store/signup'
 import {
   IconApps,
-  IconSettings2,
+  IconListDetails,
+  IconLogout,
+  IconUser,
 } from '@tabler/icons-react'
 import classNames from 'classnames'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 const navLinks = [
   {
     id: 1,
-    link: '/dashboard/listings/',
+    link: '/dashboard/',
     icon: <IconApps />,
     name: 'Dashboard',
   },
   {
-    id: 5,
-    link: '/dashboard/landlords/profile',
-    icon: <IconSettings2 />,
-    name: 'Settings',
+    id: 2,
+    link: '/dashboard/listings/',
+    icon: <IconListDetails />,
+    name: 'Market Place',
+  },
+  {
+    id: 3,
+    link: '/dashboard/profile/',
+    icon: <IconUser />,
+    name: 'Profile',
   },
 ]
 
 const Sidebar = () => {
   const query = usePathname();
+  const router = useRouter();
   const { data, updateData } = useSignupStore((state) => state);
+
+  const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
+    router.push('/login')
+  };
 
   return (
     <>
@@ -34,13 +48,13 @@ const Sidebar = () => {
           className='opacity-0 inset-0 w-full h-full'
           onClick='sidebarHandler(false)'
         ></div>
-        <div className='w-[320px] absolute left-0 z-40 top-0 shadow flex-col justify-between transition duration-150 ease-in-out h-full'>
+        <div className='w-[320px] absolute left-0 z-40 top-0 flex-col justify-between transition duration-150 ease-in-out h-full bg-[#00000f] text-white shadow-xl'>
           <div className='flex flex-col justify-between h-full'>
             <div className='px-6 pt-4 overflow-y-auto'>
               <div className='flex items-center justify-between'>
                 <div aria-label='Home' role='img' className='flex items-center'>
                   <img
-                    src='/assets/images/ileyah-logo.png'
+                    src='/assets/images/ileyah logo white.png'
                     alt='logo'
                     className='w-3/5 pl-5 pt-5'
                   />
@@ -73,15 +87,10 @@ const Sidebar = () => {
             <div className='w-full'>
               <div className='border-t border-gray-300'>
                 <div className='w-full flex items-center justify-between px-6 pt-1'>
-                  <div className='flex items-center'>
-                    <img
-                      alt='display avatar'
-                      role='img'
-                      src='https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png'
-                      className='w-8 h-8 rounded-md'
-                    />
+                  <div className='flex items-center cursor-pointer' onClick={handleLogout}>
+                    <IconLogout />
                     <p className='text-white text-base leading-4 ml-2'>
-                      O Praise
+                      Logout
                     </p>
                   </div>
                   <ul className='flex'>
@@ -109,7 +118,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className='fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden z-50'>
+      <div className={classNames('fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden z-50')}>
         <div className='grid grid-cols-3'>
           {navLinks.map((n, i) => (
             <Link
@@ -129,4 +138,4 @@ const Sidebar = () => {
   )
 }
 
-export default Sidebar
+export default Sidebar;

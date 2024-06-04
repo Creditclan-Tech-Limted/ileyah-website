@@ -85,6 +85,8 @@ const Page = () => {
       const res = await axios.get(
         "https://kuda-creditclan-api.herokuapp.com/agents/properties"
       );
+
+      console.log(res.data.data);
       setIleyahProperty(res?.data?.data);
     } catch (error) {
       console.log({ error });
@@ -323,7 +325,7 @@ const Page = () => {
                   {isFiltering && filterData?.length === 0 && (
                     <div className="border-2 bg-red-300 w-full">
                       <span className="mb-4">
-                        property currently unavailable for selected filters
+                        Property currently unavailable for selected filters
                       </span>
                       <Button
                         variant="outlined"
@@ -336,7 +338,7 @@ const Page = () => {
                     </div>
                   )}
 
-                  {/* {ileyahProperty?.map((m, i) => (
+                  {ileyahProperty?.map((m, i) => (
                     <div
                       key={i}
                       className="border-2 border-primary-500 rounded-2xl"
@@ -347,7 +349,7 @@ const Page = () => {
                         houseImg={m.image}
                         heading="For Rent"
                         price={m?.total_paid}
-                        title={m?.description}
+                        title={m?.title}
                         avatar={imageAvatar}
                         name="Jonathan Reinink"
                         role="Estate Agents"
@@ -359,6 +361,7 @@ const Page = () => {
                         bath="Bath"
                         length="Square Ft"
                         property={m}
+                        source='ileyahProperty'
                         onClick={() => {
                           setCurrent(m);
                           setOpenPropertyDetails(true);
@@ -366,7 +369,7 @@ const Page = () => {
                         }}
                       />
                     </div>
-                  ))} */}
+                  ))}
 
                   {(isFiltering ? filterData : properties)?.map((m, i) => (
                     <div key={i}>

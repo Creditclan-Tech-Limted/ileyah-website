@@ -9,6 +9,7 @@ const Admin = ({ className }) => {
   const router = useRouter();
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     router.push('/login')
   };
   return (

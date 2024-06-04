@@ -64,8 +64,7 @@ const CustomizePlan = ({ isOpen, onClose }) => {
       console.log({ error });
     }
   }
-
-  console.log({ selectedPlans });
+  
   return (
     <>
       <Drawer isOpen={isOpen} onClose={onClose} title={'Customize Plan'}>

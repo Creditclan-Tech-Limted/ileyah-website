@@ -6,13 +6,10 @@ import React, { useEffect, useState } from 'react'
 import Pagination from '@/components/listings/pagination'
 import ScrollToTop from '@/components/ScrollToTop'
 import ScrollToTopBtn from '@/components/ScrollToTpBtn'
-import { IconChevronDown, IconLogout } from '@tabler/icons-react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import ProDetails from '@/components/listings/modals/property_details'
 import useSignupStore from '@/store/signup'
-import SimpleDropdown from '@/global/SimpleDropdown'
-import classNames from 'classnames'
 
 const imageAvatar = `https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60`
 
@@ -108,29 +105,6 @@ const Page = ({ className }) => {
   return (
     <div className='mt-[50px]'>
       <ScrollToTop />
-      <div className="flex mx-8">
-        <div>
-          <p className='text-2xl'>Market Place </p>
-        </div>
-        <div className='ml-auto'>
-          <SimpleDropdown
-            trigger={
-              <div className="flex items-center">
-                <img
-                  src={`https://ui-avatars.com/api/?name=${signupData?.user?.name} ${signupData?.user?.name?.split(' ')[1]}`}
-                  className={classNames('w-8 h-8 rounded-full', className)}
-                  alt={`${signupData?.user?.firstName} ${signupData?.user?.lastName}`}
-                />
-                <IconChevronDown size="18" className="ml-3" />
-              </div>
-            }
-            items={[
-              { text: 'Logout', icon: <IconLogout size="18" />, onClick: handleLogout }
-            ]}
-          />
-        </div>
-      </div>
-      {/* <Navbar /> */}
       <div className='grid gap-10 container mt-[50px]'>
         <div className=''>
           <SearchBar placeholder='Search your key word...' />

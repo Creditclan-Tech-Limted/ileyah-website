@@ -35,6 +35,7 @@ const Navbar = ({ name }) => {
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('ileyah_token');
     logout();
     window.location.reload();
   };

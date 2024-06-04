@@ -1,6 +1,11 @@
 'use client'
 import useSignupStore from '@/store/signup'
-import { IconApps, IconFile, IconHome, IconHomeDot, IconHomeInfinity, IconHomeSearch, IconHomeShare, IconLogout, IconUsers } from '@tabler/icons-react'
+import {
+  IconApps,
+  IconListDetails,
+  IconLogout,
+  IconUser,
+} from '@tabler/icons-react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -8,63 +13,21 @@ import { usePathname, useRouter } from 'next/navigation'
 const navLinks = [
   {
     id: 1,
-    link: '/admin',
-    icon: <IconHome />,
-    name: 'Home',
+    link: '/dashboard/',
+    icon: <IconApps />,
+    name: 'Dashboard',
   },
   {
     id: 2,
-    link: '/admin/users',
-    icon: <IconUsers />,
-    name: 'Users',
+    link: '/dashboard/listings/',
+    icon: <IconListDetails />,
+    name: 'Market Place',
   },
   {
     id: 3,
-    link: '/admin/find-house',
-    icon: <IconHomeSearch />,
-    name: 'Find Me A House',
-  },
-  {
-    id: 4,
-    link: '/admin/assets',
-    icon: <IconHomeInfinity />,
-    name: 'Assets',
-  },
-  {
-    id: 5,
-    link: '/admin/companies',
-    icon: <IconHomeDot />,
-    name: 'Companies',
-  },
-  {
-    id: 6,
-    link: '/admin/properties',
-    icon: <IconApps />,
-    name: 'Tenants',
-  },
-  {
-    id: 7,
-    link: '/admin/dueloans',
-    icon: <IconApps />,
-    name: 'Due Loans',
-  },
-  {
-    id: 8,
-    link: '/admin/transactions',
-    icon: <IconFile />,
-    name: 'Transactions',
-  },
-  {
-    id: 8,
-    link: '/admin/inspections',
-    icon: <IconFile />,
-    name: 'Inspections',
-  },
-  {
-    id: 8,
-    link: '/admin/flatshare',
-    icon: <IconHomeShare />,
-    name: 'Flat Share',
+    link: '/dashboard/profile/',
+    icon: <IconUser />,
+    name: 'Profile',
   },
 ]
 
@@ -155,7 +118,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className='fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden z-50'>
+      <div className={classNames('fixed bottom-0 left-0 w-full bg-gray-900 text-white text-center block md:!hidden z-50')}>
         <div className='grid grid-cols-3'>
           {navLinks.map((n, i) => (
             <Link
