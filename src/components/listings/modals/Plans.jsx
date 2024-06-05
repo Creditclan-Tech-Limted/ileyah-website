@@ -88,6 +88,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
   const _plans = [
     {
       amount: "10,000",
+      planName: "Starter",
       items: [
         { id: 1, name: "Caepentry Services" },
         { id: 2, name: "Basic Fixes" },
@@ -95,6 +96,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
     },
     {
       amount: "25,000",
+      planName: "Basic",
       items: [
         { id: 1, name: "Fumigation Services (Indoor)" },
         { id: 2, name: "Carpentry Services (Basic Fix and Door Lock Change)" },
@@ -106,6 +108,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
     },
     {
       amount: "50,000",
+      planName: "Standard",
       items: [
         { id: 1, name: "Washing Machine Servicing / Installation" },
         { id: 2, name: "Generator Servicing" },
@@ -117,6 +120,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
     },
     {
       amount: "75,000",
+      planName: "Pro",
       items: [
         { id: 1, name: "Fumigation (Indoor)" },
         { id: 2, name: "Carpentry Services" },
@@ -128,6 +132,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
     },
     {
       amount: "100,000",
+      planName: "Premium",
       items: [
         { id: 1, name: "Fumigation (Indoor & Outdoor)" },
         { id: 2, name: "Basic Home Cleaning" },
@@ -286,7 +291,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
                                   color="blue"
                                   className="bg-gray-200 p-1 rounded-full"
                                 />
-                                <p className="font-bold">Starter</p>
+                                <p className="font-bold">{p.planName}</p>
                                 <p className="text-gray-500 text-sm">
                                   Subscribe and enjoy the below services
                                   optimally.
@@ -296,8 +301,8 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
                                   What's included:
                                 </p>
                                 <div
-                                  className={classNames("!text-white bg-blue-500", {
-                                    "!text-black bg-red-500": i % 2 === 1,
+                                  className={classNames("", {
+                                    "!text-black": i % 2 === 1,
                                   })}
                                 >
                                   {p.items.map((item, i) => (

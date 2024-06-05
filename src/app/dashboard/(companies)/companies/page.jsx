@@ -201,7 +201,7 @@ const Page = () => {
           </div>
           <div className="mt-3 bg-[#F0F3FA] shadow rounded-lg pl-10 pr-10 pt-10 text-xl h-[350px] relative">
             <p className="text-5xl font-medium">
-              Your staff can look like a King{" "}
+              Your staff can be a King{" "}
             </p>
             <div className="flex mt-5 font-bold">
               <Button

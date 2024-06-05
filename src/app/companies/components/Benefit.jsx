@@ -1,3 +1,4 @@
+import { IconHomeSearch } from "@tabler/icons-react";
 import React from "react";
 
 const Benefit = () => {
@@ -53,15 +54,11 @@ const Benefit = () => {
               </div>
             </div>
             <div className="bg-slate-200 shadow rounded-xl p-10 space-y-4">
-              <img
-                src="/assets/images/companies/4.svg"
-                alt=""
-                className="w-16"
-              />
-              <h4 className="font-bold text-2xl">Lorem Ipsum item dolor.</h4>
+              <IconHomeSearch size={55}/>
+              <h4 className="font-bold text-2xl">Wide range of Property Listings.</h4>
               <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                veritatis dolorum ratione repellat tenetur!{" "}
+                Browse our well curated listings of over 100k+
+                properties across the africa .{" "}
               </div>
             </div>
           </div>

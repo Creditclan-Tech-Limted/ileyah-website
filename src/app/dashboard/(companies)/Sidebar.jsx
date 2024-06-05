@@ -1,4 +1,5 @@
 'use client'
+import UserInfor from '@/api/UserInfor'
 import {
   IconApps,
   IconGitPullRequest,
@@ -45,6 +46,8 @@ const navLinks = [
 
 const Sidebar = () => {
   const query = usePathname()
+  let companyName = UserInfor().userName;
+
 
   return (
     <>
@@ -100,7 +103,7 @@ const Sidebar = () => {
                       className='w-8 h-8 rounded-md'
                     />
                     <p className='text-white text-base leading-4 ml-2'>
-                      O Praise
+                      {companyName}
                     </p>
                   </div>
                   <ul className='flex'>
