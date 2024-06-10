@@ -17,8 +17,7 @@ const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const [openAddNewStaff, setOpenAddNewStaff] = useState(false);
   const { data: staffData, isLoading: loading } = useGetStaff(companyId);
-
-  console.log({ staffData, companyId });
+  
   const toast = useToast();
   const [staff, setStaff] = useState({
     open: false,
@@ -85,9 +84,6 @@ const Page = () => {
                           Department
                         </th>
                         <th scope="col" className="px-6 py-4">
-                          Status{" "}
-                        </th>
-                        <th scope="col" className="px-6 py-4">
                           Date{" "}
                         </th>
                         <th scope="col" className="px-6 py-4">
@@ -114,24 +110,13 @@ const Page = () => {
                             {item?.email}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            {item?.salary}
+                            {item?.amount || 0}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {item?.salary}
                           </td>
-                          <td className="px-6 py-4">
-                            {i !== 1 ? (
-                              <div className="px-2.5 py-1 leading-none inline-block rounded-full border border-gray-600 text-gray-600 !border-red-500 !text-red-500">
-                                Failed Eligibility
-                              </div>
-                            ) : (
-                              <div className="px-2.5 py-1 leading-none inline-block rounded-full border border-gray-600 text-gray-600 !border-green-500 !text-green-500">
-                                Approved
-                              </div>
-                            )}
-                          </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            12th Jul, 2023
+                            {item?.createdAt}
                           </td>
                           <td>
                             {" "}
@@ -144,6 +129,10 @@ const Page = () => {
                       ))}
                     </tbody>
                   </table>
+
+                  {staffData?.data?.data.length === 0 && (
+                    <div className="w-full flex text-center justify-center p-10">No Data</div>
+                  )}
                 </div>
               </>
             )}

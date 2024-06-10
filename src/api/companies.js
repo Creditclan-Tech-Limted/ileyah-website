@@ -1,8 +1,8 @@
 export const AUTH_ENDPOINT = {
   REGISTER: () =>
-    'https://kuda-creditclan-api.herokuapp.com/api/companies/onboardCompanies',
+    'https://lendnode.creditclan.com/kuda/api/companies/onboardCompanies',
   FORGET_PASSWORD: () => '',
-  LOGIN: () => 'https://kuda-creditclan-api.herokuapp.com/agents/login',
+  LOGIN: () => 'https://lendnode.creditclan.com/kuda/agents/login',
   LOGOUT: () => '',
   RESET_LOGIN: () => '',
   RECOVERY_MAIL: () => '',
@@ -13,12 +13,12 @@ export const AUTH_ENDPOINT = {
 
 export const STAFF = {
   GET_ALL_STAFF: () =>
-    'https://kuda-creditclan-api.herokuapp.com/api/companies/getCompanyStaff',
+    'https://lendnode.creditclan.com/kuda/api/companies/getCompanyStaff',
   ADD_STAFF: () =>
-    'https://kuda-creditclan-api.herokuapp.com/api/companies/addCompanyStaff',
+    'https://lendnode.creditclan.com/kuda/api/companies/addCompanyStaff',
 }
 
 // export const ADD_NEW_PROPERTY = {
 //   ADD: () =>
-//     'https://kuda-creditclan-api.herokuapp.com/agents/addPropertyByAgent',
+//     'https://lendnode.creditclan.com/kuda/agents/addPropertyByAgent',
 // }

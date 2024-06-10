@@ -32,13 +32,13 @@ const navLinks = [
   },
   {
     id: 4,
-    link: '/dashboard/companies/profile/',
+    link: '/dashboard/companies/request/',
     icon: <IconGitPullRequest />,
     name: 'Request',
   },
   {
     id: 5,
-    link: '/dashboard/companies/profile/',
+    link: '/dashboard/companies/settings/',
     icon: <IconSettings2 />,
     name: 'Settings',
   },

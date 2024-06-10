@@ -20,7 +20,7 @@ const AdminFlatshare = ({className}) => {
   const getAllUser = async () => {
     try {
       const res = await axios.get(
-        "https://kuda-creditclan-api.herokuapp.com/agents/admin/getAdminLookingForAPlace"
+        "https://lendnode.creditclan.com/kuda/agents/admin/getAdminLookingForAPlace"
       );
       setUsers(res?.data?.data);
       setLoading(false);

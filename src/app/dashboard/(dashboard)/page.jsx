@@ -120,7 +120,7 @@ const Page = ({ className }) => {
 
   const getPorperties = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties')
+      const res = await axios.get('https://lendnode.creditclan.com/kuda/get_properties')
       setProperties(res?.data?.data)
       return res?.data?.data
     } catch (error) {

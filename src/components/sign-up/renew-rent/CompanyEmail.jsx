@@ -40,7 +40,7 @@ const CompanyEmail = ({ onBack, onNext }) => {
         setOtpLoading(true);
         setEmail(values?.email)
         const otp = Math.floor(100000 + Math.random() * 900000)
-        await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/sendToken', { email: values?.email, otp })
+        await axios.post('https://lendnode.creditclan.com/kuda/agents/sendToken', { email: values?.email, otp })
         await axios.post('https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual', { vertical: "Ileya", otp, email: values?.email });
         setOtpLoading(false)
         setViews('otp');
@@ -57,7 +57,7 @@ const CompanyEmail = ({ onBack, onNext }) => {
   const handlePinDone = async (values) => {
     try {
       setVerifyOtp(true);
-      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/verifyToken', { email, otp: values });
+      const res = await axios.post('https://lendnode.creditclan.com/kuda/agents/verifyToken', { email, otp: values });
 
       if (res?.data?.status) {
         return onNext('request-details')

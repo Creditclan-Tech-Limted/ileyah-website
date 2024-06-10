@@ -51,13 +51,13 @@ const Page = () => {
       }
       if (data?.createPostRequest) {
         await axios.post(
-          "https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse",
+          "https://lendnode.creditclan.com/kuda/agents/createFindHouse",
           { ...data?.createPostRequest, landlordAgentId: res?.data?.data?.id }
         );
       }
       if (data?.property) {
         const res = await axios.post(
-          "https://kuda-creditclan-api.herokuapp.com/agents/createInspections",
+          "https://lendnode.creditclan.com/kuda/agents/createInspections",
           {
             date: "23-10-2000",
             time: "12:00",

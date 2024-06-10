@@ -31,7 +31,7 @@ const Page = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/getAgentProperty', { landlordAgentId: userId })
+      const res = await axios.post('https://lendnode.creditclan.com/kuda/agents/getAgentProperty', { landlordAgentId: userId })
       return res?.data?.data?.reverse()
     } catch (error) {
       console.log({ error });

@@ -14,7 +14,7 @@ const AdminInspections = ({className}) => {
   const getAllUser = async () => {
     try {
       const res = await axios.post(
-        "https://kuda-creditclan-api.herokuapp.com/agents/getAdminInspections", {}
+        "https://lendnode.creditclan.com/kuda/agents/getAdminInspections", {}
       );
       console.log(res.data.data);
       setUsers(res?.data?.data);

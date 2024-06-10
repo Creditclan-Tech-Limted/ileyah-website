@@ -61,7 +61,7 @@ const Page = ({ className }) => {
 
   const getPorperties = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/get_properties');
+      const res = await axios.get('https://lendnode.creditclan.com/kuda/get_properties');
       let props = res?.data?.data;
       for (let i = props.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

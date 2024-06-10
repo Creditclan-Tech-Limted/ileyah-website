@@ -6,11 +6,14 @@ import useSignupStore from "@/store/signup";
 import UserInfor from "@/api/UserInfor";
 import AddNewStaff from "./staffs/modals/AddNewStaff";
 import Link from "next/link";
+import { useGetStaff } from "@/api/action";
 
 const Page = () => {
   const { data, updateData } = useSignupStore((state) => state);
   const [openInviteStaff, setOpenInviteStaff] = useState(false);
   let companyName = UserInfor().userName;
+  let companyId = UserInfor().userId;
+  const { data: staffData, isLoading: loading } = useGetStaff(companyId);
 
   return (
     <>
@@ -21,7 +24,9 @@ const Page = () => {
             <div className="bg-red-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div className="flex justify-between">
                 <div>
-                  <div className="text-3xl font-bold">100</div>
+                  <div className="text-3xl font-bold">
+                    {staffData?.data?.data.length}
+                  </div>
                   <div className="text-sm mt-2">Staffs</div>
                 </div>
                 <div className="my-auto">
@@ -32,7 +37,9 @@ const Page = () => {
             <div className="bg-blue-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div className="flex justify-between">
                 <div>
-                  <div className="text-3xl font-bold">100</div>
+                  <div className="text-3xl font-bold">
+                    {staffData?.data?.data.length}
+                  </div>
                   <div className="text-sm mt-2">Requests</div>
                 </div>
                 <div className="my-auto">
@@ -43,7 +50,7 @@ const Page = () => {
             <div className=" bg-cyan-500 text-white md:text-black md:bg-[#F0F3FA] shadow rounded-xl px-8 py-6 cursor-pointer h-[100px]">
               <div className="flex justify-between">
                 <div>
-                  <div className="text-3xl font-bold">100</div>
+                  <div className="text-3xl font-bold">0</div>
                   <div className="text-sm mt-2">Loans</div>
                 </div>
                 <div className="my-auto">
@@ -67,59 +74,83 @@ const Page = () => {
                 </Button>
               </div>
             </div>
-            <table className="w-full text-[.95rem] text-left">
-              <thead className="text-gray-500 border-b border-slate-200">
-                <tr>
-                  <th scope="col" className="px-6 py-4">
-                    Name
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Email
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Amount
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Department
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Status{" "}
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Date{" "}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[1, 2, 3, 4, 5].map((item, i) => (
-                  <tr
-                    className="hover:bg-gray-50 cursor-pointer select-none border-b"
-                    key={i}
-                  >
-                    <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                      'item?.name'
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      'item?.email'
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      'item?.salary'
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      'item?.salary'
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="px-2.5 py-1 leading-none inline-block rounded-full border border-gray-600 text-gray-600 !border-green-500 !text-green-500">
-                        Approved
+            <div className="w-screen md:w-full">
+              <div className="w-screen md:w-full">
+                {loading ? (
+                  <div role="status" className="max-wsm animate-pulse">
+                    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 "></div>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="bg-white shadow border rounded-[1.2rem] transition-all duration-300 relative overflow-x-auto">
+                      <table className="w-full text-[.95rem] text-left">
+                        <thead className="text-gray-500 border-b border-slate-200">
+                          <tr>
+                            <th scope="col" className="px-6 py-4">
+                              Name
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Phone
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Email
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Amount
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Department
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Date{" "}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {staffData?.data?.data?.map((item, i) => (
+                            <tr
+                              className="hover:bg-gray-50 cursor-pointer select-none border-b"
+                              key={i}
+                            >
+                              <td
+                                scope="row"
+                                className="px-6 py-4 whitespace-nowrap"
+                              >
+                                {item?.name}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {item?.phone}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {item?.email}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">0</td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {/* {item?.salary} */}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {item?.createdAt}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {staffData?.data?.data.length === 0 && (
+                      <div className="w-full flex text-center justify-center p-10">
+                        No Data
                       </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      12th Jul, 2023
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
           </div>
           <div className="bg-white shadow border rounded-[1.2rem] transition-all duration-300 relative overflow-x-auto mt-10">
             <div className="flex justify-between p-5">
@@ -137,59 +168,83 @@ const Page = () => {
                 </Link>
               </div>
             </div>
-            <table className="w-full text-[.95rem] text-left">
-              <thead className="text-gray-500 border-b border-slate-200">
-                <tr>
-                  <th scope="col" className="px-6 py-4">
-                    Name
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Email
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Amount
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Department
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Status{" "}
-                  </th>
-                  <th scope="col" className="px-6 py-4">
-                    Date{" "}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[1, 2, 3, 4, 5].map((item, i) => (
-                  <tr
-                    className="hover:bg-gray-50 cursor-pointer select-none border-b"
-                    key={i}
-                  >
-                    <td scope="row" className="px-6 py-4 whitespace-nowrap">
-                      'item?.name'
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      'item?.email'
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      'item?.salary'
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      'item?.salary'
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="px-2.5 py-1 leading-none inline-block rounded-full border border-gray-600 text-gray-600 !border-green-500 !text-green-500">
-                        Approved
+            <div className="w-screen md:w-full">
+              <div className="w-screen md:w-full">
+                {loading ? (
+                  <div role="status" className="max-wsm animate-pulse">
+                    <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700  mb-2.5"></div>
+                    <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 "></div>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <>
+                    <div className="bg-white shadow border rounded-[1.2rem] transition-all duration-300 relative overflow-x-auto">
+                      <table className="w-full text-[.95rem] text-left">
+                        <thead className="text-gray-500 border-b border-slate-200">
+                          <tr>
+                            <th scope="col" className="px-6 py-4">
+                              Name
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Phone
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Email
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Amount
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Department
+                            </th>
+                            <th scope="col" className="px-6 py-4">
+                              Date{" "}
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {staffData?.data?.data?.map((item, i) => (
+                            <tr
+                              className="hover:bg-gray-50 cursor-pointer select-none border-b"
+                              key={i}
+                            >
+                              <td
+                                scope="row"
+                                className="px-6 py-4 whitespace-nowrap"
+                              >
+                                {item?.name}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {item?.phone}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {item?.email}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">0</td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {/* {item?.salary} */}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                {item?.createdAt}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {staffData?.data?.data.length === 0 && (
+                      <div className="w-full flex text-center justify-center p-10">
+                        No Data
                       </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      12th Jul, 2023
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    )}
+                  </>
+                )}
+              </div>
+            </div>
           </div>
         </div>
         <div className="hidden md:block">
@@ -200,9 +255,7 @@ const Page = () => {
             </p>
           </div>
           <div className="mt-3 bg-[#F0F3FA] shadow rounded-lg pl-10 pr-10 pt-10 text-xl h-[350px] relative">
-            <p className="text-5xl font-medium">
-              Your staff can be a King{" "}
-            </p>
+            <p className="text-5xl font-medium">Your staff can be a King </p>
             <div className="flex mt-5 font-bold">
               <Button
                 className="inline-flex"

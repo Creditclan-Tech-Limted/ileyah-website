@@ -123,12 +123,6 @@ const Profile = () => {
           )
         }
       </div>
-
-      {/* <hr className="my-10" />
-
-
-      <hr className="my-10" /> */}
-
     </>
   )
 }

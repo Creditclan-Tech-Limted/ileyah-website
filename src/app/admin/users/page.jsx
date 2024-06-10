@@ -21,7 +21,7 @@ const Page = ({ className }) => {
 
   const getAllUser = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/agents/agents');
+      const res = await axios.get('https://lendnode.creditclan.com/kuda/agents/agents');
       setUsers(res?.data?.data)
       setLoading(false)
     } catch (error) {

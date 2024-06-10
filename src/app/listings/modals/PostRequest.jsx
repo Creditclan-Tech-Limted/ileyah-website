@@ -77,7 +77,7 @@ const PostRequest = ({ isOpen, onClose }) => {
       if (ileyah_token) {
         setViews("success");
         // setLoading(true);
-        // const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...values, landlordAgentId: data?.user.id });
+        // const res = await axios.post('https://lendnode.creditclan.com/kuda/agents/createFindHouse', { ...values, landlordAgentId: data?.user.id });
         // if (res?.data?.status) {
         //   console.log('Successfully created');
         //   setLoading(false);

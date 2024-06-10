@@ -82,7 +82,7 @@ const Plans = ({ isOpen, onClose, property, onNext, isIleyahProperty }) => {
   };
 
   const onSubmit = async (values) => {
-    // const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse', { ...values, landlordAgentId: data?.user.id });
+    // const res = await axios.post('https://lendnode.creditclan.com/kuda/agents/createFindHouse', { ...values, landlordAgentId: data?.user.id });
   };
 
   const _plans = [

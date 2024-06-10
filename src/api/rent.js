@@ -11,7 +11,7 @@ export const useSignUpMutation = () => {
 
 export const useGetInspectionDetails = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
-    return http.post('https://kuda-creditclan-api.herokuapp.com/agents/getInspections', payload);
+    return http.post('https://lendnode.creditclan.com/kuda/agents/getInspections', payload);
   });
   return { mutate, mutateAsync, isLoading };
 }
@@ -25,7 +25,7 @@ export const useLoginMutation = () => {
 
 export const useCreateIleyahLoan = () => {
   const { mutate, mutateAsync, isLoading } = useMutation(payload => {
-    return http.post('https://kuda-creditclan-api.herokuapp.com/agents/createLoan', payload);
+    return http.post('https://lendnode.creditclan.com/kuda/agents/createLoan', payload);
   });
   return { mutate, mutateAsync, isLoading };
 }

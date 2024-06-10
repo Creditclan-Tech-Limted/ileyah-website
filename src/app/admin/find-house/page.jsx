@@ -24,7 +24,7 @@ const Page = ({ className }) => {
   }
 
   const getAllFoundHouse = async () => {
-    const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/agents/getAllfindmeahouse')
+    const res = await axios.get('https://lendnode.creditclan.com/kuda/agents/getAllfindmeahouse')
     setFoundHouse(res?.data?.data);
     setLoading(false)
   }

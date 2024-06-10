@@ -57,7 +57,7 @@ const Page = () => {
   const [ileyahProperty, setIleyahProperty] = useState([]);
   const [isIleyahProperty, setisIleyahProperty] = useState(false);
 
-  const apiUrl = "https://kuda-creditclan-api.herokuapp.com/";
+  const apiUrl = "https://lendnode.creditclan.com/kuda/";
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     usePropertyQuery({
@@ -83,7 +83,7 @@ const Page = () => {
   const getIleyahProperty = async () => {
     try {
       const res = await axios.get(
-        "https://kuda-creditclan-api.herokuapp.com/agents/properties"
+        "https://lendnode.creditclan.com/kuda/agents/properties"
       );
 
       console.log(res.data.data);

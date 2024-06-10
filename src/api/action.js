@@ -15,8 +15,8 @@ export const useGetAdminProperties = () => {
     queryKey: ["properties"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://kuda-creditclan-api.herokuapp.com/agents/admin/properties`
-        // `https://kuda-creditclan-api.herokuapp.com/agents/properties`
+        `https://lendnode.creditclan.com/kuda/agents/admin/properties`
+        // `https://lendnode.creditclan.com/kuda/agents/properties`
       );
       return res.data.data;
     },

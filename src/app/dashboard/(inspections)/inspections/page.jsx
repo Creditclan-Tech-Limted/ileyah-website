@@ -60,7 +60,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
       setViews('view-result');
       setIsOfferLoading('show-offer-done');
       router.push('/dashboard')
-      await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateAgents', { id: data?.user?.id, analysis_step: 'completed', credit_score: res?.data?.payload.repayment_amount?.toFixed(2) })
+      await axios.post('https://lendnode.creditclan.com/kuda/agents/updateAgents', { id: data?.user?.id, analysis_step: 'completed', credit_score: res?.data?.payload.repayment_amount?.toFixed(2) })
     } catch (error) {
       setLoading(false)
       console.log({ error });
@@ -182,7 +182,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
   const updateUserRecord = async (res, resi, values) => {
     try {
       updateData({ ...data, user: { ...data?.user, lend_user_id: res?.user_id, lend_token: res?.token, lend_loan_id: resi?.dd, id: data?.user?.id, analysed: true, analysis_step: 'processing' } });
-      await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/updateAgents', { lend_user_id: res?.user_id, lend_token: res?.token, lend_loan_id: resi?.dd, id: data?.user?.id, analysed: true, analysis_step: 'processing' })
+      await axios.post('https://lendnode.creditclan.com/kuda/agents/updateAgents', { lend_user_id: res?.user_id, lend_token: res?.token, lend_loan_id: resi?.dd, id: data?.user?.id, analysed: true, analysis_step: 'processing' })
     } catch (error) {
       console.log({ error });
     }

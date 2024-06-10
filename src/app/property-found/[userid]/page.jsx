@@ -40,7 +40,7 @@ const Page = () => {
 
   const getHouses = async () => {
     try {
-      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/getAllFoundHouse', {
+      const res = await axios.post('https://lendnode.creditclan.com/kuda/agents/getAllFoundHouse', {
         request_id: query.split('/')[2]
       })
       let property = res?.data?.properties.map((item) => {

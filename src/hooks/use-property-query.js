@@ -10,7 +10,7 @@ const getProptest = async ({ pageParam = undefined }) => {
       const param = pageParam === false ? undefined : pageParam === undefined ? 1 :  pageParam
 
       const res = await axios.get(
-        `https://kuda-creditclan-api.herokuapp.com/get_properties?page=${param}`)
+        `https://lendnode.creditclan.com/kuda/get_properties?page=${param}`)
       
       let array = res?.data?.data
       const nextPage = res?.data?.nextPage

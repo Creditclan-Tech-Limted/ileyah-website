@@ -67,7 +67,7 @@ const AssetsModal = ({ isOpen, onClose, item }) => {
 
         const img = await Promise.all(axiosRequests);
         const response = await axios.post(
-          "https://kuda-creditclan-api.herokuapp.com/agents/updatePropertyImage",
+          "https://lendnode.creditclan.com/kuda/agents/updatePropertyImage",
           { image: img, id: item.id }
         );
 
