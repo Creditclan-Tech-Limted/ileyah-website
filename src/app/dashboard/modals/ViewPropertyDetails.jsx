@@ -21,7 +21,6 @@ const ViewPropertyDetails = ({
   isGetLoanDetailsLoading,
   globalLoading,
 }) => {
-  console.log({ isGetLoanDetailsLoading, globalLoading, loan });
   const { data, updateData } = useSignupStore((state) => state);
   const { mutateAsync: cancelRequest, isLoading: isCancelRequestLoading } =
     useCancelRequestMutation();
@@ -30,6 +29,7 @@ const ViewPropertyDetails = ({
   const [views, setViews] = useState("bio");
   const [schedules, setSchedules] = useState();
   const [recovery, setRecovery] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const toast = useToast();
   const handleCancelRequest = async () => {
@@ -40,6 +40,7 @@ const ViewPropertyDetails = ({
       }
       toast.success("Req Cancceld");
       onClose();
+      window.location.reload()
     } catch (e) {
       console.log({ e });
     }
@@ -78,15 +79,18 @@ const ViewPropertyDetails = ({
 
   useEffect(() => {
     getRecoveryInfo();
+    setLoading(false);
   }, []);
+
+  console.log({ isGetLoanDetailsLoading, loan });
 
   return (
     <>
-      {isGetLoanDetailsLoading ? (
+      {loading ? (
         <span>Loading...</span>
       ) : (
         <>
-          {loan && (
+          {loan ? (
             <>
               {loan &&
                 loan?.loan?.offers &&
@@ -361,6 +365,14 @@ const ViewPropertyDetails = ({
                                 <IconX />{" "}
                               </Button>
                             </div>
+                            <Button
+                              variant="outlined"
+                              color="red"
+                              onClick={handleCancelRequest}
+                              loading={isCancelRequestLoading}
+                            >
+                              Cancel Request
+                            </Button>
                             <p>
                               You application is under review, <br />
                             </p>
@@ -495,8 +507,7 @@ const ViewPropertyDetails = ({
                   </>
                 )}
             </>
-          )}
-          {loan && loan?.loan?.offers === null && (
+          ) : (
             <div>
               <div className="flex items-center justify-between mb-10">
                 <h3 className="text-xl font-semibold">Ongoing Request</h3>
