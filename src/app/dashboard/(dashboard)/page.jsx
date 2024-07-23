@@ -552,10 +552,6 @@ const Page = ({ className }) => {
                             bath='Bath'
                             length='Square Ft'
                             property={m}
-                          // onClick={() => {
-                          //   setCurrent(m)
-                          //   setOpenPropertyDetails(true)
-                          // }}
                           />
                         </div>
                       ))}
