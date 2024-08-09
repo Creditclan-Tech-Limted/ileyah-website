@@ -33,6 +33,12 @@ import Input from "@/global/Input";
 import { useForm } from "react-hook-form";
 import Button from "@/components/global/Button";
 import Footer from "@/components/Footer";
+import {
+  AdvancedMarker,
+  APIProvider,
+  Map,
+  Pin,
+} from "@vis.gl/react-google-maps";
 
 const offers = [
   { icon: <IconBulb />, title: "24/7 electricity" },
@@ -273,6 +279,24 @@ const Shortlets = () => {
             </Button>
           </div>
         </div>
+      </div>
+      <div className="container my-10">
+        <APIProvider apiKey={"AIzaSyBRDlvJOTJYDmVsm3HKGeUjoZjgvlAxquE"}>
+          <Map
+            style={{ width: "70vw", height: "70vh" }}
+            defaultCenter={{ lat: 6.441361, lng: 3.557644 }}
+            defaultZoom={13}
+            gestureHandling={"greedy"}
+            disableDefaultUI={true}
+          />
+          {/* <AdvancedMarker position={{ lat: 6.441361, lng: 3.557644 }}>
+            <Pin
+              background={"#FBBC04"}
+              glyphColor={"#000"}
+              borderColor={"#000"}
+            />
+          </AdvancedMarker> */}
+        </APIProvider>
       </div>
       <Footer />
 
