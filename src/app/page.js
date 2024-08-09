@@ -29,13 +29,13 @@ export default function Home() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <NextUIProvider>
+        {/* <NextUIProvider> */}
           <LandingPage />
           <WhatsappSlideOut
             isActive={isSignupOpen}
             handleToggle={() => toggleIsSignupOpen()}
           />
-        </NextUIProvider>
+        {/* </NextUIProvider> */}
       </QueryClientProvider>
     </>
   );

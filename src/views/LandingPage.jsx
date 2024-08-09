@@ -48,6 +48,7 @@ const LandingPage = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [call, setCall]);
+  
   return (
     <>
       <div
