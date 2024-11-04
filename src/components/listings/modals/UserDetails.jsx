@@ -1,12 +1,12 @@
-import Button from '@/components/global/Button';
-import Input from '@/global/Input';
-import useSignupStore from '@/store/signup';
-import axios from 'axios';
-import { useState } from 'react'
-import { useForm } from 'react-hook-form';
-import { useToast } from '@/lib/use-toast'
-import { IconChevronLeft } from '@tabler/icons-react';
-import { useRouter } from 'next/navigation';
+import Button from "@/components/global/Button";
+import Input from "@/global/Input";
+import useSignupStore from "@/store/signup";
+import axios from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useToast } from "@/lib/use-toast";
+import { IconChevronLeft } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 
 const UserDetails = ({ onBack }) => {
   const { data, updateData } = useSignupStore((state) => state);
@@ -26,23 +26,26 @@ const UserDetails = ({ onBack }) => {
   const submit = async (values) => {
     try {
       setLoading(true);
-      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/createInspections', {
-        date: "23-10-2000",
-        time: "12:00",
-        landlordAgentId: data?.user?.id,
-        propertyId: data?.property?.id
-      })
-reset()
+      const res = await axios.post(
+        "https://kuda-creditclan-api.herokuapp.com/agents/createInspections",
+        {
+          date: "23-10-2000",
+          time: "12:00",
+          landlordAgentId: data?.user?.id,
+          propertyId: data?.property?.id,
+        }
+      );
+      reset();
 
       console.log(res?.data);
       updateData({ property: null });
-      setLoading(false)
-      router.push('dashboard')
-      toast.success('Submitted')
+      setLoading(false);
+      router.push("dashboard");
+      toast.success("Submitted");
     } catch (error) {
       console.log({ error });
     }
-  }
+  };
   return (
     <>
       <div className="pb-3">
@@ -51,30 +54,38 @@ reset()
         </p>
       </div>
       <form onSubmit={handleSubmit(submit)} className="mt-10 space-y-10">
-        <Input label='Date' type='date'
+        <Input
+          label="Date"
+          type="date"
           bordered
-          {...register('date', {
+          {...register("date", {
             required: {
               value: true,
-              message: 'Date is required',
+              message: "Date is required",
             },
           })}
-          error={errors?.date?.message} />
+          error={errors?.date?.message}
+        />
 
-        <Input label='Time' type='time'
+        <Input
+          label="Time"
+          type="time"
           bordered
-          {...register('time', {
+          {...register("time", {
             required: {
               value: true,
-              message: 'Time is required',
+              message: "Time is required",
             },
           })}
-          error={errors?.time?.message} />
+          error={errors?.time?.message}
+        />
 
-        <Button type='submit' loading={loading} >Submit</Button>
+        <Button type="submit" loading={loading}>
+          Submit
+        </Button>
       </form>
     </>
-  )
-}
+  );
+};
 
 export default UserDetails;

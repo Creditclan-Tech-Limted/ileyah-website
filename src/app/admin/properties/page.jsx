@@ -19,7 +19,7 @@ const Page = ({ className }) => {
   const getPorperties = async () => {
     try {
       const res = await axios.get(
-        'https://kuda-creditclan-api.herokuapp.com/agents/getAllIleyahLoans'
+        'https://lendnode.creditclan.com/kuda/agents/getAllIleyahLoans'
       )
       setProperties(res?.data?.data)
     } catch (error) {

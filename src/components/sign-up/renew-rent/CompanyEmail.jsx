@@ -11,11 +11,11 @@ import { useForm } from "react-hook-form";
 
 const CompanyEmail = ({ onBack, onNext }) => {
   const { data, updateData } = useSignupStore((state) => state);
-  const [views, setViews] = useState('email');
+  const [views, setViews] = useState("email");
   const input = useRef();
   const [otpLoading, setOtpLoading] = useState(false);
   const [verifyOtp, setVerifyOtp] = useState(false);
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("");
   const toast = useToast();
 
   const {
@@ -33,22 +33,27 @@ const CompanyEmail = ({ onBack, onNext }) => {
 
   const submit = async (values) => {
     try {
-      const domain = values?.email.split('@')[1];
-      const isValidEmail = !domains.some((d) => d === domain)
+      const domain = values?.email.split("@")[1];
+      const isValidEmail = !domains.some((d) => d === domain);
 
       if (isValidEmail) {
         setOtpLoading(true);
-        setEmail(values?.email)
-        const otp = Math.floor(100000 + Math.random() * 900000)
-        await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/sendToken', { email: values?.email, otp })
-        await axios.post('https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual', { vertical: "Ileya", otp, email: values?.email });
-        setOtpLoading(false)
-        setViews('otp');
+        setEmail(values?.email);
+        const otp = Math.floor(100000 + Math.random() * 900000);
+        await axios.post(
+          "https://kuda-creditclan-api.herokuapp.com/agents/sendToken",
+          { email: values?.email, otp }
+        );
+        await axios.post(
+          "https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual",
+          { vertical: "Ileya", otp, email: values?.email }
+        );
+        setOtpLoading(false);
+        setViews("otp");
       } else {
-        toast.error('Invalid Work Email');
-        console.log('error');
+        toast.error("Invalid Work Email");
+        console.log("error");
       }
-
     } catch (error) {
       console.log({ error });
     }
@@ -58,19 +63,22 @@ const CompanyEmail = ({ onBack, onNext }) => {
     try {
       console.log({ values });
       setVerifyOtp(true);
-      const res = await axios.post('https://kuda-creditclan-api.herokuapp.com/agents/verifyToken', { email, otp: values });
+      const res = await axios.post(
+        "https://kuda-creditclan-api.herokuapp.com/agents/verifyToken",
+        { email, otp: values }
+      );
 
       if (res?.data?.status) {
-        return onNext('request-details')
+        return onNext("request-details");
       }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
-      {views === 'email' && (
+      {views === "email" && (
         <div>
           <div>
             <button
@@ -122,14 +130,14 @@ const CompanyEmail = ({ onBack, onNext }) => {
           </form>
         </div>
       )}
-      {views === 'otp' && (
+      {views === "otp" && (
         <div>
           <div>
             <button
               style={{ marginBottom: "0px" }}
               className="back"
               type="button"
-              onClick={() => setViews('email')}
+              onClick={() => setViews("email")}
               disabled={ischeckRentRequestLoading}
             >
               <span aria-hidden="true">

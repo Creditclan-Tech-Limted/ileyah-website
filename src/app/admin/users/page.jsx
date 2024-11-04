@@ -7,12 +7,16 @@ import classNames from 'classnames';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Comments from './modal/Comments';
+import LoanDetails from "@/app/admin/properties/modals/LoanDetails";
 
 const Page = ({ className }) => {
   const router = useRouter();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [openComments, setOpenComments] = useState(false)
+  const [openLoanDetails, setOpenLoanDetails] = useState(false);
+  const [current, setCurrent] = useState()
+
 
   const handleLogout = () => {
     localStorage.removeItem('ileyah_token');
@@ -21,7 +25,7 @@ const Page = ({ className }) => {
 
   const getAllUser = async () => {
     try {
-      const res = await axios.get('https://kuda-creditclan-api.herokuapp.com/agents/agents');
+      const res = await axios.get('https://lendnode.creditclan.com/kuda/agents/agents');
       setUsers(res?.data?.data)
       setLoading(false)
     } catch (error) {
@@ -80,13 +84,22 @@ const Page = ({ className }) => {
                 <p>{user?.createdAt.slice(0, 10)}</p>
               </div>
               <div className='my-auto ml-auto'>
-                <Button variant='outlined' size='xs' className='mt-3' onClick={() => setOpenComments(true)}>Comments</Button>
+                {/*<Button variant='outlined' size='xs' className='mt-3' onClick={() => setOpenComments(true)}>Comments</Button>*/}
+                <Button variant='outlined' size='xs' className='mt-3' onClick={() => {
+                  setCurrent(user)
+                  setOpenLoanDetails(true)
+                }}>View Details</Button>
               </div>
             </div>
           ))
         }
       </div>
       <Comments isOpen={openComments} onClose={() => setOpenComments(false)} />
+      {
+        openLoanDetails && (
+          <LoanDetails isOpen={openLoanDetails} onClose={() => setOpenLoanDetails(false)} details={current} />
+        )
+      }
     </>
   )
 }
