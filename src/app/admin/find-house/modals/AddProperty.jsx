@@ -31,7 +31,7 @@ const AddProperty = ({ isOpen, onClose, current }) => {
 
   const onSubmit = async (values) => {
     const res = await axios.post(
-      "https://kuda-creditclan-api.herokuapp.com/agents/createFindHouse",
+      "https://lendnode.creditclan.com/kuda/agents/createFindHouse",
       { ...values, landlordAgentId: data?.user.id }
     );
   };

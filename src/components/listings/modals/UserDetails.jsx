@@ -27,7 +27,7 @@ const UserDetails = ({ onBack }) => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://kuda-creditclan-api.herokuapp.com/agents/createInspections",
+        "https://lendnode.creditclan.com/kuda/agents/createInspections",
         {
           date: "23-10-2000",
           time: "12:00",

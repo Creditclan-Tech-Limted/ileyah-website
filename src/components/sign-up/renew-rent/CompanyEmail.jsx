@@ -41,7 +41,7 @@ const CompanyEmail = ({ onBack, onNext }) => {
         setEmail(values?.email);
         const otp = Math.floor(100000 + Math.random() * 900000);
         await axios.post(
-          "https://kuda-creditclan-api.herokuapp.com/agents/sendToken",
+          "https://lendnode.creditclan.com/kuda/agents/sendToken",
           { email: values?.email, otp }
         );
         await axios.post(
@@ -64,7 +64,7 @@ const CompanyEmail = ({ onBack, onNext }) => {
       console.log({ values });
       setVerifyOtp(true);
       const res = await axios.post(
-        "https://kuda-creditclan-api.herokuapp.com/agents/verifyToken",
+        "https://lendnode.creditclan.com/kuda/agents/verifyToken",
         { email, otp: values }
       );
 

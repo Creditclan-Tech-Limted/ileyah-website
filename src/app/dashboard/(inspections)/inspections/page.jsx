@@ -77,7 +77,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
       setIsOfferLoading("show-offer-done");
       router.push("/dashboard");
       await axios.post(
-        "https://kuda-creditclan-api.herokuapp.com/agents/updateAgents",
+        "https://lendnode.creditclan.com/kuda/agents/updateAgents",
         {
           id: data?.user?.id,
           analysis_step: "completed",
@@ -248,7 +248,7 @@ const CheckOffers = ({ className, isOpen, onClose }) => {
         },
       });
       await axios.post(
-        "https://kuda-creditclan-api.herokuapp.com/agents/updateAgents",
+        "https://lendnode.creditclan.com/kuda/agents/updateAgents",
         {
           lend_user_id: res?.user_id,
           lend_token: res?.token,

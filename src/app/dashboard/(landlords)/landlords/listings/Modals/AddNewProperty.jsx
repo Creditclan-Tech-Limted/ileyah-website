@@ -100,7 +100,7 @@ const AddNewProperty = ({ isOpen, onClose, refferal_code, current }) => {
         setLoading(true);
 
         await axios.post(
-          "https://kuda-creditclan-api.herokuapp.com/agents/updateFindHouse",
+          "https://lendnode.creditclan.com/kuda/agents/updateFindHouse",
           {
             request_id: current?.id,
             property_found_id: response?.data?.data?.id,
