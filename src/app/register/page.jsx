@@ -1,8 +1,7 @@
 "use client";
 import { AUTH_ENDPOINT } from "@/api/landlord";
-import { useCreateRentRequestMutation, useSignUpMutation } from "@/api/rent";
+import { useCreateRentRequestMutation } from "@/api/rent";
 import Button from "@/components/global/Button";
-import AuthSocialButton from "@/components/sign-up/AuthSocialButton";
 import Input from "@/global/Input";
 import Select from "@/global/Select";
 import { useToast } from "@/lib/use-toast";
@@ -14,13 +13,11 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
 
 const Page = () => {
   const router = useRouter();
   const toast = useToast();
-  const { mutateAsync: send, isLoading } = useSignUpMutation();
-  const { mutateAsync: sendRentRequest, isLoadingRentRequest } =
+  const { mutateAsync: sendRentRequest } =
     useCreateRentRequestMutation();
 
   const { data, updateData } = useSignupStore((state) => state);
@@ -55,6 +52,15 @@ const Page = () => {
         );
       }
       if (res.data.status) {
+        await axios.post(
+          "https://sellbackend.creditclan.com/mail/index.php/email_sender/send_individual",
+          {
+            email: "support@ileyah.com",
+            customer_name: res?.data?.data?.name,
+            message_type: "signup",
+            vertical: "Ileyah",
+          }
+        );
         toast.success(res.data.message);
         router.push("/dashboard");
         setLoading(false);
@@ -90,7 +96,6 @@ const Page = () => {
       const payload = {
         source: 1,
         process_type: "foundHouse",
-        picture: "",
         full_name: values?.name,
         phone: values?.phone,
         email: values?.email,
@@ -105,21 +110,6 @@ const Page = () => {
     } catch (error) {
       console.log({ error });
     }
-  };
-
-  const socialAction = () => {
-    // setIsLoading(true)
-    // signIn(action, { redirect: false })
-    // .then((callback) => {
-    //   if (callback?.error) {
-    //     toast.error('Invalid credentials!');
-    //   }
-    //   if (callback?.ok  && !callback?.error) {
-    //     toast.success('Logged in!')
-    //     router.push('/users')
-    //   }
-    // })
-    // .finally(() => setIsLoading(false));
   };
 
   return (
@@ -142,7 +132,7 @@ const Page = () => {
               )}
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="relative mb-2" data-te-input-wrapper-init>
+              <div className="relative mb-2" data-te-input-wrapper-init="">
                 <Input
                   label="Full Name"
                   bordered
@@ -156,7 +146,7 @@ const Page = () => {
                   error={errors?.fullname?.message}
                 />
               </div>
-              <div className="relative mb-4" data-te-input-wrapper-init>
+              <div className="relative mb-4" data-te-input-wrapper-init="">
                 <Input
                   label="Email"
                   name="email"
@@ -170,7 +160,7 @@ const Page = () => {
                   error={errors?.email?.message}
                 />
               </div>
-              <div className="relative mb-4" data-te-input-wrapper-init>
+              <div className="relative mb-4" data-te-input-wrapper-init="">
                 <Input
                   label="Phone Number"
                   bordered
@@ -184,7 +174,7 @@ const Page = () => {
                   error={errors?.phone?.message}
                 />
               </div>
-              <div className="relative mb-4" data-te-input-wrapper-init>
+              <div className="relative mb-4" data-te-input-wrapper-init="">
                 <Input
                   label="Passsword"
                   type={isVisiblePassword ? "text" : "password"}
@@ -241,35 +231,6 @@ const Page = () => {
                   {loading ? "Loading..." : "Sign Up"}{" "}
                 </Button>
               </div>
-              <div className="mt-1">
-                {/* <div className="relative">
-                <div 
-                  className="
-                    absolute 
-                    inset-0 
-                    flex 
-                    items-center
-                  "
-                >
-                  <div className="w-full border-t border-gray-300" />
-                </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="bg-neutral-50 px-2 text-gray-500">
-                    Or continue with
-                  </span>
-                </div>
-              </div> */}
-
-                {/* <div className="my-6 flex gap-2 sm:gap-4">
-
-                  <AuthSocialButton
-                    icon={FcGoogle} 
-                    onClick={socialAction} 
-                  />
-                  
-              </div> */}
-              </div>
-
               <div className="flex items-center pb-6">
                 <p className="mb-0 mr-2">Already have an account?</p>
                 <Link href="/login">
