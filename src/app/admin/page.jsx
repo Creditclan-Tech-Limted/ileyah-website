@@ -5,17 +5,17 @@ import SimpleDropdown from '@/global/SimpleDropdown'
 import { IconChevronDown, IconChevronDownLeft, IconChevronRight, IconLogout, IconPlus } from '@tabler/icons-react'
 import classNames from 'classnames'
 import { useRouter } from 'next/navigation'
+import DashboardContent from "@/app/admin/component/DashboardContent";
 
 
 const Admin = ({ className }) => {
-  // localStorage.removeItem('ileyah_token');
   const router = useRouter();
 
   const handleLogout = () => {
     router.push('/login')
   };
   return (
-    <>
+    <div className='px-6'>
       <div className="flex">
         <div>
           <p className='text-2xl font-semibold'>Hi, Admin</p>
@@ -38,7 +38,8 @@ const Admin = ({ className }) => {
           />
         </div>
       </div>
-    </>
+      <DashboardContent />
+    </div>
   )
 }
 

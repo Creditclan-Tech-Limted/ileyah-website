@@ -57,7 +57,7 @@ const Products = ({ call }) => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Renew your Rent
+                Short Let
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Rent due in a few days? We help you convert your current yearly tenancy into monthly tenancy forever.
@@ -73,7 +73,7 @@ const Products = ({ call }) => {
                 </div>
               </div>
               <h2 className="text-xl font-medium">
-                Talk to an Advisor
+                Talk to an Agent
               </h2>
               <p className="mt-4 text-[.95rem] text-white">
                 Initate a conversation with our Agents to futher help you in the process...

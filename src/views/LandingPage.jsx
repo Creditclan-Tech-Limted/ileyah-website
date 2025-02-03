@@ -51,11 +51,7 @@ const LandingPage = () => {
   }, [call, setCall]);
   return (
     <>
-      <div
-        onClick={() => setShowModal(false)}
-        className={classNames("main-overlay", { visible: showModal })}
-      ></div>
-      {showModal && (<WeCall handleToggle={() => setShowModal(false)} />)}
+      <WeCall isOpen={showModal} onClose={() => setShowModal(false)} />
       <ScrollToTop />
       <Navbar />
       <Hero />

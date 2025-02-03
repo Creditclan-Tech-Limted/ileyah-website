@@ -4,31 +4,32 @@ import FormInput from "@/global/FormInput";
 import Input from "@/global/Input";
 import Select from "@/global/Select";
 import TextArea from "@/global/TextArea";
-import { useToast } from "@/lib/use-toast";
+import {useToast} from "@/lib/use-toast";
 import useSignupStore from "@/store/signup";
-import { LocationData } from "@/utils/locationData";
-import { IconCircleCheckFilled, IconX } from "@tabler/icons-react";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { MultiSelect } from "react-multi-select-component";
+import {LocationData} from "@/utils/locationData";
+import {IconCircleCheckFilled, IconX} from "@tabler/icons-react";
+import {useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
+import {useForm} from "react-hook-form";
+import {MultiSelect} from "react-multi-select-component";
+import {TbFileUpload} from "react-icons/tb";
 
 const options = LocationData;
 
 const optionss = [
-  { label: "Grapes 🍇", value: "grapes" },
-  { label: "Mango 🥭", value: "mango" },
-  { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+  {label: "Grapes 🍇", value: "grapes"},
+  {label: "Mango 🥭", value: "mango"},
+  {label: "Strawberry 🍓", value: "strawberry", disabled: true},
 ];
 
-const PostRequest = ({ isOpen, onClose }) => {
+const PostRequest = ({isOpen, onClose}) => {
   const toast = useToast();
   const router = useRouter();
-  const { data, updateData } = useSignupStore((state) => state);
+  const {data, updateData} = useSignupStore((state) => state);
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [views, setViews] = useState("request");
@@ -50,14 +51,29 @@ const PostRequest = ({ isOpen, onClose }) => {
   const [loggedIn, setLoggedIn] = useState();
   const [selected, setSelected] = useState([]);
 
+  const onChange = (e) => {
+    let files;
+    if (e.dataTransfer) {
+      files = e.dataTransfer.files;
+    } else if (e.target) {
+      files = e.target.files;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      console.log(reader.result)
+      setImage(reader.result);
+    };
+    reader.readAsDataURL(files[0]);
+  };
+
   const house_types = [
-    { value: "room-only", text: "Room only" },
-    { value: "room-parlour", text: "Room and parlour" },
-    { value: "two-bedroom", text: "Two bedroom" },
-    { value: "three-bedroom", text: "Three bedroom" },
-    { value: "four-bedroom", text: "Four bedroom" },
-    { value: "bungalow", text: "Bungalow" },
-    { value: "duplex", text: "Duplex" },
+    {value: "room-only", text: "Room only"},
+    {value: "room-parlour", text: "Room and parlour"},
+    {value: "two-bedroom", text: "Two bedroom"},
+    {value: "three-bedroom", text: "Three bedroom"},
+    {value: "four-bedroom", text: "Four bedroom"},
+    {value: "bungalow", text: "Bungalow"},
+    {value: "duplex", text: "Duplex"},
   ];
 
   const onSubmit = async (values) => {
@@ -73,13 +89,13 @@ const PostRequest = ({ isOpen, onClose }) => {
         //   setViews('success')
         // }
       } else {
-        updateData({ createPostRequest: values });
+        updateData({createPostRequest: values});
         router.push("register");
         // setViews('success');
       }
     } catch (error) {
       setLoading(false);
-      console.log({ error });
+      console.log({error});
     }
   };
 
@@ -106,36 +122,48 @@ const PostRequest = ({ isOpen, onClose }) => {
               <Button
                 onClick={onClose}
                 rounded
-                icon={<IconX size="20" />}
+                icon={<IconX size="20"/>}
                 size="sm"
                 color="red"
                 variant="outlined"
               >
-                <IconX />
+                <IconX/>
               </Button>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="space-y-6">
-                <Input
-                  bordered
-                  label="My Monthly Budget "
-                  block
-                  {...register("amount", {
-                    required: {
-                      value: true,
-                      message: "amount is required",
-                    },
-                    min: {
-                      value: 300000,
-                      message: "Please provide an amount greater than ₦100,000",
-                    },
-                    max: {
-                      value: 3000000,
-                      message: "Please provide an amount less than ₦3million",
-                    },
-                  })}
-                  error={errors?.amount?.message}
-                />
+                <div className='grid grid-cols-2 gap-4'>
+                  <Input bordered
+                         label="Full Name"
+                         block
+                         {...register("amount", {
+                           required: {
+                             value: true,
+                             message: "full name is required",
+                           },
+                         })}
+                         error={errors?.amount?.message}/>
+                  <Input
+                    bordered
+                    label="House Rent Budget "
+                    block
+                    {...register("amount", {
+                      required: {
+                        value: true,
+                        message: "amount is required",
+                      },
+                      min: {
+                        value: 300000,
+                        message: "Please provide an amount greater than ₦300,000",
+                      },
+                      max: {
+                        value: 3000000,
+                        message: "Please provide an amount less than ₦3million",
+                      },
+                    })}
+                    error={errors?.amount?.message}
+                  />
+                </div>
                 <Select
                   options={house_types}
                   label="House Type"
@@ -202,13 +230,50 @@ const PostRequest = ({ isOpen, onClose }) => {
                   {...register("comments", {})}
                   error={errors?.comments?.message}
                 />
+                <p className="text-cc-dark max-w-xs">
+                  Kindly Upload your Bank Statement
+                </p>
+                <div>
+                  <div className="flex items-center">
+                    <label
+                      className="border-2 border-gray-300 border-dashed w-full h-[150px] rounded-2xl flex justify-center items-center hover:bg-gray-100 cursor-pointer relative">
+                      <input
+                        type="file"
+                        accept=".pdf"
+                        className="w-[1px] h-[1px] absolute top-0 left-0"
+                        onChange={onChange}
+                      />
+                      {!!data?.houseImage?.picture ? (
+                        <img
+                          src={data?.houseImage?.picture}
+                          alt="user"
+                          className="absolute inset-0 w-full h-full bg-cover bg-center rounded-2xl"
+                        />
+                      ) : (
+                        <i className="fa-solid fa-plus fa-2x opacity-75"></i>
+                      )}
+                    </label>
+                  </div>
+                </div>
               </div>
-              <Button type="submit" className="mt-10" loading={loading}>
-                Submit
-              </Button>
-            </form>
+              {/*<div*/}
+              {/*  className='border border-dashed border-gray-300 p-8 rounded-2xl space-y-6 text-center flex flex-col cursor-pointer'>*/}
+              {/*  <TbFileUpload size='40' className='mx-auto'/>*/}
+              {/*  Kindly upload your 6 month bank statement*/}
+              {/*  <input*/}
+              {/*    type="file"*/}
+              {/*    accept=".pdf"*/}
+              {/*    className="w-[1px] h-[1px] absolute top-0 left-0"*/}
+              {/*    onChange={onChange}*/}
+              {/*  />*/}
+              {/*</div>*/}
+            {/*</div>*/}
+            <Button type="submit" className="mt-10" loading={loading}>
+              Submit
+            </Button>
+          </form>
           </>
-        )}
+          )}
         {views === "success" && (
           <>
             {loggedIn ? (

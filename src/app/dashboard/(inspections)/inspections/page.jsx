@@ -1,20 +1,15 @@
 "use client";
 import { UPLOAD_IMAGE } from "@/api/landlord";
-import { useGetLoanDetailsQuery } from "@/api/rent";
 import Drawer from "@/components/Drawer";
 import Button from "@/components/global/Button";
-import Input from "@/global/Input";
 import Loader from "@/global/Loader";
 import Select from "@/global/Select";
-import SimpleDropdown from "@/global/SimpleDropdown";
 import { useToast } from "@/lib/use-toast";
 import { banks } from "@/lib/utils";
 import useSignupStore from "@/store/signup";
-import { IconChevronDown, IconLogout } from "@tabler/icons-react";
 import axios from "axios";
-import classNames from "classnames";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const CheckOffers = ({ className, isOpen, onClose }) => {

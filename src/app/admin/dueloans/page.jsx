@@ -8,23 +8,27 @@ import axios from 'axios';
 import classNames from 'classnames'
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import {useGetLoans} from "@/api/rent";
 
 const Page = ({ className }) => {
   const router = useRouter();
   const [properties, setProperties] = useState([]);
 
-  const getPorperties = async () => {
-    try {
-      const res = await axios.post('https://lendnode.creditclan.com/ileya_due', { page: 1, start: 0 });
-      console.log(res?.data);
-      setProperties(res?.data?.data);
-      return res?.data?.data?.data
-    } catch (error) {
-      console.log({ error });
-    }
-  }
+  // const getPorperties = async () => {
+  //   try {
+  //     const res = await axios.post('https://lendnode.creditclan.com/ileya_due', { page: 1, start: 0 });
+  //     console.log(res?.data);
+  //     setProperties(res?.data?.data);
+  //     return res?.data?.data?.data
+  //   } catch (error) {
+  //     console.log({ error });
+  //   }
+  // }
 
-  const { data, isLoading, error } = useQuery(['due-loans'], getPorperties);
+  // const { data, isLoading, error } = useQuery(['due-loans'], getPorperties);
+
+  const { data, isLoading, error } = useGetLoans({ page: 1, start: 0, status: 'all' });
+  console.log( data );
   const handleLogout = () => {
     localStorage.removeItem('ileyah_token');
     router.push('/login')
@@ -34,7 +38,7 @@ const Page = ({ className }) => {
     <div>
       <div className="flex">
         <div>
-          <p className='text-2xl font-semibold'>Due Loans</p>
+          <p className='text-2xl font-semibold'>Loans</p>
         </div>
         <div className='ml-auto'>
           <SimpleDropdown

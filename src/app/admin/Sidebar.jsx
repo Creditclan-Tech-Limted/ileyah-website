@@ -46,7 +46,7 @@ const navLinks = [
     id: 7,
     link: '/admin/dueloans',
     icon: <IconApps />,
-    name: 'Due Loans',
+    name: 'Loans',
   },
   {
     id: 8,

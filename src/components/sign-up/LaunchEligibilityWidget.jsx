@@ -9,7 +9,7 @@ const LaunchEligibilityWidget = ({
   onCompleted,
   className,
 }) => {
-  console.log({ request });
+  console.log({ request: request });
   const widget = useRef();
 
   useEffect(() => {
