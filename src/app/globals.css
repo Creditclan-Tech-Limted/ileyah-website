@@ -150,3 +150,15 @@
 .bg-responsiveHero {
   background-image: linear-gradient(rgba(38, 25, 51, .6), rgba(25, 25, 51, .6)), url('/assets/images/company.jpg');
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+}
