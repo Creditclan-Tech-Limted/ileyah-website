@@ -17,11 +17,6 @@ const Page = ({ className }) => {
   const [openLoanDetails, setOpenLoanDetails] = useState(false);
   const [current, setCurrent] = useState();
 
-  const handleLogout = () => {
-    localStorage.removeItem("ileyah_token");
-    router.push("/login");
-  };
-
   const getAllUser = async () => {
     try {
       const res = await axios.get(
@@ -40,39 +35,13 @@ const Page = ({ className }) => {
 
   return (
     <>
-      <div className="flex">
-        <div>
-          <p className="text-2xl font-semibold">Users</p>
-        </div>
-        <div className="ml-auto">
-          <SimpleDropdown
-            trigger={
-              <div className="flex items-center">
-                <img
-                  src={`https://ui-avatars.com/api/?name=IL`}
-                  className={classNames("w-8 h-8 rounded-full", className)}
-                  alt={`IL`}
-                />
-                <IconChevronDown size="18" className="ml-3" />
-              </div>
-            }
-            items={[
-              {
-                text: "Logout",
-                icon: <IconLogout size="18" />,
-                onClick: handleLogout,
-              },
-            ]}
-          />
-        </div>
-      </div>
-
+      <AuthNav className={className} />
       {loading && <div>Loading... Loading...</div>}
 
       <div className="grid grid-cols-2 gap-10 mt-10">
         {!loading &&
           users?.map((user, i) => (
-            <div className="bg-white shadow flex rounded-2xl p-3" key={i}>
+            <div className="flex p-3 bg-white shadow rounded-2xl" key={i}>
               <div className="my-auto">
                 <img
                   src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg"
@@ -115,3 +84,39 @@ const Page = ({ className }) => {
 };
 
 export default Page;
+
+export const AuthNav = ({ className }) => {
+  const handleLogout = () => {
+    localStorage.removeItem("ileyah_token");
+    router.push("/login");
+  };
+
+  return (
+    <div className="flex px-3 lg:px-6">
+      <div>
+        <p className="text-2xl font-semibold">Admin</p>
+      </div>
+      <div className="ml-auto">
+        <SimpleDropdown
+          trigger={
+            <div className="flex items-center">
+              <img
+                src={`https://ui-avatars.com/api/?name=IL`}
+                className={classNames("w-8 h-8 rounded-full", className)}
+                alt={`IL`}
+              />
+              <IconChevronDown size="18" className="ml-3" />
+            </div>
+          }
+          items={[
+            {
+              text: "Logout",
+              icon: <IconLogout size="18" />,
+              onClick: handleLogout,
+            },
+          ]}
+        />
+      </div>
+    </div>
+  );
+};
