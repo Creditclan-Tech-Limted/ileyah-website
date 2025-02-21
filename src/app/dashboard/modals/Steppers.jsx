@@ -12,7 +12,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
     >
       <li
         className={classNames(
-          "flex items-center text-gray-600",
+          "flex items-center text-gray-600 cursor-pointer",
           views === "personal-information" && "!text-blue-600"
         )}
         onClick={() => handleSetViews("personal-information")}
@@ -46,7 +46,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
       </li>
       <li
         className={classNames(
-          "flex items-center text-gray-600",
+          "flex items-center text-gray-600 cursor-pointer",
           views === "housing-preferences" && "!text-blue-600"
         )}
         onClick={() => handleSetViews("housing-preferences")}
@@ -59,7 +59,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
         >
           2
         </span>
-        Housing
+        House
         {/* Housing <span className="hidden sm:inline-flex sm:ms-2">Info</span> */}
         <svg
           className="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180"
@@ -79,7 +79,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
       </li>
       <li
         className={classNames(
-          "flex items-center text-gray-600",
+          "flex items-center text-gray-600 cursor-pointer",
           views === "flatmate-preferences" && "!text-blue-600"
         )}
         onClick={() => handleSetViews("flatmate-preferences")}
@@ -93,8 +93,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
         >
           3
         </span>
-        Flatmate
-        {/* Housing <span className="hidden sm:inline-flex sm:ms-2">Info</span> */}
+        Room-mate
         <svg
           className="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180"
           aria-hidden="true"
@@ -112,7 +111,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
         </svg>
       </li>
 
-      <li
+      {/* <li
         className={classNames(
           "flex items-center text-gray-600",
           views === "summary" && "!text-blue-600"
@@ -128,7 +127,7 @@ const Steppers = ({ views, className, handleSetViews }) => {
           4
         </span>
         Summary
-      </li>
+      </li> */}
     </ol>
   );
 };
